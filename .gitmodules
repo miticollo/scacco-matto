@@ -7,3 +7,6 @@
 [submodule "tools/t8015_bootkit"]
 	path = tools/t8015_bootkit
 	url = https://github.com/dora2-iOS/t8015_bootkit.git
+[submodule "tools/SSHRD_Script"]
+	path = tools/SSHRD_Script
+	url = https://github.com/verygenericname/SSHRD_Script.git
