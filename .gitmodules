@@ -1,0 +1,3 @@
+[submodule "tools/gaster"]
+	path = tools/gaster
+	url = https://github.com/verygenericname/gaster.git
