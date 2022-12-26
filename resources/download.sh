@@ -31,5 +31,3 @@ function main() {
 }
 
 main "$@"
-
-}
