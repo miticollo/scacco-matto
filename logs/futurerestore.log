@@ -1,0 +1,644 @@
+[...]
+device tree ticket_hash: A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8
+crypto-hash-method found. Using SHA2-384
+computed ticket_hash   : A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8
+received valid ticket (7391 bytes)
+[...]
+device partitioning scheme is GPT
+APFS Container 'Container' /dev/disk0s1
+device is APFS formatted
+Captured preboot partition on main OS container 2
+find_filesystem_partitions: storage=/dev/disk0 container=/dev/disk0s1 system=/dev/disk0s1s1 data=/dev/disk0s1s2 baseband data=/dev/disk0s1s4 log= update=/dev/disk0s1s7 xart=/dev/disk0s1s3 hardware=/dev/disk0s1s5 scratch= preboot=/dev/disk0s1s6
+find_filesystem_partitions: recovery os container= volume=
+[...]
+lastOTA directory located on update partition(/mnt4/lastOTA).Deleting contents
+libpartition: Deleting contents of /mnt4/lastOTA...
+libpartition: Deleting contents of /mnt4/lastOTA succeeded (result: 0).
+check_for_ota_logs: Data volume access restricted but volume is accessible. Checking for lastOTA contents
+lastOTA directory not located on data partition(/mnt2/MobileSoftwareUpdate/lastOTA:No such file or directory)
+Unmounting update partition
+[...]
+executing /sbin/mount -u -w /dev/disk0s1s1 /mnt1
+apfs_log_mount_unmount:1889: disk0s1s1 updating mounted volume System, requested by: mount_apfs (pid 31); parent: mount (pid 30)
+[...]
+Changed permissions on /dev/disk0s1s1 mounted at /mnt1 to readwrite
+[...]
+/dev/md0 is mounted at /
+[...]
+/dev/disk0s1s7 mounted on /mnt4
+Update mounted read-only
+Hardware folder found on update volume(/mnt4/Hardware). Attempting to stash contents
+scan_directory: Directory(/mnt4/Hardware) opened
+scan_directory: Battery
+scan_directory: Directory(/mnt4/Hardware/Battery) opened
+scan_directory: Library
+scan_directory: Directory(/mnt4/Hardware/Battery/Library) opened
+scan_directory: Preferences
+scan_directory: Directory(/mnt4/Hardware/Battery/Library/Preferences) opened
+scan_directory: com.apple.batterydata.kioskmode.plist
+scan_directory: com.apple.thermalmonitor.agingcontroller.plist
+scan_directory: com.apple.batterydata.cyclecount.plist
+scan_directory: com.apple.batteryhealthdata.plist
+scan_directory: Directory(/mnt4/Hardware/Battery/Library/Preferences) closed
+scan_directory: Directory(/mnt4/Hardware/Battery/Library) closed
+scan_directory: Directory(/mnt4/Hardware/Battery) closed
+scan_directory: Directory(/mnt4/Hardware) closed
+hardware_folder_files_data_create: Only saving stat info for directory: /mnt4/Hardware/Battery
+hardware_folder_files_data_create: Initializing Array
+hardware_folder_files_data_create: Only saving stat info for directory: /mnt4/Hardware/Battery/Library
+hardware_folder_files_data_create: Only saving stat info for directory: /mnt4/Hardware/Battery/Library/Preferences
+hardware_folder_files_data_create: Attempting to save stat info and data for file to memory: /mnt4/Hardware/Battery/Library/Preferences/com.apple.batterydata.kioskmode.plist
+hardware_folder_files_data_create: File /mnt4/Hardware/Battery/Library/Preferences/com.apple.batterydata.kioskmode.plist: 427 bytes read into memory.
+hardware_folder_files_data_create: Attempting to save stat info and data for file to memory: /mnt4/Hardware/Battery/Library/Preferences/com.apple.thermalmonitor.agingcontroller.plist
+hardware_folder_files_data_create: File /mnt4/Hardware/Battery/Library/Preferences/com.apple.thermalmonitor.agingcontroller.plist: 151 bytes read into memory.
+hardware_folder_files_data_create: Attempting to save stat info and data for file to memory: /mnt4/Hardware/Battery/Library/Preferences/com.apple.batterydata.cyclecount.plist
+hardware_folder_files_data_create: File /mnt4/Hardware/Battery/Library/Preferences/com.apple.batterydata.cyclecount.plist: 1095 bytes read into memory.
+hardware_folder_files_data_create: Attempting to save stat info and data for file to memory: /mnt4/Hardware/Battery/Library/Preferences/com.apple.batteryhealthdata.plist
+hardware_folder_files_data_create: File /mnt4/Hardware/Battery/Library/Preferences/com.apple.batteryhealthdata.plist: 174 bytes read into memory.
+hardware_folder_files_data_create: 7 files found in total.
+Copying of battery data into memory completed successfully
+[...]
+[16:40:12.0786-GMT]{3>6} CHECKPOINT BEGIN: RESTORED:[0x064E] clean_nand
+restore-step-ids = {0x1103064E:45}
+restore-step-names = {0x1103064E:clean_nand}
+restore-step-uptime = 96
+restore-step-user-progress = 0
+entering clean_NAND
+virtual IOReturn IOEmbeddedNVMeBlockDevice::doFormatMedia(UInt64)::909:burnin partition may not be present. NSID1 fBlockCount 15625000
+virtual IOReturn IOEmbeddedNVMeBlockDevice::doFormatMedia(UInt64)::935:block count changing from 15625000 -> 0
+bool AppleEmbeddedNVMeController::DetermineBlankPart()::1921:Non-Blank NAND, Number of namespaces - 8
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2550:inOptions 0x0
+[ANS2:client1]  Current Walltime 9126621, RTC 9126906, last RTC 9126621, and calendar 1671640812
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 1
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 1
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 0
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 2
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 2
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 4096
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 3
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 3
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 32
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 4
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 4
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 2
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 5
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 5
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 2
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 6
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 6
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 1
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 7
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 8
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 256
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2617:NSID		: 8
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2618:NSType	: 10
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2619:NSSize	: 768
+
+bool AppleEmbeddedNVMeController::CreateNamespaces(uint64_t, uint32_t)::2623:
+Creating 8 namespaces on NAND
+[ANS2:client1] SET TIME: wall 9126621 -> 9126906
+[ANS2:client1] NN = 8
+[ANS2:client1] namespaces 0: id 1, type 1, size 0
+[ANS2:client1] namespaces 1: id 2, type 2, size 4096
+[ANS2:client1] namespaces 2: id 3, type 3, size 32
+[ANS2:client1] namespaces 3: id 4, type 4, size 2
+[ANS2:client1] namespaces 4: id 5, type 5, size 2
+[ANS2:client1] namespaces 5: id 6, type 6, size 1
+[ANS2:client1] namespaces 6: id 7, type 8, size 256
+[ANS2:client1] namespaces 7: id 8, type 10, size 768
+[ANS2:client1] OP_LBA_FORMAT , host change from: 15625000 to : 0
+[ANS2:client1] Format_LBA. Request size 0 lba, param 1 
+[ANS2:client1] Format_LBA. Clear Clog. Major 22, Minor 1. Resetting to Major 255, Minor 255
+[ANS2:client1] Unmapping All LBAs
+[ANS2:client1] UDI=8388608, UDT=0, Ci=8388608, Di=8388608, i=8388608, CSWT=11, oT=1
+[ANS2:client1] Push is skipping band:0060 flow:HST_DYN
+[ANS2:client1] Finished abort skip flow:HST_DYN band:0060 boff 954 abort_band0:0060 abort_band1:0000
+[ANS2:client1] Nand Die:2      MLC: 2 No     SLC: 2 No     Erase:2
+[ANS2:client1] Initializing raid from physical table
+[ANS2:client1] Protected planes-per-die: 4 planes per unit 4
+[ANS2:client1] Format_UserArea.  updateCapaticy: 1
+[ANS2:client1]  hostCapacity          0x00ee6b28(59GBs)
+[ANS2:client1]  nvmeApHostLbaCount    0xffffffff(4095GBs)
+[ANS2:client1]  HOST_VIRT_BUFF_SZ     0x00000000(0GBs)
+[ANS2:client1]  DM_HOST_VIRT_CAPACITY 0x00ee6b28(59GBs)
+[ANS2:client1] Primary partition size 15625000
+[ANS2:client1] UDI=8, DMI=8
+[ANS2:client1] Format_UserArea. indMemorySize:  8192 KB
+[ANS2:client1] UDI=8388608, UDT=0, Ci=8388608, Di=8388608, i=8388608, CSWT=11, oT=2
+[ANS2:client1] Format_LBA. Format CLog
+[ANS2:client1] Format_LBA. Reset Clog. Major 255, Minor 255
+[ANS2:client1] Resetting Clog to be Major=22 Minor=1
+NAND format complete
+entering ramrod_probe_media_internal
+entering wait_for_device: 'EmbeddedDeviceTypeRoot'
+Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+find_filesystem_partitions: storage=/dev/disk0 container= system= data= baseband data= log= update= xart= hardware= scratch= preboot=
+find_filesystem_partitions: recovery os container= volume= 
+[16:40:13.0275-GMT]{3>6} CHECKPOINT END: RESTORED:[0x064E] clean_nand
+[...]
+creating directory (owner=0 group=0 mode=755, class=-1) /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/System/Library/Caches/com.apple.kernelcaches
+[...]
+writing kernelcache to /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/System/Library/Caches/com.apple.kernelcaches/kernelcache
+[...]
+install_device_tree: writing device tree to /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/usr/standalone/firmware/devicetree.img4
+[...]
+install_iboot_stage2: writing iboot to /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/usr/standalone/firmware/iBoot.img4
+[...]
+install_root_hash: writing root hash to /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/usr/standalone/firmware/root_hash.img4
+[...]
+writing ticket to /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/System/Library/Caches/apticket.der
+[...]
+ramrod_ticket_write_explicit: symlinking /mnt9/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/usr/standalone/firmware/apticket.der to /private/preboot/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/System/Library/Caches/apticket.der
+Successfully created symlink!
+[...]
+[16:45:39.0440-GMT]{3>6} CHECKPOINT BEGIN: RESTORED:[0x068B] seal_system_volume
+restore-step-ids = {0x1103068B:124}
+restore-step-names = {0x1103068B:seal_system_volume}
+restore-step-uptime = 423
+restore-step-user-progress = 83
+Running mtree and saving output to /mnt5/mtree_remap.xml 
+AppleImage4: caller not entitled: com.apple.private.security.AppleImage4.user-client
+2022-12-21 16:45:40.964995+0000 restored_external[6:864] [library] failed to open AppleImage4 service: 0xe00002c2
+2022-12-21 16:45:40.975297+0000 restored_external[6:864] [library] initialized default runtime: darwin userspace [version 0x5]
+2022-12-21 16:45:40.987178+0000 restored_external[6:864] [library] initialized internal runtime: null [version 0x5]
+2022-12-21 16:45:40.997125+0000 restored_external[6:864] [library] initialized internal runtime: restore ramdisk [version 0x5]
+2022-12-21 16:45:41.008978+0000 restored_external[6:864] [library] no asmb
+ramrod_get_trusted_img4_payload: im4m is NULL. Assuming payload with attached manifest
+restored_external: AppleImage4  [INFO]  initializing chip state
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CPRO
+restored_external: AppleImage4 [DEBUG]   CPRO = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CSEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: CSEC
+restored_external: AppleImage4 [DEBUG]   CSEC = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: EPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: EPRO
+restored_external: AppleImage4 [DEBUG]   EPRO = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ESEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: ESEC
+restored_external: AppleImage4 [DEBUG]   ESEC = 0x1
+restored_external: AppleImage4 [DEBUG]   querying runtime: AMNM
+restored_external: AppleImage4 [DEBUG]   AMNM = 0x0
+restored_external: AppleImage4 [DEBUG]   will fetch composite boolean: iuou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: iuou
+restored_external: AppleImage4 [DEBUG]   querying runtime: iuou
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: iuou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: euou
+restored_external: AppleImage4 [DEBUG]   querying runtime: euou
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: euou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: fpgt
+restored_external: AppleImage4 [DEBUG]   querying runtime: fpgt
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: fpgt
+restored_external: AppleImage4 [DEBUG]   composite boolean: identifier = iuou, val = 0
+restored_external: AppleImage4 [DEBUG]   eieiuou = 0
+restored_external: AppleImage4 [DEBUG]   chip: CPRO = 0x1, CSEC = 0x1
+restored_external: AppleImage4 [DEBUG]   chip: EPRO = 0x1, ESEC = 0x1
+restored_external: AppleImage4 [DEBUG]   chip: AMNM = 0x0
+restored_external: AppleImage4 [DEBUG]   chip: iuou = 0x0
+restored_external: AppleImage4 [DEBUG]   chip: fusing: physical = 0x2, effective = 0x2
+restored_external: AppleImage4  [INFO]  authenticating firmware on chip: 4cc = msys, chip = sha2-384 arm ap
+restored_external: AppleImage4  [INFO]  chip disallows mix-n-match
+restored_external: AppleImage4 [DEBUG]   wrapped Image4 payload
+restored_external: AppleImage4 [DEBUG]   attached Image4 manifest
+restored_external: AppleImage4 [DEBUG]   using pre-canned decode implementation root
+restored_external: AppleImage4 [DEBUG]   manifest property: BNCH
+restored_external: AppleImage4 [DEBUG]   manifest property: BORD
+restored_external: AppleImage4 [DEBUG]   querying runtime: BORD
+restored_external: AppleImage4 [DEBUG]   BORD = 0xe
+restored_external: AppleImage4  [INFO]  BORD[manifest == chip]: enforcing: 0xe == 0xe
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: BORD
+restored_external: AppleImage4 [DEBUG]   manifest property: CEPO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CEPO
+restored_external: AppleImage4 [DEBUG]   CEPO = 0x1
+restored_external: AppleImage4  [INFO]  CEPO[manifest >= chip]: enforcing: 0x1 >= 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CEPO
+restored_external: AppleImage4 [DEBUG]   manifest property: CHIP
+restored_external: AppleImage4 [DEBUG]   querying runtime: CHIP
+restored_external: AppleImage4 [DEBUG]   CHIP = 0x8015
+restored_external: AppleImage4  [INFO]  CHIP[manifest == chip]: enforcing: 0x8015 == 0x8015
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CHIP
+restored_external: AppleImage4 [DEBUG]   manifest property: CPRO
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CPRO
+restored_external: AppleImage4 [DEBUG]   CPRO = 0x1
+restored_external: AppleImage4  [INFO]  CPRO[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CPRO
+restored_external: AppleImage4 [DEBUG]   manifest property: CSEC
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CSEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: CSEC
+restored_external: AppleImage4 [DEBUG]   CSEC = 0x1
+restored_external: AppleImage4  [INFO]  CSEC[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CSEC
+restored_external: AppleImage4 [DEBUG]   manifest property: ECID
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ECID
+restored_external: AppleImage4 [DEBUG]   querying runtime: ECID
+restored_external: AppleImage4 [DEBUG]   ECID = 0xe421a01c0002e
+restored_external: AppleImage4  [INFO]  ECID[manifest == chip]: enforcing: 0xe421a01c0002e == 0xe421a01c0002e
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: ECID
+restored_external: AppleImage4 [DEBUG]   manifest property: SDOM
+restored_external: AppleImage4 [DEBUG]   querying runtime: SDOM
+restored_external: AppleImage4 [DEBUG]   SDOM = 0x1
+restored_external: AppleImage4  [INFO]  SDOM[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: SDOM
+restored_external: AppleImage4 [DEBUG]   manifest property: pcrp
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: pcrp
+restored_external: AppleImage4 [DEBUG]   manifest property: snon
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: snon
+restored_external: AppleImage4 [DEBUG]   manifest property: srvn
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: srvn
+restored_external: AppleImage4 [DEBUG]   object property: DGST
+restored_external: AppleImage4  [INFO]  DGST[manifest == chip]: enforcing: 48 == 48: 25302936069de17cefd1c1159775664cddc7186d69929cd83744102ef7fe0fc20ee727c53e30953c97d1f0843ea2b6d2 == 25302936069de17cefd1c1159775664cddc7186d69929cd83744102ef7fe0fc20ee727c53e30953c97d1f0843ea2b6d2
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: DGST
+restored_external: AppleImage4 [DEBUG]   object property: EKEY
+restored_external: AppleImage4 [DEBUG]   unknown object tag: EKEY
+restored_external: AppleImage4 [DEBUG]   object property: EPRO
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: EPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: EPRO
+restored_external: AppleImage4 [DEBUG]   EPRO = 0x1
+restored_external: AppleImage4  [INFO]  EPRO[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: EPRO
+restored_external: AppleImage4 [DEBUG]   object property: ESEC
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ESEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: ESEC
+restored_external: AppleImage4 [DEBUG]   ESEC = 0x1
+restored_external: AppleImage4  [INFO]  ESEC[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: ESEC
+restored_external: AppleImage4 [DEBUG]   Img4DecodePerformTrustEvaluationWithCallbacks: 4cc = msys, dr = [0 success]
+restored_external: AppleImage4 [DEBUG]   trust evaluation results: dr = 0, ct = 0xaaaaaaaa, error = 0
+restored_external: AppleImage4 [DEBUG]   returning property callback error: 0
+restored_external: AppleImage4  [INFO]  manifest authenticated
+restored_external: AppleImage4  [INFO]  enforcing mix-n-match policy: subsequent stage
+restored_external: AppleImage4  [INFO]  querying previous stage manifest hash
+restored_external: AppleImage4 [DEBUG]   querying runtime: PSMH
+restored_external: AppleImage4 [DEBUG]   PSMH = a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8
+restored_external: AppleImage4  [INFO]  PSMH[manifest == chip]: enforcing: 48 == 48: a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8 == a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8
+restored_external: AppleImage4  [INFO]  manifest consistent with previous stage
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: PSMH
+restored_external: AppleImage4 [DEBUG]   firmware authenticated
+restored_external: AppleImage4  [INFO]  delivering unwrapped payload for execution
+restored_external: AppleImage4 [DEBUG]   calling out to execution context: 0
+[ramrod_unarchive_dir] extracting archive (29697541 bytes) to dir '/mnt5/manifest_and_db'
+[_read_data] [num bytes to read = 12] [byte offset: 0] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 12] [length: 29697541]
+[_read_data] [num bytes to read = 2170385] [byte offset: 28] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 2170413] [length: 29697541]
+[_read_data] [num bytes to read = 2294427] [byte offset: 2170429] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 4464856] [length: 29697541]
+[_read_data] [num bytes to read = 2291244] [byte offset: 4464872] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 6756116] [length: 29697541]
+[_read_data] [num bytes to read = 2304401] [byte offset: 6756132] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 9060533] [length: 29697541]
+[_read_data] [num bytes to read = 2247832] [byte offset: 9060549] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 11308381] [length: 29697541]
+[_read_data] [num bytes to read = 2300003] [byte offset: 11308397] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 13608400] [length: 29697541]
+[_read_data] [num bytes to read = 2171441] [byte offset: 13608416] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 15779857] [length: 29697541]
+[_read_data] [num bytes to read = 2291750] [byte offset: 15779873] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 18071623] [length: 29697541]
+[_read_data] [num bytes to read = 2275465] [byte offset: 18071639] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 20347104] [length: 29697541]
+[_read_data] [num bytes to read = 2241686] [byte offset: 20347120] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 22588806] [length: 29697541]
+[_read_data] [num bytes to read = 2242192] [byte offset: 22588822] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 24831014] [length: 29697541]
+[_read_data] [num bytes to read = 1592415] [byte offset: 24831030] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 26423445] [length: 29697541]
+[_read_data] [num bytes to read = 255166] [byte offset: 26423461] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 26678627] [length: 29697541]
+[_read_data] [num bytes to read = 223319] [byte offset: 26678643] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 26901962] [length: 29697541]
+[_read_data] [num bytes to read = 223571] [byte offset: 26901978] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 27125549] [length: 29697541]
+[_read_data] [num bytes to read = 235086] [byte offset: 27125565] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 27360651] [length: 29697541]
+[_read_data] [num bytes to read = 259600] [byte offset: 27360667] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 27620267] [length: 29697541]
+[_read_data] [num bytes to read = 184633] [byte offset: 27620283] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 27804916] [length: 29697541]
+[_read_data] [num bytes to read = 232851] [byte offset: 27804932] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 28037783] [length: 29697541]
+[_read_data] [num bytes to read = 232206] [byte offset: 28037799] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 28270005] [length: 29697541]
+[_read_data] [num bytes to read = 263232] [byte offset: 28270021] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 28533253] [length: 29697541]
+[_read_data] [num bytes to read = 257110] [byte offset: 28533269] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 28790379] [length: 29697541]
+[_read_data] [num bytes to read = 252407] [byte offset: 28790395] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 29042802] [length: 29697541]
+[_read_data] [num bytes to read = 250877] [byte offset: 29042818] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 29293695] [length: 29697541]
+[_read_data] [num bytes to read = 269829] [byte offset: 29293711] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 29563540] [length: 29697541]
+[_read_data] [num bytes to read = 133985] [byte offset: 29563556] [length: 29697541]
+[_read_data] [num bytes to read = 16] [byte offset: 29697541] [length: 29697541]
+           3 entries in archive
+           3 entries extracted
+           0 entries failed to extract
+           2 max entries in flight
+           1 deferred directories
+   106949858 bytes in archive
+   106949614 bytes received in regular files
+   106949614 bytes stored in regular files
+           0 bytes not stored in holes
+           0 bytes not stored in hard links
+           0 bytes not stored in clones
+           0 bytes not stored in same data files
+         243 MB/s
+[ramrod_unarchive_dir] result = 0
+executing /usr/sbin/mtree -p /mnt1 -m /mnt5/mtree_remap.xml -f /mnt5/manifest_and_db/mtree.txt
+Successfully returned after running mtree
+entering unmount_filesystems
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+Preboot not mounted (unmount ignored)
+Skipping unmount of the update partition
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+apfs_log_mount_unmount:1889: disk0s1s5 unmounting volume Hardware, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2740: disk0s1s5 waiting for purgatory cleaner to finish
+nx_volume_group_update:7756: disk0s1s5 Volume Hardware role 140 Not a System or data volume
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 5
+apfs: total mem allocated: 49335048 (47 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 5)
+Hardware unmounted
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+apfs_log_mount_unmount:1889: disk0s1s4 unmounting volume Baseband Data, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2740: disk0s1s4 waiting for purgatory cleaner to finish
+nx_volume_group_update:7756: disk0s1s4 Volume Baseband Data role 80 Not a System or data volume
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 4
+apfs: total mem allocated: 49333608 (47 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 4)
+Baseband Data unmounted
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+apfs_log_mount_unmount:1889: disk0s1s2 unmounting volume Data, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2702: disk0s1s2 resizing will be cancelled as the volume is encrypted and will no longer be accessible
+nx_cancel_block_out:6741: disk0s1 Lock is not cancellable
+apfs_vfsop_unmount:2740: disk0s1s2 waiting for purgatory cleaner to finish
+nx_volume_group_update:7762: disk0s1s2 Volume Data is not in a volume group
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 3
+apfs: total mem allocated: 48794616 (46 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 3)
+Data unmounted
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+entering ramrod_shutdown_gigalocker
+We should have an xART partition.
+executing /usr/libexec/seputil --gigalocker-shutdown
+SEP EP 16 enabled
+apfs_rawdev_destroy:708: disk0s1s3 Disable bypass mode on inode 16 as 2.0
+SEP EP 16 disabled
+apfs_log_mount_unmount:1889: disk0s1s3 unmounting volume xART, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2740: disk0s1s3 waiting for purgatory cleaner to finish
+nx_volume_group_update:7756: disk0s1s3 Volume xART role 100 Not a System or data volume
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 2
+apfs: total mem allocated: 48742568 (46 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 2)
+xART unmounted
+ramrod_display_set_granular_progress_forced: 83.000000
+entering force_unmount_partition
+apfs_log_mount_unmount:1889: disk0s1s1 unmounting volume System, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2740: disk0s1s1 waiting for purgatory cleaner to finish
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 1
+apfs: total mem allocated: 44182500 (42 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 1)
+System unmounted
+Finished unmounting all filesystems except for update. Attempting to unmount update volume
+apfs_stop_bg_work:1065: disk0s1s7 Volume Update is unmounting, stop any bg work
+apfs_log_mount_unmount:1889: disk0s1s7 unmounting volume Update, requested by: restored_external (pid 6); parent: restored_externa (pid 3)
+apfs_vfsop_unmount:2740: disk0s1s7 waiting for purgatory cleaner to finish
+nx_volume_group_update:7756: disk0s1s7 Volume Update role c0 Not a System or data volume
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 0
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=27 dv_num_slice_blk=589824 dv_num_lslice_blk=289565
+container_unload:1643: vnode_close() invoked in the container unload path
+apfs: total mem allocated: 2336 (0 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 0)
+Successfully unmounted update volume
+ramrod_display_set_granular_progress_forced: 83.000000
+Will run apfs_sealvolume to seal device node /dev/disk0s1s1 using mtree output /mnt5/mtree_remap.xml
+ramrod_seal_system_volume_internal: Assuming root hash payload with combined manifest
+2022-12-21 16:46:12.947034+0000 restored_external[6:864] [library] no asmb
+ramrod_get_trusted_img4_payload: im4m is NULL. Assuming payload with attached manifest
+restored_external: AppleImage4  [INFO]  initializing chip state
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CPRO
+restored_external: AppleImage4 [DEBUG]   CPRO = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CSEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: CSEC
+restored_external: AppleImage4 [DEBUG]   CSEC = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: EPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: EPRO
+restored_external: AppleImage4 [DEBUG]   EPRO = 0x1
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ESEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: ESEC
+restored_external: AppleImage4 [DEBUG]   ESEC = 0x1
+restored_external: AppleImage4 [DEBUG]   querying runtime: AMNM
+restored_external: AppleImage4 [DEBUG]   AMNM = 0x0
+restored_external: AppleImage4 [DEBUG]   will fetch composite boolean: iuou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: iuou
+restored_external: AppleImage4 [DEBUG]   querying runtime: iuou
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: iuou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: euou
+restored_external: AppleImage4 [DEBUG]   querying runtime: euou
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: euou
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: fpgt
+restored_external: AppleImage4 [DEBUG]   querying runtime: fpgt
+restored_external: AppleImage4  [INFO]  identifier absence not fatal; ignoring ENOENT: fpgt
+restored_external: AppleImage4 [DEBUG]   composite boolean: identifier = iuou, val = 0
+restored_external: AppleImage4 [DEBUG]   eieiuou = 0
+restored_external: AppleImage4 [DEBUG]   chip: CPRO = 0x1, CSEC = 0x1
+restored_external: AppleImage4 [DEBUG]   chip: EPRO = 0x1, ESEC = 0x1
+restored_external: AppleImage4 [DEBUG]   chip: AMNM = 0x0
+restored_external: AppleImage4 [DEBUG]   chip: iuou = 0x0
+restored_external: AppleImage4 [DEBUG]   chip: fusing: physical = 0x2, effective = 0x2
+restored_external: AppleImage4  [INFO]  authenticating firmware on chip: 4cc = isys, chip = sha2-384 arm ap
+restored_external: AppleImage4  [INFO]  chip disallows mix-n-match
+restored_external: AppleImage4 [DEBUG]   wrapped Image4 payload
+restored_external: AppleImage4 [DEBUG]   attached Image4 manifest
+restored_external: AppleImage4 [DEBUG]   using pre-canned decode implementation root
+restored_external: AppleImage4 [DEBUG]   manifest property: BNCH
+restored_external: AppleImage4 [DEBUG]   manifest property: BORD
+restored_external: AppleImage4 [DEBUG]   querying runtime: BORD
+restored_external: AppleImage4 [DEBUG]   BORD = 0xe
+restored_external: AppleImage4  [INFO]  BORD[manifest == chip]: enforcing: 0xe == 0xe
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: BORD
+restored_external: AppleImage4 [DEBUG]   manifest property: CEPO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CEPO
+restored_external: AppleImage4 [DEBUG]   CEPO = 0x1
+restored_external: AppleImage4  [INFO]  CEPO[manifest >= chip]: enforcing: 0x1 >= 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CEPO
+restored_external: AppleImage4 [DEBUG]   manifest property: CHIP
+restored_external: AppleImage4 [DEBUG]   querying runtime: CHIP
+restored_external: AppleImage4 [DEBUG]   CHIP = 0x8015
+restored_external: AppleImage4  [INFO]  CHIP[manifest == chip]: enforcing: 0x8015 == 0x8015
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CHIP
+restored_external: AppleImage4 [DEBUG]   manifest property: CPRO
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: CPRO
+restored_external: AppleImage4 [DEBUG]   CPRO = 0x1
+restored_external: AppleImage4  [INFO]  CPRO[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CPRO
+restored_external: AppleImage4 [DEBUG]   manifest property: CSEC
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: CSEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: CSEC
+restored_external: AppleImage4 [DEBUG]   CSEC = 0x1
+restored_external: AppleImage4  [INFO]  CSEC[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: CSEC
+restored_external: AppleImage4 [DEBUG]   manifest property: ECID
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ECID
+restored_external: AppleImage4 [DEBUG]   querying runtime: ECID
+restored_external: AppleImage4 [DEBUG]   ECID = 0xe421a01c0002e
+restored_external: AppleImage4  [INFO]  ECID[manifest == chip]: enforcing: 0xe421a01c0002e == 0xe421a01c0002e
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: ECID
+restored_external: AppleImage4 [DEBUG]   manifest property: SDOM
+restored_external: AppleImage4 [DEBUG]   querying runtime: SDOM
+restored_external: AppleImage4 [DEBUG]   SDOM = 0x1
+restored_external: AppleImage4  [INFO]  SDOM[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: SDOM
+restored_external: AppleImage4 [DEBUG]   manifest property: pcrp
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: pcrp
+restored_external: AppleImage4 [DEBUG]   manifest property: snon
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: snon
+restored_external: AppleImage4 [DEBUG]   manifest property: srvn
+restored_external: AppleImage4 [DEBUG]   unknown manifest tag: srvn
+restored_external: AppleImage4 [DEBUG]   object property: DGST
+restored_external: AppleImage4  [INFO]  DGST[manifest == chip]: enforcing: 48 == 48: 7a94984f089c443a30200b66d28fc2745db51f9cc1e1752e613e84cba4f1eb3885ec3d886e11c6e2677bd6a3e2deb49b == 7a94984f089c443a30200b66d28fc2745db51f9cc1e1752e613e84cba4f1eb3885ec3d886e11c6e2677bd6a3e2deb49b
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: DGST
+restored_external: AppleImage4 [DEBUG]   object property: EKEY
+restored_external: AppleImage4 [DEBUG]   unknown object tag: EKEY
+restored_external: AppleImage4 [DEBUG]   object property: EPRO
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: EPRO
+restored_external: AppleImage4 [DEBUG]   querying runtime: EPRO
+restored_external: AppleImage4 [DEBUG]   EPRO = 0x1
+restored_external: AppleImage4  [INFO]  EPRO[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: EPRO
+restored_external: AppleImage4 [DEBUG]   object property: ESEC
+restored_external: AppleImage4 [DEBUG]   virtual chip; forcing runtime query: ESEC
+restored_external: AppleImage4 [DEBUG]   querying runtime: ESEC
+restored_external: AppleImage4 [DEBUG]   ESEC = 0x1
+restored_external: AppleImage4  [INFO]  ESEC[manifest == chip]: enforcing: 0x1 == 0x1
+restored_external: AppleImage4 [DEBUG]   object constraint satisfied: ESEC
+restored_external: AppleImage4 [DEBUG]   Img4DecodePerformTrustEvaluationWithCallbacks: 4cc = isys, dr = [0 success]
+restored_external: AppleImage4 [DEBUG]   trust evaluation results: dr = 0, ct = 0xaaaaaaaa, error = 0
+restored_external: AppleImage4 [DEBUG]   returning property callback error: 0
+restored_external: AppleImage4  [INFO]  manifest authenticated
+restored_external: AppleImage4  [INFO]  enforcing mix-n-match policy: subsequent stage
+restored_external: AppleImage4  [INFO]  querying previous stage manifest hash
+restored_external: AppleImage4 [DEBUG]   querying runtime: PSMH
+restored_external: AppleImage4 [DEBUG]   PSMH = a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8
+restored_external: AppleImage4  [INFO]  PSMH[manifest == chip]: enforcing: 48 == 48: a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8 == a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8
+restored_external: AppleImage4  [INFO]  manifest consistent with previous stage
+restored_external: AppleImage4 [DEBUG]   manifest constraint satisfied: PSMH
+restored_external: AppleImage4 [DEBUG]   firmware authenticated
+restored_external: AppleImage4  [INFO]  delivering unwrapped payload for execution
+restored_external: AppleImage4 [DEBUG]   calling out to execution context: 0
+Verifying root hash at /mnt5/root_hash
+Using stashed hash DB
+executing /System/Library/Filesystems/apfs.fs/apfs_sealvolume -R /mnt5/mtree_remap.xml -I /mnt5/root_hash -u /mnt5/manifest_and_db/digest.db -d -v /dev/disk0s1s1
+nx_mount:1184: disk0s1 initializing cache w/hash_size 32768 and cache size 65536
+nx_mount:1295: disk0s1 container cleanly-unmounted flag set.
+nx_mount:1460: disk0s1 checkpoint search: largest xid 49, best xid 49 @ 97
+spaceman_metazone_init:191: disk0s1 metazone for device 0 of size 488280 blocks (encrypted: 15136709-15380849 unencrypted: 15380849-15624989)
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 32768
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 65536
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 98304
+dev_dump:256: Aggregate constructed: dev=0x107d07280 di=0 dv_num_slice=27 dv_num_slice_blk=589824 dv_num_lslice_blk=289565
+spaceman_scan_free_blocks:3154: disk0s1 scan took 0.011139 s, trims took 0.000000 s
+spaceman_scan_free_blocks:3156: disk0s1 13570999 blocks free in 3017 extents
+spaceman_scan_free_blocks:3164: disk0s1 13570999 blocks trimmed in 3017 extents (0 us/trim, 3017000000 trims/s)
+spaceman_scan_free_blocks:3167: disk0s1 trim distribution 1:901 2+:593 4+:1015 16+:420 64+:27 256+:61
+populate_time_from_dict:233: disk0s1s1 Timestamp set by B+I is 1666484242000000000
+apfs_remap_records_fsroot:929: disk0s1s1 iterating over fsroot tree records
+apfs_remap_records_fsroot:975: disk0s1s1 copied 1138690 fsroot tree records into new fsroot tree
+tx_flush:1043: disk0s1 tx xid 50 took 3265017 us to flush
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+dev_init:314: disk0s1 device accelerated crypto: 0 (compiled @ Sep 29 2022 22:45:53)
+dev_init:317: disk0s1 device_handle block size 4096 block count 15624989 features 0 internal 
+nx_mount:1184: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_mount:1295: disk0s1 container cleanly-unmounted flag set.
+nx_mount:1460: disk0s1 checkpoint search: largest xid 51, best xid 51 @ 101
+dev_dump:256: Aggregate destructed: dev=0x107d07280 di=0 dv_num_slice=27 dv_num_slice_blk=589824 dv_num_lslice_blk=289565
+Records breakdown: Inode:318972 Xattr:260602 SiblingLink:60169 DstreamID:10719 FileExtent:63158 DirRecord:364901 SiblingMap:60169 
+Sealing fsroot tree with 1138690 records
+Sealed fsroot tree has 1701645 records
+Records breakdown: Inode:318972 Xattr:260602 SiblingLink:60169 DstreamID:10719 FileExtent:63158 DirRecord:364901 SiblingMap:60169 FileInfo:626113 
+Freeing 1 overallocated dstream ranges
+Found 1 overallocated data streams, maximum number of actively tracked uncompressed data streams with overallocations was 0
+Successfully validated hash 9368ccb4c21d1937210107509f8829b9cfeeea63705204375496c0de82dbdd72
+Set root tree oid to 101381 and fext tree oid to 15380849
+Successfully returned after running apfs_sealvolume
+entering mount_partition
+executing /sbin/mount_apfs -R -o rdonly /dev/disk0s1s1 /mnt1
+dev_init:314: disk0s1 device accelerated crypto: 3 (compiled @ Sep 29 2022 22:45:53)
+dev_init:317: disk0s1 device_handle block size 4096 block count 15624989 features 22 internal solidstate
+nx_mount:1184: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_mount:1295: disk0s1 container cleanly-unmounted flag set.
+nx_mount:1460: disk0s1 checkpoint search: largest xid 51, best xid 51 @ 101
+apfs_mount:27083: disk0s1s1 mount for ramdisk
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: mount_apfs (pid 85); parent: restored_externa (pid 6)
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+handle_mount:668: disk0s1s1 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+/dev/disk0s1s1 mounted on /mnt1
+System mounted read-only
+Remounting update partition
+libpartition: entering mount_update_partition_if_exists
+
+libpartition: entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+libpartition: Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+libpartition: entering partition_probe_media.
+libpartition: APFS Container 'Container' /dev/disk0s1
+
+libpartition: unexpected partition 'Hardware' - skipping
+executing /sbin/mount -t apfs -o nobrowse /dev/disk0s1s7 /mnt4
+spaceman_metazone_init:191: disk0s1 metazone for device 0 of size 488280 blocks (encrypted: 15136709-15380849 unencrypted: 15380849-15624989)
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 32768
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 65536
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 98304
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=27 dv_num_slice_blk=589824 dv_num_lslice_blk=289565
+apfs_log_mount_unmount:1889: disk0s1s7 mounting volume Update, requested by: mount_apfs (pid 87); parent: mount (pid 86)
+spaceman_scan_free_blocks:3172: disk0s1 scan took 0.010478 s (no trims)
+handle_mount:655: disk0s1s7 vol-uuid: EE86E934-1B05-4DAB-9CBB-5FFCE0CB2451 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s7 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s7 Volume Update role c0 Not a System or data volume
+libpartition: Successfully mounted update partition at /mnt4
+[16:46:30.0760-GMT]{3>6} CHECKPOINT END: RESTORED:[0x068B] seal_system_volume
+[...]
+[16:46:30.0810-GMT]{3>6} CHECKPOINT BEGIN: RESTORED:[0x0669] create_system_snapshot
+restore-step-ids = {0x11030669:125}
+restore-step-names = {0x11030669:create_system_snapshot}
+restore-step-uptime = 474
+restore-step-user-progress = 83
+crypto-hash-method found. Using SHA2-384
+
+libpartition: entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+libpartition: Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+libpartition: entering partition_probe_media.
+libpartition: APFS Container 'Container' /dev/disk0s1
+
+libpartition: unexpected partition 'Hardware' - skipping
+nx_global_extent_manipulation_lock:5417: disk0s1 nx_global_extent_manipulation_lock(0, 1), (0, 0, 0, 0)
+nx_global_extent_manipulation_lock:5487: disk0s1 Shared global_extent_manipulation lock taken after 0 attempts
+apfs_snap_vnop_create:511: disk0s1s1 waiting for purgatory cleaner to finish cleaning.
+fs_insert_snapshot_metadata:265: disk0s1s1 snap_name='com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8' snap_xid 52 extentref oid 15430167 sblock oid 15536591
+nx_global_extent_manipulation_unlock:5512: disk0s1 nx_global_extent_manipulation_unlock(0, 1), (0, 0, 1, 1)
+libpartition: creating system volume snapshot com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8 succeeded.
+System root hash snapshot successfully created.
+[16:46:31.0110-GMT]{3>6} CHECKPOINT END: RESTORED:[0x0669] create_system_snapshot
+[...]

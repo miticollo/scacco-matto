@@ -408,3 +408,4 @@ tools/*
 !tools/deps.sh
 !tools/finder/
 !tools/finder/*
+!logs/*
