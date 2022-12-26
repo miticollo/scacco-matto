@@ -405,7 +405,9 @@ zsdoc/data
 work/
 work/*
 tools/*
+resources/*
 !tools/deps.sh
+!resources/download.sh
 !tools/finder/
 !tools/finder/*
 !logs/*
