@@ -116,7 +116,7 @@ function main() {
   fi
 
   if ! command -v python3 >/dev/null 2>&1; then
-    err "git missing. Aborted."
+    err "python3 missing. Aborted."
     exit 1
   fi
 
