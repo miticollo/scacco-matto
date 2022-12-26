@@ -4,3 +4,6 @@
 [submodule "tools/libirecovery"]
 	path = tools/libirecovery
 	url = https://github.com/libimobiledevice/libirecovery.git
+[submodule "tools/t8015_bootkit"]
+	path = tools/t8015_bootkit
+	url = https://github.com/dora2-iOS/t8015_bootkit.git
