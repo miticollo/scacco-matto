@@ -22,3 +22,4 @@
 [submodule "resources/ayakurume"]
 	path = resources/ayakurume
 	url = https://github.com/dora2-iOS/ayakurume.git
+	ignore = dirty
