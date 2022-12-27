@@ -73,9 +73,26 @@ function get_iboot64patcher() {
   curl -LO https://nightly.link/Cryptiiiic/iBoot64Patcher/workflows/ci/main/iBoot64Patcher-macOS-x86_64-DEBUG.zip
   unzip -p iBoot64Patcher-macOS-x86_64-DEBUG.zip | tar -xv
   rm -v iBoot64Patcher*.zip
-  chmod +x ./iBoot64Patcher
+  chmod -v +x ./iBoot64Patcher
   set +e
   xattr -d com.apple.quarantine ./iBoot64Patcher
+  set -e
+}
+
+#######################################
+# Downloads futurestore.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function get_futurerestore() {
+  curl -LO https://nightly.link/futurerestore/futurerestore/workflows/ci/main/futurerestore-macOS-DEBUG.zip
+  unzip -p futurerestore-macOS-DEBUG.zip | tar -xv
+  rm -v futurerestore*.zip
+  chmod -v +x ./futurerestore
+  set +e
+  xattr -d com.apple.quarantine ./futurerestore
   set -e
 }
 
@@ -137,6 +154,7 @@ function main() {
   compile_kpf
   get_iboot64patcher
   create_env
+  get_futurerestore
 
   # Ignore errors
   popd || true
