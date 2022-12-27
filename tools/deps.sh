@@ -92,6 +92,7 @@ function create_env() {
   source ./.venv/bin/activate
   python -m pip install --upgrade pip
   python -m pip install git+https://github.com/m1stadev/PyIMG4.git@master
+  python -m pip install git+https://github.com/hack-different/ipwndfu.git@feature/Cryptiiiic
   cd -
 }
 
@@ -105,6 +106,12 @@ function create_env() {
 #   0 without errors, non-zero otherwise.
 #######################################
 function main() {
+
+  if [[ "$OSTYPE" != "darwin"* ]]; then
+    err "${OSTYPE} not supported. Aborted."
+    exit 1
+  fi
+
   if ! which -s curl; then
     err "cURL missing. Aborted."
     exit 1
