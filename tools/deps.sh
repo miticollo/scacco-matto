@@ -63,6 +63,19 @@ function compile_kpf() {
 }
 
 #######################################
+# Compiles termz.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_termz() {
+  cd termz
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Downloads iBoot64Patcher.
 # Arguments:
 #   None
@@ -109,7 +122,6 @@ function create_env() {
   source ./.venv/bin/activate
   python -m pip install --upgrade pip
   python -m pip install git+https://github.com/m1stadev/PyIMG4.git@master
-  python -m pip install git+https://github.com/hack-different/ipwndfu.git@feature/Cryptiiiic
   cd -
 }
 
@@ -155,6 +167,7 @@ function main() {
   get_iboot64patcher
   create_env
   get_futurerestore
+  compile_termz
 
   # Ignore errors
   popd || true
