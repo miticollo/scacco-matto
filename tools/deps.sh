@@ -84,6 +84,9 @@ function compile_termz() {
 #######################################
 function compile_libimobiledevice() {
   cd libimobiledevice
+  # https://docs.brew.sh/How-to-Build-Software-Outside-Homebrew-with-Homebrew-keg-only-Dependencies#pkg-config-detection
+  PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
+  export PKG_CONFIG_PATH
   ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
@@ -136,7 +139,6 @@ function create_env() {
   source ./.venv/bin/activate
   python -m pip install --upgrade pip
   python -m pip install git+https://github.com/m1stadev/PyIMG4.git@master
-  python -m pip install git+https://github.com/cython/cython.git@master
   cd -
 }
 
