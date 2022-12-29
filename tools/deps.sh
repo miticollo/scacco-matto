@@ -17,7 +17,7 @@ function err() {
 #######################################
 function compile_irecovery() {
   cd libirecovery
-  ./autogen.sh
+  ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
 }
@@ -76,6 +76,20 @@ function compile_termz() {
 }
 
 #######################################
+# Compiles libimobiledevice.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libimobiledevice() {
+  cd libimobiledevice
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Downloads iBoot64Patcher.
 # Arguments:
 #   None
@@ -122,6 +136,7 @@ function create_env() {
   source ./.venv/bin/activate
   python -m pip install --upgrade pip
   python -m pip install git+https://github.com/m1stadev/PyIMG4.git@master
+  python -m pip install git+https://github.com/cython/cython.git@master
   cd -
 }
 
@@ -160,14 +175,15 @@ function main() {
 
   pushd "${WORKING_DIR}" || { err "WORKING_DIR not found. Exited."; exit 1; }
 
+  create_env
   compile_irecovery
   compile_gaster
   compile_t8015_bootkit
   compile_kpf
   get_iboot64patcher
-  create_env
   get_futurerestore
   compile_termz
+  compile_libimobiledevice
 
   # Ignore errors
   popd || true
