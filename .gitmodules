@@ -22,6 +22,8 @@
 [submodule "tools/termz"]
 	path = tools/termz
 	url = https://github.com/kpwn/termz.git
+	ignore = dirty
 [submodule "tools/gaster"]
 	path = tools/gaster
 	url = https://github.com/Cryptiiiic/gaster.git
+	ignore = dirty
