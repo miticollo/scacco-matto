@@ -22,3 +22,6 @@
 [submodule "tools/termz"]
 	path = tools/termz
 	url = https://github.com/kpwn/termz.git
+[submodule "tools/gaster"]
+	path = tools/gaster
+	url = https://github.com/Cryptiiiic/gaster.git
