@@ -27,3 +27,6 @@
 	path = tools/gaster
 	url = https://github.com/Cryptiiiic/gaster.git
 	ignore = dirty
+[submodule "tools/libimobiledevice"]
+	path = tools/libimobiledevice
+	url = https://github.com/libimobiledevice/libimobiledevice.git
