@@ -23,15 +23,10 @@ L'utente alle prime armi potrebbe fallire questo passo perché non esegue corret
    ```shell
    cd work/restore
    ```
-2. Attiviamo il Python Virtual Environment, che lo script `deps.sh` ha preparato
+2. Entriamo in pwnDFU mode, disabilitando il signcheck e ripariamo l'heap:
    ```shell
-   source ../../.venv/bin/activate
+   ../../tools/gaster/gaster pwn
    ```
-3. Entriamo in pwnDFU mode, disabilitando il signcheck e ripariamo l'heap:
-   ```shell
-   ipwndfu -p && sleep 2 && ipwndfu --patch-sigchecks && sleep 2 && ipwndfu --repair-heap && sleep 2
-   ```
-   Qualora `ipwndfu -p` fallisca ripetere il comando perché l'exploitation non è stabile.
 
 #### Boot-none (o generator)
 
