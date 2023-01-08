@@ -15,10 +15,6 @@
 	url = https://github.com/lorenzoferron98/PongoOS.git
 	branch = iOS15_fakeroot
 	ignore = dirty
-[submodule "resources/ayakurume"]
-	path = resources/ayakurume
-	url = https://github.com/dora2-iOS/ayakurume.git
-	ignore = dirty
 [submodule "tools/termz"]
 	path = tools/termz
 	url = https://github.com/kpwn/termz.git

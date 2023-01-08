@@ -5,7 +5,7 @@ from plistlib import FMT_XML, load
 
 def main(argv, argc):
     if argc != 4:
-        print("Usage: " + argv[0] + " <file> <BDID> <CPID>", file=sys.stderr)
+        print("Usage: " + argv[0] + " <manifest> <BDID> <CPID>", file=sys.stderr)
         sys.exit(-1)
     filename = argv[1]
     with open(filename, 'rb') as fp:

@@ -411,4 +411,6 @@ resources/*
 !resources/download.sh
 !tools/finder/
 !tools/finder/*
-!logs/*
+!docs/logs/*
+!resources/fake
+!resources/fake/*
