@@ -414,3 +414,4 @@ resources/*
 !docs/logs/*
 !resources/fake
 !resources/fake/*
+resources/fake/.DS_Store
