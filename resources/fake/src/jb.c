@@ -57,9 +57,9 @@ extern const struct _xpc_type_s _xpc_type_dictionary;
 extern const struct _xpc_type_s _xpc_type_error;
 extern const struct _xpc_type_s _xpc_type_string;
 
-#define DYLD_INTERPOSE(_replacment,_replacee) \
-__attribute__((used)) static struct{ const void* replacment; const void* replacee; } _interpose_##_replacee \
-__attribute__ ((section ("__DATA,__interpose"))) = { (const void*)(unsigned long)&_replacment, (const void*)(unsigned long)&_replacee };
+#define DYLD_INTERPOSE(_replacement,_replacee) \
+   __attribute__((used)) static struct{ const void* replacement; const void* replacee; } _interpose_##_replacee \
+            __attribute__ ((section ("__DATA,__interpose"))) = { (const void*)(unsigned long)&_replacement, (const void*)(unsigned long)&_replacee };
 
 /*
   Launch our Daemon *correctly*
@@ -83,7 +83,7 @@ xpc_object_t my_xpc_dictionary_get_value(xpc_object_t dict, const char *key){
   }
   return retval;
 }
-DYLD_INTERPOSE(my_xpc_dictionary_get_value, xpc_dictionary_get_value);
+DYLD_INTERPOSE(my_xpc_dictionary_get_value, xpc_dictionary_get_value)
 
 void SIGBUSHandler(int __unused _) {}
 
