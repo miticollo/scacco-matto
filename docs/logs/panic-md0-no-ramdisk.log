@@ -1,0 +1,79 @@
+panic(cpu 0 caller 0xfffffff016b68de4): IOFindBSDRoot: specified root memory device, md0, has not been configured @IOKitBSDInit.cpp:795
+Debugger message: panic
+Device: D221
+Hardware Model: iPhone10,6
+ECID: 000E421A01C0002E
+Boot args: keepsyms=1 debug=0x14e kextlog=0xffff serial=0x3 rd=md0
+Memory ID: 0x1
+OS release type: Not set yet
+OS version: Not set yet
+Kernel version: Darwin Kernel Version 21.6.0: Thu Sep 29 22:46:29 PDT 2022; root:xnu-8020.241.8~1/RELEASE_ARM64_T8015
+Kernel UUID: E5732DE2-EE84-381F-8926-A5C85F466AA0
+iBoot version: iBoot-7459.140.15
+secure boot?: NO
+Paniclog version: 13
+Kernel slide:      0x000000000e9c8000
+Kernel text base:  0xfffffff0159cc000
+mach_absolute_time: 0x25408d1b
+Epoch Time:        sec       usec
+  Boot    : 0x63bc4bf3 0x00033484
+  Sleep   : 0x00000000 0x00000000
+  Wake    : 0x00000000 0x00000000
+  Calendar: 0x63bc4bf3 0x0005f05c
+
+Zone info:
+  Zone map: 0xffffffe006180000 - 0xffffffe606180000
+  . VM    : 0xffffffe006180000 - 0xffffffe0ec7e4000
+  . RO    : 0xffffffe0ec7e4000 - 0xffffffe1394b0000
+  . GEN0  : 0xffffffe1394b0000 - 0xffffffe21fb14000
+  . GEN1  : 0xffffffe21fb14000 - 0xffffffe306178000
+  . GEN2  : 0xffffffe306178000 - 0xffffffe3ec7e0000
+  . GEN3  : 0xffffffe3ec7e0000 - 0xffffffe4d2e48000
+  . DATA  : 0xffffffe4d2e48000 - 0xffffffe606180000
+  Metadata: 0xffffffee6f618000 - 0xffffffee70e18000
+  Bitmaps : 0xffffffee70e18000 - 0xffffffee71e24000
+
+CORE 0 is the one that panicked. Check the full backtrace for details.
+CORE 1: PC=0xfffffff016a7e5d8, LR=0xfffffff016a7e5d4, FP=0xffffffee7f683d40
+CORE 2: PC=0xfffffff016654458, LR=0xfffffff016532044, FP=0xffffffee7f5b3ba0
+CORE 3: PC=0xfffffff016a9e6a8, LR=0xfffffff016b07420, FP=0xffffffee7f333df0
+CORE 4: PC=0xfffffff0165845b8, LR=0xfffffff01652d54c, FP=0xffffffee7f663c50
+CORE 5: PC=0xfffffff01653829c, LR=0xfffffff01699b0c8, FP=0xffffffee7f6f3b60
+Compressor Info: 0% of compressed pages limit (OK) and 0% of segments limit (OK) with 0 swapfiles and OK swap space
+Panicked task 0xffffffe139600648: 0 pages, 227 threads: pid 0: kernel_task
+Panicked thread: 0xffffffe3061586c8, backtrace: 0xffffffe60c1a33e0, tid: 101
+		  lr: 0xfffffff01651d9b0  fp: 0xffffffe60c1a3420
+		  lr: 0xfffffff01651d738  fp: 0xffffffe60c1a3490
+		  lr: 0xfffffff016656244  fp: 0xffffffe60c1a3500
+		  lr: 0xfffffff01665523c  fp: 0xffffffe60c1a35b0
+		  lr: 0xfffffff016bc55fc  fp: 0xffffffe60c1a35c0
+		  lr: 0xfffffff01651d460  fp: 0xffffffe60c1a3950
+		  lr: 0xfffffff01651d460  fp: 0xffffffe60c1a39b0
+		  lr: 0xfffffff017f1f4e8  fp: 0xffffffe60c1a39d0
+		  lr: 0xfffffff016b68de4  fp: 0xffffffe60c1a3a90
+		  lr: 0xfffffff01692a43c  fp: 0xffffffe60c1a3db0
+		  lr: 0xfffffff0165539b8  fp: 0xffffffe60c1a3f20
+		  lr: 0xfffffff016bd0640  fp: 0x0000000000000000
+
+
+** Stackshot Succeeded ** Bytes Traced 22237 (Uncompressed 79072) **
+IOPlatformPanicAction -> AppleT8015PMGR
+IOPlatformPanicAction -> AppleARMWatchdogTimer
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> AppleT8015MemCacheController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleSMC
+IOPlatformPanicAction -> AppleT8015PMGR
+IOPlatformPanicAction -> AppleARMWatchdogTimer
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> AppleT8015MemCacheController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleSMC
