@@ -43,7 +43,7 @@ Una sua possibile alternativa è [ipwndfu](https://github.com/hack-different/ipw
 
 #### Sigchecks
 
-[//] # https://discord.com/channels/779134930265309195/779139039365169175/1057637924532924576
+<!-- https://discord.com/channels/779134930265309195/779139039365169175/1057637924532924576 -->
 
 Nel funzionamento previsto da Apple la modalità DFU permette di ripristinare l'iDevice qualora esso sia bloccato in Restore Mode (logo Apple con barra progresso) o sia in bootloop perché si è verificato un kernel panic.
 Infatti in questa circostanza il dispositivo non entrerebbe in Recovery Mode per tanto il PC non sarebbe in grado di rilevarlo come dispositivo che richiede un ripristino.
@@ -55,7 +55,7 @@ In particolare il primo file che viene inviato al dispositivo è l'[iBSS (iBoot 
 Tuttavia questo può essere fatto solo se iBSS proviene da Apple, qualora iBoot fosse stato patchato allora il SecureROM si rifiuterebbe di caricarlo.
 > :information_source: Questo non vale per l'iPhone originale (con application processor S5L8900) che invece non imponeva controlli sulle immagini che gli venivano inviate.
 
-[//] # https://youtu.be/DxoL2azQ3Io
+<!-- https://youtu.be/DxoL2azQ3Io -->
 Per ovviare a questa problematica ci serviamo di checkm8, ovvero una vulnerabilità per cui non esiste una soluzione perché fusa con la SecureROM.
 In particolare questo componente hardware non viene più aggiornato una volta che ha lasciato gli stabilimenti in cui l'iPhone è stato assemblato.
 Per tanto `gaster` usa checkm8 per patchare il sigchecks e permettere alla SecureROM di accettare la versione di iBSS pachata.
