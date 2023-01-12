@@ -27,3 +27,6 @@
 	path = tools/libimobiledevice
 	url = https://github.com/libimobiledevice/libimobiledevice.git
 	ignore = dirty
+[submodule "tools/ibootim"]
+	path = tools/ibootim
+	url = https://github.com/realnp/ibootim.git
