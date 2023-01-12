@@ -1,0 +1,2123 @@
+iBoot version: iBoot-7459.140.15
+Darwin Image4 Validator Version 4.2.0: Thu Sep 29 22:46:17 PDT 2022; root:AppleImage4-158.100.11~2977/AppleImage4/RELEASE_ARM64
+AppleImage4: failed to read nvram property: oblit-inprogress: 2
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: _lMaxProduct=44173121
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=131072
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::exportCalibration: _lMaxProduct=44173121, _lMidProduct=10158080, _lMinProduct=131072, _lMaxPanel=44173121, _lMidPanel=10158080, _lMinPanel=131072, _milliAmps2NitsScaleFactor=0
+AppleARMBacklight::start: _minDACLevel=139 _maxDACLevel=1950
+000026.771080 AppleBasebandD101::loadBootArguments: Loaded debug arguments with mask 0x00000001
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): [Port-Inductive@101] Could not find transports-supported property! (entry: IOService:/AppleARMPE/dock-0pin)
+
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): [Port-Inductive@101] Error setting supported transports for Port-Inductive@101!
+
+IOPort::start(): [Port-Inductive@101] Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+
+IOPort::registerService(): [Port-Inductive@101] Registering service Port-Inductive@101...
+
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+IOPort::registerService(): [Port-Inductive@101] Registering service Port-Inductive@101...
+
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleInterruptController::start: Num Shared Timestamps == 16
+ApplePMGR: Starting AppleT8015PMGR
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+start:736: AppleT8015MemCacheController::start: this: <ptr>, virt addr: <ptr>, phys addr: 0x200000000
+_mccApplyTunables:1130: Applying MCC Tunables for type==iPhone
+start:864: AppleT8015MemCacheController::start: finished
+AppleT8015PlatformErrorHandler::start:  this: <ptr>
+					   AMCC virt addr: <ptr>, phys addr: 0x200000000
+					   AMCX virt addr: <ptr>, phys addr: 0x200200000
+					   CP   virt addr: <ptr>, phys addr: 0x201100000
+					   DT0  virt addr: <ptr>, phys addr: 0x201120000
+					   CCU0 virt addr: <ptr>, phys addr: 0x201190000
+					   DT1  virt addr: <ptr>, phys addr: 0x201220000
+					   CCU1 virt addr: <ptr>, phys addr: 0x201290000
+AppleS8000AES::start: registers at phys:0x0x22e008000/0x0x2352d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleGen0SPMIController[spmi]:78: Start
+AppleT8011USBPhy::start: hsic disabled
+AppleM2ScalerCSCDriver[<ptr>]::start(provider <ptr>): Name scaler0 Lock <ptr>  max_msrs=7 start_number=0
+virtual bool AppleM2ScalerCSCDriver::start(IOService *) MSR Driver Waiting for IOSurfaceRoot
+27011655 80 AVE : AppleAVE2Driver compiled on Sep 29 2022 22:59:08 prod
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+ApplePMGR: mcx-fast-pcpu-frequency set to 1332 MHz
+ApplePMGR: skye_lsiso_wa 0
+AppleCLPCv3 start
+AppleT8015PPM::start (<ptr>)
+ApplePPM::start (<ptr>)
+AppleT8015PPMSystemCapabilityMonitor is being created
+AppleT8015PPMBatteryModel is being created
+ApplePPM::initLocal success
+ApplePPM::start success
+AppleT8015PPM::start success
+AppleSocHot::start _tempSensorSochotDebugHackEnabled
+pci (build 22:46:09 Sep 29 2022), flags 0xc3008
+AppleEmbeddedPCIE::start this = <ptr>, _debugFlags = 0x80000001
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0x460000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x5780000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0x460000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x5780000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x460000
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x5780000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleDieTempController::readBootDVDFactor: pmgr null service
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+AppleT8011USBPhy::start: did not find _usb3phyctlRegisterMap
+AppleT8011USBPhy::start: did not find _usb3phyRegisterMap
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache size = 16 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+virtual bool CoreAnalyticsHub::start(IOService *)::114:CoreAnalyticsHub start
+Warning: arc4random not implemented
+Warning: arc4random not implemented
+Warning: arc4random not implemented
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AppleSEPKeyStore:319:0: starting (BUILT: Sep 29 2022 22:58:01)
+AppleSEPKeyStore:524:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+AppleCredentialManager: start: initializing power management.
+AppleCredentialManager: start: will join SEPManager's PM tree in getSEPEndpoint().
+AppleCredentialManager: start: registering notifications.
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Identified Serial Port uart6 at 0x22e618000(<ptr>)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Identified Serial Port uart5 at 0x22e614000(<ptr>)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Started AppleSerialShim for device: uart
+RTBuddy(ANS2): start(<ptr>) - (Sep 29 2022@22:56:07)
+RTBuddy(SMC): start(<ptr>) - (Sep 29 2022@22:56:07)
+AppleSmartIO::start CHIPID:0x8015
+RTBuddy(ANS2): Resuming...
+
+RTBuddy(SMC): Resuming...
+
+virtual bool AppleSEPManager::start(IOService *): 
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+[ANS2:client1] MSP_SCD: Link speed drop recovery is not supported
+virtual bool AppleSEPManager::start(IOService *): PM init done
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+static IOService *AppleSEPManager::getReadableNvram(): Waiting for IODTNVRAM
+static IOService *AppleSEPManager::getReadableNvram(): Got IODTNVRAM OK
+void AppleSEPBooter::_bootAction(void *, void *): Platform doesn't support SEPROM iBIC retrieval
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+virtual bool AppleSEPManager::start(IOService *): registered
+RTBuddy(GFX): start(<ptr>) - (Sep 29 2022@22:56:07)
++AppleICA60::probe
++AppleICA60::probe waiting for bias function
+Starting AppleSMC kext(<ptr>) - (Sep 29 2022@22:56:06)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=17 newState=1
+(dart-isp) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-isp) AppleT8015DART::_dartInitializeTlbConfig: Instance 1 found property tlb-config-instance-1: length=56 count=7
+(dart-isp) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-isp) AppleT8015DART::_smmuInitializeStateCapture: SMMU state capture <ptr>
+RTBuddy(PMP): start(<ptr>) - (Sep 29 2022@22:56:07)
++AppleICA60::probe
++AppleICA60::probe waiting for bias function
+AppleAD5860::_loadDeviceCalibration(..) WARNING : loading default syscfg/PSCl. Prefer loading from EDT.
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+Identified Serial Port uart1 at 0x22e604000(<ptr>)
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::194:Obtained 8 namespaces from DT
+virtual bool IONVMeController::start(IOService *)::778:IONVMeController::start
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2778:ANS2 NVMe interrupt index - 0x4
+AppleIDV::init init
+AppleIDV::start started
+Ident?ied Serial Port uart4 at 0x22e610000(<ptr>)
+AD5860_STATUS_0: 0x28
+Identified Serial Port uart7 at 0x22e61c000(<ptr>)
+Identified Serial Port uart2 at 0x22e608000(<ptr>)
+(dart-apcie2) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+Identified Serial Port uart3 at 0x22e60c000(<ptr>)
+AppleCredentialManager: sepManagerMatchedGated: AppleSEPManager matched.
+AppleIDV::start returning, result = 1
+AppleOLYHAL::probe: score = 1000
+AppleT8015PMPFirmware: Found firmware t8015pmp for PMP
+Loopback: Could not find the safety offset seed property.
+RTBuddy(PMP): Loaded firmware: Release - root@jz87q.p1s.plx.sd.apple.com...2022/08/09@04:54:54
+
+
+(dart-apcie3) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+[ PCI configuration begin ]
+[ PCI configuration end, bridges 3, devices 0 ]
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:408 _setPowerStateGated() ENTER powerStateOrdinal=1, _powerState=1
+Mikeybus Secondary: Could not find the safety offset seed property.
+ApplePMP: started
+AppleSMCSensorDispatcher::start: Found 9 sensors from the device tree
+AppleSMCSensorDispatcher::start: Start success
+
+pmu fault log: wdog,reset_in1
+AppleDialogSPMIPMU::start: Primary PMU detected
+got IOAccessoryInductiveIdentifierUpdate! check Inductive Identification 
+Port-Inductive IOAccessoryInductiveIdentifierUpdate: familyID(0) 00, extendedID(0) 00, deviceID(0) 00 
+Port-Inductive IOAccessoryInductiveIdentifierUpdate: can't find any inductive identification property! 
+Port-Inductive IOAccessoryInductiveIdentifierUpdate: fwVersionData(0) 00000000, configStreamAccInfoUpdated 0 
+Hawking: Could not find the safety offset seed property.
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+Failed to read info-leg_scrpadFailed to read info-rtc_alarm_ctrlAppleD2422PMURTC::_readConfigurationhack! cannot read info-*, overriding values
+Actuator: Could not find the safety offset seed property.
+Baseband Voice: Could not find the safety offset seed property.
+DSP Debug2: Could not find the safety offset seed property.
+DSP Debug1: Could not find the safety offset seed property.
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+AppleSMCWirelessCharger: Chip ID 0
+AppleARMRTC registering service!@@@@@@
+AppleDieTempController::clpcPerfControllerArrivalHandler: Got CLPC version 2
+ApplePMP: Connected to AppleCLPC
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+apfs_module_start:2590: load: com.apple.filesystems.apfs, v1934.142.1, apfs-1934.142.1, 2022/09/29
+com.apple.AppleFSCompressionTypeZlib kmod start
+AppleSMCPMU::start
+apfs_sysctl_register:1451: done registering sysctls.
+com.apple.AppleFSCompressionTypeZlib load succeeded
+AppleSummitLCD: Display is in video mode
+AppleSummitLCD: Backlight Level Encoding is 11 bits
+AppleSummitLCD: _lcdPanelID: 0x12e825d9
+L2TP domain init
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946991
+virtual bool AppleM2ScalerCSCDriver::start(IOService *) DONE Waiting for IOSurfaceRoot
+void AppleM2ScalerCSCDriver::getPerfStatesByEDTValue(IOService *) mMaxPerfStateClock = 0
+WARNING: getDartPowerByEDTValue, Line=5271: Scaler DRIVER: EDT key direct-dart-power not found: EDT key manual-availability needed. Driver may fail.
+AppleM2ScalerCSCDriver[<ptr>]::start(provider <ptr>): Name scaler0 scalerId=0 start_number=0
+virtual bool AppleM2ScalerCSCHal::mapRegisterMemory(IOService *): Scaler 0 RegisterMemoryMap[<ptr>]: base=<ptr> physical address = 0x220000000 length = 131072
+28187090 80 AVE : AppleAVE2Driver HW: 4 2 2
+Scaler HW version at start is 0x80040 
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x1, and table version 0x10001
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x1, and table version 0x10002
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x2, and table version 0x20000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x2, and table version 0x30000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x2, and table version 0x40000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x3, and table version 0x50000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x5, and table version 0x60000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x6, and table version 0x70000
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x7, and table version 0x8003f
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents(): Checking for SOC 0x7, HwVersion 0x80040, against table SOC 0x7, and table version 0x80040
+bool AppleM2ScalerCSCHal::initScalerPropertiesAndExtents() Found properties and extents entry 9
+AppleJPEGDriver: ** virtual bool AppleJPEGDriver::start(IOService *)[<ptr>] : intForPM with provider=<ptr>
+
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+(dart-ave) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-ave) AppleT8015DART::_dartInitializeTlbConfig: Instance 1 found property tlb-config-instance-1: length=72 count=9
+(dart-ave) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-ave) AppleT8015DART::_smmuInitializeStateCapture: SMMU state capture <ptr>
+(dart-avd) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-avd) AppleT8015DART::_dartInitializeTlbConfig: Instance 1 found property tlb-config-instance-1: length=72 count=9
+(dart-avd) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-avd) AppleT8015DART::_smmuInitializeStateCapture: SMMU state capture <ptr>
+virtual bool AppleM2ScalerCSCDriver::start(IOService *) Object=<ptr>: Provider=<ptr>: Register Service
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+28192980 80 AVE WARN: AppleAVE2Driver::setPowerState:622 m_iState != 0 | driver is not ready <ptr> 1 <ptr> 0 0
+28193675 80 AVE WARN: AppleAVE2Driver::setPowerState:622 m_iState != 0 | driver is not ready <ptr> 0 <ptr> 0 0
+28193711 80 AVE WARN: AppleAVE2Driver::setPowerState:622 m_iState != 0 | driver is not ready <ptr> 1 <ptr> 0 0
+IOMFBStatus IOMFB::UPPipe_H10P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H10P::RunMode): no need to defer: 0 -> 1
+(dart-disp0) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-disp0) AppleT8015DART::_smmuInitializeStateCapture: SMMU state capture <ptr>
+AppleHydra::start: tristar: accessory high current ldobm3 power function not found
+AppleOLYHAL::start: entry with provider 0x3fa5abe0833644e3
+static AppleNVMeRequestPoolTagReserve *AppleNVMeRequestPoolTagReserve::Create(AppleNVMeWorkLoop *, uint8_t, uint16_t, uint32_t, bool, NVMeBufferAllocator *, lck_mtx_t *, bool, IOMapper *)::138:NVMe Request Pool Init (Tag Reservation Case). First phase, Revirtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::3125:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::3125:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+[ANS2:client1]  boot mode normal
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+IOMFB read_bic - disable BIC (config init failed)
+virtual bool AppleM2ScalerCSCDriver::start(IOService *):  this=<ptr>, Added Scaler Number = 0
+RTBuddy(GFX): Loaded firmware:  - Release
+
+virtual IOReturn AppleNVMeRequestPoolTagReserve::Rebuild(uint8_t, uint32_t, bool, bool, IOMapper *)::181:NVMe Request Pool Init (Tag Reservation Case). Second phase, RequestCount = 64
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+virtual IOReturn AppleANS2NVMeController::EnableCompletionQueue(uint16_t)::1920:nvme: Setting IOCQ base addr 0x813130000
+virtual IOReturn AppleANS2NVMeController::EnableSubmissionQueue(uint16_t)::1890:nvme: Setting IOSQ base addr 0x813138000
+IOMFBStatus IOMFB::UPPipe_H10P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H10P::RunMode): no need to defer: 1 -> 2
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2008:nvme: Vendor ID     : 0x106b
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:nvme: Model Number  : APPLE SSD AP0064L                       
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:nvme: Serial Number : 0b2002fbc4943c0d    
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:nvme: Firmware Rev  : 1274.100
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2044:nvme: S4E A0 Hynix 3d-v3 tlc 3D 4 plane 64GB NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2053:ECCVersion   : 1
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2054:FTL Rev      : 22.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2055:DM_Version   : 178
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2056:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2063:Found 8 namespaces in current NAND
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2475:Identified nsid[8] as nstype[10]
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2236: Swap limit set to 1073741824bytes, 1GB
+[ANS2:client1]  Current Walltime 11006628, RTC 11006791, last RTC 11006628, and calendar 1673520703
+[ANS2:client1] SET TIME: wall 11006628 -> 11006791
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::564:NVRAM size is 8192 bytes
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-link_enable
+IOMFB arm_fn_search: failed with 0xe00002bc (function-link_enable)
+IOMFB: load APT M3 IMem : size 0x3ebc
+IOMFB: load APT M3 DMem : size 0x30ec
+IOMFB RTBandwidth: program_M3_rt_config: RdIrq 2, WrIrq 3, offset 4
+IOMFB: clearing M3 reset
+IOMFB: timebase_offset = 0
+IOMFBStatus IOMFB::UPPipe_H10P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H10P::RunMode): deferring: 2 -> 4
+virtual IOMFBStatus IOMFB::UPPipe_H10P::ready_for_run_mode_change(IOMFB::AppleRegisterStream *): initiating deferred run mode change: 2 -> 4
+AppleHydra::start: tristar: acc low voltage buck is being used
+start: failed to setup GPS interrupt
+ERR: AppleStockholmControl::setPowerState:590 No wakes due to missing mesa driver
+AppleCBTL1612::start: AppleHydra: unlimited RX FIFO 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1622:allocateAll 1
+AppleCBTL1612: authcp_fix_mode 109AppleCBTL1612: _needsAuthCPMGWorkaround 0 -> 0 
+AppleHydra::readBrickID: tristar: !outVoltage
+IOAccessoryDock9Pin::start: tristar:  kIOAccDockLocBuiltIn, _voltageDetectionES <ptr>, _voltageDetectionEnabled 1, _voltageDetectionIntervalSec 30
+Creating an object of AppleOLYHALPlatformFunctionEmbedded class
+000028.224421 wlan0.A[1] start@2238: Raised adjustBusy(+1), getBusyState() -> 2
+000028.224426 wlan0.A[2] setupNotifier@2303:Setting up notifier for CoreAnalyticsHub
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x813200000, size = 0x68000 }
+IOMFB: switch to normal mode succeeded
+000028.230112 wlan0.A[3] halt@5945:Issuing trap Before issuing flr in halt()
+000028.230117 wlan0.A[4] trapDevice@17807:Chip already trapped or chip not yet booted
+000028.230371 wlan0.A[5] destroyFirmwarePCIeIPC@8966:destroy ipc
+IOAccessoryManager::configureAccessoryPowerGated: tristar: Configuring Accessory Power to (1)
+AppleHydra::configureAccessoryPowerGated: PowerModeOff
+AppleHydra::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+AppleHydra::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+AppleHydra::handleAccessoryPowerWillChange: ret=0xe00002f0 acc1=0xaaaaaaaa, acc2=0xaaaaaaaa, set PowerModeOff?
+AppleHydra::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+AppleHydra::setAccessoryPower: (enabled=0 highCurrent=0 sleepPower=0 BM3=0 lowVoltage=0)
+IOAccessoryDock9Pin::handleAccessoryPowerDidChange: tristar: Processing power state change to 1
+RTBuddy(AOP): start(<ptr>) - (Sep 29 2022@22:56:07)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): [Port-Lightning@101] Could not find transports-supported property! (entry: IOService:/AppleARMPE/arm-io@8F00000/AppleT8015IO/smc-i2c1@36D08000/AppleS5L8940XI2CController/tristar@1A)
+
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): [Port-Lightning@101] Error setting supported transports for Port-Lightning@101!
+
+IOPort::start(): [Port-Lightning@101] Registering service... (portType: 12, portNumber: 101, providerPath: IOService:/AppleARMPE/arm-io@8F00000/AppleT8015IO/smc-i2c1@36D08000/AppleS5L8940XI2CController/tristar@1A)
+
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+
+AppleSPUFirmwareService: found node AOP
+AppleCBTL1612::readIDResponse: Port-Lightning: preferring digid 20, fifoData[1] 02
+IOAccessoryDock9Pin::handleIDBusCommandForMagicPullDown: GetState
+IOAccessoryDock9Pin::handleIDBusCommandForMagicPullDown: GetState: status:0x0
+IOAccessoryUSBConnectShim::publishResources: Port-Lightning: status 0xe00002d7
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+IOAccessoryDock9Pin::handleAccessoryDetect: tristar: Port-Lightning::handleAccessoryDetect: setPowerHandshakeState(kPowerHandshakeLimit)
+Port-Lightning::setPowerHandshakeState: Set InflowDisable
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+
+IOPortTransportState::start(): [Port-Lightning@101: AIDBus] m_parentPort->isFeatureSupported(kIOPortFeatureTRM): NO, this->isTRMSupported(): NO, inRestoreMode: NO (transportType: 7, parentPortType: 12, parentPortNumber: 101)
+IOPortTransportState::registerService(): [Port-Lightning@101: AIDBus] Registering service AIDBus@... (transportType: 7, provider: Port-Lightning@101)
+IOPortTransportState::start(): [Port-Lightning@101: USB2] m_parentPort->isFeatureSupported(kIOPortFeatureTRM): NO, this->isTRMSupported(): YES, inRestoreMode: NO (transportType: 2, parentPortType: 12, parentPortNumber: 101)
+IOPortTransportState::registerService(): [Port-Lightning@101: USB2] Registering service USB2@... (transportType: 2, provider: Port-Lightning@101)
+IOAccessoryUSBConnectShim::publishResources: Port-Lightning: status 0xe00002d7
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+
+IOAccessoryUSBConnectShim::publishResources: Port-Lightning: status 0xe00002d7
+AppleSMCHighVoltageCharger::probe: *****************Hardware found (VendorID=0x59434d53 - DeviceID=0x1 - FirmwareVersion=0xca020120) ********* 
+IOMFB: function-pcc_update not found
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+AppleSMCWirelessCharger: update charging policy 2
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+AppleSEPManager starting trace boot timer
+AppleIDV::setPowerState / 118
+AppleIDV::setPowerStateGated / 176 - current state: ON, new state: ON
+AppleIDV::setPowerStateGated returning 0x0
+000028.452279 wlan0.A[6] publishHWIdentifiers@5293:Platform set to "module-instance=herculesk"
+000028.452294 wlan0.A[7] publishHWIdentifiers@5303: "s" = "B1"
+000028.452302 wlan0.A[8] publishHWIdentifiers@5303: "M" = "GINS"
+000028.452309 wlan0.A[9] publishHWIdentifiers@5303: "m" = "5.3"
+000028.452316 wlan0.A[10] publishHWIdentifiers@5303: "V" = "m"
+000028.452324 wlan0.A[11] publishHWIdentifiers@5303: "P" = "herculesk"
+000028.452394 wlan0.A[12] attachPCIeBusGated@3738: Published 'WiFiCapability': [awdl:1, ranging:0]
+IOAccessoryUSBConnectShim::publishResources: Port-Lightning: status 0xe00002d7
+AppleBCMWLANTimeSyncEngine::AppleBCMWLANTimeSyncEngine: Enabling Time Sync Engine
+AppleBCMWLANCore::init IO80211-960.1 "IO80211-960.1" Sep 29 2022 22:54:57
+000028.548867 wlan0.A[13] createFirmwareLogger@15852: CCFlags: 0x0, CCLevel: 127 ConsoleFlags: 0x0, ConsoleLevel: -1
+AppleBCMWLANCore::getFeatures(): supported features = 0x0
+000028.550093 wlan0.A[14] deferredStart@2755: Lowered adjustBusy(-1), getBusyState() -> 3
+IO80211Controller::createIOReporters 0x3fa5abddd0dd1de3
+ CCFlags: 0x0, CCLevel: 5 ConsoleFlags: 0x0, ConsoleLevel: -1
+Not adding subscription due to missing boot-arg wlan.iorsubscriptions
+ CCFlags: 0x3, CCLevel: 5 ConsoleFlags: 0x0, ConsoleLevel: -1
+ CCFlags: 0x4, CCLevel: 5 ConsoleFlags: 0x0, ConsoleLevel: -1
+IO80211Controller::findAndAttachToFaultReporter found matching faultReporter
+IO80211Controller::start _controller is 0x3fa5abddd0dd1de3, provider is 0x3fa5abe169dcbbe3
+000028.566937 wlan0.A[15] gatherBaudRate@847: WARNING, Wifi 'serial baud rate' does not exist in the device tree
+000028.568482 wlan0.A[16] setRateThreshold@209:Applying command rate threshold of 0 commands within 0 ms
+000028.569954 wlan0.A[17] start@2227:Could not create SAC function interface
+000028.570000 wlan0.A[18] setLogFlagsCallback@40427:Setting loggerstream flags to 0x2047B81
+000028.570013 wlan0.A[19] startChipLoggingInfrastructure@40396:Starting chip Logging infrastructure
+000028.570249 wlan0.A[20] initWithOwnerAndEventSetterAndModuleInstance@173: CCFlags: 0x0, CCLevel: 127 ConsoleFlags: 0x0, ConsoleLevel: -1
+000028.570310 wlan0.A[21] startChipUART@361: Starting...
+000028.570414 wlan0.A[22] attachBus@614: attaching... 
+000028.570432 wlan0.A[23] attachBus@654:Matched wlan, using baud 3116666
+000028.571209 wlan0.A[24] attachBus@720: attached
+000028.571227 wlan0.A[25] startChipUART@487: WorkQueue Enabled
+000028.571242 wlan0.A[26] setChipEventLogFlags@34880:Setting Chip event fChipEventLogFlags to 0x0
+000028.571933 wlan0.A[27] start@2340:Checking firmware loaded[0]
+000028.572126 wlan0.A[28] start@2356: Request WiFiFirmwareLoader notification
+000028.572161 wlan0.A[29] start@2383: WiFi driver started
+IOAccessoryDock9Pin::handleIDBusCommandForMagicPullDown: GetState
+IOAccessoryDock9Pin::handleIDBusCommandForMagicPullDown: GetState: status:0x0
+handleIDBusResponse:3: RspGetState
+IOAccessoryTRM::start_block_invoke(): Found USB Connect Shim! (m_mgrPrimaryPortID: 512)
+Port-Lightning::getVBUSDetect: _vbusVoltageFunction returned device errorIOAccessoryUSBConnectShim: AppleUSBCableDetect 0
+IOAccessoryUSBConnectShim: USB Power (VBUS) Present: 0, Physical Connection (CON_DET): 1
+IOAccessoryUSBConnectShim: AppleUSBCableType Detached
+IOAccessoryTRM::start(): Found USB Connect Shim during start! (m_mgrPrimaryPortID: 1)
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: YES (m_mgrPrimaryPortID: 1)
+[ERROR] IOAccessoryTRM::_getACMTRMStatus(): Couldn't find ACM TRM state!
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 1)
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+000028.669938 AppleBasebandD101::initialize: SAC Generic=Yes, Jasper=No
+AppleSMCPMU::getVectorType(vn=28): ICFG 67503135 cmd=06000000, value=0 vt=Level [0]
+AppleSMCPMU::initVector(vN=28):000028.672212 AppleNubSynopsysOTG3Device@: IOUSBDeviceController::prepareDefaults: model iPhone version 10.6
+000028.672541 AppleBasebandD101::pmuExtOnConfigGated: Wake state - param: 0 index: 1, wake: not active, pull-down: enabled, interrupt source: enabled, force-block-wake: no
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+dev_init:314: disk0 device accelerated crypto: 0 (compiled @ Sep 29 2022 22:45:53)
+dev_init:317: disk0 device_handle block size 4096 block count 15624989 features 0 internal 
+SEP EP 17 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+void AppleSEPHilo::_mapBounceBufferGated(uint64_t, hilo_opcode *): bounce buffer slave_addr 0x807540000
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+void AppleSEPHilo::_getParamsFromSepGated(): SEP display params width 1125 height 2436 subsample_red_blue 1 supports_tiled_bim 1 num_valid_tiled_bim_tiles 102
+nx_mount:1184: disk0 initializing cache w/hash_size 4096 and cache size 10064
+nx_mount:1295: disk0 container cleanly-unmounted flag set.
+nx_mount:1460: disk0 checkpoint search: largest xid 61, best xid 61 @ 121
+import_iboot_forwarded_roothash:2867: importing root hash (basesystem ? 0)...
+Got boot device = IOService:/AppleARMPE/arm-io@8F00000/AppleT8015IO/ans@57000000/AppleASCANS2/iop-ans-nub/RTBuddyV2/RTBuddyService/AppleANS2NVMeController/NS_01@1/IOBlockStorageDriver/APPLE SSD AP0064L Media/IOGUIDPartitionScheme/Container@1
+BSD root: disk0s1, major 1, minor 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1649:Creating blockdevice with NSID - 2, NSTYPE - 2
+hfs_ValidateHFSPlusVolumeHeader: unknown Volume Signature : 0
+hfs_mount: hfs_mountfs returned error=22 for device unknown-dev
+apfs_vfsop_mountroot:2514: apfs: mountroot called!
+dev_init:314: disk0s1 device accelerated crypto: 3 (compiled @ Sep 29 2022 22:45:53)
+dev_init:317: disk0s1 device_handle block size 4096 block count 15624989 features 22 internal solidstate
+nx_mount:1184: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_mount:1295: disk0s1 container cleanly-unmounted flag set.
+nx_mount:1460: disk0s1 checkpoint search: largest xid 61, best xid 61 @ 121
+apfs_vfsop_mount:2191: disk0s1 Promoter has been locked 
+apfs_vfsop_mount:2261: disk0s1s1 Rooting from snapshot with xid 53.
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: kernel_task (pid 0); parent: kernel_task (pid 0)
+handle_snapshot_mount:927: disk0s1s1 mounting snapshot w/snap_xid 53 and sblock oid 0xed11d0
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1649:Creating blockdevice with NSID - 3, NSTYPE - 3
+is_root_hash_authentication_required_ios:435: disk0s1s1 Release kext, booting xid: 0
+is_root_hash_authentication_required:479: disk0s1s1 root volume, root hash authentication is required
+authenticate_root_hash:547: disk0s1s1 successfully validated on-disk root hash
+handle_snapshot_mount:1088: disk0s1s1 setting dev block size to 4096 from 512
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+nx_volume_group_update:7762: disk0s1s1 Volume com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8 is not in a volume group
+is_root_hash_authentication_required_ios:435: disk0s1s1 Release kext, booting xid: 0
+is_root_hash_authentication_required:479: disk0s1s1 root volume, root hash authentication is required
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1649:Creating blockdevice with NSID - 6, NSTYPE - 6
+[effaceable:INIT] found current generation, 872, in group 0
+[effaceable:INIT] started
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1649:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::275: Block Count = 256 
+ virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1649:Creating blockdevice with NSID - 8, NSTYPE - 10
+virtual bool AppleEmbeddedNVMeController::StartController()::1591:Setting NAND status to Ready
+virtual bool IONVMeController::start(IOService *)::831:Successfully initialized NVMe drive
+AppleBaseband: lookup of aliased backpowering function "function-coredump" succeeded ("backpowering-alias0")
+AppleBaseband: lookup of backpowering pin function "function-backpowering_pin0" failed
+com.apple.xpc.launchd|2023-01-12 10:51:44.865187 <Notice>: hello
+com.apple.xpc.launchd|2023-01-12 10:51:44.868335 <Notice>: Darwin Bootstrapper Version 7.0.0: Mon Oct  3 21:43:46 PDT 2022; root:libxpc_executables-2236.241.1~1/launchd/RELEASE_ARM64
+com.apple.xpc.launchd|2023-01-12 10:51:44.868390 <Notice>: boot-args = keepsyms=1 debug=0x14e kextlog=0xffff serial=0x3
+com.apple.xpc.launchd|2023-01-12 10:51:44.870366 (system) <Notice>: entering ondemand mode
+com.apple.xpc.launchd|2023-01-12 10:51:44.870412 (system) <Notice>: created
+com.apple.xpc.launchd|2023-01-12 10:51:44.870654 <Notice>: Doing boot task: fsck
+AppleBaseband: found total of 1 backpowering pins
+** Checking the container superblock.
+   Checking the checkpoint with transaction ID 61.
+** Checking the object map.
+** Checking volume /dev/rdisk0s1s1.
+** Checking the APFS volume superblock.
+   The volume System was formatted by newfs_apfs (1677.41.3.100.4) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s2.
+** Checking the APFS volume superblock.
+   The volume Data was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s3.
+** Checking the APFS volume superblock.
+   The volume xART was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s4.
+** Checking the APFS volume superblock.
+   The volume Baseband Data was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s5.
+** Checking the APFS volume superblock.
+   The volume Hardware was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s6.
+** Checking the APFS volume superblock.
+   The volume Preboot was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** Checking volume /dev/rdisk0s1s7.
+** Checking the APFS volume superblock.
+   The volume Update was formatted by newfs_apfs (1934.142.1) and last modified by apfs_kext (1934.142.1).
+** QUICKCHECK ONLY; FILESYSTEM CLEAN
+com.apple.xpc.launchd|2023-01-12 10:51:44.997279 <Notice>: Doing boot task: mount-phase-1
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+spaceman_metazone_init:191: disk0s1 metazone for device 0 of size 488280 blocks (encrypted: 15136709-15380849 unencrypted: 15380849-15624989)
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 32768
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 65536
+spaceman_datazone_init:625: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 98304
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=27 dv_num_slice_blk=589824 dv_num_lslice_blk=289565
+apfs_log_mount_unmount:1889: disk0s1s3 mounting volume xART, requested by: mount_apfs (pid 5); parent: mount (pid 4)
+handle_mount:655: disk0s1s3 vol-uuid: 61706673-7575-6964-0100-766F6C756D02 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s3 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s3 Volume xART role 100 Not a System or data volume
+/dev/disk0s1s3 on /private/xarts (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+spaceman_scan_free_blocks:3172: disk0s1 scan took 0.003524 s (no trims)
+apfs_log_mount_unmount:1889: disk0s1s1 updating mounted volume com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8, requested by: mount_apfs (pid 6); parent: mount (pid 4)
+cleanup_snapshot_purgatory:1835: disk0s1s1 find_prev_snapshot hit 22
+com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8@/dev/disk0s1s1 on / (apfs, sealed, local, nosuid, read-only, journaled, noatime)
+apfs_log_mount_unmount:1889: disk0s1s6 mounting volume Preboot, requested by: mount_apfs (pid 7); parent: mount (pid 4)
+handle_mount:655: disk0s1s6 vol-uuid: 61706673-7575-6964-0010-766F6C756D05 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s6 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s6 Volume Preboot role 10 Not a System or data volume
+/dev/disk0s1s6 on /private/preboot (apfs, local, nodev, nosuid, read-only, journaled, noatime, nobrowse)
+com.apple.xpc.launchd|2023-01-12 10:51:45.059449 <Notice>: Doing boot task: data-protection
+spaceman_scan_free_blocks:3154: disk0s1 scan took 0.044143 s, trims took 0.038630 s
+spaceman_scan_free_blocks:3156: disk0s1 13555858 blocks free in 3070 extents
+spaceman_scan_free_blocks:3164: disk0s1 13555858 blocks trimmed in 3070 extents (12 us/trim, 79471 trims/s)
+spaceman_scan_free_blocks:3167: disk0s1 trim distribution 1:915 2+:612 4+:1019 16+:423 64+:34 256+:67
+AppleBasebandPCIPDPManagerBase:: probe
+AppleBasebandPCIPDPManagerBase:: probe
+000029.599183 AppleBasebandD101::radioOnGated: on 1, already on 0
+AppleIPAppender::setSkywalkInterfaceGated: ifnet_set_link_quality returned: 6
+AppleIPAppender::setSkywalkInterfaceGated: ifnet_set_link_quality returned: 6
+AppleIPAppender::setSkywalkInterfaceGated: ifnet_set_link_quality returned: 6
+AppleIPAppender::setSkywalkInterfaceGated: ifnet_set_link_quality returned: 6
+AppleIPAppender::setSkywalkInterfaceGated: ifnet_set_link_quality returned: 6
+000029.610438 AppleBasebandD101::setPowerOnBBPMUPinGated: 1 - callFunction delay 228000 ns
+000029.610444 AppleBasebandD101::setResetPinGated: 0
+SEP firmware preloaded in memory
+init_data_protection: Gigalocker file (/private/xarts/3F725C2F-C542-5729-9089-FDAF29F44CA3.gl) exists
+apfs_rawdev_create:658: disk0s1s3 Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+000029.726400 AppleBasebandD101::enablePCIPort: enable: 1, ret: 0x00000000
+[SMC:apComms.cpp:373] SMC HID Event: 02 15 01
+AppleSMCPMU::_smcNotifyCallout(): PMU.GPIO21 -> vectorNumber=28
+AppleSMCPMU::_smcNotifyCallout(): vectorNumber=28 disabled_soft=1 disable_hard=1
+AppleSMCPMU::disableVectorHard(vN=28): key=67503135 IENA=04000000 [0]
+init_data_protection: Gigalocker initialization completed
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART with CRC: 0x3813
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x00000100f8000113
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched USER-xART with CRC: 0xe541
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x00000001b4000313
+SEP EP 9 enabled
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000413
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000513
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000613
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000713
+AppleSEPKeyStore:3063:0: SEP timeout multiplier = 1
+SEP EP 18 enabled
+AppleSEPKeyStore:6204:0: negotiated to ipc header theirs:v2, ours:v2 -> negotiated:v2
+AppleSEPKeyStore:6174:0: re-seeded prng with 65 bytes
+com.apple.xpc.launchd|2023-01-12 10:51:45.558197 <Notice>: Doing boot task: finish-obliteration
+Obliterator: In INIT check
+Thu Jan 12 10:51:46 2023: checkOblitNVRAMkey: IORegistryEntryGetProperty failed, may be does not exist [gF: 0x0000000000000000]
+Obliterator: No obliteration needed, continue booting, returning 0
+com.apple.xpc.launchd|2023-01-12 10:51:46.951500 <Notice>: Doing boot task: commit-boot-mode
+com.apple.xpc.launchd|2023-01-12 10:51:46.952008 <Notice>: boot-mode committed: (null)
+com.apple.xpc.launchd|2023-01-12 10:51:46.952372 <Notice>: Doing boot task: restore-datapartition
+com.apple.xpc.launchd|2023-01-12 10:51:47.008754 <Notice>: restore-datapartition: optional boot task not present
+com.apple.xpc.launchd|2023-01-12 10:51:47.009157 <Notice>: Doing boot task: mount-phase-2
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+AppleSEPKeyStore:6333:11: D-key effaceable locker does not exist, attempt to init it implicitly.
+[ANS2:client1] Util_Reset_FailGeom Info
+keybag_operation:438: wrote APFS/effaceable keybag (v2, 2 keys, 144 bytes)
+[ANS2:client1] Util_Reset_FailGeom Info
+keybag_operation:438: wrote APFS/effaceable keybag (v2, 1 keys, 80 bytes)
+migrate_media_keys_if_needed:1283: disk0s1s1 skipping unencrypted volume 1
+_aks_unwrap_media_class:152: AKS unwrap_media_key_from_class succeeded for tag = 7
+keybag_operation:438: wrote APFS/container keybag (v2, 3 keys, 208 bytes)
+keybag_operation:438: wrote APFS/container keybag (v2, 2 keys, 144 bytes)
+migrate_media_keys_if_needed:1294: disk0s1s2 media key migration succeeded 2
+migrate_media_keys_if_needed:1283: disk0s1s3 skipping unencrypted volume 3
+migrate_media_keys_if_needed:1283: disk0s1s4 skipping unencrypted volume 4
+migrate_media_keys_if_needed:1283: disk0s1s5 skipping unencrypted volume 5
+migrate_media_keys_if_needed:1283: disk0s1s6 skipping unencrypted volume 6
+migrate_media_keys_if_needed:1283: disk0s1s7 skipping unencrypted volume 7
+mount: successfully migrated Media Keys
+_aks_unwrap_media_class:152: AKS unwrap_media_key_from_class succeeded for tag = 8
+apfs_meta_crypto_state_unwrap:1163: got key for volume 61706673-7575-6964-0040-766F6C756D01
+apfs_log_mount_unmount:1889: disk0s1s2 mounting volume Data, requested by: mount_apfs (pid 12); parent: mount (pid 11)
+handle_mount:655: disk0s1s2 vol-uuid: 61706673-7575-6964-0040-766F6C756D01 block size: 4096 block count: 15624989 (encrypted; flags: 0x0; features: 8.0.2)
+handle_mount:668: disk0s1s2 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s2 Volume Data is not in a volume group
+/dev/disk0s1s2 on /private/var (apfs, local, nodev, nosuid, journaled, noatime, protect)
+apfs_log_mount_unmount:1889: disk0s1s4 mounting volume Baseband Data, requested by: mount_apfs (pid 13); parent: mount (pid 11)
+handle_mount:655: disk0s1s4 vol-uuid: 61706673-7575-6964-0080-766F6C756D03 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s4 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s4 Volume Baseband Data role 80 Not a System or data volume
+/dev/disk0s1s4 on /private/var/wireless/baseband_data (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+apfs_log_mount_unmount:1889: disk0s1s7 mounting volume Update, requested by: mount_apfs (pid 14); parent: mount (pid 11)
+handle_mount:655: disk0s1s7 vol-uuid: 10B523AE-EE4D-4796-8E77-ACB110A43432 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s7 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s7 Volume Update role c0 Not a System or data volume
+/dev/disk0s1s7 on /private/var/MobileSoftwareUpdate (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+apfs_log_mount_unmount:1889: disk0s1s5 mounting volume Hardware, requested by: mount_apfs (pid 15); parent: mount (pid 11)
+handle_mount:655: disk0s1s5 vol-uuid: 61706673-7575-6964-0140-766F6C756D04 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:668: disk0s1s5 setting dev block size to 4096 from 512
+nx_volume_group_update:7756: disk0s1s5 Volume Hardware role 140 Not a System or data volume
+/dev/disk0s1s5 on /private/var/hardware (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+com.apple.xpc.launchd|2023-01-12 10:51:48.153021 <Notice>: Doing boot task: init-with-data-volume
+com.apple.xpc.launchd|2023-01-12 10:51:48.177529 <Notice>: Doing boot task: MSUEarlyBootTask
+MSUEarlyBootTask: MSUEarlyBootTask running
+main: Content from the ramdisk will be present at /private/var/MobileSoftwareUpdate//a20f6aa0268e4958ae8ce401207fe4e336bd762feca6c8998b9d73a7ffd4454c275aeaf3cba6da25c11db9ce3b712df8-MSUData if it exists
+MSUEarlyBootTask: I have nothing to do. Goodbye!!
+com.apple.xpc.launchd|2023-01-12 10:51:48.296920 <Notice>: Doing boot task: fips
+Tracing: disabled
+FIPSPOST_USER [788302645] fipspost_post:156: [FIPSPOST][Module-ID] Apple corecrypto Module v12.0 [Apple ARM, User, Software, SL1]
+FIPSPOST_USER [788564367] fipspost_post:160: PASSED: (10 ms) - fipspost_post_hmac
+FIPSPOST_USER [788770260] fipspost_post:169: PASSED: (19 ms) - fipspost_post_integrity
+FIPSPOST_USER [788952339] fipspost_post:175: PASSED: (27 ms) - fipspost_post_indicator
+FIPSPOST_USER [789132736] fipspost_post:176: PASSED: (34 ms) - fipspost_post_aes_ecb
+FIPSPOST_USER [789313524] fipspost_post:177: PASSED: (42 ms) - fipspost_post_aes_cbc
+FIPSPOST_USER [789852063] fipspost_post:178: PASSED: (64 ms) - fipspost_post_rsa_sig
+FIPSPOST_USER [790534924] fipspost_post:179: PASSED: (93 ms) - fipspost_post_ecdsa
+FIPSPOST_USER [790692445] fipspost_post:180: PASSED: (99 ms) - fipspost_post_ecdh
+FIPSPOST_USER [790871095] fipspost_post:181: PASSED: (107 ms) - fipspost_post_aes_ccm
+FIPSPOST_USER [791051683] fipspost_post:182: PASSED: (114 ms) - fipspost_post_aes_cmac
+FIPSPOST_USER [791232075] fipspost_post:183: PASSED: (122 ms) - fipspost_post_hkdf
+FIPSPOST_USER [791775851] fipspost_post:184: PASSED: (144 ms) - fipspost_post_pbkdf
+FIPSPOST_USER [791954487] fipspost_post:186: PASSED: (152 ms) - fipspost_post_kdf_ctr
+FIPSPOST_USER [792132757] fipspost_post:187: PASSED: (159 ms) - fipspost_post_aes_gcm
+FIPSPOST_USER [792310755] fipspost_post:188: PASSED: (167 ms) - fipspost_post_aes_xts
+FIPSPOST_USER [792492878] fipspost_post:189: PASSED: (174 ms) - fipspost_post_tdes_ecb
+FIPSPOST_USER [792676397] fipspost_post:190: PASSED: (182 ms) - fipspost_post_drbg_ctr
+FIPSPOST_USER [792858222] fipspost_post:191: PASSED: (189 ms) - fipspost_post_drbg_hmac
+FIPSPOST_USER [793791283] fipspost_post:193: PASSED: (228 ms) - fipspost_post_ffdh
+FIPSPOST_USER [794158573] fipspost_post:194: PASSED: (243 ms) - fipspost_post_rsa_enc_dec
+FIPSPOST_USER [794341366] fipspost_post:213: all tests PASSED (251 ms)
+com.apple.xpc.launchd|2023-01-12 10:51:48.572569 <Notice>: Doing boot task: keybag
+****** IN MKB_INIT ****
+MKB_INIT: Loading System KeyBag
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc6d4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001053f000813
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc6d4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001053f000913
+AppleSEPKeyStore:7917:18: set handle 1 as special bag 0
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc6d4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001053f000a13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc6d4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001053f000b13
+AppleSEPKeyStore:933:0: Sending lock change 0 for handle 0 value 1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000c13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xb682
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f000d13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0x497d
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 1557185385 at idx 1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x497d010000000e13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART Locker with CRC: 0xc08d
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 4, uuid: 0BAFD15F-262D-CD03-A21B-B891B4E71A60, crc32: 4267301898 at idx 0
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0xc08d010000000f13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0x9270
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 3244602725 at idx 3
+CHG: _checkConnection() 'D1AP' data=1 connStatus=1 success=0
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=0, (0)
+_debounceTimerCallback: timer callback now=808128331 hasVbus=1 port 1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x9270010000001013
+Port-Lightning::handleIDBusCommand: Set InflowDisable for Power Handshake
+handlePowerSourceDetect: D1ID=1, D1IG=0, D1AR=0, (0)
+IOAccessoryUSBConnectShim: AppleUSBCableDetect 1
+IOAccessoryUSBConnectShim: USB Power (VBUS) Present: 1, Physical Connection (CON_DET): 1
+handleIDBusState: already in progress
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+handlePowerSourceDetect: D1ID=1, D1IG=0, D1AR=0, (0)
+[SMC:charger.cpp:1976] Not charging:401
+handlePowerSourceDetect: D1ID=1, D1IG=0, D1AR=0, (0)
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving USER-xART with CRC: 0xa034
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 1, uuid: 00000000-0000-0000-0000-000000000000, crc32: 2080521694 at idx 1
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0xa034000000001113
+
+IOAccessoryTRM::_setPropertiesGated(): Setting USB Restricted Mode: YES... (m_mgrPrimaryPortID: 1)
+Port-Lightning::handleIDBusCommand: Set InflowDisable for Power Handshake
+handlePowerSourceDetect: D1ID=1, D1IG=0, D1AR=0, (0)
+Port-Lightning::getVBUSDetect: _vbusVoltageFunction returned device errorhandlePowerSourceDetect: D1ID=1, D1IG=0, D1AR=0, (0)
+Port-Lightning::getVBUSDetect: _vbusVoltageFunction returned device errorPort-Lightning::setPowerHandshakeState: Clear InflowDisable, Power Handshake completed
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=0, (0)
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): SEP_XART_LOCKER with uuid 024797CB-605B-3FEA-3C8D-41A8898C6E27 not found
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x0000010000001213
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving USER-xART with CRC: 0xb74
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 1, uuid: 00000000-0000-0000-0000-000000000000, crc32: 2697939516 at idx 2
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x0b74000000001313
+CHG: _checkConnection() 'D1AP' data=1 connStatus=1 success=0
+CHG: _checkConnection() 'D1AP' data=1 connStatus=1 success=0
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:645 forcePowerStatus() vbus=1 _hasVBUS=1 _debounceUntil=822754735 port 1
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=0, (0)
+kSMCNotifyExternalPowerChange: notify=0:0 VBUS1=1 dockNum 1 result (0)
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0x47d7
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 4071293760 at idx 1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x47d7010000001413
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART Locker with CRC: 0x19bc
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 4, uuid: 2D99B42A-66BB-45AC-3978-1C8D609D599A, crc32: 2115289640 at idx 3
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x19bc010000001513
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0x2b83
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 690561210 at idx 4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x2b83010000001613
+[SMC:charger.cpp:1976] Not charging:1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving USER-xART with CRC: 0xf139
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 1, uuid: 00000000-0000-0000-0000-000000000000, crc32: 3222651435 at idx 1
+MKB_INIT: APFSVolumePayloadGet len reveived to be 34
+MKB_INIT: Successfully obtained the cookie for the volume with length:34
+AppleSEPKeyStore:2695:18: mapped uuid 61706673-7575-6964-0040-766F6C756D01 to bag 0, persona none, compressed uuid: 2048435297
+AppleSEPKeyStore:809:18: Unlock notification for volume (uuid: 61706673-7575-6964-0040-766F6C756D01, handle 0)
+AppleSEPKeyStore:2716:18: notified volume uuid 61706673-7575-6964-0040-766F6C756D01 - lock state = 4259846 (err = 0)
+handle_keybag_unlock:5305: disk0s1s2 apfs is now UN-locked! (flags 0x400000c2)
+MKB_INIT: aks_set_keybag_for_volume_with_cookie SUCCESS
+e with length:34
+MKB_INIT: System Keybag loaded
+checking path: /private/var/root/.bootstrapped
+/private/var/MobileSoftwareUpdate set 4
+/private/var//wireless/baseband_data set 4
+****** STARTING EARLYBOOT SETUP ****
+MKB_INIT: STARTING EARLYBOOT SETUP
+MKB_INIT: Could not open /private/var//keybags/usersession.kb: No such file or directory
+MKB_INIT: LoadAllUserSessions: diskLoadUserSessions failed
+MKB_INIT: Could not open /private/var//keybags/persona.kb: No such file or directory
+ssion.kb: No @{1vMKB_INIT: Creating Default Persona
+MKB_INIT: Creating Persona Manifest Profile
+eating Default Persona
+MKB_INIT: Creating new persona with ID:1000
+MKB_INIT: Calling kpersona_alloc for PersonaID:0
+MKB_INIT: PersonaID:1000 registered with Kernel, returned 1000
+MKB_INIT: Not an Enerprise Persona so skipping creating APFS volume
+fMKB_INIT: Created Persona Session:@
+o skipping creating APFS volume
+fMKB_INIT: persona added to the session table
+g creating APFS volume
+fMKB_INIT: PRINTING ALL 1 Entries of PERSONASESSIONa
+bMKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: Created Personal Persona Successfully
+MKB_INIT: Created Personal Persona Successfully
+ng Default Persona
+MKB_INIT: Creating System Persona
+sion table
+g creating APFS volume
+fMKB_INIT: Creating new persona with ID:99
+le
+g creating APFS volume
+fMKB_INIT: Setup Default Bundles for System
+l1vMKB_INIT: Calling kpersona_alloc for System/Default PersonaID:99
+MKB_INIT: PersonaID:99 registered with Kernel, returned 99
+ID:99
+MKB_INIT: Created Persona Session:@
+th Kernel, returned 99
+ID:99
+MKB_INIT: persona added to the session table
+, returned 99
+ID:99
+MKB_INIT: PRINTING ALL 2 Entries of PERSONASESSIONa
+bMKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: Created System Persona Successfully
+y
+MKB_INIT: Created System Persona Successfully
+y
+ng Default Persona
+MKB_INIT: Creating Default Persona
+ion table
+, returned 99
+ID:99
+MKB_INIT: Creating new persona with ID:199
+e
+, returned 99
+ID:99
+MKB_INIT: Calling kpersona_alloc for System/Default PersonaID:199
+x1vMKB_INIT: PersonaID:199 registered with Kernel, returned 199
+:199
+x1vMKB_INIT: Created Persona Session:@
+ith Kernel, returned 199
+:199
+x1vMKB_INIT: persona added to the session table
+l, returned 199
+:199
+x1vMKB_INIT: PRINTING ALL 3 Entries of PERSONASESSIONa
+bMKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 2 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: Created Default Persona Successfully
+
+MKB_INIT: Created Default Persona Successfully
+
+ng Default Persona
+MKB_INIT: Creating Universal Persona
+n table
+l, returned 199
+:199
+x1vMKB_INIT: Setup Default Bundles for Universal
+, returned 199
+:199
+x1vMKB_INIT: Created Persona Session:@
+Universal
+, returned 199
+:199
+x1vMKB_INIT: persona added to the session table
+
+, returned 199
+:199
+x1vMKB_INIT: PRINTING ALL 4 Entries of PERSONASESSIONa
+bMKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 2 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: 3 PersonaSession is @
+ of PERSONASESSIONa
+bMKB_INIT: Created Universal Persona Successfully
+MKB_INIT: Created Universal Persona Successfully
+g Default Persona
+MKB_INIT: unlink failed: No such file or directory
+
+1vMKB_INIT: FAILED TO LOAD PERSONA to KERNEL 1000 with error File exists
+MKB_INIT: FAILED TO LOAD PERSONA to KERNEL 99 with error File exists
+s
+MKB_INIT: FAILED TO LOAD PERSONA to KERNEL 199 with error File exists
+
+MKB_INIT: Failed to Upload and setup persona to Kernel
+MKB_INIT: Failed to get notification token
+EdMKB_INIT: Invalid Token to set state
+MKB_INIT: DONE EARLYBOOT SETUP
+TUP
+****** DONE EARLYBOOT SETUP ****
+****** DONE MKB_INIT ****
+com.apple.xpc.launchd|2023-01-12 10:51:50.470238 <Notice>: Doing boot task: usermanagerd
+com.apple.xpc.launchd|2023-01-12 10:51:50.471001 <Notice>: usermanagerd: optional boot task not present
+com.apple.xpc.launchd|2023-01-12 10:51:50.471204 <Notice>: Doing boot task: dirs_cleaner
+com.apple.xpc.launchd|2023-01-12 10:51:50.478178 <Notice>: launchd logging initialized. name: com.apple.xpc.launchd pid: 1
+com.apple.xpc.launchd|2023-01-12 10:51:50.478187 <Notice>: Doing boot task: xpcroleaccountd
+com.apple.xpc.launchd|2023-01-12 10:51:50.487670 <Notice>: Doing boot task: init_featureflags
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0xf139000000001713
+com.apple.xpc.launchd|2023-01-12 10:51:50.595310 <Notice>: Doing boot task: auearlyboot
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): Starting Early Boot
+auearlyboot: -[AppleFirmwareUpdateController getEarlyBootListInternal:]: Pending critical earlyBoot entries (
+)
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): sending the following dict {
+    IOMatchLaunchServiceID = 4294967910;
+}
+auearlyboot: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294967910;
+}
+AppleFirmwareUpdateKext::validateFirmware() Performing img4 validation outside of workloop
+AppleFirmwareUpdateKext[<ptr>]::validateImage4() Entering 
+AppleFirmwareDecodeImage4() Requesting AppleImage4 Validation
+firmwareExecutionCallback() error = 0
+firmwareExecutionCallback() Validation Successful
+AppleFirmwareUpdateKext[<ptr>]::validationComplete() Exiting with status = 0x0 
+AppleHapticsSupportCallan::maybeSendAKCIRequest not ready to send AKCI request (no AKCI nub)
+AppleFirmwareUpdateKext::loadFirmware() Time Taken For IMG4 Validation: 3 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For User Space Request to complete: 6 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For Kernel Client's to complete: 7990 ms
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): sending the following dict {
+    IOMatchLaunchServiceID = 4294967911;
+}
+auearlyboot: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294967911;
+}
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): sending the following dict {
+    IOMatchLaunchServiceID = 4294968102;
+}
+auearlyboot: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968102;
+}
+AppleFirmwareUpdateKext::validateFirmware() Performing img4 validation outside of workloop
+AppleFirmwareUpdateKext[<ptr>]::validateImage4() Entering 
+AppleFirmwareDecodeImage4() Requesting AppleImage4 Validation
+firmwareExecutionCallback() error = 0
+firmwareExecutionCallback() Validation Successful
+AppleFirmwareUpdateKext[<ptr>]::validationComplete() Exiting with status = 0x0 
+AppleFirmwareUpdateKext::loadFirmware() Time Taken For IMG4 Validation: 3 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For User Space Request to complete: 3 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For Kernel Client's to complete: 7124 ms
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): sending the following dict {
+    IOMatchLaunchServiceID = 4294968149;
+}
+auearlyboot: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968149;
+}
+AIDImageDownloader::validateFirmware() Performing img4 validation outside of workloop
+AIDImageDownloader[<ptr>]::validateImage4() Entering 
+AppleFirmwareDecodeImage4() Requesting AppleImage4 Validation
+firmwareExecutionCallback() error = 0
+firmwareExecutionCallback() Validation Successful
+AIDImageDownloader[<ptr>]::validationComplete() Exiting with status = 0x0 
+AIDLog: [0x100000356][3a1][AppleHIDTransportBootloaderHBPP::copyAndCheckPropertyOrReference]: ERROR!! Could not get property luna-shape-graffix-calibration
+AIDImageDownloader::loadFirmware() Time Taken For IMG4 Validation: 14 ms
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): USER_XART_LOCKER with uuid E3659F58-FA01-0495-C92D-851FEE2AF9B3 not found
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x0000000000001813
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving USER-xART with CRC: 0xd42a
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 1, uuid: 00000000-0000-0000-0000-000000000000, crc32: 694495825 at idx 2
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0xd42a000000001913
+AIDImageDownloader::loadFirmware() Total Time Taken For User Space Request to complete: 95 ms
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc08d
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f001a13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Fetched SEP-xART Locker with CRC: 0xc08d
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x000001006f001b13
+AIDLog: [0x100000356][246][AppleHIDTransportBootloaderHBPP::copyAndCheckPropertyOrReference]: ERROR!! Could not get property luna-shape-graffix-calibration
+AIDImageDownloader::loadFirmware() Total Time Taken For Kernel Client's to complete: 7179 ms
+open by AppleMultitouchHIDService 0x100000478 (0x0)
+[AppleMultitouchHIDService] Start succeeded
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): sending the following dict {
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0x9811
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 1825552446 at idx 1
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x9811010000001c13
+    IOMatchLaunchServiceID = 4294968292;
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART Locker with CRC: 0x50ec
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 4, uuid: 0BAFD15F-262D-CD03-A21B-B891B4E71A60, crc32: 1823266984 at idx 4
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0x50ec010000001d13
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Saving SEP-xART with CRC: 0xfca7
+int gl_rec_write(struct gl_ctx *const, const struct gl_rec_id *const, const uint8_t *const, size_t): Writing record type: 2, uuid: 00000000-0000-0000-0000-000000000000, crc32: 2891208603 at idx 0
+}
+void AppleSEPXART::_handle_sep_driven_msg(AppleSEPXART::XARTMessage *): Replied to xART app: 0xfca7010000001e13
+auearlyboot: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968292;
+}
+AppleFirmwareUpdateKext::validateFirmware() Performing img4 validation outside of workloop
+AppleFirmwareUpdateKext[<ptr>]::validateImage4() Entering 
+AppleFirmwareDecodeImage4() Requesting AppleImage4 Validation
+firmwareExecutionCallback() error = 0
+firmwareExecutionCallback() Validation Successful
+AppleFirmwareUpdateKext[<ptr>]::validationComplete() Exiting with status = 0x0 
+AppleSPUFirmwareService: ext mapping: tag:0x454330 len:32800
+AppleFirmwareUpdateKext::loadFirmware() Time Taken For IMG4 Validation: 54 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For User Space Request to complete: 62 ms
+AppleFirmwareUpdateKext::loadFirmware() Total Time Taken For Kernel Client's to complete: 7959 ms
+RTBuddy(AOP): Loaded firmware: Unknown - Unknown
+
+[AOP:DopplerService.cpp:77] Initializing Doppler!
+auearlyboot: -[FudEarlyBoot calculateTimeTakenForEarlyBootEntries] Time Taken to wait for critical earlyBoot entries: 0.000000 sec
+auearlyboot: -[FudEarlyBoot doFUDEarlyBoot:](): End Early Boot
+auearlyboot: Exitng Early Boot
+com.apple.xpc.launchd|2023-01-12 10:51:51.690134 <Notice>: Doing boot task: tzinit
+tzinit: Bad zoneinfo link : No such file or directory
+tzinit: Invalid current symlinks; resetting to system partition: No such file or directory
+kern.prng.user_reseed_count: (-1) (2) No such file or directory
+failed to load kernel prng seed: (-76) (2) No such file or directory
+failed to load virtual random: (-147) (-536870212)
+0 Found valid port: 5123 Valid: 1
+1 Found valid port: 0 Valid: 0
+2 Found valid port: 0 Valid: 0
+Using default cache paths
+Code: /System/Library/xpc/launchd.plist Sig: /System/Library/xpc/launchd.plist.sig
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 29 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 29
+cdhash: {length = 20, bytes = 0x0d5bac5de07e2c6f798d6dc3e255adcf52e6a42e} is trusted
+Attached signature to file, checking ...
+Trying to send bytes to launchd: 5123 16384
+Sending validated cache to launchd
+Cache sent to launchd successfully
+com.apple.xpc.launchd|2023-01-12 02:51:51.697772 <Notice>: Doing boot task: finish-restore
+com.apple.xpc.launchd|2023-01-12 02:51:51.699915 <Notice>: Doing boot task: finish-demo-restore
+com.apple.xpc.launchd|2023-01-12 02:51:51.704636 <Notice>: Doing boot task: sysstatuscheck
+com.apple.xpc.launchd|2023-01-12 02:51:51.708369 <Notice>: Doing boot task: prng_seedctl
+com.apple.xpc.launchd|2023-01-12 02:51:51.713162 <Notice>: Doing boot task: launchd_cache_loader
+com.apple.xpc.launchd|2023-01-12 02:51:51.772731 <Notice>: launchd UUID: A6E62983-F72F-3D55-BD2D-91CCF45BCFE8
+com.apple.xpc.launchd|2023-01-12 02:51:51.772749 <Notice>: Early boot complete. Continuing system boot.
+
+[AOP:VL62L0.cpp:127] Doppler using SCM
+[AOP:VL62L0.cpp:157] VL62L0 device found.
+[AOP:VL62L0.cpp:220] rev ctrl: a2 41 42 85
+[AOP:I2CService.cpp:53] RawI2C slave presence test: 740e
+[AOP:MPU6700.cpp:181] mpu6700: <null> device ID 0x0 NOT found.
+[AOP:BMI262.cpp:209] BMI262::probe -- Found device with ID: 0x8, Manufacture ID: 0xe4, Revision ID: ...
+[AOP:ADIS16495.cpp:118] ADI16495::probe -- Probe error=e00002c0, ID=0x0
+[AOP:HSCDT600A_common.cpp:69] HSCDTD601A device found.
+[AOP:BMP284.cpp:148] BMP284 device found
+[AOP:ZPA35xx.cpp:77] ZPA35xx::probe -- Unknown device ID 0x51
+[AOP:ZPA35xx.cpp:84] ZPA35xx device NOT found. 
+[AOP:ALSCT721.cpp:114] CT721 device found.
+[AOP:UartBaseband.cpp:80] UartBasebandService start: baseband is present
+[AOP:DopplerService.cpp:251] start:
+[AOP:AOPTouchService.cpp:468] [TTW] Endpoint 0x111eff8 notification 0, class 0
+[AOP:AOPTouchService.cpp:468] [TTW] Endpoint 0x111eff8 notification 1, class 0
+[AOP:AOPTouchService.cpp:472] [TTW] Endpoint ready
+[AOP:SmartCover.cpp:132] SmartCover service ready!
+[AOP:PearlCoexManager.cpp:32] Setting up Pearl coex manager
+[AOP:OscarApp.cpp:130] OscarApp Haptics Audio Service Found
+[AOP:ProfileService.cpp:127] ProfileService ready; num-profilers=4 [thr=4095, size=393168]
+[AOP:ProfileService.cpp:128] ProfileService cfg=7:0:9,7:3:1,7:4:1,7:5:1,7:6:1,7:a:ff,6:0:1ff,6:1:1ff,6:2:1ff...
+AppleSPU::_handleReadyReport, serviceName (romeo) 
+AppleSPU::_handleReadyReport, serviceName (SPUApp) 
+AppleSPU::_handleReadyReport, serviceName (profile) 
+AppleSPU::_handleReadyReport, serviceName (aop-haptics-audio) 
+AppleSPU::_handleReadyReport, serviceName (arc) 
+AppleSPU::_handleReadyReport, serviceName (aop-voicetrigger) 
+AppleSPU::_handleReadyReport, serviceName (aop-audio) 
+AppleSPU::_handleReadyReport, serviceName (btmspk) 
+AppleSPU::_handleReadyReport, serviceName (spherecontrol) 
+AppleSPU::_handleReadyReport, serviceName (smc-control) 
+AppleSPU::_handleReadyReport, serviceName (i2c) 
+AppleSPU::_handleReadyReport, serviceName (baseband) 
+start: setting config for spk arc
+AppleSPUBasebandDriver BB-Gyro coex: off
+AppleSPUBasebandDriver BB-Uart quiescing: on
+static AppleAOPSMCLink *AppleAOPSMCLink::withProvider(IOService *): SMC-AOP: getFn=<ptr>, setFn=<ptr>, enaFn=<ptr> useDDR=0 (tx=0, rx=0) 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: using AOP memory 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: Warning ZERO reg=0 value=0 number=0  
+[AOP:spu.cpp:854] AssertMacros:   error: 0
+[AOP:HapticsAudio.cpp:89] Haptics Audio service ready!
+[AOP:SMC.cpp:46] smc-control service ready!!
+
+[AOP:SMC.cpp:232] smc service ready!!
+
+[AOP:UartBaseband.cpp:108] UartBasebandService ready!!
+[AOP:iggerController.cpp:129] VoiceTrig ready!! <AppleAOPVoiceTriggerController v140.1 built: Oct  5 202221:5...
+[AOP:HapticsAudio.cpp:104] Haptics Audio service Active!
+[AOP:AudioController.cpp:165] aop-audio v150.1 (built Oct  5 2022 23:33:15, debug 0x0) ready!!
+[AOP:SPU_init.cpp:306] ===( AOP IS READY )===
+[AOP:SMC.cpp:519] AssertMacros:   error: 0
+start: setting config for spk btmspk
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: AOP ep config aop-smc-endpoint-cfg (0) 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: aop-smc-endpoint-cfg _index=0 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: aop-smc-endpoint-cfg _tx[_reg=0, _value=0, _number=0, _address=234f5e000, _size=1000] 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: aop-smc-endpoint-cfg _rx[_reg=23480c004, _value=8000, _number=2f, _address=234f5f000, _size=1000] 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: _index=0 _tx[_reg=0, _value=0, _number=0, _size=1000] 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: _index=0 _rx[_reg=23480c004, _value=8000, _number=2f, _size=1000] 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: _index=0 _flags=0 _address=234f5e000, _size=2000 
+IOReturn AppleAOPSMCLink::configureEndpoints(AppleSMCFamily *): SMC-AOP: SMC AOPc config (0) 
+Couldn't alloc class "AppleSPULogDriver"
+[AOPAudio](info)  Controller{} haveLPMicInNub: 0
+Couldn't alloc class "AppleSPUGestureDriver"
+open by AppleSPUHIDDriver 0x100000510 (0x0)
+open by AppleSPUHIDDriver 0x100000512 (0x0)
+[AOPAudio](info) Controller::_createIOHandlerDeprecated() Listening disabled
+[AOPAudio](info) Controller: found 4 devices
+IOHIDInterface(0x10000050c): matching deferred by IOHIDEventDriver
+open by AppleProxHIDEventDriver 0x10000051f (0x0)
+open by AppleSPUHIDDriver 0x100000525 (0x0)
+open by AppleSPUHIDDriver 0x100000529 (0x0)
+probe: manufacturer IceFish
+open by AppleSPUHIDDriver 0x10000052c (0x0)
+probe: manufacturer IceFish
+probe: manufacturer IceFish
+open by AppleSPUHIDDriver 0x100000533 (0x0)
+probe: manufacturer IceFish
+open by AppleSPUHIDDriver 0x100000535 (0x0)
+open by AppleSPUHIDDriver 0x100000536 (0x0)
+AppleSPUHIDDriver: set cma kIOHIDEventServiceQueueSize to 81920 KB
+probe: manufacturer IceFish
+probe: manufacturer IceFish
+probe: manufacturer IceFish
+Icefish driver found
+AppleSPUVD6287 probe: device name IceFish
+probe: manufacturer IceFish
+AppleSPUVD6286 probe: manufacturer IceFish
+probe: manufacturer IceFish
+open by AppleSPUCT721 0x100000538 (0x0)
+open by AppleSPUSmartCoverDriver 0x100000547 (0x0)
+open by AppleSPUHIDDriver 0x10000054b (0x0)
+open by AOPTouchHIDDriver 0x100000548 (0x0)
+[AOP:SMC.cpp:308] SMC endpoint ready
+[AOP:SCDT600A_common.cpp:347] Enable Charger Compensation - Version 2
+[AOP:AOPTouchService.cpp:515] [TTW] Orientation changed: 0x2 (36888048us)
+Codec: Could not find the safety offset seed property.
+function-brightness_update found 
+AppleCS42L75Audio::callPlatformFunction(newAppleARMFunction, 0, 0, <ptr>, <ptr>, <ptr>)
+AppleCS42L75Audio::callPlatformFunction(newAppleARMFunction, 0, 0, <ptr>, <ptr>, <ptr>)
+AppleCS42L75Audio::callPlatformFunction(newAppleARMFunction, 0, 0, <ptr>, <ptr>, <ptr>)
+Speaker: Could not find the safety offset seed property.
+-AppleICA60:probe vendorID 0x40 prodID 0x3 fabID 0x0 revision 0x4 sensor 0x2 mic-bias-index 0
+AppleCS42L75Audio::callPlatformFunction(newAppleARMFunction, 0, 0, <ptr>, <ptr>, <ptr>)
+-AppleICA60:probe vendorID 0x40 prodID 0x3 fabID 0x0 revision 0x4 sensor 0x2 mic-bias-index 1
+AppleCS42L75Audio::callPlatformFunction(newAppleARMFunction, 0, 0, <ptr>, <ptr>, <ptr>)
+AppleSEPTraceBuffer finished boot timer setting periodic poll to 500000
+[AOP:AOPTouchService.cpp:515] [TTW] Orientation changed: 0x1 (41008808us)
+deferred rematching count 1
+DK: AppleUserHIDEventDriver-0x10000056f waiting for server com.apple.driverkit.AppleUserHIDDrivers-10000056f
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+<private>
+[AppleUserHIDEventDriver.cpp:266][0x10000056f] Target embedded OS
+open by AppleUserHIDEventDriver 0x10000056f (0x0)
+[IOUserHIDEventService.cpp:161][0x10000056f] Open interface: 0x10000050c
+[AppleUserHIDEventDriver.cpp:222][0x10000056f] parseElements: led: 0
+[AppleUserHIDEventService.cpp:988][0x10000056f] parseElements: vendor (primary): 0 vendor (child): 1 multiaxis: 0 keyboard: 0 unicode: 0 0 biometric: 0 accel 0 gyro: 0 compass: 0 temperature: 0 orientation 7 0 sensorPropsCaps 0
+[IOUserHIDEventDriver.cpp:934][0x10000056f] parseElements: keyboard: 0 pointer: 0 0 scroll: 0 led: 0 digitizer: 0 proximity: 0 gameController: 0
+[AppleUserHIDEventService.cpp:247][0x10000056f] Start ret: 0x0
+[AppleUserHIDEventDriver.cpp:326][0x10000056f] Start ret: 0x0
+[AppleUserHIDEventDriver.cpp:116][0x10000056f]  usagePage: 32 usage: 138 vid: 0 pid: 0
+DK: AppleUserHIDEventDriver-0x10000056f::start(IOHIDInterface-0x10000050c) ok
+open by AppleSPUHIDDeviceUserClient 0x1000005eb (0x0)
+open by AppleSPUHIDDeviceUserClient 0x1000005ec (0x0)
+open by AppleSPUHIDDeviceUserClient 0x1000005ee (0x0)
+open by AppleSPUHIDDeviceUserClient 0x1000005f1 (0x0)
+open by AppleSPUHIDDeviceUserClient 0x1000005f3 (0x0)
+AppleSPUCT721: ALS Log level = 6
+open by AppleSPUHIDDeviceUserClient 0x1000005f5 (0x0)
+open by AppleSPUHIDDeviceUserClient 0x1000005f6 (0x0)
+tx_flush:1170: disk0s1 xid 81 tx stats: # 20 finish 20 enter 709 wait 0 0us close 0us flush 828us
+AppleSPUALSColorDriver::copyEvent failed with error (general error)
+AppleSPUALSColorDriver::copyEvent failed with error (general error)
+[IOHIDEventService.cpp:233][0x10000056f] handleCopyMatchingEvent: 0xe00002c7
+[IOHIDEventService.cpp:233][0x10000056f] handleCopyMatchingEvent: 0xe00002c7
+[IOHIDEventService.cpp:233][0x10000056f] handleCopyMatchingEvent: 0xe00002c7
+property not found: allocateDefaultFramebuffer
+virtual IOMFBStatus UnifiedPipeline::applyProperty(uint32_t, uint32_t): setting property allocateDefaultFramebuffer failed
+AppleSPUHapticsAudioDriver::setPropertiesGated
+AppleSPUHapticsAudioDriver::handleClickStateGlobalConfig
+AppleSEPKeyStore:11114:125: operation failed (sel: 101 ret: e00002e2)
+AppleSEPKeyStore:11114:125: operation failed (sel: 34 ret: e00002f0)
+AppleSPUHapticsAudioDriver::setPropertiesGated
+AppleSPUHapticsAudioDriver::handleClickStateConfig
+ASSET CONFIG: state:0 speed: 0 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:0 speed: 1 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:0 speed: 2 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:1 speed: 0 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:1 speed: 1 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:1 speed: 2 slot:4294967295 minDelta:0 maxDelta 0 gain:0 enable:1
+ASSET CONFIG: state:2 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:3 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:4 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:5 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:6 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:7 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:8 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:9 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:10 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:11 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:12 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:13 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:14 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:15 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+ASSET CONFIG: state:16 speed: 0 slot:0 minDelta:0 maxDelta 0 gain:0 enable:0
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+ACMRM: _onDaemonStarted: called, allowedByMC=YES, alreadyStarted=NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: getSEPEndpoint: Initializing SEP endpoint.
+AppleCredentialManager: setPowerState: newState=1.
+SEP EP 10 enabled
+AppleCredentialManager: getSEPEndpoint: SEPEndpoint enabled.
+AppleCredentialManager: sendSEPCommand: SEP cmd(10) took 0/7 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(25) took 0/0 ms -> ioErr=0x0 acmErr=0.
+ACMRM-S: _loadAll: called, isLockerAvailable=YES.
+AppleCredentialManager: sendSEPCommand: SEP cmd(38) took 1/1 ms -> ioErr=0x0 acmErr=0.
+ACMRM: _logPolicy: LOADED: ver=0 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=0 gpRsn=0 cMs=NO.
+ACMRM: _logConfig: caller=_loadConfig ver=1 gSw=1 GP=2 Ask=3.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO*).
+ACMRM: _mapAndPublishTRM: set TRM_GracePeriodTimeout = 3600.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 3600 -/ff miss=ff (CUR: 259200 -/ff 3600 -/ff).
+ACMRM: _onDaemonStarted: timePolicyViolated=NO (saveTime=0 bootCalTime=1673520718 (delta=1673520718) bootUpTime=43 nowUp=1673520718).
+ACMRM-A: _logAnalytics: caller=_loadAnalytics ver=6 rmLckDur=0 curPerTm=0 rmLckTm=0 actRMLckTm=0 rmPubTm=0 rmPubDur=0 blFPCnt=0/0 uSdn=0 blkAIDCnt=0.
+ACMRM-A: _restartAnalytics: called, curPerTm=1673520718 rmLckTm=0 rmLckDur=0 rmPubTm=0 rmPubDur=0.
+ACMRM-S: setData: saving analytics (len=52) in 3 seconds.
+[ERROR] IOAccessoryTRM::_getACMTRMStatus(): Couldn't find ACM TRM state!
+ACMRM-C: onDaemonStarted: acc-cache not found.
+ACMRM: _publish: _onDaemonStarted DISABLED(2) reason=0 (on=NO pub=YES(255) pasThr=NO(410006) poRsn=0 smExp=NO gpBlk=NO cMs=NO suTm=0 tm=1673520718(0) | 3D=0/0 GP=0/0/(0)).
+ACMRM: _publishIOResource: AppleUSBRestrictedModeWithReason = 0.
+ACMRM: _mapAndPublishTRM: set TRM_PolicyReason = Unrestricted(0).
+ACMRM: _mapAndPublishTRM: set TRM_CacheMiss = False.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=2) while DISABLED, TRM: 259200 U/0 3600 -/ff miss=0 (CUR: 259200 U/0 3600 X/0).
+ACMRM: _logPolicy: SAVING (sync): ver=8 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=1673520718 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 1 seconds.
+ACMRM: _registerBioNotifier: Pearl biometric driver detected.
+IOAccessoryTRM::_setPropertiesGated(): Setting USB Restricted Mode: NO... (m_mgrPrimaryPortID: 1)
+IOAccessoryUSBConnectShim: AppleUSBCableType USBHost
+IOPortTransportState::registerService(): [Port-Lightning@101: USB2] Registering service USB2@... (transportType: 2, provider: Port-Lightning@101)
+IOPortTransportState::registerService(): [Port-Lightning@101: USB2] Registering service USB2@... (transportType: 2, provider: Port-Lightning@101)
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+
+000043.440152 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_handleUSBCableConnect: cable connected, but don't have device configuration yet
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+tx_flush:1170: disk0s1 xid 101 tx stats: # 40 finish 40 enter 415 wait 2 479us close 0us flush 811us
+AppleCredentialManager: setPowerStateGated: called, currentState=1 -> newState=1.
+Invalid denylist
+000043.770740 wlan0.A[30] handleAudioNotification@195:get Message 0xe3ff8100
+[AOPAudio](info) Controller::_enableListeningIOHandler(1) hardware now enabled
+000044.212266 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: PTP
+000044.220829 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000044.229812 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: iPod USB Interface
+000044.239622 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: USBAudioControl
+000044.250962 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: USBAudioStreaming
+000044.260802 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: IapOverUsbHid
+000044.270960 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device
+000044.281091 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000044.291262 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000044.301147 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Apple USB Ethernet
+000044.313783 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000044.322375 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000044.332366 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBEthernet
+000044.343600 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Valeria
+000044.359805 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000044.392041 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000044.400602 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: Valeria
+000044.410478 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: Apple Mobile Device + Interdevice Audio
+000044.423888 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000044.432433 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2Control
+AppleCredentialManager: sendSEPCommand: SEP cmd(43) took 0/0 ms -> ioErr=0x0 acmErr=0.
+ACMRM-S: _saveAll: pushing policy -> locker (gen=1 len=41) (csLen=55 critical=YES).
+ACMRM-S: _saveAll: pushing analytics -> daemon (gen=1 len=52).
+000044.463192 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamIN
+000044.474842 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamOUT
+000044.484760 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: IDAMInterface
+000044.494664 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: interface association: Interdevice Audio Interfaces (First: 1, Count: 4)
+000044.507556 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + NCM
+000044.520257 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000044.528650 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000044.538449 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMControl
+000044.548526 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMData
+000044.561095 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMControlAux
+000044.571398 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMDataAux
+000044.594670 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function PTP
+000044.604967 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function Valeria
+AppleUSBDeviceMux build: Sep 29 2022 22:55:33
+IOAccessoryPortUSB::start
+000044.620745 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function IapOverUsbHid
+000044.632220 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function USBAudio2Control
+000044.643487 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamOUT
+000044.655114 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function USBAudioControl
+000044.664965 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamIN
+000044.676171 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function USBAudioStreaming
+000044.687474 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBMux
+000044.698727 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBEthernet
+000044.709921 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMControlAux
+000044.721310 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMControl
+000044.732707 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function IDAMInterface
+000044.742681 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMDataAux
+000044.753938 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMData
+000044.765494 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::startUSBStack: starting usb stack
+IOAccessoryUSBConnectShim: chargerFunction: ilim=0mA type=0
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=0, (0)
+IOAccessoryUSBConnectShim: chargerFunction: ilim=100mA type=0
+ nameBSDInterface() [anpi 0] returning 0x00000000
+ enableBSDInterface() [anpi0], returning 0x00000000
+ configureIPv6LLOnBSDInterface() [anpi0], IPv6 enable returning 0x00000000
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=100, (0)
+kIOMessageServicePropertyChange: allowedFeatures = 0x20002f 
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+IOPort::registerService(): [Port-Inductive@101] Registering service Port-Inductive@101...
+
+Port-Inductive::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+000044.993848 wlan0.A[31] setProperties@9094:setProperties: ERROR: Unexpected non-ioctl set property call for this platform
+000044.999452 wlan0.A[32] isLimitedAggregationSupported@2494:isLimitedAggregationSupported: Yes
+000044.999491 wlan0.A[33] buildWPSRollingHash@629:buildWPSRollingHash: Total memory used for buidling WPS info hash map: 832 bytes
+000044.999549 wlan0.A[34] gatherParameterData@926: bypassing EDT roam profiles. Using default
+000044.999569 wlan0.A[35] gatherParameterData@964:Using default power to duty cycle table.
+000044.999604 wlan0.A[36] gatherKvrParameterData@1286:EnterpriseEnhancementParams: enhancedDisAssociationInfo:1 beaconReporting:1 osVersionReporting:1!
+000045.000007 wlan0.A[37] flags 0 fullRoamScanPeriod 0 partialRoamScanPeriod 0 roamResetRSSIDelta 0 fullRoamScanCount 0 txFailTrigger 0 2.4GHz=[rssiTrigger 0 rssiQualDelta 0] 5GHz=[rssiTrigger 0 rssiQualDelta 0]
+000045.000023 wlan0.A[38] 2.4GHz Roam profile[0]: RSSI:[-10,-75], Flag:0xc, ScanParams:(2,3000,180,2,1200), Candidate:(20,-65,50)
+000045.000034 wlan0.A[39] 2.4GHz Roam profile[0]: RSSI:[-75,-128], Flag:0x10, ScanParams:(2,90,30,2,180), Candidate:(12,-65,50)
+000045.000044 wlan0.A[40] 5GHz Roam profile[0]: RSSI:[-75,-128], Flag:0x10, ScanParams:(2,90,30,2,180), Candidate:(12,-84,10)
+000045.000174 wlan0.A[41] init@936:Setting AVC advisory notification periodicity to 300
+000045.000207 wlan0.A[42] init@142:Override Adaptive Roaming support: 1
+Skywalk resource ivars->fLlwTxRingSize 1024 ivars->fTxRingSize 512 ivars->fRxRingSize 1024 skywalkPacketPoolSize 4608
+000045.003196 wlan0.A[43] setSkywalkEnable@19154:Skywalk enabled by system configuration
+000045.003211 wlan0.A[44] setSkywalkEnable@19157:Skywalk enabled by boot-args
+000045.003331 wlan0.A[45] createSkywalkInterface@48804:Creating skywalk interface 0 id:0 role:1, sif 0x3fa5abe16995dde3
+Skywalk Interface added monitor timers
+Finding _faultReporter
+IOAccessoryUSBConnectShim: chargerFunction: ilim=100mA type=0
+000045.015461 wlan0.A[46] quiesce@1247:quiesce commander before fq 144 aq 0 obq 0 compq 0 pq 0
+000045.015485 wlan0.A[47] quiesce@1278:quiesce commander after fq 144 aq 0 obq 0 compq 0 pq 0
+000045.015495 wlan0.A[48] quiesce@1279:Command path disabled.
+000045.015511 wlan0.A[49] halt@5945:Issuing trap Before issuing flr in halt()
+000045.015521 wlan0.A[50] trapDevice@17807:Chip already trapped or chip not yet booted
+000045.017201 wlan0.A[51] destroyFirmwarePCIeIPC@8966:destroy ipc
+000045.048497 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::setupDeviceSetAddress: setting USB device address 30
+IOAccessoryUSBConnectShim: chargerFunction: ilim=100mA type=0
+000045.118978 wlan0.A[52] resetOverrideChannelsInUserRoamCache@552:Failed to Configure User Roam Cache Channels in FW
+000045.118989 wlan0.A[53] clearChannelsFromUserRoamCache@524:Failed to Configure User Roam Cache Channels in FW
+000045.119001 wlan0.A[54] loadAndSetup@5253:Chip image loading begins.Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+AppleSPUSphereDriver:setData isp-ext-swgen-reg, reg=21100c00c, value=80
+AppleSPUSphereDriver:setData aop-isp-buffer, address=8ae818000, size=4000
+AppleSPUSphereDriver:setData isp-aop-buffer, address=8ae71c000, size=4000
+AppleSPUSphereDriver:setData isp-ext-swgen-reg_rx, int_num=3f 
+AppleSPUSphereDriver:setData isp-ext-swgen-reg, reg=21100c00c, value=80
+AppleSPUSphereDriver:setData aop-isp-buffer, address=8afc8c000, size=4000
+AppleSPUSphereDriver:setData isp-aop-buffer, address=802f10000, size=4000
+AppleSPUSphereDriver:setData isp-ext-swgen-reg_rx, int_num=3e 
+AppleSPUSphereDriver:setData isp-ext-swgen-reg, reg=21100c00c, value=80
+AppleSPUSphereDriver:setData aop-isp-buffer, address=8ae7a0000, size=4000
+AppleSPUSphereDriver:setData isp-aop-buffer, address=8b0524000, size=4000
+AppleSPUSphereDriver:setData isp-ext-swgen-reg_rx, int_num=3d 
+000045.250356 wlan0.A[55] publishHWIdentifiers@5293:Platform set to "module-instance=herculesk"
+000045.250372 wlan0.A[56] publishHWIdentifiers@5303: "s" = "B1"
+000045.250380 wlan0.A[57] publishHWIdentifiers@5303: "M" = "GINS"
+000045.250387 wlan0.A[58] publishHWIdentifiers@5303: "m" = "5.3"
+000045.250395 wlan0.A[59] publishHWIdentifiers@5303: "V" = "m"
+000045.250402 wlan0.A[60] publishHWIdentifiers@5303: "P" = "herculesk"
+000045.250476 wlan0.A[61] attachPCIeBusGated@3738: Published 'WiFiCapability': [awdl:1, ranging:0]
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+000045.262292 wlan0.A[62] loadImage@7177:Image: 0 [ 0< FIRMWARE{975491} >975491 |  pad  | 975616< NVRAM_PROVISIONED{26} >975642 | 975642< NVRAM{6372} >982014 | pad ] 999424
+000045.262320 wlan0.A[63] loadImage@7200:Chip RAM: 0 [ 0< firmware{975491} >975491 | 975496 ~ 975496< free{394088} >1369584 | 1369848< nvram{6398} >1376246 | 1376256 ~ pad | 1376252 @0xf9be0641 ] 1376256
+tx_flush:1170: disk0s1 xid 121 tx stats: # 60 finish 60 enter 419 wait 5 405us close 0us flush 1344us
+000045.300814 AppleBasebandD101::chargerDesenseGated: Error: 0xe00002c7
+000045.317607 AppleBasebandD101::radioOnGated: on 1, already on 1
+000045.372238 wlan0.A[64] loadImage@7223:Chip RAM: Randomized bytes @ 1369584< RANDOMIZED{264} >1369848
+IOAccessoryUSBConnectShim: chargerFunction: ilim=0mA type=1
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=0, (0)
+IOAccessoryUSBConnectShim: chargerFunction: ilim=100mA type=0
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=100, (0)
+000045.559263 AppleNubSynopsysOTG3Device@0: IOUSBDeviceController::setupDeviceSetAddress: setting USB device address 31
+IOAccessoryUSBConnectShim: chargerFunction: ilim=100mA type=0
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+IOAccessoryManagerUserClient::extConfigurePower: PowerModeOff
+IOAccessoryManager::configureAccessoryPowerGated: tristar: Configuring Accessory Power to (1)
+Port-Lightning::configureAccessoryPowerGated: PowerModeOff
+000045.832161 AppleNubSynopsysOTG3Device@31: IOUSBDeviceController::setupDeviceSetConfiguration: configuration 0 -> 5
+AppleUSBDeviceMux::message - kMessageInterfaceWasActivated
+IOAccessoryUSBConnectShim: chargerFunction: ilim=500mA type=0
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=500, (0)
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+ACMRM: _logPolicy: SAVING: ver=8 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=1673520721 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 3 seconds.
+ACMRM: _logPolicy: SAVING: ver=8 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=1673520721 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 3 seconds.
+IOAccessoryUSBConnectShim: chargerFunction: ilim=500mA type=0
+Port-Lightning::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Lightning::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Lightning::handleAccessoryPowerWillChange: ret=0x0 acc1=0x69646273, acc2=0x0, set PowerModeOff?
+Port-Lightning::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+Port-Lightning::setAccessoryPower: (enabled=0 highCurrent=0 sleepPower=0 BM3=0 lowVoltage=0)
+IOAccessoryDock9Pin::handleAccessoryPowerDidChange: tristar: Processing power state change to 1
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+IOAccessoryManager::configureAccessoryPowerReadyGated: tristar: Configuring Accessory Power Ready 0->0
+000045.985146 wlan0.A[65] loadChipImage@6738:READ after: nvramPointerOffset[0x0014fffc] 0x213124
+000045.992377 wlan0.A[66] destroyFirmwarePCIeIPC@8966:destroy ipc
+000046.000183 wlan0.A[67] createFirmwarePCIeIPC@8529:FW deviceShared flags[0x70010007], sharedAddressOffset[0x0014fffc], sharedBackplaneAddress[0x00213124], deviceSharedOffset[0x000a3124]
+000046.015729 wlan0.A[68] createFirmwarePCIeIPC@8545:FW supports IPC protocol V7, Host supports V7
+SEP EP 12 enabled
+000046.026980 wlan0.A[69] createFirmwarePCIeIPC@8550:deviceSharedFlags2 = 0x40102001
+000046.034096 wlan0.A[70] createFirmwarePCIeIPC@8680:Using txChipDelayToUsecMultiplier=128 rxChipDelayToUsecMultiplier=32
+000046.044350 wlan0.A[71] createFirmwareEcounterLogger@16017: CCFlags: 0x80000000000, CCLevel: 127 ConsoleFlags: 0x0, ConsoleLevel: -1
+000046.057149 wlan0.A[72] createFirmwarePCIeIPC@8736:Segments: 0x3fa5abe2a6581de3
+000046.064303 wlan0.A[73] createFirmwarePCIeIPC@8765:host fHWTimestampingCapable=0, host fSWTimestampingCapable=0
+000046.079150 wlan0.A[74] initTransmitFlows@8481:Flows: max=40 reserved=3 maxId=43 fwmax=40 fwmaxsub=43 fwbtlognomaxqincrease=0
+000046.089219 wlan0.A[75] loadAndSetup@5255:Chip image loading has finished.000046.096711 wlan0.A[76] reset@1350:reset commander before move fq 144 aq 0 obq 0 compq 0 pq 0
+000046.105111 wlan0.A[77] reset@1367:reset commander after move fq 144 aq 0 obq 0 compq 0 pq 0
+000046.113506 wlan0.A[78] resetFreeCommanderPool@1303:kCmdQFree Count 144
+000046.119857 wlan0.A[79] wakeup@1291:Enabled command path.
+000046.129073 wlan0.A[80] setupFirmware@6559: Firmware Version: wl0: Mar 12 2022 00:30:14 version 13.90.7.0.0.0.66 FWID 01-230c0c80
+
+000046.143173 wlan0.A[81] setupFirmware@6591:Firmware InterfaceVersion: 6
+000046.217377 wlan0.A[82] processChipCaps@5792:   Supported bit flag[  28], cap[ 'dualband' ] - 
+000046.224560 wlan0.A[83] processChipCaps@5792:   Supported bit flag[  29], cap[ 'cdef' ] - 
+000046.233014 wlan0.A[84] processChipCaps@5792:   Supported bit flag[  62], cap[ 'clm_restrict' ] - 
+000046.242861 wlan0.A[85] processChipCaps@5792:   Supported bit flag[  27], cap[ 'epno' ] - 
+000046.249935 wlan0.A[86] processChipCaps@5792:   Supported bit flag[  30], cap[ 'ndoe' ] - 
+000046.258387 wlan0.A[87] processChipCaps@5792:   Supported bit flag[  21], cap[ 've' ] - 
+000046.266837 wlan0.A[88] processChipCaps@5792:   Supported bit flag[  31], cap[ 'pktfltr2' ] - 
+000046.275216 wlan0.A[89] processChipCaps@5792:   Supported bit flag[  25], cap[ 'wnm' ] - 
+000046.283671 wlan0.A[90] processChipCaps@5792:   Supported bit flag[  26], cap[ 'lpas' ] - 
+000046.292126 wlan0.A[91] processChipCaps@5792:   Supported bit flag[  17], cap[ 'anqpo' ] - 
+000046.299206 wlan0.A[92] processChipCaps@5792:   Supported bit flag[  32], cap[ 'fbtoverds' ] - 
+000046.309044 wlan0.A[93] processChipCaps@5792:   Supported bit flag[  10], cap[ 'dfrts' ] - 
+000046.316113 wlan0.A[94] processChipCaps@5792:   Supported bit flag[  34], cap[ 'evt_ext' ] - 
+000046.325865 wlan0.A[95] processChipCaps@5792:   Supported bit flag[  36], cap[ 'pfnx' ] - 
+000046.332935 wlan0.A[96] processChipCaps@5792:   Supported bit flag[  61], cap[ 'bkoff_evt' ] - 
+000046.342696 wlan0.A[97] processChipCaps@5792:   Supported bit flag[  37], cap[ 'bsstrans' ] - 
+000046.351070 wlan0.A[98] processChipCaps@5792:   Supported bit flag[  38], cap[ 'mfp' ] - 
+000046.358063 wlan0.A[99] processChipCaps@5792:   Supported bit flag[  44], cap[ 'mimo_ps' ] - 
+000046.366482 wlan0.A[100] processChipCaps@5792:   Supported bit flag[  49], cap[ 'tko' ] - 
+000046.374884 wlan0.A[101] processChipCaps@5792:   Supported bit flag[  46], cap[ 'rsdb' ] - RSDB
+000046.384632 wlan0.A[102] processChipCaps@5792:   Supported bit flag[  47], cap[ 'ocl' ] - 
+000046.385450 wlan0.A[103] handleAudioNotification@195:get Message 0xe3ff8101
+[AOPAudio](info) Controller::_enableListeningIOHandler(0) hardware now disabled
+ACMRM: _logPolicy: SAVING: ver=8 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=1673520721 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 3 seconds.
+000046.421057 wlan0.A[104] processChipCaps@5792:   Supported bit flag[  48], cap[ 'proxd' ] - 
+000046.429486 wlan0.A[105] processChipCaps@5792:   Supported bit flag[  51], cap[ 'scanmac' ] - 
+000046.438178 wlan0.A[106] processChipCaps@5799: Unsupported bit flag[  52], cap[ 'tsync' ] - FW TimeSync
+000046.446764 wlan0.A[107] processChipCaps@5792:   Supported bit flag[  53], cap[ 'ifst' ] - FW Estats
+000046.456697 wlan0.A[108] processChipCaps@5792:   Supported bit flag[  56], cap[ 'ops' ] - OPS
+000046.465190 wlan0.A[109] processChipCaps@5792:   Supported bit flag[  57], cap[ 'bcntrim' ] - EBT
+000046.473817 wlan0.A[110] processChipCaps@5792:   Supported bit flag[  59], cap[ 'tvpm' ] - TVPM
+000046.482337 wlan0.A[111] processChipCaps@5792:   Supported bit flag[  35], cap[ 'awd_data_info' ] - AWD Data Info
+000046.492171 wlan0.A[112] processChipCaps@5792:   Supported bit flag[  60], cap[ 'lpr_scan' ] - 
+000046.497628 AppleBasebandD101::stateChangedGated: radio alive
+[AOP:UartBaseband.cpp:291] UartBasebandService UartQuiesce disabled
+000046.498187 AppleBasebandD101::pmuExtOnConfigGated: Wake state - param: 0 index: 0, wake: active, pull-down: disabled, interrupt source: enabled, force-block-wake: no
+000046.527410 wlan0.A[113] processChipCaps@5792:   Supported bit flag[   4], cap[ 'tdmtx' ] - 
+000046.535992 wlan0.A[114] processChipCaps@5792:   Supported bit flag[  15], cap[ 'btc_wifi_prot' ] - btc_wifi_prot
+000046.545863 wlan0.A[115] processChipCaps@5799: Unsupported bit flag[   6], cap[ 'nan' ] - NAN
+000046.554389 wlan0.A[116] processChipCaps@5799: Unsupported bit flag[  64], cap[ 'nanho' ] - NANHO
+000046.564220 wlan0.A[117] processChipCaps@5792:   Supported bit flag[  65], cap[ 'sae' ] - WPA3 SAE
+000046.572781 wlan0.A[118] processChipCaps@5799: Unsupported bit flag[  66], cap[ 'gcmp' ] - WPA3 Enterprise
+000046.582626 wlan0.A[119] processChipCaps@5792:   Supported bit flag[  68], cap[ 'nap' ] - Digital Nap
+000046.591112 wlan0.A[120] processChipCaps@5792:   Supported bit flag[  16], cap[ 'ap' ] - Tethering
+000046.599595 wlan0.A[121] processChipCaps@5792:   Supported bit flag[  54], cap[ 'dfsp' ] - DFS Proxy
+000046.609903 wlan0.A[122] processChipCaps@5799: Unsupported bit flag[   3], cap[ 'psbw' ] - PSBW
+000046.618450 wlan0.A[123] processChipCaps@5792:   Supported bit flag[  18], cap[ 'mpf' ] - Motion Assistance
+Clearing historical queue for cma endpoint
+000046.631124 wlan0.A[124] processChipCaps@5799: Unsupported bit flag[  69], cap[ 'txhist' ] - TX Datapath Histograms
+000046.642787 wlan0.A[125] processChipCaps@5792:   Supported bit flag[  73], cap[ 'ltecx' ] - LTE Coex Stats
+000046.651298 wlan0.A[126] processChipCaps@5792:   Supported bit flag[  74], cap[ 'ecounters' ] - Ecounters
+000046.661307 wlan0.A[127] processChipCaps@5792:   Supported bit flag[  75], cap[ 'sae-ap' ] - WPA3 SAE SoftAP
+000046.671774 wlan0.A[128] processChipCaps@5799: Unsupported bit flag[  76], cap[ 'sc' ] - Low Power Scan Core
+open by AppleSPUHIDDeviceUserClient 0x1000006f0 (0x0)
+000046.686048 wlan0.A[129] processChipCaps@5799: Unsupported bit flag[  77], cap[ 'fie' ] - IE Filter
+000046.694655 wlan0.A[130] processChipCaps@5799: Unsupported bit flag[  78], cap[ 'tx-prof' ] - Tx Profile
+000046.704876 wlan0.A[131] processChipCaps@5799: Unsupported bit flag[  79], cap[ 'dsa' ] - Dynamic SAR Averaging
+000046.714868 wlan0.A[132] processChipCaps@5799: Unsupported bit flag[  80], cap[ 'ltecxlbt' ] - LTE COEX LBT
+000046.724725 wlan0.A[133] processChipCaps@5792:   Supported bit flag[  81], cap[ 'rng_reseed' ] - Re Seed random generator
+000046.734572 wlan0.A[134] processChipCaps@5799: Unsupported bit flag[  83], cap[ 'avoid-bssid' ] - BSS Blacklist
+000046.745741 wlan0.A[135] processChipCaps@5799: Unsupported bit flag[  84], cap[ 'rc2cx' ] - RC2 Coex
+000046.754203 wlan0.A[136] processChipCaps@5799: Unsupported bit flag[  85], cap[ 'rc1cx' ] - RC1 Coex
+000046.764045 wlan0.A[137] processChipCaps@5799: Unsupported bit flag[  82], cap[ 'iot_bm' ] - Beacon Mute Mitigation
+000046.773905 wlan0.A[138] processChipCaps@5799: Unsupported bit flag[  87], cap[ 'iot_bd' ] - Beacon Drift Mitigation
+000046.783799 wlan0.A[139] processChipCaps@5799: Unsupported bit flag[  89], cap[ 'adv_ecounters' ] - Advance eCounters
+000046.795022 wlan0.A[140] processChipCaps@5799: Unsupported bit flag[  90], cap[ 'phy_ecounter' ] - PHY eCounter
+000046.804978 wlan0.A[141] processChipCaps@5799: Unsupported bit flag[  91], cap[ 'ptm' ] - PTM Support
+000046.813778 wlan0.A[142] processChipCaps@5799: Unsupported bit flag[  92], cap[ 'spmi' ] - SPMI Support
+000046.823646 wlan0.A[143] processChipCaps@5799: Unsupported bit flag[  93], cap[ 'phy_cal_ecounter' ] - PHYCAL eCounter
+000046.834895 wlan0.A[144] processChipCaps@5835:DigitalNap Supported
+000046.840686 wlan0.A[145] isAdvEcountersSupported@36598:advance eCounter cap string found? 0
+000046.889602 wlan0.A[146] configureDualPowerMode@47181:Set kFeatureDualPowerMode SET
+000046.951337 wlan0.A[147] setupFirmware@6859:WiFi MAC Address: 94:b0:1f:73:f3:11
+virtual IOMFBStatus IOMFB::UPPipe_H10P::apt_normal_mode_changed(IOMFB::AppleRegisterStream *): requesting transtition to auto mode
+IOMFBStatus IOMFB::UPPipe_H10P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H10P::RunMode): deferring: 4 -> 2
+virtual IOMFBStatus IOMFB::UPPipe_H10P::ready_for_run_mode_change(IOMFB::AppleRegisterStream *): initiating deferred run mode change: 4 -> 2
+000047.015973 wlan0.A[148] configureLqmRssiUpdates@36980:Setting rate_limit_msec 2000 rssi_levels -90, -85, -80, -75, -70, -65, -60. 
+000047.016924 wlan0.A[149] configureLqmChanQUpdates@37030:Setting rate_limit_msec: 5000 hysterisis: 2 bounds: 25,40,50,60,70,75,80,90 
+000047.022028 wlan0.A[150] configureWeightAvgLQMUpdates@36943:Weighted Averge RSSI Conf: NumTotal=8, NumRecent=2, WeightRecent=80%
+000047.022052 wlan0.A[151] configureWeightAvgLQMUpdates@36943:Weighted Averge SNR Conf: NumTotal=8, NumRecent=2, WeightRecent=80%
+000047.022062 wlan0.A[152] configureWeightAvgLQMUpdates@36943:Weighted Averge TXRATE Conf: NumTotal=8, NumRecent=0, WeightRecent=0%
+000047.022071 wlan0.A[153] configureWeightAvgLQMUpdates@36943:Weighted Averge RXRATE Conf: NumTotal=8, NumRecent=0, WeightRecent=0%
+000047.031745 wlan0.A[154] setStatsTimerIntervalMS@4330: Configured delta_stats_interval(secs): 5
+000047.037891 wlan0.A[155] configureMotionProfiles@1920:Configured Motion Profiles for SSID/BSSID Based PNO Networks
+000047.041085 wlan0.A[156] configureRangingParams@4510: Failed GET IOCTL, cret[0xe3ff8117]
+000047.071153 wlan0.A[157] configureProductInfoReporting@1832: ivars->fOSVersion OR ivars->fProductType is NULL!
+000047.085505 wlan0.A[158] configureMIMOPowerSaveParams@510:Configured SISO Power Policy
+000047.089196 wlan0.A[159] configureMRCThreshold@294:MRC Threshold for Diversity = -70 dB
+000047.098784 wlan0.A[160] querySDBPolicies@4449:SDB Capabilities: SDB:1 cores:2 curMode:5 Slice0 [1 2 0] Slice1 [2 2 0]
+000047.100717 wlan0.A[161] createDefaultReportersAndLegend@973:Adding IOReporter API ConfigureReport Calls 
+000047.109146 wlan0.A[162] wlan Invalid TVPM Temperature Value (16)
+wlan 0000: 01 00 10 00 64 00 00 00 02 00 ce ff 24 64 64 00  | ....d.......$dd.
+000047.136856 wlan0.A[163] setVIRTUAL_IF_CREATE@31438: create virtif role 5
+IO80211VirtualInterface::AppleBCMWLANIO80211APSTAInterface::init name <ap1> role 5
+AppleBCMWLANIO80211APSTAInterface::apStaAttachToBpf name <ap1> role 5 successful attach to bpf type 147
+IO80211VirtualInterface::init ivars->_controller is 0x3fa5abddd0dd1de3, provider is 0x3fa5abe169dcbbe3 role is 5 
+Finding _faultReporter
+Not adding subscription due to missing boot-arg wlan.iorsubscriptions
+IO80211VirtualInterface::init SUCCESS ivars->_controller is 0x3fa5abddd0dd1de3, provider is 0x3fa5abe169dcbbe3
+000047.141000 wlan0.A[164] setupDriver@5531: Core Driver Initialization Time 47.140993375
+Not adding subscription due to missing boot-arg wlan.iorsubscriptions
+ Creating all peerManager reporters
+bpfAttach len 72 dlt 12
+000047.143840 wlan0.A[165] initializeKeepAliveCapabilities@194:Max supported TCP socket offloads 16
+000047.146882 wlan0.A[166] initDefaultScanParametersFromChip@3498:Default Scan Home Away Time is 100
+000047.146911 wlan0.A[167] enableDatapath@324:AppleBCMWLANSkywalkInterface en0 ifid 0 Role Infrastructure enable skywalk Datapath.
+000047.146934 wlan0.A[168] bootChipImage@5216: posting APPLE80211_M_DRIVER_AVAILABLE, available[1] reason[0xe0822803] sub_reason[0x00000000] minor_reason[0x00000000]
+000047.146971 wlan0.A[169] setChipEventLogFlags@34880:Setting Chip event fChipEventLogFlags to 0x0
+000047.146981 wlan0.A[170] removeFirmwareLoader@47342:Terminating/releasing request of firmware loading
+IOMFBStatus IOMFB::UPTSQManager::power_down_M3(IOMFB::AppleRegisterStream *, UPTSQManager::ModeChangeWaiter *): request mode change: Auto
+000047.168213 wlan0.A[171] enable@367:AppleBCMWLANSkywalkInterface en0 ifid 0 ready to handle packet data, running 1
+000047.168233 wlan0.A[172] enable@375:data path cannot enable, power state 0, watchdog status 0
+bpfAttach len 128 dlt 127
+000047.189386 wlan0.A[173] setPOWER@31957: [wifid]: Setting power state to 1. stateFlags(1)
+000047.189445 wlan0.A[174] wakeup@1291:Enabled command path.
+000047.189460 wlan0.A[175] enableDatapath@324:AppleBCMWLANSkywalkInterface en0 ifid 0 Role Infrastructure enable skywalk Datapath.
+000047.197061 wlan0.A[176] powerOn@35547: posting APPLE80211_M_DRIVER_AVAILABLE, available[1] reason[0xe0821803] sub_reason[0x00000000] minor_reason[0x00000000]
+en0: channel changed to 34
+000047.199986 wlan0.A[177] configureProductInfo@1720:osVersion:15.7.1 productType:iPhone10,6 
+000047.200006 wlan0.A[178] configureProductInfoReporting@1830:
+ osVersion:'15.7.1' productType:'iPhone10,6'
+000047.200530 wlan0.A[179] setProperties@10470:WiFi LQM CrashTracer Feature flag Enabled
+000047.200556 wlan0.A[180] setProperties@10475:WiFi ViVODatapath Tuning Feature flag Enabled
+
+000047.200571 wlan0.A[181] setProperties@10482:DNS symptoms feature flag enabled
+000047.202369 wlan0.A[182] setProperties@9289:Active during sleep supported (false)
+000047.219067 wlan0.A[183] createProxInterface@24234: ma 3A:35:01:01:C1:02 associated 0
+IO80211VirtualInterface::AppleBCMWLANProximityInterface::init name <awdl0> role 4
+AppleBCMWLANProximityInterface::peerToPeerAttachToBpf name <awdl0> role 4 successful attach to bpf type 147
+IO80211VirtualInterface::init ivars->_controller is 0x3fa5abddd0dd1de3, provider is 0x3fa5abe169dcbbe3 role is 4 
+Finding _faultReporter
+Not adding subscription due to missing boot-arg wlan.iorsubscriptions
+IO80211VirtualInterface::init SUCCESS ivars->_controller is 0x3fa5abddd0dd1de3, provider is 0x3fa5abe169dcbbe3
+000047.224085 wlan0.A[184] setVIRTUAL_IF_CREATE@31433: create virtif <awdl0> role 4
+IOMFBStatus IOMFB::UPTSQManager::power_down_M3(IOMFB::AppleRegisterStream *, UPTSQManager::ModeChangeWaiter *): disabling M3
+AirPort: Link Up on awdl0. Reason Unspecified (1)
+000047.328120 wlan0.A[185] createChipInterface@3609:createChipInterface: Creating AWDL chip interface 2, fw ver 6
+000047.330364 wlan0.A[186] createChipInterface@3637:createChipInterface: Return bssCfgIdx 2, ifIdx 2, ifName wl0.2
+000047.330449 wlan0.A[187] createSkywalkInterface@48804:Creating skywalk interface llw0 id:2 role:2, sif 0x3fa5abe169959de3
+000047.331372 wlan0.A[188] handleEvent@395: AWDL interface index is: 2 (bsscfg=2), fwVer 6
+Not adding subscription due to missing boot-arg wlan.iorsubscriptions
+ Creating all peerManager reporters
+000047.334017 wlan0.A[189] setLinkState@249:awdl0 LowLatencyInterface setLinkState: 2
+000047.334035 wlan0.A[190] enableDatapath@324:AppleBCMWLANSkywalkInterface llw0 ifid 2 Role LowLatency enable skywalk Datapath.
+llw0: channel changed to 34
+llw0: channel changed to 34
+000047.338219 wlan0.A[191] setAWDL_Config@3541: bring up awdl if success! [3A:35:CC:01:C1:02] election_metric=0
+000047.345453 wlan0.A[192] setAWDL_Config@3584: success, set BSSID to: 00:25:00:ff:94:73
+000047.354197 wlan0.A[193] setLinkState@249:awdl0 LowLatencyInterface setLinkState: 2
+000047.354218 wlan0.A[194] enableDatapath@324:AppleBCMWLANSkywalkInterface llw0 ifid 2 Role LowLatency enable skywalk Datapath.
+IOAccessoryManager::configureAccessoryPowerGated: tristar: Configuring Accessory Power to (3)
+Port-Lightning::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Lightning::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Lightning::handleAccessoryPowerWillChange: ret=0x0 acc1=0x69646273, acc2=0x0, set PowerModeOff?
+Port-Lightning::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+Port-Lightning::setAccessoryPower: (enabled=0 highCurrent=0 sleepPower=0 BM3=0 lowVoltage=0)
+IOAccessoryDock9Pin::handleAccessoryPowerDidChange: tristar: Processing power state change to 1
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+IOAccessoryManager::configureAccessoryPowerReadyGated: tristar: Configuring Accessory Power Ready 0->1
+Port-Lightning::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Lightning::handleAccessoryPowerWillChange: ret=0x0 acc1=0x69646273, acc2=0x0, set PowerModeOff?
+Port-Lightning::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+Port-Lightning::setAccessoryPower: (enabled=0 highCurrent=0 sleepPower=0 BM3=0 lowVoltage=0)
+IOAccessoryDock9Pin::handleAccessoryPowerDidChange: tristar: Processing power state change to 1
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+handleIDBusState: already in progress
+AppleCBTL1612::setACCxConfig: (acc1Config=0x69646273, acc2Config=0x0)
+AppleCBTL1612::setACCxConfig: orientationCheck=0, ACC_CTRL=0
+handlePowerSourceDetect: D1ID=0, D1IG=0, D1AR=500, (0)
+IOPort::registerService(): [Port-Lightning@101] Registering service Port-Lightning@101...
+
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (3)
+Port-Inductive::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+ACMRM-C: _logRecord: acc-cache-add: adding: tm=1673520722 hash(19)=<2000100000001f011f251f000094ad1e71668e> data(0)=<>.
+ACMRM-S: setData: saving acc-cache (len=2756) in 3 seconds.
+ACMRM-C: _logRecord: acc-cache-check: returning unexpired: tm=1673520722 hash(19)=<2000100000001f011f251f000094ad1e71668e> data(0)=<>.
+IOAccessoryTRM::_setPropertiesGated(): Setting USB Restricted Mode: NO... (m_mgrPrimaryPortID: 1)
+virtual IOMFBStatus IOMFB::UPPipe_H10P::apt_normal_mode_changed(IOMFB::AppleRegisterStream *): requesting transtition to normal mode
+IOMFBStatus IOMFB::UPPipe_H10P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H10P::RunMode): deferring: 2 -> 4
+virtual IOMFBStatus IOMFB::UPPipe_H10P::ready_for_run_mode_change(IOMFB::AppleRegisterStream *): initiating deferred run mode change: 2 -> 4
+tx_flush:1170: disk0s1 xid 141 tx stats: # 80 finish 80 enter 431 wait 7 403us close 2us flush 1257us
+Adding setInterfaceAverageCCA with cca 12
+000047.801801 wlan0.A[195] getIndexForProcessName@98:Adding new process to IOReporting caller list: kernel_task
+IOMFB: load APT M3 IMem : size 0x3ebc
+IOMFB: load APT M3 DMem : size 0x30ec
+IOMFB RTBandwidth: program_M3_rt_config: RdIrq 2, WrIrq 3, offset 4
+IOMFB: clearing M3 reset
+IOMFB: timebase_offset = 9
+IOMFB: switch to normal mode succeeded
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleCredentialManager: sendSEPCommand: SEP cmd(36) took 1/1 ms -> ioErr=0x0 acmErr=0.
+tx_flush:1170: disk0s1 xid 161 tx stats: # 100 finish 100 enter 427 wait 7 403us close 2us flush 1192us
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: sendSEPCommand: SEP cmd(39) took 0/0 ms -> ioErr=0x0 acmErr=0.
+ACMRM-S: _saveAll: pushing policy -> locker (gen=2 len=41) (csLen=86 critical=NO).
+ACMRM-S: _saveAll: pushing acc-cache -> locker (gen=2 len=2756) (csLen=86 critical=NO).
+tx_flush:1170: disk0s1 xid 181 tx stats: # 120 finish 122 enter 738 wait 11 652us close 5us flush 1248us
+virtual bool CoreAnalyticsUserClient::initWithTask(task_t, void *, UInt32, OSDictionary *)::165:success
+IOReturn CoreAnalyticsHub::setClientGated(CoreAnalyticsUserClient *)::321:adding userClient
+IOReturn CoreAnalyticsHub::__newUserClientGated(task_t, void *, UInt32, OSDictionary *, IOUserClient **)::276:Successfully opened
+virtual IOReturn CoreAnalyticsUserClient::clientMemoryForType(UInt32, IOOptionBits *, IOMemoryDescriptor **)::269: got memory descriptor with 16432
+tx_flush:1170: disk0s1 xid 201 tx stats: # 140 finish 145 enter 672 wait 18 1258us close 9us flush 1618us
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+tx_flush:1170: disk0s1 xid 221 tx stats: # 160 finish 166 enter 611 wait 21 1221us close 12us flush 1606us
+[ANS2:client1] New BlogBuf low 7
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: mount_apfs (pid 228); parent: mount (pid 227)
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 239)
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+handle_mount:668: disk0s1s1 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+nx_global_extent_manipulation_lock:5417: disk0s1 nx_global_extent_manipulation_lock(0, 1), (0, 0, 0, 0)
+nx_global_extent_manipulation_lock:5487: disk0s1 Shared global_extent_manipulation lock taken after 0 attempts
+handle_revert_to_snapshot:5772: disk0s1s1 On next mount, volume will revert to snapshot 'com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8' w/snap xid 53
+nx_global_extent_manipulation_unlock:5512: disk0s1 nx_global_extent_manipulation_unlock(0, 1), (0, 0, 1, 1)
+apfs_log_mount_unmount:1889: disk0s1s1 unmounting volume System, requested by: com.apple.MobileSoftwareUpdate. (pid 210); parent: launchd (pid 1)
+apfs_vfsop_unmount:2740: disk0s1s1 waiting for purgatory cleaner to finish
+authapfs_seal_restore:482: disk0s1s1 integrity protection will be re-enabled
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 7
+apfs: total mem allocated: 41093764 (39 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 7)
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: mount_apfs (pid 233); parent: mount (pid 232)
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 241)
+tx_flush:1170: disk0s1 xid 241 tx stats: # 180 finish 186 enter 595 wait 22 1185us close 11us flush 1919us
+revert_to_snapshot:1629: disk0s1s1 Reverting to snapshot w/xid 53 and old sblock oid 15536592.
+revert_extents_to_snapshot:1453: disk0s1s1 free'ing extents in main extentref tree 15380941
+free_allocated_snapshot_extents:1368: disk0s1s1 processed 0 extents and free'd 0 blocks
+supplemental_tree_revert:324: disk0s1s1 reverted supplemental tree (type 5): 15431411 -> 15380873
+omap_cleanup:1496: disk0s1s1 started cleaning snapshots 242-242
+omap_cleanup:1718: disk0s1s1 completed cleaning snapshot 242, om_snap_count 1 om_most_recent_snap 242
+obj_cache_remove_reverted_fs_objects:1562: disk0s1s1 removing reverted fs objects for fs 1026: 54 - 242
+revert_to_snapshot:1723: disk0s1s1 DONE reverting to snapshot w/xid 53
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 244)
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+handle_mount:668: disk0s1s1 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+apfs_stop_bg_work:1065: disk0s1s1 Volume System is unmounting, stop any bg work
+apfs_log_mount_unmount:1889: disk0s1s1 unmounting volume System, requested by: com.apple.MobileSoftwareUpdate. (pid 210); parent: launchd (pid 1)
+apfs_vfsop_unmount:2740: disk0s1s1 waiting for purgatory cleaner to finish
+authapfs_seal_restore:482: disk0s1s1 integrity protection will be re-enabled
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 7
+apfs: total mem allocated: 47379892 (45 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 7)
+apfs_log_mount_unmount:1889: disk0s1s6 updating mounted volume Preboot, requested by: mount_apfs (pid 236); parent: mount (pid 235)
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: mount_apfs (pid 238); parent: mount (pid 237)
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 247)
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+handle_mount:668: disk0s1s1 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+nx_global_extent_manipulation_lock:5417: disk0s1 nx_global_extent_manipulation_lock(0, 1), (0, 0, 0, 0)
+nx_global_extent_manipulation_lock:5487: disk0s1 Shared global_extent_manipulation lock taken after 0 attempts
+handle_revert_to_snapshot:5772: disk0s1s1 On next mount, volume will revert to snapshot 'com.apple.os.update-A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8' w/snap xid 53
+nx_global_extent_manipulation_unlock:5512: disk0s1 nx_global_extent_manipulation_unlock(0, 1), (0, 0, 1, 1)
+apfs_log_mount_unmount:1889: disk0s1s1 unmounting volume System, requested by: com.apple.MobileSoftwareUpdate. (pid 210); parent: launchd (pid 1)
+apfs_vfsop_unmount:2740: disk0s1s1 waiting for purgatory cleaner to finish
+authapfs_seal_restore:482: disk0s1s1 integrity protection will be re-enabled
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 7
+apfs: total mem allocated: 47443655 (45 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 7)
+apfs_log_mount_unmount:1889: disk0s1s1 mounting volume System, requested by: mount_apfs (pid 240); parent: mount (pid 239)
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 249)
+revert_to_snapshot:1629: disk0s1s1 Reverting to snapshot w/xid 53 and old sblock oid 15536592.
+revert_extents_to_snapshot:1453: disk0s1s1 free'ing extents in main extentref tree 15380865
+free_allocated_snapshot_extents:1368: disk0s1s1 processed 0 extents and free'd 0 blocks
+supplemental_tree_revert:324: disk0s1s1 reverted supplemental tree (type 5): 15380873 -> 15381609
+omap_cleanup:1496: disk0s1s1 started cleaning snapshots 250-250
+000055.164655 wlan0.A[196] setProperties@9094:setProperties: ERROR: Unexpected non-ioctl set property call for this platform
+omap_cleanup:1718: disk0s1s1 completed cleaning snapshot 250, om_snap_count 1 om_most_recent_snap 250
+obj_cache_remove_reverted_fs_objects:1562: disk0s1s1 removing reverted fs objects for fs 1026: 54 - 250
+revert_to_snapshot:1723: disk0s1s1 DONE reverting to snapshot w/xid 53
+authapfs_seal_break:383: disk0s1s1 integrity protection will be disabled (from xid: 251)
+handle_mount:655: disk0s1s1 vol-uuid: 61706673-7575-6964-0001-766F6C756E00 block size: 4096 block count: 15624989 (unencrypted; flags: 0x1; features: 28.0.12)
+handle_mount:668: disk0s1s1 setting dev block size to 4096 from 512
+nx_volume_group_update:7762: disk0s1s1 Volume System is not in a volume group
+apfs_log_mount_unmount:1889: disk0s1s1 unmounting volume System, requested by: com.apple.MobileSoftwareUpdate. (pid 210); parent: launchd (pid 1)
+apfs_vfsop_unmount:2740: disk0s1s1 waiting for purgatory cleaner to finish
+authapfs_seal_restore:482: disk0s1s1 integrity protection will be re-enabled
+apfs_vfsop_unmount:3074: disk0s1 nx_num_vols_mounted is 7
+apfs: total mem allocated: 46996523 (44 mb);
+apfs_vfsop_unmount:3087: all done.  going home.  (numMountedAPFSVolumes 7)
+[ANS2:client1] New BlogBuf low 6
+tx_flush:1170: disk0s1 xid 261 tx stats: # 200 finish 206 enter 585 wait 26 1512us close 1913us flush 2844us
+apfs_vnop_reclaim:14304: disk0s1s1 free'ing 1 iterators
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: sendSEPCommand: SEP cmd(19) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(2) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(36) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(19) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(36) took 1/1 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 1/1 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(32) took 0/0 ms -> ioErr=0x0 acmErr=0.
+AppleCredentialManager: sendSEPCommand: SEP cmd(19) took 0/0 ms -> ioErr=0x0 acmErr=0.
+virtual IOReturn AppleNVMeUpdateUC::externalMethod(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *, void *)::433:main dispatcher, selector=0x9 
+IOReturn AppleNVMeUpdateUC::ExecuteRequest(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *)::369:selector=0x9 
+virtual IOReturn AppleNVMeUpdateUC::externalMethod(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *, void *)::461:main dispatcher, selector=0x9 status = 0x00000000 
+virtual IOReturn AppleNVMeUpdateUC::externalMethod(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *, void *)::433:main dispatcher, selector=0x9 
+IOReturn AppleNVMeUpdateUC::ExecuteRequest(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *)::369:selector=0x9 
+AppleSEPKeyStore:11114:115: operation failed (sel: 17 ret: e00002c2)
+virtual IOReturn AppleNVMeUpdateUC::externalMethod(uint32_t, IOExternalMethodArguments *, IOExternalMethodDispatch *, OSObject *, void *)::461:main dispatcher, selector=0x9 status = 0x00000000 
+tx_flush:1170: disk0s1 xid 281 tx stats: # 220 finish 226 enter 841 wait 27 1478us close 1739us flush 3114us
+IOAccessoryPortUSB::setUSBRoleSwitchMask Index 0 Value 1
+000090.039256 wlan0.A[197] configurePNONetworks@931: rv[0x00000000] fWoWPNOConfigured[1] fBGScanCacheState[1] fBGScanState[0] fWoWPNOSSIDNetworkCount[0] fWoWPNONetworkCount[0] fWoWPNOExcludedSSIDNetworkCount[0] fWoWPNOBSSIDNetworkCount[0]
+000090.082766 wlan0.A[198] configurePNONetworks@878: Enhanced PNO: Added 3 new set of preferred Networks Total 3 
+000090.092713 wlan0.A[199] configureBGScanParams@1756: BSSID Based PNO and Background Scan Cache are Enabled
+000090.104482 wlan0.A[200] configurePNONetworks@931: rv[0x00000000] fWoWPNOConfigured[1] fBGScanCacheState[1] fBGScanState[0] fWoWPNOSSIDNetworkCount[0] fWoWPNONetworkCount[3] fWoWPNOExcludedSSIDNetworkCount[0] fWoWPNOBSSIDNetworkCount[3]
+AppleSEPKeyStore:11114:68: operation failed (sel: 57 ret: e00002bc)
+open by AppleSPUHIDDeviceUserClient 0x10000077b (0x0)
+IOAccessoryPortUSB::setUSBRoleSwitchMask Index 0 Value 1
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+tx_flush:1170: disk0s1 xid 301 tx stats: # 240 finish 246 enter 882 wait 31 2596us close 1652us flush 4039us
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+AppleCredentialManager: sendSEPCommand: SEP cmd(2) took 0/0 ms -> ioErr=0x0 acmErr=0.
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+tx_flush:1170: disk0s1 xid 321 tx stats: # 260 finish 266 enter 972 wait 38 4043us close 1744us flush 4963us
+AppleCredentialManager: sendSEPCommand: SEP cmd(2) took 0/0 ms -> ioErr=0x0 acmErr=0.
+[ANS2:client1] New BlogBuf low 5
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+tx_flush:1170: disk0s1 xid 341 tx stats: # 280 finish 289 enter 974 wait 48 4349us close 1628us flush 5970us
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+(dart-scaler) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+(dart-scaler) AppleT8015DART::_dartInitializeStateCapture: DART state capture <ptr>
+(dart-scaler) AppleT8015DART::_smmuInitializeStateCapture: SMMU state capture <ptr>
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 212 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 212
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 249 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 249
+tx_flush:1170: disk0s1 xid 361 tx stats: # 300 finish 308 enter 1207 wait 53 4084us close 1520us flush 6169us
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+tx_flush:1170: disk0s1 xid 381 tx stats: # 320 finish 328 enter 1146 wait 54 4027us close 1450us flush 5862us
+tx_flush:1170: disk0s1 xid 401 tx stats: # 340 finish 348 enter 1085 wait 55 3965us close 1365us flush 5565us
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+tx_flush:1170: disk0s1 xid 421 tx stats: # 360 finish 368 enter 1037 wait 56 3904us close 1290us flush 5335us
+tx_flush:1170: disk0s1 xid 441 tx stats: # 380 finish 388 enter 985 wait 57 3841us close 1223us flush 5136us
+tx_flush:1170: disk0s1 xid 461 tx stats: # 400 finish 408 enter 937 wait 57 3841us close 1162us flush 4953us
+tx_flush:1170: disk0s1 xid 481 tx stats: # 420 finish 428 enter 893 wait 57 3841us close 1106us flush 4747us
+tx_flush:1170: disk0s1 xid 501 tx stats: # 440 finish 448 enter 853 wait 57 3841us close 1056us flush 4553us
+tx_flush:1170: disk0s1 xid 521 tx stats: # 460 finish 468 enter 817 wait 59 3721us close 1010us flush 4380us
+tx_flush:1170: disk0s1 xid 541 tx stats: # 480 finish 488 enter 783 wait 59 3721us close 968us flush 4231us
+tx_flush:1170: disk0s1 xid 561 tx stats: # 500 finish 508 enter 754 wait 59 3721us close 929us flush 4090us
+tx_flush:1170: disk0s1 xid 581 tx stats: # 520 finish 528 enter 725 wait 61 3606us close 894us flush 3951us
+tx_flush:1170: disk0s1 xid 601 tx stats: # 540 finish 548 enter 698 wait 61 3606us close 861us flush 3824us
+tx_flush:1170: disk0s1 xid 621 tx stats: # 560 finish 570 enter 675 wait 62 3682us close 830us flush 3741us
+tx_flush:1170: disk0s1 xid 641 tx stats: # 580 finish 589 enter 652 wait 64 3648us close 804us flush 3651us
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+open by AppleSPUHIDDeviceUserClient 0x100000913 (0x0)
+close by AppleSPUHIDDeviceUserClient 0x100000913 (0x0)
+tx_flush:1170: disk0s1 xid 661 tx stats: # 600 finish 609 enter 631 wait 65 3598us close 777us flush 3550us
+tx_flush:1170: disk0s1 xid 681 tx stats: # 620 finish 629 enter 613 wait 66 3547us close 752us flush 3461us
+open by AppleSPUHIDDeviceUserClient 0x100000bd7 (0x0)
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleCredentialManager: sendSEPCommand: SEP cmd(36) took 2/2 ms -> ioErr=0x0 acmErr=0.
+open by AppleSPUHIDDeviceUserClient 0x100000bdc (0x0)
+open by AppleSPUHIDDeviceUserClient 0x100000bde (0x0)
+newUserClient: User Client instantiated for interfaceRole:4, type:4
+AppleBCMWLANProximityInterface::newUserClient name <awdl0> role 4, type 4, interfaceRole: 4: Initialized new user client
+AppleBCMWLANProximityInterface::newUserClient name <awdl0> role 4, type 1, interfaceRole: 4: Initialized new user client
+tx_flush:1170: disk0s1 xid 701 tx stats: # 640 finish 649 enter 601 wait 66 3547us close 729us flush 3670us
+close by AppleSPUHIDDeviceUserClient 0x100000bde (0x0)
+open by AppleSPUHIDDeviceUserClient 0x100000c12 (0x0)
+close by AppleSPUHIDDeviceUserClient 0x100000c12 (0x0)
+[AOP:AOPTouchService.cpp:515] [TTW] Orientation changed: 0x2 (135073197us)
+tx_flush:1170: disk0s1 xid 721 tx stats: # 660 finish 672 enter 590 wait 69 3494us close 707us flush 3624us
+open by AppleSPUHIDDeviceUserClient 0x100000c13 (0x0)
+close by AppleSPUHIDDeviceUserClient 0x100000c13 (0x0)
+[AOP:AOPTouchService.cpp:515] [TTW] Orientation changed: 0x1 (138922291us)
+[AOP:AOPTouchService.cpp:515] [TTW] Orientation changed: 0x2 (139557409us)
+[SMC:apComms.cpp:373] SMC HID Event: 01 02 01

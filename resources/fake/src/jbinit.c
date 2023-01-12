@@ -112,7 +112,7 @@ int main (int argc, char *argv[]) {
         if (!strcmp(argv[1], "-i"))
             userspace_reboot = true;
     if (userspace_reboot)
-        puts("already loaded\n");
+        puts("already mounted\n");
     else {
         char *const mount_rootfs[] = {"/sbin/mount", "-uw", "/", NULL};
         run_shell_command(mount_rootfs);
@@ -132,7 +132,7 @@ int main (int argc, char *argv[]) {
         char *const uicache[] = {"/usr/bin/uicache", "-a", NULL};
         run_shell_command(uicache);
         // To be sure
-        char *const sileo[] = {"/usr/bin/uicache", "-p", "/Applications/Sileo.app", NULL};
+        char *const sileo[] = {"/usr/bin/uicache", "-f", "-p", "/Applications/Sileo.app", NULL};
         run_shell_command(sileo);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
         run_shell_command(sbreload);
