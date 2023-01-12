@@ -405,7 +405,8 @@ zsdoc/data
 work/
 work/*
 tools/*
-tools/**/*
+/tools/PongoOS/checkra1n/Kernel15Patcher/Kernel15Patcher.ios
+/tools/termz/termz
 resources/*
 !tools/deps.sh
 !tools/parser.py
