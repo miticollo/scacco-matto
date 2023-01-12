@@ -4,7 +4,7 @@ CFLAGS	= -target arm64-apple-darwin -Wall -O2 -Wextra -Wfloat-equal -pedantic
 
 .PHONY: clean
 
-EXECS=normal debug-changing-rootdev debug-normal debug-normal-panic-rootlivefs
+EXECS=normal debug-changing-rootdev debug-normal
 
 all: $(EXECS)
 

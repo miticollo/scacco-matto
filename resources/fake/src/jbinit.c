@@ -5,8 +5,11 @@
 #include <string.h>
 #include <spawn.h>
 #include <dirent.h>
+#include <stdbool.h>
 
 #define PATH_MAX 1000
+
+static bool userspace_reboot = false;
 
 __attribute__((naked)) uint64_t msyscall(uint64_t syscall, ...){
     asm(
@@ -98,16 +101,25 @@ void load_etc_rc_d(void) {
         printf("Error: unable to access folder /etc/rc.d/\n");
 }
 
-int main() {
+int main (int argc, char *argv[]) {
     int fd_console = open("/dev/console", O_RDWR, 0);
     sys_dup2(fd_console, 0);
     sys_dup2(fd_console, 1);
     sys_dup2(fd_console, 2);
     puts("======== Hello from jbloader! ======== \n");
-    char *const mount_rootfs[] = {"/sbin/mount", "-uw", "/", NULL};
-    run_shell_command(mount_rootfs);
-    char *const mount_preboot[] = {"/sbin/mount", "-uw", "/private/preboot", NULL};
-    run_shell_command(mount_preboot);
+    printf("jb.dylib says that my name is \"%s\"\n", argv[0]);
+    if (argc == 2)
+        if (!strcmp(argv[1], "-i"))
+            userspace_reboot = true;
+    if (userspace_reboot)
+        puts("already loaded\n");
+    else {
+        char *const mount_rootfs[] = {"/sbin/mount", "-uw", "/", NULL};
+        run_shell_command(mount_rootfs);
+        char *const mount_preboot[] = {"/sbin/mount", "-uw", "/private/preboot", NULL};
+        run_shell_command(mount_preboot);
+    }
+
     if (access("/.installed_anfora_jb", F_OK) != 0) {
         puts("======== start SSH ======== \n");
         char *const dropbear[] = { "/binpack/bin/launchctl", "load", "-w", "/binpack/Library/LaunchDaemons/dropbear.plist", NULL };
