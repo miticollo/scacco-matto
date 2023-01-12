@@ -407,6 +407,7 @@ work/*
 tools/*
 /tools/PongoOS/checkra1n/Kernel15Patcher/Kernel15Patcher.ios
 /tools/termz/termz
+/tools/gaster/gaster
 resources/*
 !tools/deps.sh
 !tools/parser.py
