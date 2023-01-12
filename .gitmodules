@@ -30,3 +30,4 @@
 [submodule "tools/ibootim"]
 	path = tools/ibootim
 	url = https://github.com/realnp/ibootim.git
+	ignore = dirty
