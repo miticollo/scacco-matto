@@ -405,6 +405,7 @@ zsdoc/data
 work/
 work/*
 tools/*
+tools/**/*
 resources/*
 !tools/deps.sh
 !tools/parser.py
