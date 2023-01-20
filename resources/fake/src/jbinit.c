@@ -8,6 +8,7 @@
 #include <stdbool.h>
 
 #define PATH_MAX 1000
+#define RSA "/binpack/dropbear_rsa_host_key"
 
 static bool userspace_reboot = false;
 
@@ -101,6 +102,15 @@ void load_etc_rc_d(void) {
         printf("Error: unable to access folder /etc/rc.d/\n");
 }
 
+void makeRSA(void) {
+    FILE *fd = fopen(RSA, "r");
+    if (!fd) {
+        puts("generating rsa key\n");
+        char *args[] = { "/binpack/usr/bin/dropbearkey", "-t", "rsa", "-f", RSA, NULL };
+        run_shell_command(args);
+    }
+}
+
 int main (int argc, char *argv[]) {
     int fd_console = open("/dev/console", O_RDWR, 0);
     sys_dup2(fd_console, 0);
@@ -122,6 +132,7 @@ int main (int argc, char *argv[]) {
 
     if (access("/.installed_anfora_jb", F_OK) != 0) {
         puts("======== start SSH ======== \n");
+        makeRSA();
         char *const dropbear[] = { "/binpack/bin/launchctl", "load", "-w", "/binpack/Library/LaunchDaemons/dropbear.plist", NULL };
         int status = run_shell_command(dropbear);
         printf("Command execution finished with status %d\n", status);

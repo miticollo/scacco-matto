@@ -5,14 +5,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <dirent.h>
-#include <mach/mach.h>
 #include <stdlib.h>
-
-int sandbox_check_by_audit_token(audit_token_t au, const char *operation, int sandbox_filter_type, ...);
-
-typedef  void *posix_spawnattr_t;
-typedef  void *posix_spawn_file_actions_t;
-int posix_spawn(pid_t *, const char *,const posix_spawn_file_actions_t *,const posix_spawnattr_t *,char *const __argv[],char *const __envp[]);
 
 typedef void* xpc_object_t;
 typedef void* xpc_type_t;
@@ -49,7 +42,6 @@ void xpc_array_append_value(xpc_object_t xarray, xpc_object_t value);
 #define XPC_TYPE_ERROR (&_xpc_type_error)
 #define XPC_TYPE_STRING (&_xpc_type_string)
 
-
 extern const struct _xpc_dictionary_s _xpc_error_connection_invalid;
 extern const struct _xpc_dictionary_s _xpc_error_termination_imminent;
 extern const struct _xpc_type_s _xpc_type_array;
@@ -65,10 +57,9 @@ extern const struct _xpc_type_s _xpc_type_string;
 /*
   Launch our Daemon *correctly*
 */
-xpc_object_t my_xpc_dictionary_get_value(xpc_object_t dict, const char *key){
+xpc_object_t my_xpc_dictionary_get_value(xpc_object_t dict, const char *key) {
   xpc_object_t retval = xpc_dictionary_get_value(dict,key);
   if (strcmp(key,"LaunchDaemons") == 0) {
-    xpc_object_t submitJob = xpc_dictionary_create(NULL, NULL, 0);
     xpc_object_t programArguments = xpc_array_create(NULL, 0);
 
     // argv[0] == "mo" in jbinit.c
@@ -76,6 +67,7 @@ xpc_object_t my_xpc_dictionary_get_value(xpc_object_t dict, const char *key){
     if(getenv("XPC_USERSPACE_REBOOTED"))
         xpc_array_append_value(programArguments, xpc_string_create("-i"));
 
+    xpc_object_t submitJob = xpc_dictionary_create(NULL, NULL, 0);
     xpc_dictionary_set_bool(submitJob, "KeepAlive", false);
     xpc_dictionary_set_bool(submitJob, "RunAtLoad", true);
     xpc_dictionary_set_string(submitJob, "UserName", "root");
