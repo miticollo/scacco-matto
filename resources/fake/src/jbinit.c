@@ -106,9 +106,10 @@ void makeRSA(void) {
     FILE *fd = fopen(RSA, "r");
     if (!fd) {
         puts("generating rsa key\n");
-        char *args[] = { "/binpack/usr/bin/dropbearkey", "-t", "rsa", "-f", RSA, NULL };
+        char *args[] = {"/binpack/usr/bin/dropbearkey", "-t", "rsa", "-f", RSA, NULL};
         run_shell_command(args);
-    }
+    } else
+        fclose(fd);
 }
 
 int main (int argc, char *argv[]) {
