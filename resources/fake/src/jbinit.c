@@ -144,7 +144,7 @@ int main (int argc, char *argv[]) {
         char *const uicache[] = {"/usr/bin/uicache", "-a", NULL};
         run_shell_command(uicache);
         // To be sure
-        char *const sileo[] = {"/usr/bin/uicache", "-f", "-p", "/Applications/Sileo.app", NULL};
+        char *const sileo[] = {"/usr/bin/uicache", "-f", "-p", "/Applications/Sileo-Nightly.app", NULL};
         run_shell_command(sileo);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
         run_shell_command(sbreload);
