@@ -3,7 +3,7 @@
 ### Setup
 1. Iniziamo con il preparare l'ambiente di lavoro
    ```shell
-   git clone --recursive --depth 1 -j8 https://github.com/lorenzoferron98/scacco-matto.git
+   git clone --recursive --depth 1 -j8 https://github.com/miticollo/scacco-matto.git
    cd scacco-matto
    ```
 2. Compiliamo i tools che useremo negli step successivi
