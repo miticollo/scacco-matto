@@ -141,7 +141,7 @@ int main (int argc, char *argv[]) {
         puts("======== start Jailbreak ======== \n");
         load_etc_rc_d();
         loadDaemons();
-        char *const uicache[] = {"/usr/bin/uicache", "-a", "-f", NULL};
+        char *const uicache[] = {"/usr/bin/uicache", "-a", NULL};
         run_shell_command(uicache);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
         run_shell_command(sbreload);
