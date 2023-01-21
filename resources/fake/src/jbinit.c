@@ -141,11 +141,8 @@ int main (int argc, char *argv[]) {
         puts("======== start Jailbreak ======== \n");
         load_etc_rc_d();
         loadDaemons();
-        char *const uicache[] = {"/usr/bin/uicache", "-a", NULL};
+        char *const uicache[] = {"/usr/bin/uicache", "-a", "-f", NULL};
         run_shell_command(uicache);
-        // To be sure
-        char *const sileo[] = {"/usr/bin/uicache", "-f", "-p", "/Applications/Sileo-Nightly.app", NULL};
-        run_shell_command(sileo);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
         run_shell_command(sbreload);
     }
