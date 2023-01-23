@@ -418,3 +418,7 @@ resources/*
 !resources/fake
 !resources/fake/*
 resources/fake/.DS_Store
+
+### Frida ###
+sqlcipher/_agent.js
+sqlcipher/node_modules
