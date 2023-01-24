@@ -29,7 +29,7 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 3. Open [`Session.sqlite`](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L10) with DB Browser for SQLite.
    > :warning: This is a WAL mode database so when you open it libsqlite3 (a library used by DB Browser for SQLite) [checkpoints the WAL file](https://sqliteforensictoolkit.com/forensic-examination-of-sqlite-write-ahead-log-wal-files/) and adds the changes to the main database.
 4. As soon as we open the DB file, DB Browser for SQLite requires the password:</br>
-   ![SQLCipher settings](../docs/images/db4s.png?raw=true "SQLCipher settings")</br>
+   ![SQLCipher settings](../../docs/images/db4s.png?raw=true "SQLCipher settings")</br>
    The password is an HEX string that is contained in `pKey` argument of `sqlite3_key_v2`function.
    Furthermore, it is necessary to customize some settings to properly open DB.
    In particular, we use all settings for [SQLCipher 4](https://www.zetetic.net/sqlcipher/design/) (see below) but **it is necessary to set** ["Plaintext Header Size" to 32 byte](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L81-L86).
@@ -37,7 +37,7 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 
 ## Session
 
-[Session for iOS](https://github.com/oxen-io/session-ios) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
+[Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
 
 ### Call stack for `sqlite3_open_v2`
 
@@ -53,6 +53,16 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L62-L87).
    More info can be found on GitHub page of [GRDB.swift](https://github.com/groue/GRDB.swift/blob/master/README.md#creating-or-opening-an-encrypted-database).
    The version of SQLCipher used by Session is [4.5.0](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/Podfile#L13-L14).
+   So to implement these experimental hooks **I used new API not old one**.
+   Therefore, they are not compatible with old versions of SQLCipher (&lt;3.0.0).
 2. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L1587-L1603).
 3. [sqlite3_key](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L914-L917).
 4. [sqlite3_key_v2](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L919-L928)
+
+## Signal
+
+Tested on Signal (version 6.8.0).
+
+## Credit
+
+- AnForA Android team: for useful code to dump PRAGMAs
