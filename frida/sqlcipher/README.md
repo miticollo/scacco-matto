@@ -53,7 +53,7 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L62-L87).
    More info can be found on GitHub page of [GRDB.swift](https://github.com/groue/GRDB.swift/blob/master/README.md#creating-or-opening-an-encrypted-database).
    The version of SQLCipher used by Session is [4.5.0](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/Podfile#L13-L14).
-   So to implement these experimental hooks **I used new API not old one**.
+   So to implement these experimental hooks **I used new API not the old one**.
    Therefore, they are not compatible with old versions of SQLCipher (&lt;3.0.0).
 2. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L1587-L1603).
 3. [sqlite3_key](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L914-L917).

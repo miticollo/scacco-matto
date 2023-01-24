@@ -25,5 +25,9 @@ _See_ [dedicated chapter](docs/restore.md)
 
 _See_ [dedicated chapter](docs/jb.md)
 
+## frida
+
+_See_ [dedicated folder](frida/)
+
 ## Credits
 
