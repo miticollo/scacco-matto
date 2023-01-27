@@ -1,12 +1,36 @@
 # Update + Restore
 
 In questo capitolo utilizzeremo [futurerestore](https://github.com/futurerestore/futurerestore) per eseguire il restore dell'iPhone.
-Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
-La versione che andremo a installare è la 15.7.1, che non è più firmata per iPhone X.
+Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è più possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
+La versione che andremo a installare è la 15.7.1.
 
 > :warning: Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
 L'utente che avesse già installato questa versione può tralasciare i comandi proposti concentrandosi solo sugli aspetti teorici trattati.
+
+## L'hardware che conta
+
+Per comprendere meglio i prossimi paragrafi è necessario acquisire un po' di terminologia sull'hardware che troviamo all'interno di un iPhone.
+In [Figura](https://help.apple.com/pdf/security/it_IT/apple-platform-security-guide-t.pdf#page=11) viene presentato un generico system on a chip (SoC).<br/>
+![ibootchain](./images/soc.png?raw=true "The traditional boot chain of *OS")<br/>
+A livello commerciale questo componente viene chiamato Axx, dove al posto di "xx" si specifica un numero.
+In particolare per tutte le mie sperimentazioni ho sempre usato un iPhone X (aka 10,6) con [A11 (aka T8015)](https://www.theiphonewiki.com/w/index.php?title=T8015&oldid=76706).
+Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
+
+Non tratteremo tutti i componenti presentati in Figura, ma ci concentreremo soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
+L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&printable=yes), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
+Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), tuttavia oggi non più presente questo componente.
+Pertanto iBoot si trova in `dev/disk1`, come vedremo in seguito.
+
+Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratteremo più avanti.
+
+## Trusted boot chain
+
+Prima di passare alla pratica è necessario capire come avviene l'avvio di iOS: da quando premiamo il tasto di accensione fino alla schermata di blocco.
+![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<br/>
+Da un primo sguardo della [Figura](http://newosxbook.com/bonus/iboot.pdf#page=1) notiamo, che i passaggi tra i vari componenti di avvio formano una catena.
+Inoltre, come discuteremo tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
+Per questi motivi viene chiamata _trusted boot chain_.
 
 ## Put into practice
 
@@ -50,7 +74,7 @@ Infatti in questa circostanza il dispositivo non entrerebbe in Recovery Mode per
 Al contrario la DFU è sempre possibile perché essa è parte integrante del SecureROM (o AP BootROM).
 
 Posto l'iPhone in DFU mode, esso viene riconosciuto automaticamente da Finder/iTunes, che avvertono l'utente che il dispositivo deve essere ripristinato all'ultima versione.
-A questo viene avviato il download del firmware, che sarà successivamente decompresso (fattibile anche con `uùnzip`) per parsificare il `BuildManifest.plist` e individuare i file da usare nel ripristino.
+A questo punto viene avviato il download del firmware, che sarà successivamente decompresso (fattibile anche con `unzip`) per parsificare il `BuildManifest.plist` e individuare i file da usare nel ripristino.
 In particolare il primo file che viene inviato al dispositivo è l'[iBSS (iBoot Single Stage)](https://www.theiphonewiki.com/wiki/IBSS) facendo si che l'iPhone passi dalla DFU mode alla Recovery mode.
 Tuttavia questo può essere fatto solo se iBSS proviene da Apple, qualora iBoot fosse stato patchato allora il SecureROM si rifiuterebbe di caricarlo.
 > :information_source: Questo non vale per l'iPhone originale (con application processor S5L8900) che invece non imponeva controlli sulle immagini che gli venivano inviate.
