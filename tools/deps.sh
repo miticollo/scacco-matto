@@ -117,7 +117,7 @@ function get_iboot64patcher() {
 #   0 without errors, non-zero otherwise.
 #######################################
 function get_futurerestore() {
-  curl -LO https://nightly.link/lorenzoferron98/futurerestore/workflows/ci/main/futurerestore-macOS-DEBUG.zip
+  curl -LO https://nightly.link/miticollo/futurerestore/workflows/ci/main/futurerestore-macOS-DEBUG.zip
   unzip -p futurerestore-macOS-DEBUG.zip | tar -xv
   rm -v futurerestore*.zip
   chmod -v +x ./futurerestore
