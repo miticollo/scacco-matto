@@ -20,7 +20,7 @@ Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
 Non tratteremo tutti i componenti presentati in Figura, ma ci concentreremo soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
 L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&oldid=98679), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
 Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), tuttavia oggi non più presente questo componente.
-Pertanto iBoot si trova in `dev/disk1`, come vedremo in seguito.
+Pertanto iBoot si trova in `/dev/disk1`, come vedremo in seguito.
 
 Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratteremo più avanti.
 
