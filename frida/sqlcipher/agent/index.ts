@@ -39,7 +39,7 @@ class NativeDb {
     }
 }
 
-const sqlcipher = Process.getModuleByName("SQLCipher");
+const sqlcipher = Process.getModuleByName("SQLCipher");     // SQLCipher or libsqlite3.dylib or other?
 // C functions
 const sqlite3_exec = sqlcipher.getExportByName("sqlite3_exec");
 const sqlite3_open_v2 = sqlcipher.getExportByName("sqlite3_open_v2");

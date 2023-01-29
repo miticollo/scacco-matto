@@ -419,6 +419,9 @@ resources/*
 !resources/fake/*
 resources/fake/.DS_Store
 
+### Secrets ###
+docs/dumps/keychain_dump.txt
+
 ### Frida ###
 frida/sqlcipher/_agent.js
 frida/sqlcipher/node_modules
