@@ -35,6 +35,10 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
    In particular, we use all settings for [SQLCipher 4](https://www.zetetic.net/sqlcipher/design/) (see below) but **it is necessary to set** ["Plaintext Header Size" to 32 byte](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L81-L86).
 5. Finally, we can read the messages looking in the `interactions` table.
 
+### Alternative approach: `keychain_dumper`
+
+
+
 ## Session
 
 [Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
@@ -62,6 +66,10 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 ## Signal
 
 Tested on Signal (version 6.8.0).
+
+## Wickr Me
+
+
 
 ## Credit
 
