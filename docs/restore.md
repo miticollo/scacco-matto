@@ -13,7 +13,9 @@ L'utente che avesse già installato questa versione può tralasciare i comandi p
 Per comprendere meglio i prossimi paragrafi è necessario acquisire un po' di terminologia sull'hardware che troviamo all'interno di un iPhone.
 In [Figura](https://help.apple.com/pdf/security/it_IT/apple-platform-security-guide-t.pdf#page=11) viene presentato un generico system on a chip (SoC).<br/>
 <div style="text-align: center;">
+
    <img src="./images/soc.png?raw=true" height=50% width=50% alt="SoC internals">
+
 </div>
 A livello commerciale questo componente viene chiamato Axx, dove al posto di "xx" si specifica un numero.
 In particolare per tutte le mie sperimentazioni ho sempre usato un iPhone X (aka 10,6) con [A11 (aka T8015)](https://www.theiphonewiki.com/w/index.php?title=T8015&oldid=76706).
