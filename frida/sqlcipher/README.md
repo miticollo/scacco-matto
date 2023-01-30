@@ -37,11 +37,60 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 
 ### Alternative approach: `keychain_dumper`
 
+Here I show an alternative method to retrieve the Session password using keychain.
+1. Install cURL (or `wget`) and `sqlite3` with your preferred package manager (e.g. [Sileo](https://getsileo.app/), [Zebra](https://getzbra.com/), Cydia or [Installer5](https://apptapp.me/repo/)).
+2. Open SSH session with root privileges and run the following commands:
+   ```shell
+   curl -LO https://github.com/ptoomey3/Keychain-Dumper/releases/download/1.1.0/keychain_dumper-1.1.0.zip
+   unzip keychain_dumper-1.1.0.zip && rm -v keychain_dumper-1.1.0.zip
+   curl -LO https://github.com/ptoomey3/Keychain-Dumper/archive/refs/heads/master.zip
+   unzip master.zip && rm -v master.zip
+   cd master/
+   mv -v ../keychain_dumper ./
+   chmod +x setup_on_iOS.sh && ./setup_on_iOS.sh
+   chmod +x updateEntitlements.sh && ./updateEntitlements.sh
+   cd ..
+   ```
+3. Use the `ldid` utility to check entitlements were properly set:
+   ```shell
+   ldid -e /usr/bin/keychain_dumper
+   ```
+4. Run `keychain_dumper` and cross your fingers:
+   ```shell
+   keychain_dumper -a
+   ```
+Looking into source code of Session I discover that the key name used in keychain is [GRDBDatabaseCipherKeySpec](https://github.com/oxen-io/session-ios/blob/9a4988f2126135950a2a8d7c43873433aec6b751/SessionUtilitiesKit/Database/Storage.swift#L12).
+The [password is randomly generated](https://github.com/oxen-io/session-ios/blob/9a4988f2126135950a2a8d7c43873433aec6b751/SessionUtilitiesKit/Database/Storage.swift#L252-L263) when initialising the Database for the first time. 
+The Key and password are then stored in the keychain.
+So a quick search on `keychain_dumper` &mdash; using the keyword "GRDBDatabaseCipherKeySpec" or "com.loki-project.loki-messanger" (the bundleID of Session) &mdash; produces:
+<pre>
+Generic Password
+----------------
+Service: TSKeyChainService
+Account: GRDBDatabaseCipherKeySpec
+Entitlement Group: SUQ8J2PCT7.com.loki-project.loki-messenger
+Label: (null)
+Accessible Attribute: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly, protection level 4
+Description: (null)
+Comment: (null)
+Synchronizable: 0
+Generic Field: (null)
+<b>Keychain Data (Hex): 0xc9350d14d6f18b1197849f66c52d8c15331e814b439af4bb5179e745dcfe744c838235f3f339061ef547609f20972196</b>
+</pre>
 
+#### Notes
+
+During investigations, I discovered that into keychain are stored some data about removed apps.
+
+#### Credits
+
+- @seb2point0: for [his post](https://cight.co/backup-signal-ios-jailbreak/) that shows me `keychain_dumper`.
 
 ## Session
 
 [Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
+
+Also in this case we can use `keychain_dumper`.
 
 ### Call stack for `sqlite3_open_v2`
 
