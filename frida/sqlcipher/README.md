@@ -82,10 +82,6 @@ Generic Field: (null)
 
 During investigations, I discovered that into keychain are stored some data about removed apps.
 
-#### Credits
-
-- [seb2point0](https://github.com/seb2point0): for [his post](https://cight.co/backup-signal-ios-jailbreak/) that shows me `keychain_dumper`.
-
 ## Session
 
 [Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
@@ -120,6 +116,7 @@ Tested on Signal (version 6.8.0).
 
 
 
-## Credit
+## Credits
 
-- AnForA Android team: for useful code to dump PRAGMAs
+- AnForA Android team: for useful code to dump PRAGMAs.
+- [seb2point0](https://github.com/seb2point0): for [his post](https://cight.co/backup-signal-ios-jailbreak/) that shows me `keychain_dumper`.
