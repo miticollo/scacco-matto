@@ -84,7 +84,7 @@ During investigations, I discovered that into keychain are stored some data abou
 
 #### Credits
 
-- @seb2point0: for [his post](https://cight.co/backup-signal-ios-jailbreak/) that shows me `keychain_dumper`.
+- [seb2point0](github.com/seb2point0): for [his post](https://cight.co/backup-signal-ios-jailbreak/) that shows me `keychain_dumper`.
 
 ## Session
 
