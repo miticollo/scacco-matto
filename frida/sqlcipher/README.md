@@ -1,5 +1,61 @@
 # SQLCipher
 
+Apps and approaches used.
+
+## Apps
+
+Here the analyzed apps.
+
+### Session
+
+[Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
+
+#### Call stack for `sqlite3_open_v2`
+
+1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L89-L91)
+2. [DatabasePool.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/DatabasePool.swift#L29-L44)
+3. [SerializedDatabase.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/SerializedDatabase.swift#L46-L49)
+4. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L303)
+5. [Database.openConnection](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L321-L342)
+6. [sqlite3_open_v2](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L324)
+
+#### Call stack for `sqlite3_key_v2`
+
+1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L62-L87).
+   More info can be found on GitHub page of [GRDB.swift](https://github.com/groue/GRDB.swift/blob/master/README.md#creating-or-opening-an-encrypted-database).
+   The version of SQLCipher used by Session is [4.5.0](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/Podfile#L13-L14).
+   So to implement these experimental hooks **I used new API not the old one**.
+   Therefore, they are not compatible with old versions of SQLCipher (&lt;3.0.0).
+2. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L1587-L1603).
+3. [sqlite3_key](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L914-L917).
+4. [sqlite3_key_v2](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L919-L928)
+
+### Signal
+
+[Signal for iOS](https://apps.apple.com/us/app/signal-private-messenger/id874139669) (version 6.8.0).
+
+### Wickr Me
+
+This app doesn't require a key to decrypt DB.
+In fact the DB is in plaintext but some data are encrypted (e.g. the messages).
+In the table `ZWICKR_MESSAGE` we can find `ZBODY` column that contains the ciphered message body.
+[The structure of this encrypted data](https://oops.math.spbu.ru/SE/diploma/2021/pi/Cherniavskii-report.pdf#page=14) is:
+- the first byte: `0x00`;
+- from byte 2 to 13: GCM nonce (or IV);
+- from byte 14 to 29: GCM tag;
+- from byte 30 to EOF: ciphertext.
+
+To decrypt this structure we must use a 32-byte content data key (CDK) and AES256-GCM.
+To be more precise CDK is retrieved decrypting `ZPT` column in `ZSECEX_ACCOUNT`.
+It contains key derivation function (KDF) algorithm ID (`0x01`, [Scrypt by Tarsnap](https://github.com/Tarsnap/scrypt)) and the KDF salt.
+They are necessary to use [`scrypt_kdf`](https://github.com/Tarsnap/scrypt#using-scrypt-as-a-kdf) function.
+Furthermore `ZPT` column contains a GCM IV and tag, they are used to decrypt with AES256-GCM the ciphertext (always in `ZPT`).
+The key of this step is the output of `scrypt_kdf`.
+After this decryption we have a key to decrypt the content of other columns (like `ZBODY`).
+
+Since Wickr Me is a closed source app I used [this article](https://www.sciencedirect.com/science/article/pii/S2666281721000366) (that [you know](https://people.unipmn.it/sguazt/publication/anglano-2021-useraction/Anglano-2021-UserAction.pdf#page=13)) to study it.
+**But unfortunately I couldn't decrypt messages**.
+
 ## `sqlite3_open_v2`
 ```c
 int sqlite3_open_v2(
@@ -23,6 +79,9 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 
 ### Use `pKey` to decrypt DB
 
+Tested on [Session](#session) and [Signal](#signal).
+I reported it only for Session but changing the paths and filenames these steps can be used also with Signal.
+
 1. Install DB Browser for SQLite with SQLCipher support. I preferred using the [Nightly Build](https://nightlies.sqlitebrowser.org/latest/).
 2. Now we can transfer the folder that contains DB and WAL file on PC to read them.
    To find its path it is sufficient to look the string stored in `filename` argument of `sqlite3_open_v2` function.
@@ -37,7 +96,10 @@ See [official documentation](https://www.zetetic.net/sqlcipher/sqlcipher-api/#sq
 
 ### Alternative approach: `keychain_dumper`
 
-Here I show an alternative method to retrieve the Session password using keychain.
+Tested on [Session](#session) and [Signal](#signal).
+Again changing bundleID (`org.whispersystems.signal`) these steps can be adapted for Signal.
+
+Here I show an alternative method to retrieve the Session key using keychain.
 1. Install cURL (or `wget`) and `sqlite3` with your preferred package manager (e.g. [Sileo](https://getsileo.app/), [Zebra](https://getzbra.com/), Cydia or [Installer5](https://apptapp.me/repo/)).
 2. Open SSH session with root privileges and run the following commands:
    ```shell
@@ -45,7 +107,7 @@ Here I show an alternative method to retrieve the Session password using keychai
    unzip keychain_dumper-1.1.0.zip && rm -v keychain_dumper-1.1.0.zip
    curl -LO https://github.com/ptoomey3/Keychain-Dumper/archive/refs/heads/master.zip
    unzip master.zip && rm -v master.zip
-   cd master/
+   cd Keychain-Dumper-master/
    mv -v ../keychain_dumper ./
    chmod +x setup_on_iOS.sh && ./setup_on_iOS.sh
    chmod +x updateEntitlements.sh && ./updateEntitlements.sh
@@ -59,10 +121,10 @@ Here I show an alternative method to retrieve the Session password using keychai
    ```shell
    keychain_dumper -a
    ```
-Looking into source code of Session I discover that the key name used in keychain is [GRDBDatabaseCipherKeySpec](https://github.com/oxen-io/session-ios/blob/9a4988f2126135950a2a8d7c43873433aec6b751/SessionUtilitiesKit/Database/Storage.swift#L12).
+Looking into source code of Session I discovered that the key name used in keychain is [GRDBDatabaseCipherKeySpec](https://github.com/oxen-io/session-ios/blob/9a4988f2126135950a2a8d7c43873433aec6b751/SessionUtilitiesKit/Database/Storage.swift#L12).
 The [password is randomly generated](https://github.com/oxen-io/session-ios/blob/9a4988f2126135950a2a8d7c43873433aec6b751/SessionUtilitiesKit/Database/Storage.swift#L252-L263) when initialising the Database for the first time. 
 The Key and password are then stored in the keychain.
-So a quick search on `keychain_dumper` &mdash; using the keyword "GRDBDatabaseCipherKeySpec" or "com.loki-project.loki-messanger" (the bundleID of Session) &mdash; produces:
+So a quick search on `keychain_dumper` output &mdash; using the keyword "GRDBDatabaseCipherKeySpec" or "com.loki-project.loki-messanger" (the bundleID of Session) &mdash; produces:
 <pre>
 Generic Password
 ----------------
@@ -82,39 +144,24 @@ Generic Field: (null)
 
 During investigations, I discovered that into keychain are stored some data about removed apps.
 
-## Session
+#### Wickr Me
 
-[Session for iOS](https://github.com/oxen-io/session-ios) (version 2.2.4) depends on [GRDB.swift](https://github.com/groue/GRDB.swift).
-
-Also in this case we can use `keychain_dumper`.
-
-### Call stack for `sqlite3_open_v2`
-
-1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L89-L91)
-2. [DatabasePool.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/DatabasePool.swift#L29-L44)
-3. [SerializedDatabase.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/SerializedDatabase.swift#L46-L49)
-4. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L303)
-5. [Database.openConnection](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L321-L342)
-6. [sqlite3_open_v2](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L324)
-
-### Call stack for `sqlite3_key_v2`
-
-1. [Storage.swift](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/SessionUtilitiesKit/Database/Storage.swift#L62-L87).
-   More info can be found on GitHub page of [GRDB.swift](https://github.com/groue/GRDB.swift/blob/master/README.md#creating-or-opening-an-encrypted-database).
-   The version of SQLCipher used by Session is [4.5.0](https://github.com/oxen-io/session-ios/blob/8976ab5f5f0a63db232e3278b23ccfe808e800fc/Podfile#L13-L14).
-   So to implement these experimental hooks **I used new API not the old one**.
-   Therefore, they are not compatible with old versions of SQLCipher (&lt;3.0.0).
-2. [Database.swift](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L1587-L1603).
-3. [sqlite3_key](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L914-L917).
-4. [sqlite3_key_v2](https://github.com/sqlcipher/sqlcipher/blob/8763afaf13231cb1fc835b52c94ada23f8e47b3d/src/crypto.c#L919-L928)
-
-## Signal
-
-Tested on Signal (version 6.8.0).
-
-## Wickr Me
-
-
+I found this interesting key inside keychain:
+<pre>
+Generic Password
+----------------
+Service: wickr
+Account: activeAccount
+Entitlement Group: W8RC3R952A.com.mywickr.wickr
+Label: (null)
+Accessible Attribute: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly, protection level 4
+Description: (null)
+Comment: (null)
+Synchronizable: 0
+Generic Field: (null)
+Keychain Data (Hex): 0x00682cc29edc897e6fe49073f1790878ce1dea50b01a5e547c68a3173368e84de1
+</pre>
+But I don't know what is its purpose.
 
 ## Credits
 
