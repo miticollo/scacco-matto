@@ -12,7 +12,7 @@ This project has an [independent repo](https://github.com/miticollo/xpc-tracer).
 
 ## new contact created inside a third-party app
 
-> :warning: I tested it only on Telegram, but it's probably that it works also on other app.
+> :warning: I tested it only on Telegram, but it's probably that it works also on other apps.
 
 ```javascript
 Interceptor.attach(ObjC.classes.CNDataMapperContactStore['- executeSaveRequest:response:error:'].implementation, {
