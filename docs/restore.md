@@ -15,6 +15,7 @@ In [Figura](https://help.apple.com/pdf/security/it_IT/apple-platform-security-gu
 <p align="center">
   <img src="./images/soc.png?raw=true" height=50% width=50% alt="SoC internals">
 </p>
+
 A livello commerciale questo componente viene chiamato Axx, dove al posto di "xx" si specifica un numero.
 In particolare per tutte le mie sperimentazioni ho sempre usato un iPhone X (aka 10,6) con [A11 (aka T8015)](https://www.theiphonewiki.com/w/index.php?title=T8015&oldid=76706).
 Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
