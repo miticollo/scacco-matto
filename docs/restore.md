@@ -23,7 +23,7 @@ Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
 Non tratteremo tutti i componenti presentati in figura, ma ci concentreremo soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
 L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&oldid=98679), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
 Tuttavia se l'utente avesse bisogno di maggiore spazio di archiviazione, può decidere di [sostituire in autonomia la sola NAND](https://twitter.com/lipilipsi/status/1610275491537375237).
-Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), tuttavia oggi non più presente questo componente.
+Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), mentre oggi non è più presente questo componente.
 Pertanto iBoot si trova in `/dev/disk1`, come vedremo in seguito.
 
 Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratteremo più avanti.
@@ -35,6 +35,9 @@ Prima di passare alla pratica è necessario capire come avviene l'avvio di iOS: 
 Da un primo sguardo della [Figura](http://newosxbook.com/bonus/iboot.pdf#page=1) notiamo, che i passaggi tra i vari componenti di avvio formano una catena.
 Inoltre, come discuteremo tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
 Per questi motivi viene chiamata _trusted boot chain_.
+
+Iniziamo con il considerare un avvio normale, che comincia con la pressione del side button.
+Il primo codice che l'AP eseguirà è il SecureROM, esso non è nient'altro che una versione essenziale e semplificata di iBoot 
 
 ## Put into practice
 
