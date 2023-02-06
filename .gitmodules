@@ -29,3 +29,6 @@
 [submodule "tools/gaster-futurerestore"]
 	path = tools/gaster-futurerestore
 	url = https://github.com/Cryptiiiic/gaster.git
+[submodule "tools/gaster"]
+	path = tools/gaster
+	url = https://github.com/0x7ff/gaster.git
