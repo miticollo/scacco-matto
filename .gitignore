@@ -425,3 +425,4 @@ docs/dumps/keychain_dump.txt
 ### Frida ###
 frida/sqlcipher/_agent.js
 frida/sqlcipher/node_modules
+/.idea/codeStyles/codeStyleConfig.xml

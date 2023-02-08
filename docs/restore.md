@@ -67,3 +67,5 @@ Se ciò dovesse accadere basta riprovare.
 
 <!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
 > :information_source: Con AP A14+ o superiore il cavo non è più necessario.
+<!-- https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
+> :information_source: L'ingresso in DFU mode può essere automatizzato.
