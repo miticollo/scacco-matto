@@ -42,10 +42,28 @@ Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
 
-Adesso proviamo a rintracciare queste immagini all'interno di una versione del firmware.
-Estraiamo l'IPSW, all'interno della nostra working directory, con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP
+Adesso proviamo a rintracciare queste immagini all'interno del firmware.
+Estraiamo l'IPSW, contenuto nella nostra working directory, con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP
 ```shell
-unzip 
+unzip ./iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw -d ipsw/
 ```
+Al termine dell'estrazione, nella directory `ipsw` troviamo il file `BuildManifest.plist`, che contiene nel nodo `BuildIdentities` le configurazioni per i vari device supportati dall'IPSW.
+Ad esempio, l'iPhone X ha due identificatori diversi [iPhone10,3](https://ipsw.me/iPhone10,3/info) e [iPhone10,6](https://ipsw.me/iPhone10,6/info), quindi abbiamo due configurazioni che raddoppiano perché dobbiamo considerare la stringa `Variant` all'interno del nodo `Info`, che assume i valori `Customer Erase Install (IPSW)` e `Customer Upgrade Install (IPSW)`. <br/>
+Non procederemo oltre con l'analisi di questo file, useremo lo script Python in `tools/parser.py` per ottenere i percorsi dei file che ci interessano.
+Lo script fa uso di una built-in library di Python chiamata [plistlib](https://docs.python.org/3/library/plistlib.html) risultando semplice, ma grezzo per questo in un progetto sarebbe meglio usare la libreria [pybmtool](https://github.com/Cryptiiiic/BMTool), che a sua volta usa la libreria di Python.
+Per prendere confidenza con gli argomenti richiesti dallo script, eseguiamolo una volta senza di essi
+```shell
+python ../tools/parser.py
+```
+scopriamo che richiede in input 3 argomenti:
+- `<manifest>` il percorso del file `BuildManifest.plist`,
+- `<BDID>` il [Board ID](https://www.theiphonewiki.com/w/index.php?title=BORD&oldid=125531) del device e
+- `<CPID>` il [Chip ID](https://www.theiphonewiki.com/w/index.php?title=CHIP&oldid=125390) del device.
 
+Per ricavare questi ultimi due argomenti possiamo utilizzare il tool [`irecovery`](https://github.com/libimobiledevice/libirecovery/blob/master/tools/irecovery.c), che useremo con l'iPhone in DFU mode.
+Per poter entrare correttamente in questa modalità dovremo **collegare l'iPhone al PC** e premere una combinazione di tasti: nel caso del modello X basta seguire [questi passaggi](https://www.theiphonewiki.com/w/index.php?title=DFU_Mode&oldid=125882#A11_and_newer_devices_.28iPhone_8_and_above.2C_iPad_Pro_2018.2C_iPad_Air_2019.2C_iPad_Mini_2019.29).
+Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo tentativo.
+Se ciò dovesse accadere basta riprovare.
 
+<!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
+> :information_source: Con AP A14+ o superiore il cavo non è più necessario.
