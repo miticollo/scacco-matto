@@ -12,9 +12,11 @@
    ```
 3. Creiamo la working directory nel repository appena clonato
    ```shell
-   mkdir -v -p work/{restore,jb}
+   mkdir -v -p work/{restore,jb,ipws}
    ```
-4. Salviamo una copia dell'IPSW del firmware che vogliamo usare nella directory `work`.
+4. Salviamo una copia dell'IPSW del firmware che vogliamo usare nella directory `work`. <br/>
+   IPSW compatibili con il proprio device possono essere reperiti dal sito [appledb.dev](https://appledb.dev/device-selection/): non è l'unico sito che offre questo servizio, ma all'interno della comunità del JB è quello **attualmente** più accreditato per la sua completezza e affidabilità.
+   Inoltre il sito, oltre a mettere a disposizione le versioni stabili di iOS, permette il download anche di quelle beta e per entrambe indica se è oppure no firmata.
 5. Inoltre aggiungiamo una copia del blob SHSH, se necessario, nella directory `work/restore`.
 
 ## Update + Restore

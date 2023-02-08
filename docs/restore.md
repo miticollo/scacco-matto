@@ -43,9 +43,9 @@ Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
 
 Adesso proviamo a rintracciare queste immagini all'interno di una versione del firmware.
-Innanzitutto dobbiamo procuraci l'IPSW compatibile con il device a nostra disposizione (nel mio caso iPhone X): per farlo colleghiamoci al sito [appledb.dev](https://appledb.dev/device-selection/), che non è l'unico sito da cui poter scaricare IPSW, ma è il più completo e affidabile.
-Il sito mette a disposizione diverse versioni di iOS, tra cui quelle beta, per ciascuna indica se è oppure no firmata.
-Visto che successivamente useremo [iOS 15.7.1](https://updates.cdn-apple.com/2022FallFCS/fullrestores/012-95442/E99DEEC6-9763-45EF-B2FF-0BA51A1E966B/iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw) useremo questa versione, ma quanto segue vale per qualunque versione.<br/>
-Al termine del download estraiamo l'IPSW con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP:
+Estraiamo l'IPSW, all'interno della nostra working directory, con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP
+```shell
+unzip 
+```
 
 
