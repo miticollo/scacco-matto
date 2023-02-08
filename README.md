@@ -12,7 +12,7 @@
    ```
 3. Creiamo la working directory nel repository appena clonato
    ```shell
-   mkdir -v -p work/{restore,jb,ipws}
+   mkdir -v -p work/{restore,jb,ipsw}
    ```
 4. Salviamo una copia dell'IPSW del firmware che vogliamo usare nella directory `work`. <br/>
    IPSW compatibili con il proprio device possono essere reperiti dal sito [appledb.dev](https://appledb.dev/device-selection/): non è l'unico sito che offre questo servizio, ma all'interno della comunità del JB è quello **attualmente** più accreditato per la sua completezza e affidabilità.
