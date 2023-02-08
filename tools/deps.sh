@@ -37,6 +37,19 @@ function compile_gaster() {
 }
 
 #######################################
+# Compiles gaster for futurerestore.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_gaster_fr() {
+  cd gaster-futurerestore
+  make macos -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Compiles t8015_bootkit.
 # Arguments:
 #   None
@@ -181,6 +194,7 @@ function main() {
   create_env
   compile_irecovery
   compile_gaster
+  compile_gaster_fr
   compile_t8015_bootkit
   compile_kpf
   get_iboot64patcher
