@@ -67,6 +67,7 @@ Se ciò dovesse accadere basta riprovare.
 
 <!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
 > :information_source: Con AP A14+ o superiore il cavo non è più necessario.
+<!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
 
 1. Verifichiamo che il dispositivo sia effettivamente in DFU mode
    ```shell
@@ -80,7 +81,7 @@ Se ciò dovesse accadere basta riprovare.
    ```shell
     ../tools/libirecovery/tools/irecovery -q | grep 'CPID'
    ```
-4. Ora possiamo eseguire il `parser.py`
+4. Ora possiamo eseguire `parser.py`
    ```shell
     python ../tools/parser.py ./ipsw/BuildManifest.plist '' ''
    ```
