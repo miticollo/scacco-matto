@@ -60,7 +60,7 @@ scopriamo che richiede in input 3 argomenti:
 - `<BDID>` il [Board ID](https://www.theiphonewiki.com/w/index.php?title=BORD&oldid=125531) del device e
 - `<CPID>` il [Chip ID](https://www.theiphonewiki.com/w/index.php?title=CHIP&oldid=125390) del device.
 
-Per ricavare questi ultimi due argomenti possiamo utilizzare il tool [`irecovery`](https://github.com/libimobiledevice/libirecovery/blob/master/tools/irecovery.c), che useremo con l'iPhone in DFU mode.
+Per ricavare questi ultimi due argomenti possiamo utilizzare il tool [`irecovery`](https://github.com/libimobiledevice/libirecovery/blob/master/tools/irecovery.c), che eseguiremo con l'iPhone in DFU mode.
 Per poter entrare correttamente in questa modalità dovremo **collegare l'iPhone al PC** e premere una combinazione di tasti: nel caso del modello X basta seguire [questi passaggi](https://www.theiphonewiki.com/w/index.php?title=DFU_Mode&oldid=125882#A11_and_newer_devices_.28iPhone_8_and_above.2C_iPad_Pro_2018.2C_iPad_Air_2019.2C_iPad_Mini_2019.29).
 Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo tentativo.
 Se ciò dovesse accadere basta riprovare.
