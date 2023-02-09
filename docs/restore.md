@@ -42,7 +42,9 @@ Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
 
-Adesso proviamo a rintracciare queste immagini all'interno del firmware.
+### IPSW
+
+Adesso proviamo a rintracciare iBoot e LLB all'interno del firmware.
 Estraiamo l'IPSW, contenuto nella nostra working directory, con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP
 ```shell
 unzip ./iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw -d ipsw/
@@ -83,10 +85,34 @@ Se ciò dovesse accadere basta riprovare.
    ```
 4. Ora possiamo eseguire `parser.py`
    ```shell
-    python ../tools/parser.py ./ipsw/BuildManifest.plist '' ''
+    python ../tools/parser.py ./ipsw/BuildManifest.plist '0x0e' '0x8015'
    ```
-   Otteniamo il seguente output
+   otteniamo il seguente output
    ```text
-   
+   iBSS:                  Firmware/dfu/iBSS.d22.RELEASE.im4p
+   iBEC:                  Firmware/dfu/iBEC.d22.RELEASE.im4p
+   iBoot:                 Firmware/all_flash/iBoot.d22.RELEASE.im4p
+   KernelCache:           kernelcache.release.iphone10b
+   LLB:                   Firmware/all_flash/LLB.d22.RELEASE.im4p
+   RestoreRamDisk:        098-03675-020.dmg
+   Root Filesystem (OS):  098-04055-020.dmg
    ```
+Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
+Concentriamoci solo sui payload degli IMG4.
+[Decodificando iBSS con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
+```shell
+openssl asn1parse -in ipsw/Firmware/dfu/iBSS.d22.RELEASE.im4p -i -inform DER
+```
+otteniamo (omettendo il **vero e proprio** binario di iBoot)
+```text
+    0:d=0  hl=5 l=1094868 cons: SEQUENCE          
+    5:d=1  hl=2 l=   4 prim:  IA5STRING         :IM4P
+   11:d=1  hl=2 l=   4 prim:  IA5STRING         :ibss
+   17:d=1  hl=2 l=  17 prim:  IA5STRING         :iBoot-7459.140.15
+   36:d=1  hl=5 l=1094704 prim:  OCTET STRING      [HEX DUMP]: omesso
+1094745:d=1  hl=2 l= 116 prim:  OCTET STRING      [HEX DUMP]:30723037020101041062A3C90D8B8A62837D48E8E68B35138C0420BDA4B5C481822D18AF9DA996DA1699497C5FE7E717D6FD030003B88464846D4230370201020410E74241869155243951E6308B15B19F4B0420BA3F6062D0F7D48F953D6CAD56F9D8D133080E848F5D539EA3F4F37839D7C2F5
+1094863:d=1  hl=2 l=   8 cons:  SEQUENCE          
+1094865:d=2  hl=2 l=   1 prim:   INTEGER           :01
+1094868:d=2  hl=2 l=   3 prim:   INTEGER           :161620
+```
