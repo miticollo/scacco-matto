@@ -99,6 +99,8 @@ Se ciò dovesse accadere basta riprovare.
    ```
 Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
+#### IMG4 = IM4P + IM4M
+
 Concentriamoci solo sui payload degli IMG4.
 [Decodificando iBSS con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
 ```shell
