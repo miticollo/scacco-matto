@@ -101,7 +101,7 @@ Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`]
 
 #### IMG4 file = Payload (IM4P) + Manifest (IM4M)
 
-Concentriamoci solo sui payload degli IMG4.
+Per ora concentriamoci solo sui payload degli IMG4.
 [Decodificando iBSS con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
 ```shell
 openssl asn1parse -in ipsw/Firmware/dfu/iBSS.d22.RELEASE.im4p -i -inform DER
