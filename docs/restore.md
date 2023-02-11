@@ -5,7 +5,9 @@ Questo strumento permette di passare a una versione di iOS non più firmata: ovv
 La versione che andremo a installare è la 15.7.1.
 
 <!-- https://twitter.com/diegohaz/status/1527642881384759297 -->
-> **Warning**<br>
+<!-- https://github.com/community/community/discussions/16925#discussioncomment-3459263 -->
+
+> **Warning**
 > Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
 L'utente che avesse già installato questa versione può tralasciare i comandi proposti concentrandosi solo sugli aspetti teorici trattati.
@@ -70,7 +72,7 @@ Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo
 Se ciò dovesse accadere basta riprovare.
 
 <!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
-> **Note**
+> **Note**<br>
 > Con AP A14+ o superiore il cavo non è più necessario.
 <!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
 
