@@ -5,7 +5,7 @@ Questo strumento permette di passare a una versione di iOS non più firmata: ovv
 La versione che andremo a installare è la 15.7.1.
 
 <!-- https://twitter.com/diegohaz/status/1527642881384759297 -->
-> **Warning**
+> **Warning**<br>
 > Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
 L'utente che avesse già installato questa versione può tralasciare i comandi proposti concentrandosi solo sugli aspetti teorici trattati.
