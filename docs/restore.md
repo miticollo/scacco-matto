@@ -200,7 +200,7 @@ Sorprendente, tutti i file sono uguali!
 [](https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233)
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
-Dalla Figura ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
+Dalla [Figura]() ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
 [](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
 Probabilmente per mantenere una compatibilità con i software di restore.
 
