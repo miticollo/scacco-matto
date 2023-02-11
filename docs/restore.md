@@ -4,9 +4,9 @@ In questo capitolo utilizzeremo [futurerestore](https://github.com/futurerestore
 Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è più possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
 La versione che andremo a installare è la 15.7.1.
 
-<!-- https://twitter.com/diegohaz/status/1527642881384759297 -->
-<!-- https://github.com/community/community/discussions/16925#discussioncomment-3459263 -->
-<!-- https://github.com/Mqxx/GitHub-Markdown -->
+[](https://twitter.com/diegohaz/status/1527642881384759297)
+[](https://github.com/community/community/discussions/16925#discussioncomment-3459263)
+[](https://github.com/Mqxx/GitHub-Markdown)
 > **Warning**</br>
 > Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
@@ -71,10 +71,10 @@ Per poter entrare correttamente in questa modalità dovremo **collegare l'iPhone
 Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo tentativo.
 Se ciò dovesse accadere basta riprovare.
 
-<!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
+[](https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546)
 > **Note**</br>
 > Con AP A14+ o superiore il cavo non è più necessario.
-<!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
+[](TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225)
 
 1. Verifichiamo che il dispositivo sia effettivamente in DFU mode
    ```shell
@@ -143,8 +143,8 @@ Per verificarlo possiamo provare a estrarlo con [PyIMG4](https://github.com/m1st
 pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -o ipsw/decrypted/ibss.enc --no-decompress
 ```
 Ora usando il tool `xxd` produciamo un one line hexdump dell'output di PyIMG4
-<!-- https://stackoverflow.com/a/31553497 -->
-<!-- https://unix.stackexchange.com/a/706374 -->
+[](https://stackoverflow.com/a/31553497)
+[](https://unix.stackexchange.com/a/706374)
 ```shell
 xxd -u -p -c0 ./ipsw/decrypted/ibss.enc
 ```
@@ -192,7 +192,7 @@ pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/iBoot.d22.RELEASE.im4p -o ip
 pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -o ipsw/decrypted/llb.raw --iv ed29461163fe6ad946182779e0ae12f1 --key 7612dff248c4fa5015cb08a787ef5c5ad5ab6fc70b35027429daf670bd6e0688
 ```
 E confrontiamo iBSS, iBEC, iBoot e LLB
-<!-- https://unix.stackexchange.com/a/33687 -->
+[](https://unix.stackexchange.com/a/33687)
 ```shell
 diff -q --from-file ipsw/decrypted/*.raw
 ```
@@ -201,7 +201,7 @@ Sorprendente, tutti i file sono uguali!
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
 Dalla Figura ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
-<!-- https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332 -->
+[](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
 Probabilmente per mantenere una compatibilità con i software di restore.
 
 #### GID0 key
