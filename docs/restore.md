@@ -143,8 +143,10 @@ Per verificarlo possiamo provare a estrarlo con [PyIMG4](https://github.com/m1st
 pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -o ipsw/decrypted/ibss.enc --no-decompress
 ```
 Ora usando il tool `xxd` produciamo un one line hexdump dell'output di PyIMG4
+
 <--! https://stackoverflow.com/a/31553497 -->
 <--! https://unix.stackexchange.com/a/706374 -->
+
 ```shell
 xxd -u -p -c0 ./ipsw/decrypted/ibss.enc
 ```
