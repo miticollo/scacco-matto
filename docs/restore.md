@@ -159,7 +159,9 @@ Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sape
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**<br>
 > Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
-> È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+
+Per trovare 
 ```shell
 openssl enc -aes-256-cbc -nopad -d -in ipsw/decrypted/ibss.enc -K '814134782438f75f9ccced43fff5fb0e51a8baf38f591accb88e92fb2c1be7c0' -iv 'd31e54acb4badb8af5cc327b28cb9276' -out ipsw/decrypted/ibss.lzfse -p -v
 ```
@@ -171,3 +173,5 @@ lzfse -decode -i ipsw/decrypted/ibss.lzfse -o ipsw/decrypted/ibss.raw -v
 ```
 > **Note**<br>
 > [Homebrew](https://brew.sh/) `brew install lzfse`
+
+#### GID0 key
