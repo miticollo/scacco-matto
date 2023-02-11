@@ -155,7 +155,19 @@ Avremo potuto scoprire la stessa cosa usando il sotto-comando `info` di `pyimg4 
 ```shell
 pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
 ```
-Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere quale algoritmo di cifratura è usato: [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
+Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere [quale algoritmo di cifratura è usato](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L1287): [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**<br>
-> This is a warning
+> Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
+> È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+```shell
+openssl enc -aes-256-cbc -nopad -d -in ipsw/decrypted/ibss.enc -K '814134782438f75f9ccced43fff5fb0e51a8baf38f591accb88e92fb2c1be7c0' -iv 'd31e54acb4badb8af5cc327b28cb9276' -out ipsw/decrypted/ibss.lzfse -p -v
+```
+```shell
+file ipsw/decrypted/ibss.lzfse
+```
+```shell
+lzfse -decode -i ipsw/decrypted/ibss.lzfse -o ipsw/decrypted/ibss.raw -v
+```
+> **Note**<br>
+> [Homebrew](https://brew.sh/) `brew install lzfse`
