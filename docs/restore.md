@@ -72,7 +72,7 @@ Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo
 Se ciò dovesse accadere basta riprovare.
 
 <!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
-> **Note**<br>
+> **Note**</br>
 > Con AP A14+ o superiore il cavo non è più necessario.
 <!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
 
@@ -157,21 +157,52 @@ pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
 ```
 Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere [quale algoritmo di cifratura è usato](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L1287): [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
-> **Warning**<br>
+> **Warning**</br>
 > Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
-È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+> È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
 
-Per trovare 
+Per trovare l'IV e la chiave per **decifrare l'iBSS di questo IPSW** possiamo usare la [pagina di the iPhone Wiki](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys#Firmware_Versions) e più precisamente [quella che interessa a noi](https://www.theiphonewiki.com/wiki/SkySecuritySydneyB_19H117_(iPhone10,6)#iBSS).
+> **Note**</br>
+> Qualora si volesse automatizzare questa operazione è possibile usare questo [script Python](https://github.com/Cryptiiiic/ios-tools/blob/master/wiki-proxy.py).
+
+Una volta recuperato l'IV e la chiave possiamo usare OpenSSL
 ```shell
 openssl enc -aes-256-cbc -nopad -d -in ipsw/decrypted/ibss.enc -K '814134782438f75f9ccced43fff5fb0e51a8baf38f591accb88e92fb2c1be7c0' -iv 'd31e54acb4badb8af5cc327b28cb9276' -out ipsw/decrypted/ibss.lzfse -p -v
 ```
+Verifichiamo che l'output di OpenSSL sia compresso in LZFSE
 ```shell
 file ipsw/decrypted/ibss.lzfse
 ```
+Per tanto non ci resta che decomprimere `ibss.lzfse`
 ```shell
 lzfse -decode -i ipsw/decrypted/ibss.lzfse -o ipsw/decrypted/ibss.raw -v
 ```
 > **Note**<br>
-> [Homebrew](https://brew.sh/) `brew install lzfse`
+> Qualora non si avesse installato il comando `lzfse` basta eseguire `brew install lzfse`, che per essere eseguito richiede [Homebrew](https://brew.sh/).
+
+Si noti che avremmo potuto semplicemente decifrare e decomprimere `iBSS.d22.RELEASE.im4p` in un solo passaggio con PyIMG4
+```shell
+pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -o ipsw/decrypted/ibss.raw --iv d31e54acb4badb8af5cc327b28cb9276 --key 814134782438f75f9ccced43fff5fb0e51a8baf38f591accb88e92fb2c1be7c0
+```
+
+Ora decriptiamo e decomprimiamo anche iBEC, iBoot e LLB
+```shell
+pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBEC.d22.RELEASE.im4p -o ipsw/decrypted/ibec.raw --iv 2288b60aba82f1139384b6fc1a1f7ce4 --key dde8a6d5b5b4332d5839da7d94d8f0547cdc3e14fc080e5e8f8823791d0f40e8
+pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/iBoot.d22.RELEASE.im4p -o ipsw/decrypted/iboot.raw --iv fcd7a26f0b0527fd588c0ff34d869842 --key 8dc6735a5efbc0447522c18c1948528250cb15390936c57cbb1adcddf09fec2f
+pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -o ipsw/decrypted/llb.raw --iv ed29461163fe6ad946182779e0ae12f1 --key 7612dff248c4fa5015cb08a787ef5c5ad5ab6fc70b35027429daf670bd6e0688
+```
+E confrontiamo iBSS, iBEC, iBoot e LLB
+<!-- https://unix.stackexchange.com/a/33687 -->
+```shell
+diff -q --from-file ipsw/decrypted/*.raw
+```
+Sorprendente, tutti i file sono uguali!
+<!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 -->
+La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
+Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
+Dalla Figura ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
+<!-- https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332 -->
+Probabilmente per mantenere una compatibilità con i software di restore.
 
 #### GID0 key
+
