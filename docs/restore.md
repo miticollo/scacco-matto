@@ -4,7 +4,9 @@ In questo capitolo utilizzeremo [futurerestore](https://github.com/futurerestore
 Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è più possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
 La versione che andremo a installare è la 15.7.1.
 
-> :warning: Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
+<!-- https://twitter.com/diegohaz/status/1527642881384759297 -->
+> **Warning**
+> Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
 L'utente che avesse già installato questa versione può tralasciare i comandi proposti concentrandosi solo sugli aspetti teorici trattati.
 
@@ -47,7 +49,7 @@ Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 Adesso proviamo a rintracciare iBoot e LLB all'interno del firmware.
 Estraiamo l'IPSW, contenuto nella nostra working directory, con il comando `unzip`: infatti esso non è nient'altro che un archivio ZIP
 ```shell
-unzip ./iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw -d ipsw/
+unzip ./iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw -d ipsw/orig
 ```
 Al termine dell'estrazione, nella directory `ipsw` troviamo il file `BuildManifest.plist`, che contiene nel nodo `BuildIdentities` le configurazioni per i vari device supportati dall'IPSW.
 Ad esempio, l'iPhone X ha due identificatori diversi [iPhone10,3](https://ipsw.me/iPhone10,3/info) e [iPhone10,6](https://ipsw.me/iPhone10,6/info), quindi abbiamo due configurazioni che raddoppiano perché dobbiamo considerare la stringa `Variant` all'interno del nodo `Info`, che assume i valori `Customer Erase Install (IPSW)` e `Customer Upgrade Install (IPSW)`. <br/>
@@ -68,7 +70,8 @@ Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo
 Se ciò dovesse accadere basta riprovare.
 
 <!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 -->
-> :information_source: Con AP A14+ o superiore il cavo non è più necessario.
+> **Note**
+> Con AP A14+ o superiore il cavo non è più necessario.
 <!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
 
 1. Verifichiamo che il dispositivo sia effettivamente in DFU mode
@@ -85,7 +88,7 @@ Se ciò dovesse accadere basta riprovare.
    ```
 4. Ora possiamo eseguire `parser.py`
    ```shell
-    python ../tools/parser.py ./ipsw/BuildManifest.plist '0x0e' '0x8015'
+    python ../tools/parser.py ./ipsw/orig/BuildManifest.plist '0x0e' '0x8015'
    ```
    otteniamo il seguente output
    ```text
@@ -102,19 +105,55 @@ Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`]
 #### IMG4 file = Payload (IM4P) + Manifest (IM4M)
 
 Per ora concentriamoci solo sui payload degli IMG4.
-[Decodificando iBSS con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
+Per semplicità considereremo solo l'iBSS, ma nulla vieta di usare l'iBEC o un altro payload che possiamo trovare all'interno del firmware.
+Per prima cosa [decodifichiamolo con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
 ```shell
-openssl asn1parse -in ipsw/Firmware/dfu/iBSS.d22.RELEASE.im4p -i -inform DER
+openssl asn1parse -in ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -i -inform DER
 ```
-otteniamo (omettendo il **vero e proprio** binario di iBoot)
-```text
+e otterremmo (omettendo il **vero e proprio** binario)
+<pre>
     0:d=0  hl=5 l=1094868 cons: SEQUENCE          
     5:d=1  hl=2 l=   4 prim:  IA5STRING         :IM4P
    11:d=1  hl=2 l=   4 prim:  IA5STRING         :ibss
    17:d=1  hl=2 l=  17 prim:  IA5STRING         :iBoot-7459.140.15
-   36:d=1  hl=5 l=1094704 prim:  OCTET STRING      [HEX DUMP]: omesso
+   36:d=1  hl=5 l=1094704 prim:  OCTET STRING      [HEX DUMP]: <i>omesso</i>
 1094745:d=1  hl=2 l= 116 prim:  OCTET STRING      [HEX DUMP]:30723037020101041062A3C90D8B8A62837D48E8E68B35138C0420BDA4B5C481822D18AF9DA996DA1699497C5FE7E717D6FD030003B88464846D4230370201020410E74241869155243951E6308B15B19F4B0420BA3F6062D0F7D48F953D6CAD56F9D8D133080E848F5D539EA3F4F37839D7C2F5
 1094863:d=1  hl=2 l=   8 cons:  SEQUENCE          
 1094865:d=2  hl=2 l=   1 prim:   INTEGER           :01
 1094868:d=2  hl=2 l=   3 prim:   INTEGER           :161620
+</pre>
+
+Per capire l'output mostrato conviene esaminare il comando che lo ha prodotto: `asn1parse` della utility `openssl`.
+Tralasciamo l'opzione `-in` che banalmente permette di specificare il file di input e concentriamoci sulle restanti.
+`-inform DER` indica che il file `iBSS.d22.RELEASE.im4p` usa la codifica Distinguished Encoding Rules (DER) mentre `-i` permette di indentare l'output prodotto.
+Quest'ultimo non è nient'altro che il risultato del parsing delle strutture [Abstract Syntax Notation One (ASN.1)](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/). <br/>
+Il linguaggio ASN.1 permette di descrivere strutture dati in maniera indipendente dal linguaggio di programmazione usato per trattarli.
+Possiamo paragonare l'[ASN.1 a un JSON schema](https://stackoverflow.com/a/14407935): la differenza principale con quest'ultimo sta nel fatto che il JSON è **sempre codificato in human-readable plain text** con una sintassi ben definita che ne permette di individuare gli oggetti rappresentati, mentre l'ANS.1 può anche essere codificato in un formato binario.
+In particolare DER è una codifica type-length-value (TLV) che garantisce una codifica univoca per i valori ASN.1 utilizzando la minor quantità di byte necessari.
+Una possibile definizione ASN.1 usata per il formato IMG4 può essere trovata [qui](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=62). <br/>
+Non si conoscono le ragioni per cui Apple ha scelto questo formato rispetto al classico `.plist`.
+Ad ogni modo l'ASN.1 fu adottato per la rappresentazione dei certificati (1988), prima dell'avvento del [JSON](https://www.rfc-editor.org/rfc/rfc4627), e visto che i certificati vengo usati per garantire l'autenticità anche la Apple avrà deciso di adottare la stessa notazione e codifica per garantire l'affidabilità della boot chain.
+
+Tornando all'output di prima notiamo che abbiamo due valori di tipo `OCTET STRING`, che un è built-in type in ASN.1.
+Il primo, che è stato omesso perché troppo lungo, come abbiamo già detto contiene un payload: il binario di iBSS.
+Per verificarlo possiamo provare a estrarlo con [PyIMG4](https://github.com/m1stadev/PyIMG4), che è un tool in Python, ma che può anche essere importato nel proprio progetto per usarlo come libreria
+```shell
+pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -o ipsw/decrypted/ibss.enc --no-decompress
 ```
+Ora usando il tool `xxd` produciamo un one line hexdump dell'output di PyIMG4
+<--! https://stackoverflow.com/a/31553497 -->
+<--! https://unix.stackexchange.com/a/706374 -->
+```shell
+xxd -u -p -c0 ./ipsw/decrypted/ibss.enc
+```
+Se confrontiamo l'output di questo comando con il valore dell'`OCTET STRING` precedente ci rendiamo conto che sono uguali.
+Tuttavia `./ipsw/decrypted/ibss.enc` non è il vero e proprio binario: infatti PyIMG4 riporta `payload data is LZFSE_ENCRYPTED compressed`.
+In particolare ci sta dicendo che il payload estratto prima è criptato e compresso con [LZFSE](https://en.wikipedia.org/w/index.php?title=LZFSE&oldid=1132724077).
+Avremo potuto scoprire la stessa cosa usando il sotto-comando `info` di `pyimg4 im4p`
+```shell
+pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
+```
+Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere quale algoritmo di cifratura è usato: [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
+Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
+> **Warning**
+> This is a warning
