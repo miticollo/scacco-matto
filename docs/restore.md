@@ -196,6 +196,7 @@ E confrontiamo iBSS, iBEC, iBoot e LLB
 ```shell
 diff -q --from-file ipsw/decrypted/*.raw
 ```
+<!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 -->
 Sorprendente, tutti i file sono uguali!
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
