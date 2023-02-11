@@ -35,7 +35,7 @@ Infine notiamo che l'AES engine è un componente separato dall'AP, questo per un
 ## Trusted boot chain
 
 Prima di passare alla pratica è necessario capire come avviene l'avvio di iOS: da quando premiamo il tasto di accensione fino alla schermata di blocco.
-![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<br/>
+![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<span id="fig-bootchain"></span><br/>
 Da un primo sguardo della [Figura](http://newosxbook.com/bonus/iboot.pdf#page=1) notiamo, che i passaggi tra i vari componenti di avvio formano una catena.
 Inoltre, come discuteremo tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
 Per questi motivi viene chiamata _trusted boot chain_.
@@ -200,7 +200,7 @@ Sorprendente, tutti i file sono uguali!
 [](https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233)
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
-Dalla [Figura]() ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
+Dalla [Figura](#fig-bootchain) ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
 [](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
 Probabilmente per mantenere una compatibilità con i software di restore.
 
