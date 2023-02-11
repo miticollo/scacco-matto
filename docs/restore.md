@@ -6,8 +6,8 @@ La versione che andremo a installare è la 15.7.1.
 
 <!-- https://twitter.com/diegohaz/status/1527642881384759297 -->
 <!-- https://github.com/community/community/discussions/16925#discussioncomment-3459263 -->
-
-> **Warning**
+<!-- https://github.com/Mqxx/GitHub-Markdown -->
+> **Warning**</br>
 > Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
 L'utente che avesse già installato questa versione può tralasciare i comandi proposti concentrandosi solo sugli aspetti teorici trattati.
@@ -157,5 +157,5 @@ pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
 ```
 Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere quale algoritmo di cifratura è usato: [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
-> **Warning**
+> **Warning**<br>
 > This is a warning
