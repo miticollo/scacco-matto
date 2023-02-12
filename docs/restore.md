@@ -231,11 +231,15 @@ Inoltre mostreremo anche come è fatto questo NVMe namespace.
 
 
 
-### Remote vs Local boot
+### Boot
 
 
 
 #### IM4M
+
+
+
+#### Remote
 
 
 
