@@ -204,6 +204,9 @@ Dalla [Figura](#fig-bootchain) ci accorgiamo che di fatto LLB non è più necess
 [](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
 Probabilmente per mantenere una compatibilità con i software di restore.
 
+
+
+
 #### GID0 key
 
 
