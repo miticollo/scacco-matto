@@ -206,3 +206,11 @@ Probabilmente per mantenere una compatibilità con i software di restore.
 
 #### GID0 key
 
+
+
+### Remote vs Local boot
+
+
+
+#### IM4M
+
