@@ -160,7 +160,7 @@ Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sape
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**</br>
 > Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
-> È vero che esso ci stampa un keybag di produzione contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+> È vero che esso ci stampa un keybag di produzione ([ricavato dal secondo `OCTET STRING`](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L829-L841)) contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
 
 Per trovare l'IV e la chiave per **decifrare l'iBSS di questo IPSW** possiamo usare la [pagina di the iPhone Wiki](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys#Firmware_Versions) e più precisamente [quella che interessa a noi](https://www.theiphonewiki.com/wiki/SkySecuritySydneyB_19H117_(iPhone10,6)#iBSS).
 > **Note**</br>
