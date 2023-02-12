@@ -45,6 +45,7 @@ Il primo codice che l'AP eseguirà è il [SecureROM](https://papers.put.as/paper
 Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
+In entrambi i percorsi troviamo che iBoot si occupa di saltare (boot trampoline) al kernel, che a volte viene chiamato kernelcache o [XNU](https://github.com/apple-oss-distributions/xnu).
 
 ### IPSW
 
@@ -213,10 +214,18 @@ La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il Sec
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
 Dalla [Figura](#fig-bootchain) ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
 [](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
-Probabilmente per mantenere una compatibilità con i software di restore.
+Probabilmente per mantenere una compatibilità con i software di restore.<br>
+[](https://discord.com/channels/779134930265309195/779151007488933889/986400776861671424)
+Quindi come fa il device a comportarsi correttamente?
+Beh, basandosi sull'[IM4P tag (o TYPE)](https://www.theiphonewiki.com/w/index.php?title=TYPE&oldid=123816): ve ne sono molti, ma ne citerò solo alcuni.
+Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyimg4 im4p extract` sia `openssl asn1parse`, ad esempio il tag di iBoot è `ibot` mentre quello di iBSS è `ibss`.
+È importante ricordare che il tag è composto di soli 4 caratteri perché è rappresentato da un 32-bit unsigned integer (`uint32_t`).
 
-
-
+In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 file = Payload (IM4P) + Manifest (IM4M)".
+Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
+Sarà presentato prima che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
+Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come abbiamo già accennato si trovato su `/dev/disk1`.
+Inoltre mostreremo anche come è fatto questo NVMe namespace.
 
 #### GID0 key
 
