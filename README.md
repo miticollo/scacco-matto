@@ -21,7 +21,7 @@
 5. Salviamo una copia dell'IPSW del firmware che vogliamo usare nella directory `work`. <br/>
    IPSW, compatibili con il proprio device, possono essere scaricati dal sito [appledb.dev](https://appledb.dev/device-selection/): non è l'unico sito che offre questo servizio, ma all'interno della comunità del JB è quello **attualmente** più accreditato per la sua completezza e affidabilità.
    Inoltre il sito, oltre a mettere a disposizione le versioni stabili di iOS, permette il download anche di quelle beta e per entrambe indica se è oppure no firmata.
-6. Inoltre aggiungiamo una copia del blob SHSH, se necessario, nella directory `work/restore`.
+6. Infine aggiungiamo una copia del blob SHSH, se necessario, nella directory `work/restore`.
 
 ## Update + Restore
 

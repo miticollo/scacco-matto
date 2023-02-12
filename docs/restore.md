@@ -155,6 +155,7 @@ Avremo potuto scoprire la stessa cosa usando il sotto-comando `info` di `pyimg4 
 ```shell
 pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
 ```
+oppure osservando che [dopo il primo `OCTET STRING` ne è presente un secondo](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L826-L827).
 Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere [quale algoritmo di cifratura è usato](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L1287): [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**</br>
