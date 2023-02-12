@@ -155,8 +155,18 @@ Avremo potuto scoprire la stessa cosa usando il sotto-comando `info` di `pyimg4 
 ```shell
 pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p
 ```
-oppure osservando che [dopo il primo `OCTET STRING` ne è presente un secondo](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L826-L827).
-Quindi non ci rimane che decriptarlo e decomprimerlo, per far ciò dobbiamo sapere [quale algoritmo di cifratura è usato](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L1287): [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
+oppure osservando che [dopo il primo `OCTET STRING` ne è presente un secondo](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L826-L827), che di seguito è stato suddiviso per mettere in evidenza le chiavi e gli IV.
+```text
+307230370201010410
+                  62A3C90D8B8A62837D48E8E68B35138C (IV for PRODUCTION)
+                                                  0420
+                                                      BDA4B5C481822D18AF9DA996DA1699497C5FE7E717D6FD030003B88464846D42 (key for PRODUCTION)
+                                                                                                                      30370201020410
+                                                                                                                                    E74241869155243951E6308B15B19F4B (IV for DEV)
+                                                                                                                                                                    0420
+                                                                                                                                                                         BA3F6062D0F7D48F953D6CAD56F9D8D133080E848F5D539EA3F4F37839D7C2F5 (key for DEV)
+```
+Quindi non ci rimane che decriptare e decomprimere `ibss.enc`, per far ciò dobbiamo sapere [quale algoritmo di cifratura è usato](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L1287): [Advanced Encryption Standard (AES)](https://en.wikipedia.org/w/index.php?title=Advanced_Encryption_Standard&oldid=1138366480) con modalità [Cipher block chaining (CBC)](https://en.wikipedia.org/w/index.php?title=Block_cipher_mode_of_operation&oldid=1132330761#CBC) e chiave da 256 bit.
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**</br>
 > Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
