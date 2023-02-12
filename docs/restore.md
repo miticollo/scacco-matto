@@ -45,7 +45,8 @@ Il primo codice che l'AP eseguirà è il [SecureROM](https://papers.put.as/paper
 Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
-In entrambi i percorsi troviamo che iBoot si occupa di saltare (boot trampoline) al kernel, che a volte viene chiamato kernelcache o [XNU](https://github.com/apple-oss-distributions/xnu).
+
+- In entrambi i percorsi troviamo che iBoot si occupa di saltare (boot trampoline) al kernel, che a volte viene chiamato kernelcache o [XNU](https://github.com/apple-oss-distributions/xnu).
 
 ### IPSW
 
@@ -229,7 +230,7 @@ Inoltre mostreremo anche come è fatto questo NVMe namespace.
 
 #### GID0 key
 
-
+Ora supponiamo 
 
 ### Boot
 
