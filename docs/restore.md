@@ -224,15 +224,15 @@ Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyi
 
 In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 file = Payload (IM4P) + Manifest (IM4M)".
 Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
-Sarà presentato prima che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
+Prima, però, sarà presentato che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
 Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come abbiamo già accennato si trovato su `/dev/disk1`.
-Inoltre mostreremo anche come è fatto questo NVMe namespace.
+Inoltre mostreremo anche come è fatto questo _NVMe namespace_.
 
 #### GID0 key
 
 Ora supponiamo di voler 
 
-### Boot
+### La SecureROM e la ricerca di iBoot
 
 
 
