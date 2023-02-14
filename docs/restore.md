@@ -230,7 +230,55 @@ Inoltre mostreremo anche come è fatto questo _NVMe namespace_.
 
 #### GID0 key
 
-Ora supponiamo di voler 
+Ora supponiamo di voler decriptare l'iBSS di iOS 16.0.3.
+Come prima cosa dobbiamo decrittare l'IV e la chiave del keybag di produzione restituitoci da `pyimg4 im4p info`.
+Quindi colleghiamoci a the iPhone Wiki e cerchiamo la pagina per iOS 16.0.3 per iPhone10,6, ma [non la troviamo](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/16.x&oldid=125807).
+Cosa fare? Dovremmo usare `gaster`.
+
+Esso è un CLI tool che permette di sfruttare checkm8, per ora ci basti sapere questo, ma lo approfondiremo più avanti.
+Purtroppo questo tool non ha un manuale, perciò come primo approccio eseguiamolo senza argomenti
+```shell
+../tools/gaster/gaster
+```
+otterremo il seguente output
+```text
+usb_timeout: 5
+usb_abort_timeout_min: 0
+Usage: env ../tools/gaster/gaster options
+env:
+USB_TIMEOUT - USB timeout in ms
+USB_ABORT_TIMEOUT_MIN - USB abort timeout minimum in ms
+options:
+reset - Reset DFU state
+pwn - Put the device in pwned DFU mode
+decrypt src dst - Decrypt file using GID0 AES key
+decrypt_kbag kbag - Decrypt KBAG using GID0 AES key
+```
+Le opzioni che ci interessano sono due `decrypt` e `decrypt_kbag` entrambe richiedono che l'iPhone sia in DFU mode.
+> **Note**
+> Testeremo entrambe le opzioni con iBSS proveniente da iOS 15.7.1, questo perché così il lettore potrà confrontare il keybag con quello usato precedentemente, che sappiamo essere funzionante.
+
+Iniziamo dall'opzione `decrypt`
+```shell
+../tools/gaster/gaster decrypt ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p ipsw/decrypted/ibss.gaster
+```
+e confrontiamo il risultato con `ibss.raw`
+```shell
+cmp -l ipsw/decrypted/ibss.{raw,gaster}
+```
+Essi sono uguali! `gaster decrypt` [ha](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1601):
+1. prima esegue l'[exploit per checkm8](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1231-L1276);
+2. poi avviene la [fase di decrypt](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1562):
+   1. crea [in memoria una rappresentazione dell'IM4P del file sorgente](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1407-L1411);
+   2. estrae [IV e key dall'IM4P e li concatena in un keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1391-L1405): `IV + key` (**l'ordine è importante!**);
+   3. usa l'[AES engine per decriptare il keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1495-L1555);
+   4. usa il [keybag decriptato per decriptare il payload dell'IM4P](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1444) e
+   5. infine [decomprime l'archivio LZFSE](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1449).
+
+> **Note**
+> Quanto descritto vale anche per gli IMG4 e non solo per gli IM4P.
+
+Tuttavia, come vedremo in seguito, `futurerestore` usa le pagine di the iPhone wiki per ottenere le chiavi, quindi è necessario 
 
 ### La SecureROM e la ricerca di iBoot
 
