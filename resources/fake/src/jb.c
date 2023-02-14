@@ -62,7 +62,7 @@ xpc_object_t my_xpc_dictionary_get_value(xpc_object_t dict, const char *key) {
   if (strcmp(key,"LaunchDaemons") == 0) {
     xpc_object_t programArguments = xpc_array_create(NULL, 0);
 
-    // argv[0] == "mo" in jbinit.c
+    // argv[0] == "moo" in jbinit.c
     xpc_array_append_value(programArguments, xpc_string_create("moo"));
     if(getenv("XPC_USERSPACE_REBOOTED"))
         xpc_array_append_value(programArguments, xpc_string_create("-i"));

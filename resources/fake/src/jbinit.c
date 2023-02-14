@@ -1,40 +1,13 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <spawn.h>
-#include <dirent.h>
-#include <stdbool.h>
+#include "common.h"
 
 #define PATH_MAX 1000
 #define RSA "/binpack/dropbear_rsa_host_key"
 
 static bool userspace_reboot = false;
 
-__attribute__((naked)) uint64_t msyscall(uint64_t syscall, ...){
-    asm(
-            "mov x16, x0\n"
-            "ldp x0, x1, [sp]\n"
-            "ldp x2, x3, [sp, 0x10]\n"
-            "ldp x4, x5, [sp, 0x20]\n"
-            "ldp x6, x7, [sp, 0x30]\n"
-            "svc 0x80\n"
-            "ret\n"
-            );
-}
-
-int stat(void *path, void *ub){
-    return msyscall(188,path,ub);
-}
-
-int sys_dup2(int from, int to) {
-    return msyscall(90, from, to);
-}
-
-int run_shell_command(char *const argv[]) {
+int run(char *const argv[], bool async) {
     pid_t pid = 0;
-    int status;
+    int status = 0;
     posix_spawnattr_t attr;
 
     printf("Initializing spawn attribute...\n");
@@ -52,13 +25,16 @@ int run_shell_command(char *const argv[]) {
     printf("Destroying spawn attribute...\n");
     posix_spawnattr_destroy(&attr);
 
-    printf("Waiting for child process to finish...\n");
-    if (waitpid(pid, &status, WCONTINUED) != pid) {
-        printf("Error while waiting for child process\n");
-        return -1;
-    }
+    if (!async) {
+        printf("Waiting for child process to finish...\n");
+        if (waitpid(pid, &status, WCONTINUED) != pid) {
+            printf("Error while waiting for child process\n");
+            return -1;
+        }
+        printf("Child process finished with status %d\n", status);
+    } else
+        printf("Child (async) process finished with status %d\n", status);
 
-    printf("Child process finished with status %d\n", status);
     return status;
 }
 
@@ -72,7 +48,7 @@ void loadDaemons(void) {
             if (strstr(entry->d_name, ".plist") != NULL) {
                 snprintf(path, PATH_MAX, "/Library/LaunchDaemons/%s", entry->d_name);
                 char *const daemons[] = {"/bin/launchctl", "load", path, NULL};
-                run_shell_command(daemons);
+                run(daemons, true);
             }
         closedir(dir);
     } else
@@ -93,7 +69,7 @@ void load_etc_rc_d(void) {
                 continue;
             snprintf(path, PATH_MAX, "/etc/rc.d/%s", entry->d_name);
             char *const rcd[] = {path, NULL};
-            run_shell_command(rcd);
+            run(rcd, true);
         }
         // Close the directory
         closedir(dir);
@@ -107,7 +83,7 @@ void makeRSA(void) {
     if (!fd) {
         puts("generating rsa key\n");
         char *args[] = {"/binpack/usr/bin/dropbearkey", "-t", "rsa", "-f", RSA, NULL};
-        run_shell_command(args);
+        run(args, false);
     } else
         fclose(fd);
 }
@@ -117,7 +93,18 @@ int main (int argc, char *argv[]) {
     sys_dup2(fd_console, 0);
     sys_dup2(fd_console, 1);
     sys_dup2(fd_console, 2);
+    char bootargs[0x270];
+
     puts("======== Hello from jbloader! ======== \n");
+    {
+        unsigned long bootargs_len = sizeof(bootargs);
+        int err = sys_sysctlbyname("kern.bootargs", sizeof("kern.bootargs"), &bootargs, &bootargs_len, NULL, 0);
+        if (err) {
+            printf("cannot get bootargs: %d\n", err);
+            spin();
+        }
+        printf("boot-args = %s\n", bootargs);
+    }
     printf("jb.dylib says that my name is \"%s\"\n", argv[0]);
     if (argc == 2)
         if (!strcmp(argv[1], "-i"))
@@ -126,25 +113,25 @@ int main (int argc, char *argv[]) {
         puts("already mounted\n");
     else {
         char *const mount_rootfs[] = {"/sbin/mount", "-uw", "/", NULL};
-        run_shell_command(mount_rootfs);
+        run(mount_rootfs, false);
         char *const mount_preboot[] = {"/sbin/mount", "-uw", "/private/preboot", NULL};
-        run_shell_command(mount_preboot);
+        run(mount_preboot, false);
     }
 
     if (access("/.installed_anfora_jb", F_OK) != 0) {
         puts("======== start SSH ======== \n");
         makeRSA();
         char *const dropbear[] = { "/binpack/bin/launchctl", "load", "-w", "/binpack/Library/LaunchDaemons/dropbear.plist", NULL };
-        int status = run_shell_command(dropbear);
+        int status = run(dropbear, true);
         printf("Command execution finished with status %d\n", status);
     } else {
         puts("======== start Jailbreak ======== \n");
         load_etc_rc_d();
         loadDaemons();
         char *const uicache[] = {"/usr/bin/uicache", "-a", NULL};
-        run_shell_command(uicache);
+        run(uicache, true);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
-        run_shell_command(sbreload);
+        run(sbreload, false);
     }
     puts("======== Bye from jbloader! ======== \n");
     close(fd_console);
