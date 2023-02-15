@@ -280,7 +280,22 @@ Essi sono uguali! Quindi cosa [fa](https://github.com/0x7ff/gaster/blob/7fffffff
 > **Note**<br>
 > Quanto descritto vale anche per gli IMG4 e non solo per gli IM4P.
 
-Tuttavia, come vedremo in seguito, `futurerestore` usa le pagine di the iPhone wiki per ottenere le chiavi, quindi è necessario 
+Tuttavia, come vedremo in seguito, `futurerestore` usa le pagine di the iPhone wiki per ottenere l'IV e le chiavi, quindi esse devono essere presenti sulla wiki.
+Perciò, come decriptare l'IV e la chiave con `gaster`?
+1. Costruiamo il keybag concatenando semplicemente l'IV e la chiave (di produzione) restituiti dal comando `pyimg4 im4p info`
+   ```shell
+   pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p | grep -A4 "Type: PRODUCTION" | awk '/IV:/{iv=$2}/Key:/{key=$2} END{print iv key}'
+   ```
+2. Decriptiamolo con `gaster decrypt_kbag`
+   ```shell
+   ../tools/gaster/gaster decrypt_kbag 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42 | tail -1
+   ```
+3. Voilà!
+   ```text
+   IV: D31E54ACB4BADB8AF5CC327B28CB9276, key: 814134782438F75F9CCCED43FFF5FB0E51A8BAF38F591ACCB88E92FB2C1BE7C0 
+   ```
+
+
 
 ### La SecureROM e la ricerca di iBoot
 
