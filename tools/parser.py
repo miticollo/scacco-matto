@@ -21,6 +21,8 @@ def main(argv, argc):
     print("LLB:                   " + filtered["Manifest"]["LLB"]["Info"]["Path"])
     print("RestoreRamDisk:        " + filtered["Manifest"]["RestoreRamDisk"]["Info"]["Path"])
     print("Root Filesystem (OS):  " + filtered["Manifest"]["OS"]["Info"]["Path"])
+    # https://discord.com/channels/779134930265309195/779156258799878195/1075131502398025770
+    print("Touch firmware:        " + filtered["Manifest"]["Multitouch"]["Info"]["Path"])
 
 
 if __name__ == '__main__':
