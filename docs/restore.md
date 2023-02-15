@@ -103,6 +103,7 @@ Se ciò dovesse accadere basta riprovare.
    LLB:                   Firmware/all_flash/LLB.d22.RELEASE.im4p
    RestoreRamDisk:        098-03675-020.dmg
    Root Filesystem (OS):  098-04055-020.dmg
+   Touch firmware:        Firmware/D221_Multitouch.im4p
    ```
 Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
