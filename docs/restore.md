@@ -320,7 +320,7 @@ In pratica si, ma è molto complicato.
 Innanzitutto dobbiamo chiarire che noi chiediamo un "servizio" all'AES engine ovvero di decriptare qualcosa.
 Esso, infatti, non ci fornisce **mai** la chiave, ma si fa carico lui di decifrare i dati che gli passiamo in input.
 Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare i comandi per richiedere di decriptare un dato payload.
-Sottolineo che su un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
+Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
 [](https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042)
 Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
 Quanto ho detto può essere verificato osservando 
