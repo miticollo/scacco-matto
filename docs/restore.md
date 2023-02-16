@@ -302,7 +302,7 @@ Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1
    ```shell
    ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
    ```
-2. Tuttavia per decriptare correttamente la chiave dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
+2. Poi decriptiamo la chiave. Tuttavia per farlo correttamente dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
    ```shell
    ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
    ```
