@@ -89,6 +89,19 @@ function compile_termz() {
 }
 
 #######################################
+# Compiles pongoterm.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_pongoterm() {
+  cd PongoOS/scripts
+  make -j"$(sysctl -n hw.ncpu)" pongoterm
+  cd -
+}
+
+#######################################
 # Compiles libimobiledevice.
 # Arguments:
 #   None
@@ -197,6 +210,7 @@ function main() {
   compile_gaster_fr
   compile_t8015_bootkit
   compile_kpf
+  compile_pongoterm
   get_iboot64patcher
   get_futurerestore
   compile_termz

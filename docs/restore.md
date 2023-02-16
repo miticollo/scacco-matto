@@ -297,17 +297,12 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    IV: D31E54ACB4BADB8AF5CC327B28CB9276, key: 814134782438F75F9CCCED43FFF5FB0E51A8BAF38F591ACCB88E92FB2C1BE7C0 
    ```
 
-Come ulteriore verifica possiamo usare [PongoOS](https://github.com/checkra1n/PongoOS/):
-1. Compiliamo il CLI tool [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per poter interagire con PongoOS
-   ```shell
-   cd ../tools/PongoOS/scripts
-   make pongoterm
-   ```
-2. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
+Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per inviare comandi a [PongoOS](https://github.com/checkra1n/PongoOS/):
+1. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
    ```shell
    ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
    ```
-3. Tuttavia per decriptare correttamente la chiave dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
+2. Tuttavia per decriptare correttamente la chiave dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
    ```shell
    ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
    ```
