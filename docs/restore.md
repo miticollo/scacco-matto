@@ -286,6 +286,8 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    ```shell
    pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p | grep -A4 "Type: PRODUCTION" | awk '/IV:/{iv=$2}/Key:/{key=$2} END{print iv key}'
    ```
+<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 -->
+<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 -->
 2. Decriptiamolo con `gaster decrypt_kbag`
    ```shell
    ../tools/gaster/gaster decrypt_kbag 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42 | tail -1
@@ -295,7 +297,42 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    IV: D31E54ACB4BADB8AF5CC327B28CB9276, key: 814134782438F75F9CCCED43FFF5FB0E51A8BAF38F591ACCB88E92FB2C1BE7C0 
    ```
 
+Come ulteriore verifica possiamo usare [PongoOS](https://github.com/checkra1n/PongoOS/) (non incluso nella directory `tools`):
+1. Cloniamo il progetto:
+   ```shell
+   git clone --recursive --depth 1 -j8 https://github.com/checkra1n/PongoOS.git
+   cd PongoOS/scripts/
+   ```
+2. Compiliamo il CLI tool [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per poter interagire con PongoOS
+   ```shell
+   make pongoterm
+   ```
+3. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
+   ```shell
+   ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
+   ```
+4. Tuttavia per decriptare correttamente la chiave dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
+   ```shell
+   ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
+   ```
+<!-- https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1567 usa un uint8_t per rappresentare 2 nibble: ognuno rappresenta una cifra HEX -->
+Ora vogliamo fare la stessa cosa, ma usando `openssl` come abbiamo già fatto precedentemente.
+Quindi ci aspettiamo di usare un comando del genere
+```shell
+echo -n '62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' | openssl enc -aes-256-cbc -d -p -v -K # <?>
+```
+Tuttavia ci manca un ingrediente fondamentale: la chiave.
+Osservando il comando `aes` usato in precedenza scopriamo che la chiave necessaria è chiamata AP [GID](https://www.theiphonewiki.com/w/index.php?title=GID_Key&oldid=117065)0, dove la possiamo trovare?
+Nell'AES engine, la possiamo leggere?
+In pratica si, ma è molto complicato.
 
+Innanzitutto dobbiamo chiarire che noi chiediamo un "servizio" all'AES engine ovvero di decriptare qualcosa.
+Esso, infatti, non ci fornisce **mai** la chiave, ma si fa carico lui di decifrare i dati che gli passiamo in input.
+Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare i comandi per richiedere di decriptare un dato payload.
+Sottolineo che su un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
+()[https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042]
+Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
+Quanto ho detto può essere verificato osservando 
 
 ### La SecureROM e la ricerca di iBoot
 
