@@ -329,9 +329,17 @@ Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico con
 [](https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042)
 Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
 Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
-[](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
 Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
-Beh, **una possibile spiegazione** è che l'
+[](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
+Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
+
+> **Note**<br>
+> Non tutti, ma la maggior parte di cavi di debug che possono essere trovati nel link precedente sono illegali.
+> Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
+> Nel momento in cui si scrive gli unici cavi ritenuti sono 2:
+[](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
+- il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto costoso ed esaurito, e
+- il []
 
 ### La SecureROM e la ricerca di iBoot
 
