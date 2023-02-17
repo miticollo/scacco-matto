@@ -337,6 +337,7 @@ Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris
 > Non tutti, ma la maggior parte di cavi di debug che possono essere trovati nel link precedente sono illegali.
 > Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
 > Nel momento in cui si scrive gli unici cavi ritenuti sono 2:
+> [](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
 > - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto costoso ed esaurito, e
 > - il []
 
