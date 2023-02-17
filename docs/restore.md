@@ -300,6 +300,7 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
 Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per inviare comandi a [PongoOS](https://github.com/checkra1n/PongoOS/):
 1. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
    ```shell
+   # repeat if it fails
    ../tools/PongoOS/scripts/pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
    ```
 2. Poi decriptiamo la chiave. Tuttavia per farlo correttamente dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
