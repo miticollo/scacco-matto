@@ -300,11 +300,11 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
 Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per inviare comandi a [PongoOS](https://github.com/checkra1n/PongoOS/):
 1. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
    ```shell
-   ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
+   ../tools/PongoOS/scripts/pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
    ```
 2. Poi decriptiamo la chiave. Tuttavia per farlo correttamente dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
    ```shell
-   ./pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
+   ../tools/PongoOS/scripts/pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
    ```
 <!-- https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1567 usa un uint8_t per rappresentare 2 nibble: ognuno rappresenta una cifra HEX -->
 Ora vogliamo fare la stessa cosa, ma usando `openssl` come abbiamo già fatto precedentemente.
@@ -322,9 +322,11 @@ Esso, infatti, non ci fornisce **mai** la chiave, ma si fa carico lui di decifra
 Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare i comandi per richiedere di decriptare un dato payload.
 Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
 [](https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042)
-Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.<br/>
+Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
+Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
 [](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
-Quanto detto può essere verificato osservando 
+Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
+Beh, **una possibile spiegazione** è che l'
 
 ### La SecureROM e la ricerca di iBoot
 
