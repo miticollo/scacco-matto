@@ -323,6 +323,7 @@ Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare 
 Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
 [](https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042)
 Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.<br/>
+[](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
 Quanto detto può essere verificato osservando 
 
 ### La SecureROM e la ricerca di iBoot
