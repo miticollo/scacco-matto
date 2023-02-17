@@ -336,10 +336,13 @@ Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris
 > **Note**<br>
 > Non tutti, ma la maggior parte di cavi di debug che possono essere trovati nel link precedente sono illegali.
 > Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
-> Nel momento in cui si scrive gli unici cavi ritenuti sono 2:
+> Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
 > [](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
-> - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto costoso ed esaurito, e
-> - il []
+> - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html), e
+> - il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti può essere costruito.
+>   Al momento la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
+>   I materiali necessari sono: un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore maschio Apple Lightning](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
+> Ritorneremo più avanti a parlare di debugging cable per presentare: il DCSD cable.
 
 ### La SecureROM e la ricerca di iBoot
 
