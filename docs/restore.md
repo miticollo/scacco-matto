@@ -307,6 +307,10 @@ Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1
    ```shell
    ../tools/PongoOS/scripts/pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42' 2> /dev/null | awk -F "> " '{print $2}' | head -1 | cut -c 33-
    ```
+3. Riavviamo il device
+   ```shell
+   ../tools/PongoOS/scripts/pongoterm <<< 'reset'
+   ```
 <!-- https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1567 usa un uint8_t per rappresentare 2 nibble: ognuno rappresenta una cifra HEX -->
 Ora vogliamo fare la stessa cosa, ma usando `openssl` come abbiamo già fatto precedentemente.
 Quindi ci aspettiamo di usare un comando del genere
