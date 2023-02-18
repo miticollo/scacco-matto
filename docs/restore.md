@@ -24,24 +24,25 @@ A livello commerciale questo componente viene chiamato Axx, dove al posto di "xx
 In particolare per tutte le mie sperimentazioni ho sempre usato un iPhone X (aka 10,6) con [A11 (aka T8015)](https://www.theiphonewiki.com/w/index.php?title=T8015&oldid=76706).
 Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
 
-Non tratterò tutti i componenti presentati in figura, ma ci concentreremo soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
+Non tratterò tutti i componenti presentati in figura, ma mi concentrerò soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
 L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&oldid=98679), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
 Tuttavia se l'utente avesse bisogno di maggiore spazio di archiviazione, può decidere di [sostituire in autonomia la sola NAND](https://twitter.com/lipilipsi/status/1610275491537375237).
 Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), mentre oggi non è più presente questo componente.
 Pertanto iBoot si trova in `/dev/disk1`, come vedremo in seguito.
 
-Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratteremo più avanti.
+Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratterò più avanti.
 
 ## Trusted boot chain
 
 Prima di passare alla pratica è necessario capire come avviene l'avvio di iOS: da quando premiamo il tasto di accensione fino alla schermata di blocco.
 ![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<span id="fig-bootchain"></span><br/>
 Da un primo sguardo della [Figura](http://newosxbook.com/bonus/iboot.pdf#page=1) notiamo, che i passaggi tra i vari componenti di avvio formano una catena.
-Inoltre, come discuteremo tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
+Inoltre, come discuterò tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
 Per questi motivi viene chiamata _trusted boot chain_.
 
 Iniziamo con il considerare un avvio normale, che comincia con la pressione del side button.
-Il primo codice che l'AP eseguirà è il [SecureROM](https://papers.put.as/papers/ios/2019/LucaPOC.pdf#page=7), esso non è nient'altro che una versione essenziale e semplificata di iBoot.
+[](https://discord.com/channels/779134930265309195/791490631804518451/1076006380487594144)
+Il primo codice che l'AP eseguirà è il [SecureROM](https://papers.put.as/papers/ios/2019/LucaPOC.pdf#page=7), esso non è nient'altro che una versione essenziale e semplificata di iBoot (circa il 15%).
 Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
 - mentre sui device meno recenti (A9 o inferiore) viene eseguito [Low Level Bootloader (LLB)](https://www.theiphonewiki.com/w/index.php?title=LLB&oldid=67906).
@@ -82,15 +83,11 @@ Se ciò dovesse accadere basta riprovare.
    ```shell
     ../tools/libirecovery/tools/irecovery -m 
    ```
-2. Ricaviamo il `<BDID>`
+2. Ricaviamo il `<BDID>` e il `<CPID>`
    ```shell
-    ../tools/libirecovery/tools/irecovery -q | grep 'BDID'
+    ../tools/libirecovery/tools/irecovery -q | grep -E 'BDID|CPID'
    ```
-3. Ricaviamo il `<CPID>`
-   ```shell
-    ../tools/libirecovery/tools/irecovery -q | grep 'CPID'
-   ```
-4. Ora possiamo eseguire `parser.py`
+3. Ora possiamo eseguire `parser.py`
    ```shell
     python ../tools/parser.py ./ipsw/orig/BuildManifest.plist '0x0e' '0x8015'
    ```
@@ -173,7 +170,7 @@ Quindi non ci rimane che decriptare e decomprimere `ibss.enc`, per far ciò dobb
 Ora che sappiamo quale algoritmo viene usato dobbiamo trovare i suoi parametri, che nel caso di AES sono due: l'[Initialization Vector (IV)](https://en.wikipedia.org/w/index.php?title=Initialization_vector&oldid=1136156102) e la chiave.
 > **Warning**</br>
 > Non facciamoci ingannare dall'output di `pyimg4 im4p info`.
-> È vero che esso ci stampa un keybag di produzione ([ricavato dal secondo `OCTET STRING`](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L829-L841)) contenente l'IV e la chiave, ma questi non possono essere usati perché cifrati con la GID0 key, che discuteremo nel prossimo paragrafo.
+> È vero che esso ci stampa un keybag di produzione ([ricavato dal secondo `OCTET STRING`](https://github.com/m1stadev/PyIMG4/blob/02a770e0e46842ffbeecea44b521ddeb9af93726/pyimg4/_parser.py#L829-L841)) contenente l'IV e la chiave, ma questi non possono essere usati perché **cifrati** con la [GID0 key](#gid0-key), che discuteremo nel prossimo paragrafo.
 
 Per trovare l'IV e la chiave per **decifrare l'iBSS di questo IPSW** possiamo usare la [pagina di the iPhone Wiki](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys#Firmware_Versions) e più precisamente [quella che interessa a noi](https://www.theiphonewiki.com/wiki/SkySecuritySydneyB_19H117_(iPhone10,6)#iBSS).
 > **Note**</br>
@@ -192,7 +189,7 @@ Per tanto non ci resta che decomprimere `ibss.lzfse`
 lzfse -decode -i ipsw/decrypted/ibss.lzfse -o ipsw/decrypted/ibss.raw -v
 ```
 > **Note**<br>
-> Qualora non si avesse installato il comando `lzfse` basta eseguire `brew install lzfse`, che per essere eseguito richiede [Homebrew](https://brew.sh/).
+> Qualora non si avesse installato il comando `lzfse` basta eseguire `brew install lzfse`, che richiede [Homebrew](https://brew.sh/).
 
 Si noti che avremmo potuto semplicemente decifrare e decomprimere `iBSS.d22.RELEASE.im4p` in un solo passaggio con PyIMG4
 ```shell
@@ -220,21 +217,22 @@ Probabilmente per mantenere una compatibilità con i software di restore.<br>
 [](https://discord.com/channels/779134930265309195/779151007488933889/986400776861671424)
 Quindi come fa il device a comportarsi correttamente?
 Beh, basandosi sull'[IM4P tag (o TYPE)](https://www.theiphonewiki.com/w/index.php?title=TYPE&oldid=123816): ve ne sono molti, ma ne citerò solo alcuni.
-Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyimg4 im4p extract` sia `openssl asn1parse`, ad esempio il tag di iBoot è `ibot` mentre quello di iBSS è `ibss`.
+Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyimg4 im4p info` sia `openssl asn1parse`, ad esempio il tag di iBoot è `ibot` mentre quello di iBSS è `ibss`.
 È importante ricordare che il tag è composto di soli 4 caratteri perché è rappresentato da un 32-bit unsigned integer (`uint32_t`).
 
 In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 file = Payload (IM4P) + Manifest (IM4M)".
 Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
 Prima, però, sarà presentato che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
-Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come abbiamo già accennato si trovato su `/dev/disk1`.
-Inoltre mostreremo anche come è fatto questo _NVMe namespace_.
+
+Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come ho già accennato si trovato su `/dev/disk1`.
+Inoltre mostrerò anche come è fatto questo _NVMe namespace_.
 
 #### GID0 key
 
 Ora supponiamo di voler decriptare l'iBSS di iOS 16.0.3.
 Come prima cosa dobbiamo decrittare l'IV e la chiave del keybag di produzione restituitoci da `pyimg4 im4p info`.
 Quindi colleghiamoci a the iPhone Wiki e cerchiamo la pagina per iOS 16.0.3 per iPhone10,6, ma [non la troviamo](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/16.x&oldid=125807).
-Cosa fare? Dovremmo usare `gaster`.
+Cosa fare? Potremmo usare `gaster`.
 
 Esso è un CLI tool che permette di sfruttare checkm8. 
 Per ora ci basti sapere questo, ma lo approfondiremo più avanti.
@@ -258,7 +256,7 @@ decrypt_kbag kbag - Decrypt KBAG using GID0 AES key
 ```
 Le opzioni che ci interessano sono due `decrypt` e `decrypt_kbag` entrambe richiedono che l'iPhone sia in DFU mode.
 > **Note**<br>
-> Testeremo entrambe le opzioni con iBSS proveniente da iOS 15.7.1, questo perché così il lettore potrà confrontare il keybag con quello usato precedentemente, che sappiamo essere funzionante.
+> Testeremo entrambe le opzioni con iBSS proveniente da iOS 15.7.1, questo perché così il lettore potrà confrontare il keybag con quello usato precedentemente, che sappiamo essere corretto.
 
 Iniziamo dall'opzione `decrypt`
 ```shell
@@ -268,8 +266,9 @@ e confrontiamo il risultato con `ibss.raw`
 ```shell
 cmp -l ipsw/decrypted/ibss.{raw,gaster}
 ```
-Essi sono uguali! Quindi cosa [fa](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1601) `gaster decrypt`?
-1. Prima esegue l'[exploit per checkm8](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1231-L1276);
+Essi sono uguali! Quindi cosa [fa](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1601) `gaster decrypt`? 
+Beh, in sostanza quello che abbiamo già fatto **manualmente** noi prima:
+1. prima esegue l'[exploit per checkm8](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1231-L1276);
 2. poi avviene la [fase di decrypt](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1562):
    1. crea [in memoria una rappresentazione dell'IM4P del file sorgente](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1407-L1411);
    2. estrae [IV e key dall'IM4P e li concatena in un keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1391-L1405): `IV + key` (**l'ordine è importante!**);
@@ -300,7 +299,7 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
 Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per inviare comandi a [PongoOS](https://github.com/checkra1n/PongoOS/):
 1. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
    ```shell
-   # repeat if it fails
+   # repeat if output is blank
    ../tools/PongoOS/scripts/pongoterm <<< 'aes cbc dec 256 gid0 62a3c90d8b8a62837d48e8e68b35138c' 2> /dev/null | awk -F "> " '{print $2}' | head -1
    ```
 2. Poi decriptiamo la chiave. Tuttavia per farlo correttamente dovremmo usare la keybag (IV + key) e poi rimuovere l'IV all'inizio
@@ -347,8 +346,8 @@ Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
 [](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
 - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html) dal 2021, e
 - il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti può essere costruito.
-  Al momento la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
-  Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore maschio Apple Lightning](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
+  Attualmente la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
+  Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore Apple Lightning maschio](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
 
 
 
