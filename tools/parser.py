@@ -23,7 +23,7 @@ def main(argv, argc):
     print("Root Filesystem (OS):  " + filtered["Manifest"]["OS"]["Info"]["Path"])
     # https://discord.com/channels/779134930265309195/779156258799878195/1075131502398025770
     print("Touch firmware:        " + filtered["Manifest"]["Multitouch"]["Info"]["Path"])
-    print("SEP firmware:        " + filtered["Manifest"]["SEP"]["Info"]["Path"])
+    print("SEP firmware:          " + filtered["Manifest"]["SEP"]["Info"]["Path"])
 
 
 if __name__ == '__main__':
