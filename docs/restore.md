@@ -329,7 +329,7 @@ Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico con
 Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
 Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
 Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
-[](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
+<span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680 --></span>
 Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
 
 Prima di concludere ci sono ancora 2 aspetti che vanno trattati: quali altre chiavi GID utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
