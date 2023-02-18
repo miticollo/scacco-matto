@@ -341,7 +341,7 @@ Tuttavia con il device a mia disposizione non è possibile effettuare questa ope
 Questo significa che il dispositivo deve essere vulnerabile a [blackbird](https://www.theiphonewiki.com/w/index.php?title=Blackbird_Exploit&oldid=124810): un SEPROM exploit che sfrutta un bug della SEPROM degli AP A8, A9, A10 e A11.
 [](https://discord.com/channels/779134930265309195/779151007488933889/1063891883207708774)
 Attualmente comunque l'exploit non funziona correttamente sugli A11: infatti la ROM va in crash.<br/>
-[](Perché avviene il crash? https://discord.com/channels/779134930265309195/779151007488933889/1063893379185901568, ma cos'è un integrity tree?)
+[//]: # (Perché avviene il crash? https://discord.com/channels/779134930265309195/779151007488933889/1063893379185901568, ma cos'è un integrity tree?)
 Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare SEPROM exploit.
 
 Prima di concludere ci rimane da accennare a un attacco per ottenere la GID0 key.
