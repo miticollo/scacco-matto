@@ -332,8 +332,9 @@ Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in t
 [](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
 Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
 
-Prima di concludere ci sono 2 aspetti che vanno trattati: quali altre chiavi utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
-.<br>
+Prima di concludere ci sono ancora 2 aspetti che vanno trattati: quali altre chiavi utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
+Oltre a GID0 ci sono **almeno** altre 2 GID key: AP GID1 il cui scopo è sconosciuto, ma è accessibile a XNU, dopo il boot trampoline.
+L'altra chiave è contenuta nel co-processore SEP ed è usata per decriptare il SEP firmware
 
 Per il secondo aspetto tratteremo solo un possibile attacco per ottenere GID0: presentato nella  di .
 
