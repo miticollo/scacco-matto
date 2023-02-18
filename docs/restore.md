@@ -333,21 +333,24 @@ Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in t
 [](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
 Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
 
-> **Note**<br>
-> Non tutti, ma la maggior parte di cavi di debug che possono essere trovati nel link precedente, sono illegali.
-> Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
-> Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
-> [](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
-> - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html), e
-> - il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti può essere costruito.
->   Al momento la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
->   I materiali necessari sono: un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore maschio Apple Lightning](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
-> Ritorneremo più avanti a parlare di debugging cable per presentare: il DCSD cable.
-
 Prima di concludere ci sono 2 aspetti che vanno trattati: quali altre chiavi utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
 .<br>
 
 Per il secondo aspetto tratteremo solo un possibile attacco per ottenere GID0: presentato nella  di .
+
+### Debug cable
+
+Nel paragrafo precedente ho lasciato un rimando alla wiki per un approfondimento su questo argomento, ma ci tengo fare alcune precisazioni.
+Non tutti, ma la maggior parte di cavi di debug, sono illegali.
+Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
+Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
+[](https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364)
+- il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html) dal 2021, e
+- il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti può essere costruito.
+  Al momento la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
+  Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore maschio Apple Lightning](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
+
+
 
 ### La SecureROM e la ricerca di iBoot
 
