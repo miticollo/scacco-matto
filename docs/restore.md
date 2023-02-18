@@ -4,9 +4,9 @@ In questo capitolo utilizzeremo [futurerestore](https://github.com/futurerestore
 Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è più possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
 La versione che andremo a installare è la 15.7.1.
 
-[](https://twitter.com/diegohaz/status/1527642881384759297)
-[](https://github.com/community/community/discussions/16925#discussioncomment-3459263)
-[](https://github.com/Mqxx/GitHub-Markdown)
+<span><!-- https://twitter.com/diegohaz/status/1527642881384759297 --></span>
+<span><!-- https://github.com/community/community/discussions/16925#discussioncomment-3459263 --></span>
+<span><!-- https://github.com/Mqxx/GitHub-Markdown --></span>
 > **Warning**</br>
 > Per effettuare questa operazione è necessario possedere i blob SHSH per la versione di iOS 15.7.1 (build 19H117).
 
@@ -41,7 +41,7 @@ Inoltre, come discuterò tra breve, ogni passo verifica che quello successivo si
 Per questi motivi viene chiamata _trusted boot chain_.
 
 Iniziamo con il considerare un avvio normale, che comincia con la pressione del side button.
-[](https://discord.com/channels/779134930265309195/791490631804518451/1076006380487594144)
+<span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1076006380487594144 --></span>
 Il primo codice che l'AP eseguirà è il [SecureROM](https://papers.put.as/papers/ios/2019/LucaPOC.pdf#page=7), esso non è nient'altro che una versione essenziale e semplificata di iBoot (circa il 15%).
 Ciò che accade successivamente dipende dall'AP (frecce verdi in figura):
 - sui device con A10+ viene mandato in esecuzione iBoot;
@@ -74,10 +74,10 @@ Per poter entrare correttamente in questa modalità dovremo **collegare l'iPhone
 Può capire che l'utente inesperto non riesca a mettere l'iPhone in DFU al primo tentativo.
 Se ciò dovesse accadere basta riprovare.
 
-[](https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546)
+<span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1069257586018369546 --></span>
 > **Note**</br>
 > Con AP A14+ o superiore il cavo non è più necessario.
-<!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 -->
+<span><!-- TODO: la DFU può essere automatizzata, ma non ho capito come: https://discord.com/channels/779134930265309195/791490631804518451/1070241399984902225 --></span>
 
 1. Verifichiamo che il dispositivo sia effettivamente in DFU mode
    ```shell
@@ -143,8 +143,8 @@ Per verificarlo possiamo provare a estrarlo con [PyIMG4](https://github.com/m1st
 pyimg4 im4p extract -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -o ipsw/decrypted/ibss.enc --no-decompress
 ```
 Ora usando il tool `xxd` produciamo un one line hexdump dell'output di PyIMG4
-[](https://stackoverflow.com/a/31553497)
-[](https://unix.stackexchange.com/a/706374)
+<span><!-- https://unix.stackexchange.com/a/706374 --></span>
+<span><!-- https://stackoverflow.com/a/31553497 --></span>
 ```shell
 xxd -u -p -c0 ./ipsw/decrypted/ibss.enc
 ```
@@ -203,18 +203,18 @@ pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/iBoot.d22.RELEASE.im4p -o ip
 pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -o ipsw/decrypted/llb.raw --iv ed29461163fe6ad946182779e0ae12f1 --key 7612dff248c4fa5015cb08a787ef5c5ad5ab6fc70b35027429daf670bd6e0688
 ```
 E confrontiamo iBSS, iBEC, iBoot e LLB
-[](https://unix.stackexchange.com/a/33687)
+<span><!-- https://unix.stackexchange.com/a/33687 --></span>
 ```shell
 diff -q --from-file ipsw/decrypted/*.raw
 ```
 Sorprendente, tutti i file sono uguali!
-[](https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233)
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 --></span>
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
 Dalla [Figura](#fig-bootchain) ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
-[](https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332)
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332 --></span>
 Probabilmente per mantenere una compatibilità con i software di restore.<br>
-[](https://discord.com/channels/779134930265309195/779151007488933889/986400776861671424)
+<span><!-- https://discord.com/channels/779134930265309195/779151007488933889/986400776861671424 --></span>
 Quindi come fa il device a comportarsi correttamente?
 Beh, basandosi sull'[IM4P tag (o TYPE)](https://www.theiphonewiki.com/w/index.php?title=TYPE&oldid=123816): ve ne sono molti, ma ne citerò solo alcuni.
 Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyimg4 im4p info` sia `openssl asn1parse`, ad esempio il tag di iBoot è `ibot` mentre quello di iBSS è `ibss`.
@@ -285,8 +285,8 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    ```shell
    pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p | grep -A4 "Type: PRODUCTION" | awk '/IV:/{iv=$2}/Key:/{key=$2} END{print iv key}'
    ```
-<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 -->
-<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 -->
+<span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 --></span>
+<span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 --></span>
 2. Decriptiamolo con `gaster decrypt_kbag`
    ```shell
    ../tools/gaster/gaster decrypt_kbag 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42 | tail -1
@@ -310,7 +310,7 @@ Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1
    ```shell
    ../tools/PongoOS/scripts/pongoterm <<< 'reset'
    ```
-<!-- https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1567 usa un uint8_t per rappresentare 2 nibble: ognuno rappresenta una cifra HEX -->
+<span><!-- https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1567 usa un uint8_t per rappresentare 2 nibble: ognuno rappresenta una cifra HEX --></span>
 Ora vogliamo fare la stessa cosa, ma usando `openssl` come abbiamo già fatto precedentemente.
 Quindi ci aspettiamo di usare un comando del genere
 ```shell
@@ -325,7 +325,7 @@ Innanzitutto dobbiamo chiarire che noi chiediamo un "servizio" all'AES engine ov
 Esso, infatti, non ci fornisce **mai** la chiave, ma si fa carico lui di decifrare i dati che gli passiamo in input.
 Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare i comandi per richiedere di decriptare un dato payload.
 Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
-[](https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042)
+<span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042 --></span>
 Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
 Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
 Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
