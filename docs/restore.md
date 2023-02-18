@@ -332,11 +332,33 @@ Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in t
 [](https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680)
 Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
 
-Prima di concludere ci sono ancora 2 aspetti che vanno trattati: quali altre chiavi utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
-Oltre a GID0 ci sono **almeno** altre 2 GID key: AP GID1 il cui scopo è sconosciuto, ma è accessibile a XNU, dopo il boot trampoline.
-L'altra chiave è contenuta nel co-processore SEP ed è usata per decriptare il SEP firmware
+Prima di concludere ci sono ancora 2 aspetti che vanno trattati: quali altre chiavi GID utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
+[](https://discord.com/channels/779134930265309195/791490631804518451/940650824017780746)
+Oltre a GID0 ci sono **almeno** altre 2 GID key: AP GID1 e SEP GID.
+Per la prima non si conosce il suo scopo, ma è accessibile a XNU, dopo il boot trampoline; mentre la seconda è contenuta nel co-processore SEP ed è usata per [decriptare il SEP firmware](https://raw.githubusercontent.com/windknown/presentations/master/Attack_Secure_Boot_of_SEP.pdf#page=5).
+[](https://discord.com/channels/779134930265309195/779139039365169175/1076539594910212166)
+Tuttavia con il device a mia disposizione non è possibile effettuare questa operazione: infatti osservando l'help del comando `sep` si può notare che il sotto-comando [`decrypt`, come il suo analogo `encrypt`, richiede `pwned SEPROM`](https://github.com/checkra1n/PongoOS/blob/dab28e87566f6830faacb1323c0387a983a7131d/src/drivers/sep/sep.c#L1143).
+Questo significa che il dispositivo deve essere vulnerabile a [blackbird](https://www.theiphonewiki.com/w/index.php?title=Blackbird_Exploit&oldid=124810): un SEPROM exploit che sfrutta un bug della SEPROM degli AP A8, A9, A10 e A11.
+[](https://discord.com/channels/779134930265309195/779151007488933889/1063891883207708774)
+Attualmente comunque l'exploit non funziona correttamente sugli A11: infatti la ROM va in crash.<br/>
+[](Perché avviene il crash? https://discord.com/channels/779134930265309195/779151007488933889/1063893379185901568, ma cos'è un integrity tree?)
+Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare SEPROM exploit.
 
-Per il secondo aspetto tratteremo solo un possibile attacco per ottenere GID0: presentato nella  di .
+Prima di concludere ci rimane da accennare a un attacco per ottenere la GID0 key.
+L'attacco in questione è argomento della [tesi magistrale](https://web.archive.org/web/20210514073023/https://www.seceng.ruhr-uni-bochum.de/media/attachments/files/2021/04/Master_thesis_Oleksiy_Lisovets.pdf) di [tihmstar](https://twitter.com/tihmstar/), ma è anche stato [presentato dallo stesso al Hardwear.io Netherlands 2022](https://youtu.be/s_cnjOCegs0) ([slides](https://raw.githubusercontent.com/tihmstar/gido_public/master/Using%20a%20magic%20wand%20to%20break%20the%20iPhone's%20last%20security%20barrier.pdf)).
+Visto che AES, per le proprietà matematiche di cui gode, è crittograficamente sicuro l'attacco che tihmstar propone è fisico e prende il nome di Electro Magnetic (EM) side-channel attack.
+L'idea alla base è che l'AP eseguendo del codice consuma energia ed emette emissioni elettromagnetiche, entrambe queste grandezze fisiche dipendono da ciò che l'AP esegue nel momento della misura.
+Per tanto è possibile sfruttare questa correlazione per ottenere informazioni utili come la GID0 key.
+Anche se va tenuto in considerazione che un tale attacco si basa su misure provenienti dal mondo reale affette da errore e rumore, quindi serviranno metodi statistici per portare a termine l'attacco.
+Per poter misurare le emissioni elettromagnetiche è stato necessario smontare l'iPhone per esporre l'AP su cui è stata posizionata una sonda EM collegata a un amplificatore, che ha sua volta è stato collegato a un ([costoso](https://twitter.com/tihmstar/status/1586684619621122051)) oscilloscopio.<br/>
+Per il progetto è stato usato un iPhone 4 anche se un dispositivo più moderno, come iPhone 8 o X, poteva essere impiegato l'importante è che sia vulnerabile a un bootROM exploit, che nel caso di iPhone 4 è [limera1n](https://www.theiphonewiki.com/w/index.php?title=Limera1n_Exploit&oldid=122780).
+Questo perché l'attacco richiede di eseguire più e più volte `aes cbc dec 256 gid0` al fine di misurare le emissioni elettromagnetiche.
+Inoltre essendo nel contesto del SecureROM solo un singolo core è in esecuzione, mentre gli altri sono inattivi.
+Tale core esegue solo il codice del comando `aes` e non essendoci concorrenza e time-sharing è l'unico codice in esecuzione fino al completamento dell'operazione garantendo di fatto una riduzione del rumore, che impatta sulle misure.
+
+Concludo facendo un'osservazione sulle pagine della wiki: abbiamo visto che tutti, sia noi utenti sia `futurerestore`, le consultano per ricercare l'IV e la chiave decriptate (se disponibili), il che significa che, fissata la versione di iOS, entrambi sono uguali per i dispositivi di una stessa famiglia.
+Infatti la **Group** ID (GID) key è una chiave che tutti i dispositivi di una stessa famiglia (es. iPhone X) condividono, al contrario della [**Unique** ID (UID) key](https://www.theiphonewiki.com/w/index.php?title=UID_key&oldid=121990), che invece è diversa per ogni dispositivo e non è nemmeno conosciuta da Apple.
+Quest'ultima verrà ripresa quando parlerò del ripristino degli iPhone A12+: perché essa viene usata come mitigazione contro il downgrade di iOS.
 
 ### Debug cable
 
