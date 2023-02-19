@@ -326,7 +326,7 @@ Esso, infatti, non ci fornisce **mai** la chiave, ma si fa carico lui di decifra
 Quindi, avendo a disposizione un device vulnerabile a checkm8, possiamo inviare i comandi per richiedere di decriptare un dato payload.
 Sottolineo che un device con AP A12+, non avendo un bootROM exploit pubblico conosciuto, non ha una procedura simile.
 <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1073573995322028042 --></span>
-Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita nel passaggio al boot trampoline.
+Questo perché, anche con iOS in jailbroken state, non è possibile inviare comandi all'AES engine per usare la GID**0**: infatti essa viene disabilita al boot trampoline.
 Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
 Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
 <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680 --></span>
