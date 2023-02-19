@@ -357,7 +357,7 @@ Inoltre essendo nel contesto del SecureROM solo un singolo core è in esecuzione
 Tale core esegue solo il codice del comando `aes` e non essendoci concorrenza e time-sharing è l'unico codice in esecuzione fino al completamento dell'operazione garantendo di fatto una riduzione del rumore, che impatta sulle misure.
 
 Concludo facendo un'osservazione sulle pagine della wiki: abbiamo visto che tutti, sia noi utenti sia `futurerestore`, le consultano per ricercare l'IV e la chiave decriptate (se disponibili), il che significa che, fissata la versione di iOS, entrambi sono uguali per i dispositivi di una stessa famiglia.
-Infatti la **Group** ID (GID) key è una chiave che tutti i dispositivi di una stessa famiglia (es. iPhone X) condividono, al contrario della [**Unique** ID (UID) key](https://www.theiphonewiki.com/w/index.php?title=UID_key&oldid=121990), che invece è diversa per ogni dispositivo e non è nemmeno conosciuta da Apple.
+Infatti la **Group** ID (GID) key è una chiave che tutti i dispositivi di una stessa famiglia (es. iPhone 10,6) condividono, al contrario della [**Unique** ID (UID) key](https://www.theiphonewiki.com/w/index.php?title=UID_key&oldid=121990), che invece è diversa per ogni dispositivo e non è nemmeno conosciuta da Apple.
 Quest'ultima verrà ripresa quando parlerò del ripristino degli iPhone A12+: perché essa viene usata come mitigazione contro il downgrade di iOS.
 
 ### Debug cable
