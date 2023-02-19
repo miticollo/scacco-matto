@@ -368,7 +368,7 @@ Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usat
 Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
 <span><!-- https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364 --></span>
 - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html) dal 2021, e
-- il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti può essere costruito.
+- il [Tamarin](https://www.youtube.com/watch?v=7p_njRMqzrY), che è considerato, almeno da chi scrive, un valido candidato come debugging cable perché non è né molto costoso né difficile da procurarselo: infatti è un progetto [DIY](https://en.wikipedia.org/w/index.php?title=Do_it_yourself&oldid=1138671731).
   Attualmente la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
   Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore Apple Lightning maschio](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
 
