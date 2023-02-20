@@ -294,8 +294,8 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    ```shell
    pyimg4 im4p info -vvv -i ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p | grep -A4 "Type: PRODUCTION" | awk '/IV:/{iv=$2}/Key:/{key=$2} END{print iv key}'
    ```
-<span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 --></span>
-<span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 --></span>
+<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 -->
+<!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 -->
 2. Decriptiamolo con `gaster decrypt_kbag`
    ```shell
    ../tools/gaster/gaster decrypt_kbag 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42 | tail -1
