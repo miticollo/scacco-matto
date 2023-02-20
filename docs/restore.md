@@ -356,7 +356,7 @@ Attualmente comunque l'exploit (implementato **solo** in PongoOS) [non funziona 
 Quindi, come il lettore avrà capito, il fatto che disponiamo di un bootROM exploit non significa che possiamo manipolare la SEPROM.
 Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare un SEPROM exploit.
 
-Prima di concludere ci rimane da accennare a un attacco per ottenere la GID0 key.
+Non rimane che accennare a un attacco per ottenere la GID0 key.
 L'attacco in questione è argomento della [tesi magistrale](https://web.archive.org/web/20210514073023/https://www.seceng.ruhr-uni-bochum.de/media/attachments/files/2021/04/Master_thesis_Oleksiy_Lisovets.pdf) di [tihmstar](https://twitter.com/tihmstar/), ma è anche stato [presentato dallo stesso al Hardwear.io Netherlands 2022](https://youtu.be/s_cnjOCegs0) ([slides](https://raw.githubusercontent.com/tihmstar/gido_public/master/Using%20a%20magic%20wand%20to%20break%20the%20iPhone's%20last%20security%20barrier.pdf)).
 Visto che AES, per le proprietà matematiche di cui gode, è crittograficamente sicuro l'attacco che tihmstar propone è fisico e prende il nome di Electro Magnetic (EM) side-channel attack.
 L'idea alla base è che l'AP eseguendo del codice consuma energia ed emette emissioni elettromagnetiche, entrambe queste grandezze fisiche dipendono da ciò che l'AP esegue nel momento della misura.
