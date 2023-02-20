@@ -354,7 +354,7 @@ Attualmente comunque l'exploit (implementato **solo** in PongoOS) [non funziona 
 <span><!-- Perché avviene il crash? https://discord.com/channels/779134930265309195/779151007488933889/1063893379185901568, ma cos'è un integrity tree? --></span>
 <span><!-- https://www.reddit.com/r/jailbreak/comments/76kdgb/comment/dof3b76/?utm_source=share&utm_medium=web2x&context=3 --></span>
 Quindi, come il lettore avrà capito, il fatto che disponiamo di un bootROM exploit non significa che possiamo manipolare la SEPROM.
-Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare SEPROM exploit.
+Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare un SEPROM exploit.
 
 Prima di concludere ci rimane da accennare a un attacco per ottenere la GID0 key.
 L'attacco in questione è argomento della [tesi magistrale](https://web.archive.org/web/20210514073023/https://www.seceng.ruhr-uni-bochum.de/media/attachments/files/2021/04/Master_thesis_Oleksiy_Lisovets.pdf) di [tihmstar](https://twitter.com/tihmstar/), ma è anche stato [presentato dallo stesso al Hardwear.io Netherlands 2022](https://youtu.be/s_cnjOCegs0) ([slides](https://raw.githubusercontent.com/tihmstar/gido_public/master/Using%20a%20magic%20wand%20to%20break%20the%20iPhone's%20last%20security%20barrier.pdf)).
