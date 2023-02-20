@@ -348,9 +348,9 @@ Per la prima non si conosce il suo scopo, ma è accessibile a XNU, dopo il boot 
 <span><!-- https://discord.com/channels/779134930265309195/779139039365169175/1076539594910212166 --></span>
 Tuttavia con il device a mia disposizione non è possibile effettuare questa operazione: infatti osservando l'help del comando `sep` (in PongoOS) si può notare che il sotto-comando [`decrypt`, come il suo analogo `encrypt`, richiede `pwned SEPROM`](https://github.com/checkra1n/PongoOS/blob/dab28e87566f6830faacb1323c0387a983a7131d/src/drivers/sep/sep.c#L1142-L1143).
 <span><!-- https://github.com/futurerestore/futurerestore/issues/93#issuecomment-1235802769 --></span>
-Questo significa che il dispositivo deve essere vulnerabile a [blackbird](https://www.theiphonewiki.com/w/index.php?title=Blackbird_Exploit&oldid=124810) (il PDF mostra solo la vulnerabilità non l'exploit né la exploitation): un SEPROM exploit che sfrutta un bug della SEPROM degli AP A8, A9, A10 e A11.
+Questo significa che il dispositivo deve essere vulnerabile a [blackbird](https://www.theiphonewiki.com/w/index.php?title=Blackbird_Exploit&oldid=124810) ([la presentazione](https://raw.githubusercontent.com/windknown/presentations/master/Attack_Secure_Boot_of_SEP.pdf) mostra solo la vulnerabilità non l'exploit né la exploitation): un SEPROM exploit che sfrutta un bug della SEPROM degli AP A8, A9, A10 e A11.
 <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1063891883207708774 --></span>
-Attualmente comunque l'exploit (implementato **solo** in PongoOS) [non funziona correttamente sugli A11](file:///Users/iosfora/Downloads/Attack_Secure_Boot_of_SEP.pdf#page=37): infatti la ROM va in crash.<br/>
+Attualmente comunque l'exploit (implementato **solo** in PongoOS) [non funziona correttamente sugli A11](https://raw.githubusercontent.com/windknown/presentations/master/Attack_Secure_Boot_of_SEP.pdf#page=37): infatti la ROM va in crash.<br/>
 <span><!-- Perché avviene il crash? https://discord.com/channels/779134930265309195/779151007488933889/1063893379185901568, ma cos'è un integrity tree? --></span>
 <span><!-- https://www.reddit.com/r/jailbreak/comments/76kdgb/comment/dof3b76/?utm_source=share&utm_medium=web2x&context=3 --></span>
 Quindi, come il lettore avrà capito, il fatto che disponiamo di un bootROM exploit non significa che possiamo manipolare la SEPROM.
