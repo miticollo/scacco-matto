@@ -361,7 +361,7 @@ L'attacco in questione è argomento della [tesi magistrale](https://web.archive.
 tihmstar propone un attacco fisico chiamato Electro Magnetic (EM) side-channel attack: perché AES, per le proprietà matematiche di cui gode, è crittograficamente sicuro.
 L'idea alla base è che l'AP eseguendo del codice consuma energia ed emette emissioni elettromagnetiche, entrambe queste grandezze fisiche dipendono da ciò che l'AP esegue nel momento della misura.
 Per tanto è possibile sfruttare questa correlazione per ottenere informazioni utili come la GID0 key.
-Anche se va tenuto in considerazione che un tale attacco si basa su misure provenienti dal mondo reale affette da errore e rumore, quindi serviranno metodi statistici per portare a termine l'attacco.
+Anche se va tenuto in considerazione che un tale attacco si basa su misure provenienti dal mondo reale affette da errore e rumore, quindi serviranno metodi statistici per portarlo a termine.
 Per poter misurare le emissioni elettromagnetiche è stato necessario smontare l'iPhone per esporre l'AP su cui è stata posizionata una sonda EM collegata a un amplificatore, che ha sua volta è stato collegato a un ([costoso](https://twitter.com/tihmstar/status/1586684619621122051)) oscilloscopio.<br/>
 Per il progetto è stato usato un iPhone 4 anche se un dispositivo più moderno, come iPhone 8 o X, poteva essere impiegato l'importante è che sia vulnerabile a un bootROM exploit, che nel caso di iPhone 4 è [limera1n](https://www.theiphonewiki.com/w/index.php?title=Limera1n_Exploit&oldid=122780).
 Questo perché l'attacco richiede di eseguire più e più volte `aes cbc dec 256 gid0` al fine di misurare le emissioni elettromagnetiche.
