@@ -102,6 +102,7 @@ Se ciò dovesse accadere basta riprovare.
    Root Filesystem (OS):  098-04055-020.dmg
    Touch firmware:        Firmware/D221_Multitouch.im4p
    ```
+   <span><!-- https://discord.com/channels/842189018523631658/917198974555942942/1071059805327859792 --></span>
    > **Note**</br>
    > In quest'ultimo passaggio avremmo potuto anche scaricare direttamente da Internet il `BuildManifest.plist`
    > Per far ciò basta sostituire `iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw` con `BuildManifest.plist` nell'URL che permette di scaricare il firmware:
