@@ -102,6 +102,14 @@ Se ciò dovesse accadere basta riprovare.
    Root Filesystem (OS):  098-04055-020.dmg
    Touch firmware:        Firmware/D221_Multitouch.im4p
    ```
+   > **Note**</br>
+   > In quest'ultimo passaggio avremmo potuto anche scaricare direttamente da Internet il `BuildManifest.plist`
+   > Per far ciò basta sostituire `iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw` con `BuildManifest.plist` nell'URL che permette di scaricare il firmware:
+   > ```shell
+   > curl -o '/tmp/BuildManifest.plist' -L https://updates.cdn-apple.com/2022FallFCS/fullrestores/012-95442/E99DEEC6-9763-45EF-B2FF-0BA51A1E966B/BuildManifest.plist
+   > python ../tools/parser.py /tmp/BuildManifest.plist '0x0e' '0x8015'
+   > ```
+
 Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
 #### IMG4 file = Payload (IM4P) + Manifest (IM4M)
