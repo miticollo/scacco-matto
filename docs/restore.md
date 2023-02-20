@@ -288,7 +288,7 @@ Beh, in sostanza quello che abbiamo già fatto **manualmente** noi prima:
 > **Note**<br>
 > Quanto descritto vale anche per gli IMG4 e non solo per gli IM4P.
 
-Tuttavia, come vedremo in seguito, `futurerestore` usa le pagine di the iPhone wiki per ottenere l'IV e le chiavi, quindi esse devono essere presenti sulla wiki.
+Tuttavia, come vedremo in seguito, `futurerestore` **può usare le pagine di the iPhone wiki** per ottenere l'IV e le chiavi, quindi esse devono essere presenti sulla wiki.
 Perciò, come decriptare l'IV e la chiave con `gaster`?
 1. Costruiamo il keybag concatenando semplicemente l'IV e la chiave (di produzione) restituiti dal comando `pyimg4 im4p info`
    ```shell
