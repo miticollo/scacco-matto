@@ -111,7 +111,7 @@ Se ciò dovesse accadere basta riprovare.
    > python ../tools/parser.py /tmp/BuildManifest.plist '0x0e' '0x8015'
    > ```
    > Se volessimo potremmo **selezionare** e scaricare anche i componenti del firmware direttamente da Internet senza aver bisogno di effettuare il download dell'intero IPSW, risparmiando banda, tempo e spazio.
-   > Vedremo come fare ciò nel prossimo paragrafo, per ora mi limiterò a dire che utilizzeremo un interessante utility: [`pzb`](https://github.com/tihmstar/partialZipBrowser).
+   > Vedremo come fare ciò in un prossimo paragrafo, per ora mi limiterò a dire che utilizzeremo un interessante utility: [`pzb`](https://github.com/tihmstar/partialZipBrowser).
 
 Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
