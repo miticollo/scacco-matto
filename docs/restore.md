@@ -430,7 +430,7 @@ Più precisamente quello mostrato in Figura.
 </p>
 
 > **Note**</br>
-> Una precisazione sul come connettere il cavo: infatti il connettore maschio Lightning in questo caso **non è reversibile**.
+> Prestare attenzione a come si connette il cavo: infatti il connettore maschio Lightning in questo caso **non è reversibile**.
 > Quindi controllare la scritta in Figura.
 > ![ibootchain](./images/dcsd.jpeg?raw=true "The traditional boot chain of *OS")
 
