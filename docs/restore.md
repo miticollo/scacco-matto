@@ -147,7 +147,7 @@ Una possibile definizione ASN.1 usata per il formato IMG4 può essere trovata [q
 Non si conoscono le ragioni per cui Apple ha scelto questo formato rispetto al classico `.plist`.
 Ad ogni modo l'ASN.1 fu adottato per la rappresentazione dei certificati (1988), prima dell'avvento del [JSON](https://www.rfc-editor.org/rfc/rfc4627), e visto che i certificati vengo usati per garantire l'autenticità anche la Apple avrà deciso di adottare la stessa notazione e codifica per garantire l'affidabilità della boot chain.
 
-Tornando all'output di prima notiamo che abbiamo due valori di tipo `OCTET STRING`, che un è built-in type in ASN.1.
+Tornando all'output di prima, notiamo che abbiamo due valori di tipo `OCTET STRING`, che un è built-in type in ASN.1.
 Il primo, che è stato omesso perché troppo lungo, come abbiamo già detto contiene un payload: il binario di iBSS.
 Per verificarlo possiamo provare a estrarlo con [PyIMG4](https://github.com/m1stadev/PyIMG4), che è un tool in Python, ma che può anche essere importato nel proprio progetto per usarlo come libreria
 ```shell
