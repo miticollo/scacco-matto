@@ -405,14 +405,17 @@ Inoltre qualora avessi disposto sia dei cavi sia del software mi sarei dovuto pr
 > <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930285185436626955 --></span>
 > - Mainline Production (MP) con CPFM `0x03` e in cui il SWD engine è disabilitato
 > 
-> in cui CPFM significa:
-> - `0x00` è AP insecure SEP insecure
-> - `0x01` è Secure mode
-> - `0x02` è Production mode
-> - `0x03 = 0x02 + 0x01`
+> in cui CPFM significa
+> - `0x00`: AP insecure SEP insecure,
+> - `0x01`: Secure mode,
+> - `0x02`: Production mode e
+> - `0x03 = 0x02 + 0x01`.
 
 Non è necessario procurarsi un iPhone con un CPFM inferiore al `0x01`: se si dispone di un device vulnerabile a checkm8.
-Questi device possono essere posti in [demotion mode](http://newosxbook.com/bonus/iboot.pdf#page=5): 
+Questi device possono essere posti in [demotion](http://newosxbook.com/bonus/iboot.pdf#page=5): ovvero è possibile cambiare il CPFM, ma solo fino al prossimo riavvio.
+Il motivo è legato al fatto che il CPFM è impostato quando il device è prodotto, quindi è immutabile.
+Tuttavia esso viene mappato in un registro di memoria, che può essere alterato qualora si possieda un bootROM exploit.
+Così facendo abilitiamo l'interfaccia SWD, che prende anche il nome di Joint Test Access Group (JTAG) nel mondo ARM, che è la [stessa architettura adottata dagli AP](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=10).
 
 Il SWD non è l'unica interfaccia che viene esposta: infatti sulla porta (femmina) Lightning, presente sul device, troviamo un circuito integrato chiamato [Tristar](https://nyansatan.github.io/lightning/) (sugli iPhone 8/X si chiama Hydra), che non è nient'altro che un MUX.
 In particolare permette di instradare la comunicazione USB e UART.
