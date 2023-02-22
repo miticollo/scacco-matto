@@ -429,6 +429,11 @@ Più precisamente quello mostrato in Figura.
   <img src="https://ae01.alicdn.com/kf/H2cc1cec8533a4767b82422a405e5aa9bS/Cavo-DCSD-Alex-originale-cavo-porta-seriale-di-ingegneria-per-leggere-scrivere-dati-Nand-SysCfg-per.jpg_640x640.jpg" alt="Second DCSD Cable">
 </p>
 
+> **Note**</br>
+> Una precisazione sul come connettere il cavo: infatti il connettore maschio Lightning in questo caso **non è reversibile**.
+> Quindi controllare la scritta in Figura.
+> ![ibootchain](./images/dcsd.jpeg?raw=true "The traditional boot chain of *OS")
+
 Non indugiamo oltre e facciamo subito una prova.
 Nella solita finestra di terminale aperta sulla directory `work`, lanciamo [`termz`](https://github.com/kpwn/termz), che non è nient'altro che una console seriale
 ```shell
@@ -462,8 +467,10 @@ In particolare se dividiamo la stringa in `:` abbiamo due sotto-stringhe:
 
 Per avere un'idea dei messaggi prodotti da iBoot durante il suo avvio dovremmo usare una versione di iBoot in sviluppo.
 Tale versione non è rilasciata agli sviluppatori da Apple, tuttavia a volte qualche leak, commesso proprio dalla stessa Apple, capita.
-Mi sto riferendo all'aggiornamento OTA di iOS 15.1b3, che oltre a contenere le immagine in produzione, contiene anche quelle di sviluppo.
+Mi sto riferendo all'aggiornamento OTA di [iOS 15.1b3](https://updates.cdn-apple.com/2021FallSeed/patches/002-10420/36B2828C-B8CA-40DE-88F2-A4031B6A9BAC/com_apple_MobileAsset_SoftwareUpdate/7fefd31a7473d632237481eecbf39920364797cd.zip), che oltre a contenere le immagine in produzione, contiene anche quelle di sviluppo.
 Per trovare quali firmware, anche OTA, potrebbero contenere tali immagini ho creato [uno script](../tools/finder/finder.sh) che usa le API di appledb.dev.
+
+Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](https://freeware.the-meiers.org/) ricordandoci di impostare il baud rate a 115200 baud (simboli al secondo).
 
 ### La SecureROM e la ricerca di iBoot
 
