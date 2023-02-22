@@ -342,7 +342,7 @@ Questo perché, anche con iOS in jailbroken state, non è possibile inviare coma
 Quanto detto può essere verificato osservando la tabella per iPhone riportata nella pagina [Firmware Keys/15.x](https://www.theiphonewiki.com/w/index.php?title=Firmware_Keys/15.x&oldid=125705#iPhone) della wiki, in cui per tutte, o quasi, le versioni di iOS 15 per iPhone, vulnerabili a checkm8, sono disponibili le chiavi, mentre non lo sono per gli iPhone XR e successivi.
 Tuttavia quanto detto non sembra corrispondere esattamente al vero: infatti in tabella sono presenti, in ben 2 occasioni, delle chiavi per iPhone con AP A12+, come è possibile?
 <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1075876541940121680 --></span>
-Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Category:Cables&oldid=102376) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
+Beh, **una possibile spiegazione** potrebbe essere quello di aver usato [`astris`](https://www.theiphonewiki.com/w/index.php?title=Astris&oldid=119709) con un [cavo di debug](https://www.theiphonewiki.com/w/index.php?title=Serial_Wire_Debug&oldid=118686) su un iPhone prototipo, ovvero che ha ChiP Fuse Mode (CPFM) impostato a `0x00`.
 
 Prima di concludere ci sono ancora 2 aspetti che vanno trattati: quali altre chiavi GID utilizza l'iPhone e quali attacchi possiamo sferrare per ottenere GID0.
 <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/940650824017780746 --></span>
@@ -387,7 +387,38 @@ Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
   Attualmente la versione (quasi) funzionante del firmware è disponibile nel [fork](https://github.com/pinauten/tamarin-firmware) di [Linus Henze](https://twitter.com/LinusHenze) (creatore di Fugu`*`).
   Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore Apple Lightning maschio](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
 
+Questi cavi permetto di sfruttare un interfaccia chiamata Serial Wire Debug (SWD), che combinata con il leaked tool `astris`, consente di eseguire un debug molto approfondito dell'iDevice.
+Addirittura è possibile eseguire l'`halt` di una delle CPU presenti nell'AP e osservare il contenuto dei registri fisici.
+Visto che il sottoscritto non ha potuto mettere le mani su nessun dei cavi citati, si rimanda il lettore a [questo thread di Twitter](https://twitter.com/nyan_satan/status/1090989650280398849) per maggiori dettagli sull'argomento.
+Inoltre qualora avessi disposto sia dei cavi sia del software mi sarei dovuto procurare anche un iPhone con CPFM `0x01` o `0x00`.
+> **Note**</br>
+> <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930283891623854081 --></span>
+> Le fasi di produzione di un prodotto Apple sono 4:
+> - Prototype
+> <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930285128691880026 --></span>
+> - Engineering Validation Test (EVT) con CPFM `0x00`
+> <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930285165064888350 --></span>
+> - Development Validation Test (DVT) con CPFM `0x01`
+> <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930285185436626955 --></span>
+> - Production Validation Test (PVT) con CPFM `0x03`
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1077364925804052551 --></span>
+> <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/930285185436626955 --></span>
+> - Mainline Production (MP) con CPFM `0x03` e in cui il SWD engine è disabilitato
+> 
+> in cui CPFM significa:
+> - `0x00` è AP insecure SEP insecure
+> - `0x01` è Secure mode
+> - `0x02` è Production mode
+> - `0x03 = 0x02 + 0x01`
 
+Non è necessario procurarsi un iPhone con un CPFM inferiore al `0x01`: se si dispone di un device vulnerabile a checkm8.
+Questi device possono essere posti in [demotion mode](http://newosxbook.com/bonus/iboot.pdf#page=5): 
+
+Il SWD non è l'unica interfaccia che viene esposta: infatti sulla porta (femmina) Lightning, presente sul device, troviamo un circuito integrato chiamato [Tristar](https://nyansatan.github.io/lightning/) (sugli iPhone 8/X si chiama Hydra), che non è nient'altro che un MUX.
+In particolare permette di instradare la comunicazione USB e UART.
+La prima è usata dall'utente medio per aggiornare e ripristinare l'iPhone, ma anche trasferire file su di esso.
+La seconda torna utile quando l'iPhone va in kernel panic perché è possibile conoscerne la ragione.
+Per poter usare quest'ultima interfaccia è necessario dotarsi di un cavo chiamato DCSD.
 
 ### La SecureROM e la ricerca di iBoot
 
