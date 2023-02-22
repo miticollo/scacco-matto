@@ -104,7 +104,7 @@ Se ciò dovesse accadere basta riprovare.
    ```
    <span><!-- https://discord.com/channels/842189018523631658/917198974555942942/1071059805327859792 --></span>
    > **Note**</br>
-   > In quest'ultimo passaggio avremmo potuto anche scaricare direttamente da Internet il `BuildManifest.plist`
+   > In quest'ultimo passaggio avremmo potuto anche scaricare direttamente da Internet il `BuildManifest.plist`.
    > Per far ciò basta sostituire `iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw` con `BuildManifest.plist` nell'URL che permette di scaricare il firmware:
    > ```shell
    > curl -o '/tmp/BuildManifest.plist' -L https://updates.cdn-apple.com/2022FallFCS/fullrestores/012-95442/E99DEEC6-9763-45EF-B2FF-0BA51A1E966B/BuildManifest.plist
