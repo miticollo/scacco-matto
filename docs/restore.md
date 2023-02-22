@@ -229,7 +229,8 @@ Probabilmente per mantenere una compatibilità con i software di restore.<br>
 Quindi come fa il device a comportarsi correttamente?
 Beh, basandosi sull'[IM4P tag (o TYPE)](https://www.theiphonewiki.com/w/index.php?title=TYPE&oldid=123816): ve ne sono molti, ma ne citerò solo alcuni.
 Per determinare quale tag viene usato da un dato payload possiamo usare sia `pyimg4 im4p info` sia `openssl asn1parse`, ad esempio il tag di iBoot è `ibot` mentre quello di iBSS è `ibss`.
-È importante ricordare che il tag è composto di soli 4 caratteri perché è rappresentato da un 32-bit unsigned integer (`uint32_t`).
+È importante ricordare che il tag è composto di soli 4 caratteri perché è rappresentato da un 32-bit unsigned integer (`uint32_t`).<br/>
+In aggiunta a quanto detto prima per i modelli A9 o inferiori: se avessimo eseguito gli stessi passaggi avremmo osservato che LLB e iBSS sono uguali, come iBoot e iBEC; ancora una volta la distinzione ricade sugli IMG4 tag.
 
 In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 file = Payload (IM4P) + Manifest (IM4M)".
 Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
