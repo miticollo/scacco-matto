@@ -455,7 +455,7 @@ af0b11a98ee1c1b:98
 <i>omesso</i>
 </pre>
 
-Questa è una forma di offuscamento che deciso dalla Apple.
+Questa è una forma di offuscamento deciso dalla Apple.
 In particolare se dividiamo la stringa in `:` abbiamo due sotto-stringhe:
 - la prima rappresenta il risultato di un HMAC del nome di un file contenente il codice sorgente di iBoot,
 - mentre la seconda è la linea all'interno di quel file.
