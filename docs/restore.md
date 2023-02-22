@@ -429,6 +429,42 @@ Più precisamente quello mostrato in Figura.
   <img src="https://ae01.alicdn.com/kf/H2cc1cec8533a4767b82422a405e5aa9bS/Cavo-DCSD-Alex-originale-cavo-porta-seriale-di-ingegneria-per-leggere-scrivere-dati-Nand-SysCfg-per.jpg_640x640.jpg" alt="Second DCSD Cable">
 </p>
 
+Non indugiamo oltre e facciamo subito una prova.
+Nella solita finestra di terminale aperta sulla directory `work`, lanciamo [`termz`](https://github.com/kpwn/termz), che non è nient'altro che una console seriale
+```shell
+../tools/termz/termz /dev/cu.usbserial-AU01TON3
+```
+Dopodiché colleghiamo l'iPhone al PC con il cavo DCSD e [forziamone il riavvio](https://support.apple.com/it-it/guide/iphone/iph8903c3ee6/15.0/ios/15.0).
+Sulla console dovrebbero comparire delle "strane" stringhe esadecimali
+<pre>
+af0b11a98ee1c1b:437
+af0b11a98ee1c1b:93
+af0b11a98ee1c1b:94
+af0b11a98ee1c1b:95
+af0b11a98ee1c1b:98
+af0b11a98ee1c1b:98
+4fbf8fe65e3b7c6:346
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+4fbf8fe65e3b7c6:348
+<i>omesso</i>
+</pre>
+
+Questa è una forma di offuscamento che deciso dalla Apple.
+In particolare se dividiamo la stringa in `:` abbiamo due sotto-stringhe:
+- la prima rappresenta il risultato di un HMAC del nome di un file contenente il codice sorgente di iBoot,
+- mentre la seconda è la linea all'interno di quel file.
+
+Per avere un'idea dei messaggi prodotti da iBoot durante il suo avvio dovremmo usare una versione di iBoot in sviluppo.
+Tale versione non è rilasciata agli sviluppatori da Apple, tuttavia a volte qualche leak, commesso proprio dalla stessa Apple, capita.
+Mi sto riferendo all'aggiornamento OTA di iOS 15.1b3, che oltre a contenere le immagine in produzione, contiene anche quelle di sviluppo.
+Per trovare quali firmware, anche OTA, potrebbero contenere tali immagini ho creato uno script che usa le API di appledb.dev: [`finder.sh`](..tools/finder/finder.sh).
+
 ### La SecureROM e la ricerca di iBoot
 
 
