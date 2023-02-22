@@ -411,17 +411,22 @@ Inoltre qualora avessi disposto sia dei cavi sia del software mi sarei dovuto pr
 > - `0x02`: Production mode e
 > - `0x03 = 0x02 + 0x01`.
 
-Non è necessario procurarsi un iPhone con un CPFM inferiore al `0x01`: se si dispone di un device vulnerabile a checkm8.
+Non è strettamente necessario procurarsi un iPhone con un CPFM inferiore al `0x01`: se si dispone di un device vulnerabile a checkm8.
 Questi device possono essere posti in [demotion](http://newosxbook.com/bonus/iboot.pdf#page=5): ovvero è possibile cambiare il CPFM, ma solo fino al prossimo riavvio.
 Il motivo è legato al fatto che il CPFM è impostato quando il device è prodotto, quindi è immutabile.
 Tuttavia esso viene mappato in un registro di memoria, che può essere alterato qualora si possieda un bootROM exploit.
 Così facendo abilitiamo l'interfaccia SWD, che prende anche il nome di Joint Test Access Group (JTAG) nel mondo ARM, che è la [stessa architettura adottata dagli AP](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=10).
 
 Il SWD non è l'unica interfaccia che viene esposta: infatti sulla porta (femmina) Lightning, presente sul device, troviamo un circuito integrato chiamato [Tristar](https://nyansatan.github.io/lightning/) (sugli iPhone 8/X si chiama Hydra), che non è nient'altro che un MUX.
-In particolare permette di instradare la comunicazione USB e UART.
+In particolare permette di instradare anche la comunicazione USB e UART.
 La prima è usata dall'utente medio per aggiornare e ripristinare l'iPhone, ma anche trasferire file su di esso.
 La seconda torna utile quando l'iPhone va in kernel panic perché è possibile conoscerne la ragione.
-Per poter usare quest'ultima interfaccia è necessario dotarsi di un cavo chiamato DCSD.
+Per poter usare quest'ultima interfaccia è necessario dotarsi di un cavo chiamato [DCSD](https://www.theiphonewiki.com/w/index.php?title=DCSD_Cable&oldid=110048#.27DCSD_Alex.27_PCB).<br/>
+Googlando si trovano molti siti che vendono questo cavo a prezzi modici.
+A ogni modo per essere sicuri meglio farsi consigliare da chi l'ha già comprato: nel mio caso ho [scelto questo](https://a.aliexpress.com/_mrLEF1s).
+Più precisamente quello mostrato in Figura.
+![dcsd](https://ae01.alicdn.com/kf/H2cc1cec8533a4767b82422a405e5aa9bS/Cavo-DCSD-Alex-originale-cavo-porta-seriale-di-ingegneria-per-leggere-scrivere-dati-Nand-SysCfg-per.jpg "Second DCSD Cable")<br/>
+
 
 ### La SecureROM e la ricerca di iBoot
 
