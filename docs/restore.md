@@ -388,7 +388,7 @@ Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
   Per essere realizzato si necessita di un [Raspberry Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/) e un [connettore Apple Lightning maschio](https://elabbay.myshopify.com/products/apple-lm-bo-v1a-apple-lightning-male-connector-breakout-board?variant=30177591875).
 
 Questi cavi permetto di sfruttare un interfaccia chiamata Serial Wire Debug (SWD), che combinata con il leaked tool `astris`, consente di eseguire un debug molto approfondito dell'iDevice.
-Addirittura è possibile eseguire l'`halt` di una delle CPU presenti nell'AP e osservare il contenuto dei registri fisici.
+Addirittura è possibile eseguire l'`halt` di una delle CPU presenti nell'AP e osservare il contenuto dei suoi registri fisici.
 Visto che il sottoscritto non ha potuto mettere le mani su nessun dei cavi citati, si rimanda il lettore a [questo thread di Twitter](https://twitter.com/nyan_satan/status/1090989650280398849) per maggiori dettagli sull'argomento.
 Inoltre qualora avessi disposto sia dei cavi sia del software mi sarei dovuto procurare anche un iPhone con CPFM `0x01` o `0x00`.
 > **Note**</br>
