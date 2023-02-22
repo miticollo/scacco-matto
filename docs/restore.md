@@ -463,7 +463,7 @@ In particolare se dividiamo la stringa in `:` abbiamo due sotto-stringhe:
 Per avere un'idea dei messaggi prodotti da iBoot durante il suo avvio dovremmo usare una versione di iBoot in sviluppo.
 Tale versione non è rilasciata agli sviluppatori da Apple, tuttavia a volte qualche leak, commesso proprio dalla stessa Apple, capita.
 Mi sto riferendo all'aggiornamento OTA di iOS 15.1b3, che oltre a contenere le immagine in produzione, contiene anche quelle di sviluppo.
-Per trovare quali firmware, anche OTA, potrebbero contenere tali immagini ho creato uno script che usa le API di appledb.dev: [`finder.sh`](..tools/finder/finder.sh).
+Per trovare quali firmware, anche OTA, potrebbero contenere tali immagini ho creato [uno script](../tools/finder/finder.sh) che usa le API di appledb.dev.
 
 ### La SecureROM e la ricerca di iBoot
 
