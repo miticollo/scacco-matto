@@ -425,7 +425,7 @@ Per poter usare quest'ultima interfaccia è necessario dotarsi di un cavo chiama
 Googlando si trovano molti siti che vendono questo cavo a prezzi modici.
 A ogni modo per essere sicuri meglio farsi consigliare da chi l'ha già comprato: nel mio caso ho [scelto questo](https://a.aliexpress.com/_mrLEF1s).
 Più precisamente quello mostrato in Figura.
-![dcsd](https://ae01.alicdn.com/kf/H2cc1cec8533a4767b82422a405e5aa9bS/Cavo-DCSD-Alex-originale-cavo-porta-seriale-di-ingegneria-per-leggere-scrivere-dati-Nand-SysCfg-per.jpg "Second DCSD Cable")<br/>
+![dcsd](https://ae01.alicdn.com/kf/H2cc1cec8533a4767b82422a405e5aa9bS/Cavo-DCSD-Alex-originale-cavo-porta-seriale-di-ingegneria-per-leggere-scrivere-dati-Nand-SysCfg-per.jpg_640x640.jpg "Second DCSD Cable")<br/>
 
 
 ### La SecureROM e la ricerca di iBoot
