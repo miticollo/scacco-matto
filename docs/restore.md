@@ -521,7 +521,7 @@ Altre immagini che troviamo sono:
 
 Si fa presente che alcune dei loghi che compaiono sullo schermo vengono composti come sovrapposizione ne è un esempio: BatteryLow1 + BatteryLow0.
 
-In ultimo si precisa che il quanto finora descritto viene chiamato Local Boot e non richiede "nessun aiuto esterno".
+In ultimo si precisa che quanto finora descritto viene chiamato Local Boot e non richiede "nessun aiuto esterno".
 Inoltre l'iPhone stesso ci informa il tipo di boot.
 Infatti se proviamo forzare il riavvio collegando l'iPhone con il cavo DCSD e aprendo una console seriale con `termz` osserveremo il seguente banner
 ```text
@@ -539,7 +539,7 @@ Infatti se proviamo forzare il riavvio collegando l'iPhone con il cavo DCSD e ap
 ::
 =======================================
 ```
-in cui viene mostrata la versione di iBoot usata, se è in produzione o release e alcune informazioni (alcune già incontrate) tra cui il Chip ID (`CPID:8015`), il ChiP Fuse Mode (`CPFM:03`), il numero di serie (`SRNM:[GHKZ2116JCLJ]`), il Board ID (`BDID:0E`) e l'[Exclusive Chip Identification](https://www.theiphonewiki.com/w/index.php?title=ECID&oldid=125862) (`ECID:000E421A01C0002E`).
+in cui viene mostrata la versione di iBoot usata, se è in produzione o release e alcune informazioni, che potrebbero essere famigliari, tra cui il Chip ID (`CPID:8015`), il ChiP Fuse Mode (`CPFM:03`), il numero di serie (`SRNM:[GHKZ2116JCLJ]`), il Board ID (`BDID:0E`) e l'[Exclusive Chip Identification](https://www.theiphonewiki.com/w/index.php?title=ECID&oldid=125862) (`ECID:000E421A01C0002E`).
 Tuttavia ciò che più conta è il fatto che è un `Local boot`.
 
 #### IM4M
