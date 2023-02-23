@@ -507,14 +507,14 @@ Altre immagini che troviamo sono:
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/batterylow1@3x\~iphone.im4p -o ipsw/decrypted/batterylow1.raw
   ../tools/ibootim/ibootim ipsw/decrypted/batterylow1.raw ipsw/decrypted/batterylow1.png
   ```
+- il LiquidDetect (con tag `liqd`) [estratto](./images/liqd.png) da `ipsw/orig/Firmware/all_flash/liquiddetect@2436\~iphone-lightning.im4p`
 - il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device
 - il GlyphPlugin (con tag `glyP`) che [possiamo vedere](./images/glyphplugin.png) estraendo, come fatto prima, il payload da `glyphplugin@2436~iphone-lightning.im4p`
 - il BatteryLow0 (con tag `bat0`) estraendolo dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`<br/>
   <p align="center">
     <img src="./images/batterylow0.png?raw=true" alt="BatteryLow0 on iOS 15">
   </p>
-- il LiquidDetect (con tag `liqd`) [estratto](./images/liqd.png) da `ipsw/orig/Firmware/all_flash/liquiddetect@2436\~iphone-lightning.im4p`
-- 
+- il BatteryCharging0 (con tag `chg0`) [estratto](./images/batterycharging0.png) da `ipsw/orig/Firmware/all_flash/batterycharging0@3x~iphone.im4p`
 
 #### IM4M
 
