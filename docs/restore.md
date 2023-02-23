@@ -491,14 +491,14 @@ openssl asn1parse -in /dev/disk1 -i -inform DER
 ```
 Incredibile! L'interno namespace, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
 Andiamo a esaminarne qualcuna.<br/>
-Innanzitutto all'inizio di questo namespace troviamo iBoot: più precisamente troviamo iLLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LBB uguali.
+Innanzitutto all'inizio di questo namespace troviamo iBoot: più precisamente troviamo LLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LLB uguali.
 Ad ogni modo per convincerci di questo eseguiamo
 ```shell
 openssl asn1parse -in ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -i -inform DER
 ```
 e confrontiamo gli `OCTET STRING`.
 Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, perciò dal titolo precedente sappiamo che ci deve essere un IM4M: infatti subito dopo, ovvero in coda, all'IM4P lo troviamo.
-Lo affronteremo meglio nel prossimo paragrafo, ma in questo mi voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
+Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
 
 Altre immagini che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device;
@@ -508,6 +508,8 @@ Altre immagini che troviamo sono:
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/glyphplugin@2436\~iphone-lightning.im4p -o ipsw/decrypted/glyphplugin.raw
   ../tools/ibootim/ibootim ipsw/decrypted/glyphplugin.raw ipsw/decrypted/glyphplugin.png
   ```
+- il BatteryLow0 (con tag `bat0`) che possiamo estrarre come prima dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`
+  ![bat0](./images/batterylow0.png?raw=true "BatteryLow0 on iOS 15")
 - 
   
 
