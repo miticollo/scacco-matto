@@ -501,17 +501,19 @@ Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, 
 Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
 
 Altre immagini che troviamo sono:
-- il logo (con tag `logo`) della male morsicata, che appare all'avvio del device;
-- il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device;
-- il GlyphPlugin (con tag `glyP`), che [possiamo vedere](./images/glyphplugin.png) estraendo il payload da `glyphplugin@2436~iphone-lightning.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
+- il logo (con tag `logo`) della male morsicata, che appare all'avvio del device
+- il BatteryLow1 (con tag `bat1`), che [possiamo vedere](./images/batterylow1.png) estraendo il payload da `ipsw/orig/Firmware/all_flash/batterylow1@3x~iphone.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
   ```shell
-  pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/glyphplugin@2436\~iphone-lightning.im4p -o ipsw/decrypted/glyphplugin.raw
-  ../tools/ibootim/ibootim ipsw/decrypted/glyphplugin.raw ipsw/decrypted/glyphplugin.png
+  pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/batterylow1@3x\~iphone.im4p -o ipsw/decrypted/batterylow1.raw
+  ../tools/ibootim/ibootim ipsw/decrypted/batterylow1.raw ipsw/decrypted/batterylow1.png
   ```
-- il BatteryLow0 (con tag `bat0`) che possiamo estrarre come prima dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`<br/>
-  ![bat0](./images/batterylow0.png?raw=true "BatteryLow0 on iOS 15")
+- il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device
+- il GlyphPlugin (con tag `glyP`) che [possiamo vedere](./images/glyphplugin.png) estraendo, come fatto prima, il payload da `glyphplugin@2436~iphone-lightning.im4p`
+- il BatteryLow0 (con tag `bat0`) estraendolo dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`<br/>
+  <p align="center">
+    <img src="./images/batterylow0.png?raw=true" alt="BatteryLow0 on iOS 15">
+  </p>
 - 
-  
 
 #### IM4M
 
