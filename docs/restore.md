@@ -35,7 +35,7 @@ Infine notiamo che l'AES engine è un componente separato dall'AP, questo per un
 ## Trusted boot chain
 
 Prima di passare alla pratica è necessario capire come avviene l'avvio di iOS: da quando premiamo il tasto di accensione fino alla schermata di blocco.
-![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<span id="fig-bootchain"></span><br/>
+![ibootchain](./images/ibootchain.png?raw=true "The traditional boot chain of *OS")<br/>
 Da un primo sguardo della [Figura](http://newosxbook.com/bonus/iboot.pdf#page=1) notiamo, che i passaggi tra i vari componenti di avvio formano una catena.
 Inoltre, come discuterò tra breve, ogni passo verifica che quello successivo sia firmato digitalmente da Apple.
 Per questi motivi viene chiamata _trusted boot chain_.
@@ -136,7 +136,7 @@ e otterremmo (omettendo il **vero e proprio** binario)
 1094868:d=2  hl=2 l=   3 prim:   INTEGER           :161620
 </pre>
 
-Per capire l'output mostrato conviene esaminare il comando che lo ha prodotto: `asn1parse` della utility `openssl`.
+Per capire l'output mostrato conviene esaminare il comando che lo ha prodotto: `asn1parse` della utility `openssl``.
 Tralasciamo l'opzione `-in` che banalmente permette di specificare il file di input e concentriamoci sulle restanti.
 `-inform DER` indica che il file `iBSS.d22.RELEASE.im4p` usa la codifica Distinguished Encoding Rules (DER) mentre `-i` permette di indentare l'output prodotto.
 Quest'ultimo non è nient'altro che il risultato del parsing delle strutture [Abstract Syntax Notation One (ASN.1)](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/). <br/>
@@ -222,7 +222,7 @@ Sorprendente, tutti i file sono uguali!
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 --></span>
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
-Dalla [Figura](#fig-bootchain) ci accorgiamo che di fatto LLB non è più necessario, ma tuttavia è ancora presente nell'IPSW, perché?
+Quindi di fatto non sono più necessari 4 file distinti, ma tuttavia sono ancora presenti nell'IPSW, perché?
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332 --></span>
 Probabilmente per mantenere una compatibilità con i software di restore.<br>
 <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/986400776861671424 --></span>
@@ -234,7 +234,7 @@ In aggiunta a quanto detto prima per i modelli A9 o inferiori: se avessimo esegu
 
 In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 file = Payload (IM4P) + Manifest (IM4M)".
 Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
-Prima, però, sarà presentato che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
+Successivamente sarà presentato che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
 
 Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come ho già accennato si trovato su `/dev/disk1`.
 Inoltre mostrerò anche come è fatto questo _NVMe namespace_.
@@ -461,6 +461,8 @@ af0b11a98ee1c1b:98
 </pre>
 
 Questa è una forma di offuscamento deciso dalla Apple.
+<span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1070506084529356851 --></span>
+<span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1070504398813413456 --></span>
 In particolare se dividiamo la stringa in `:` abbiamo due sotto-stringhe:
 - la prima rappresenta il risultato di un HMAC del nome di un file contenente il codice sorgente di iBoot,
 - mentre la seconda è la linea all'interno di quel file.
@@ -474,7 +476,41 @@ Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](ht
 
 ### La SecureROM e la ricerca di iBoot
 
+Iniziamo con il chiederci: dove si trova iBoot sull'iPhone?
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/798263003388051457 --></span>
+Beh, la risposta è che risiede su un proprio NVMe namespace, che condivide con altri componenti.
+In particolare tale namespace è `/dev/disk1`: proviamo a esaminarlo.
+Come primo tentativo possiamo eseguire il `cat` di questo device:
+```shell
+cat /dev/disk1 | head -1
+```
+Così facendo notiamo nell'output qualcosa di famigliare: la presenza della stringa "IM4P".
+Pertanto perché non provare a usare il sotto-comando `asn1parse` della utility `openssl`?
+```shell
+openssl asn1parse -in /dev/disk1 -i -inform DER
+```
+Incredibile! L'interno namespace, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
+Andiamo a esaminarne qualcuna.<br/>
+Innanzitutto all'inizio di questo namespace troviamo iBoot: più precisamente troviamo iLLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LBB uguali.
+Ad ogni modo per convincerci di questo eseguiamo
+```shell
+openssl asn1parse -in ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -i -inform DER
+```
+e confrontiamo gli `OCTET STRING`.
+Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, perciò dal titolo precedente sappiamo che ci deve essere un IM4M: infatti subito dopo, ovvero in coda, all'IM4P lo troviamo.
+Lo affronteremo meglio nel prossimo paragrafo, ma in questo mi voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
 
+Altre immagini che troviamo sono:
+- il logo (con tag `logo`) della male morsicata, che appare all'avvio del device;
+- il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device;
+- il GlyphPlugin (con tag `glyP`), che possiamo vedere estraendo il payload da `glyphplugin@2436~iphone-lightning.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
+  ```shell
+  pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/glyphplugin@2436\~iphone-lightning.im4p -o ipsw/decrypted/glyphplugin.raw
+  ../tools/ibootim/ibootim ipsw/decrypted/glyphplugin.raw ipsw/decrypted/glyphplugin.png
+  ```
+  ![glyphplugin](./images/glyphplugin.png?raw=true "GlyphPlugin for iOS 15")
+- 
+  
 
 #### IM4M
 

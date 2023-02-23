@@ -119,6 +119,19 @@ function compile_libimobiledevice() {
 }
 
 #######################################
+# Compiles ibootim.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_ibootim() {
+  cd ibootim
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Downloads iBoot64Patcher.
 # Arguments:
 #   None
@@ -209,6 +222,7 @@ function main() {
   compile_gaster
   compile_gaster_fr
   compile_t8015_bootkit
+  compile_ibootim
   compile_kpf
   compile_pongoterm
   get_iboot64patcher
