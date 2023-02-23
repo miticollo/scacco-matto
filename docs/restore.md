@@ -519,7 +519,28 @@ Altre immagini che troviamo sono:
 - il logo della RecoveryMode (con tag `recm`) [estratto](./images/recm.png) da `ipsw/orig/Firmware/all_flash/recoverymode@2436~iphone-lightning.im4p`
 - il SEP (con tag `sepi`)
 
-Concludo 
+Si fa presente che alcune dei loghi che compaiono sullo schermo vengono composti come sovrapposizione ne è un esempio: BatteryLow1 + BatteryLow0.
+
+In ultimo si precisa che il quanto finora descritto viene chiamato Local Boot e non richiede "nessun aiuto esterno".
+Inoltre l'iPhone stesso ci informa il tipo di boot.
+Infatti se proviamo forzare il riavvio collegando l'iPhone con il cavo DCSD e aprendo una console seriale con `termz` osserveremo il seguente banner
+```text
+=======================================
+::
+:: Supervisor iBoot for d22, Copyright 2007-2022, Apple Inc.
+::
+::	Local boot, Board 0xe (d221ap)/Rev 0xf
+::
+::	BUILD_TAG: iBoot-7459.140.15
+::
+::	BUILD_STYLE: RELEASE
+::
+::	USB_SERIAL_NUMBER: SDOM:01 CPID:8015 CPRV:11 CPFM:03 SCEP:01 BDID:0E ECID:000E421A01C0002E IBFL:3D SRNM:[GHKZ2116JCLJ]
+::
+=======================================
+```
+in cui viene mostrata la versione di iBoot usata, se è in produzione o release e alcune informazioni (alcune già incontrate) tra cui il Chip ID (`CPID:8015`), il ChiP Fuse Mode (`CPFM:03`), il numero di serie (`SRNM:[GHKZ2116JCLJ]`), il Board ID (`BDID:0E`) e l'[Exclusive Chip Identification](https://www.theiphonewiki.com/w/index.php?title=ECID&oldid=125862) (`ECID:000E421A01C0002E`).
+Tuttavia ciò che più conta è il fatto che è un `Local boot`.
 
 #### IM4M
 
