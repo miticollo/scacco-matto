@@ -515,6 +515,11 @@ Altre immagini che troviamo sono:
     <img src="./images/batterylow0.png?raw=true" alt="BatteryLow0 on iOS 15">
   </p>
 - il BatteryCharging0 (con tag `chg0`) [estratto](./images/batterycharging0.png) da `ipsw/orig/Firmware/all_flash/batterycharging0@3x~iphone.im4p`
+- il BatteryCharging1 (con tag `chg1`) [estratto](./images/batterycharging1.png) da `ipsw/orig/Firmware/all_flash/batterycharging1@3x~iphone.im4p`
+- il logo della RecoveryMode (con tag `recm`) [estratto](./images/recm.png) da `ipsw/orig/Firmware/all_flash/recoverymode@2436~iphone-lightning.im4p`
+- il SEP (con tag `sepi`)
+
+Concludo 
 
 #### IM4M
 
