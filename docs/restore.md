@@ -508,7 +508,7 @@ Altre immagini che troviamo sono:
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/glyphplugin@2436\~iphone-lightning.im4p -o ipsw/decrypted/glyphplugin.raw
   ../tools/ibootim/ibootim ipsw/decrypted/glyphplugin.raw ipsw/decrypted/glyphplugin.png
   ```
-- il BatteryLow0 (con tag `bat0`) che possiamo estrarre come prima dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`
+- il BatteryLow0 (con tag `bat0`) che possiamo estrarre come prima dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`<br/>
   ![bat0](./images/batterylow0.png?raw=true "BatteryLow0 on iOS 15")
 - 
   
