@@ -502,7 +502,7 @@ Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare 
 
 Altre immagini che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device
-- il BatteryLow1 (con tag `bat1`), che [possiamo vedere](./images/batterylow1.png) estraendo il payload da `ipsw/orig/Firmware/all_flash/batterylow1@3x~iphone.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
+- il BatteryLow1 (con tag `bat1`) che [possiamo vedere](./images/batterylow1.png) estraendo il payload da `ipsw/orig/Firmware/all_flash/batterylow1@3x~iphone.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
   ```shell
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/batterylow1@3x\~iphone.im4p -o ipsw/decrypted/batterylow1.raw
   ../tools/ibootim/ibootim ipsw/decrypted/batterylow1.raw ipsw/decrypted/batterylow1.png
@@ -513,6 +513,7 @@ Altre immagini che troviamo sono:
   <p align="center">
     <img src="./images/batterylow0.png?raw=true" alt="BatteryLow0 on iOS 15">
   </p>
+- il LiquidDetect (con tag `liqd`) [estratto](./images/liqd.png) da `ipsw/orig/Firmware/all_flash/liquiddetect@2436\~iphone-lightning.im4p`
 - 
 
 #### IM4M
