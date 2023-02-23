@@ -503,7 +503,7 @@ Lo affronteremo meglio nel prossimo paragrafo, ma in questo mi voglio sottolinea
 Altre immagini che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device;
 - il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device;
-- il GlyphPlugin (con tag `glyP`), che [possiamo vedere](./images/glyphplugin.png?raw=true) estraendo il payload da `glyphplugin@2436~iphone-lightning.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
+- il GlyphPlugin (con tag `glyP`), che [possiamo vedere](./images/glyphplugin.png) estraendo il payload da `glyphplugin@2436~iphone-lightning.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
   ```shell
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/glyphplugin@2436\~iphone-lightning.im4p -o ipsw/decrypted/glyphplugin.raw
   ../tools/ibootim/ibootim ipsw/decrypted/glyphplugin.raw ipsw/decrypted/glyphplugin.png
