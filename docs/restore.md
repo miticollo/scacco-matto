@@ -136,7 +136,7 @@ e otterremmo (omettendo il **vero e proprio** binario)
 1094868:d=2  hl=2 l=   3 prim:   INTEGER           :161620
 </pre>
 
-Per capire l'output mostrato conviene esaminare il comando che lo ha prodotto: `asn1parse` della utility `openssl``.
+Per capire l'output mostrato conviene esaminare il comando che lo ha prodotto: `asn1parse` della utility `openssl`.
 Tralasciamo l'opzione `-in` che banalmente permette di specificare il file di input e concentriamoci sulle restanti.
 `-inform DER` indica che il file `iBSS.d22.RELEASE.im4p` usa la codifica Distinguished Encoding Rules (DER) mentre `-i` permette di indentare l'output prodotto.
 Quest'ultimo non è nient'altro che il risultato del parsing delle strutture [Abstract Syntax Notation One (ASN.1)](https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/). <br/>
@@ -221,7 +221,8 @@ diff -q --from-file ipsw/decrypted/*.raw
 Sorprendente, tutti i file sono uguali!
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 --></span>
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
-Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2), quindi era necessario che LLB caricasse iBoot.
+<span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1078421177430720692 --></span>
+Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2) oppure la porzione che gli veniva riservata dalla SecureROM nella SRAM non era sufficiente, quindi era necessario che LLB caricasse iBoot nella DRAM.
 Quindi di fatto non sono più necessari 4 file distinti, ma tuttavia sono ancora presenti nell'IPSW, perché?
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875678703672246332 --></span>
 Probabilmente per mantenere una compatibilità con i software di restore.<br>
@@ -480,13 +481,15 @@ Iniziamo con il chiederci: dove si trova iBoot sull'iPhone?
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/798263003388051457 --></span>
 Beh, la risposta è che risiede su un proprio NVMe namespace, che condivide con altri componenti.
 In particolare tale namespace è `/dev/disk1`: proviamo a esaminarlo.
-Come primo tentativo possiamo eseguire il `cat` di questo device:
+Come primo tentativo possiamo eseguire, **attraverso una sessione SSH su iPhone in jailbroken state**, il `cat` di questo device:
 ```shell
+# over SSH on jailbroken iPhone
 cat /dev/disk1 | head -1
 ```
 Così facendo notiamo nell'output qualcosa di famigliare: la presenza della stringa "IM4P".
 Pertanto perché non provare a usare il sotto-comando `asn1parse` della utility `openssl`?
 ```shell
+# over SSH on jailbroken iPhone
 openssl asn1parse -in /dev/disk1 -i -inform DER
 ```
 Incredibile! L'interno namespace, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
@@ -500,7 +503,7 @@ e confrontiamo gli `OCTET STRING`.
 Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, perciò dal titolo precedente sappiamo che ci deve essere un IM4M: infatti subito dopo, ovvero in coda, all'IM4P lo troviamo.
 Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
 
-Altre immagini che troviamo sono:
+Gli altri componenti che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device
 - il BatteryLow1 (con tag `bat1`) che [possiamo vedere](./images/batterylow1.png) estraendo il payload da `ipsw/orig/Firmware/all_flash/batterylow1@3x~iphone.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
   ```shell
@@ -522,8 +525,8 @@ Altre immagini che troviamo sono:
 Si fa presente che alcune dei loghi che compaiono sullo schermo vengono composti come sovrapposizione ne è un esempio: BatteryLow1 + BatteryLow0.
 
 In ultimo si precisa che quanto finora descritto viene chiamato Local Boot e non richiede "nessun aiuto esterno".
-Inoltre l'iPhone stesso ci informa il tipo di boot.
-Infatti se proviamo forzare il riavvio collegando l'iPhone con il cavo DCSD e aprendo una console seriale con `termz` osserveremo il seguente banner
+Inoltre l'iPhone stesso ci informa sul tipo di boot.
+Infatti se proviamo a forzare il riavvio collegando l'iPhone con il cavo DCSD e aprendo una console seriale con `termz` osserveremo il seguente banner
 ```text
 =======================================
 ::
@@ -539,12 +542,26 @@ Infatti se proviamo forzare il riavvio collegando l'iPhone con il cavo DCSD e ap
 ::
 =======================================
 ```
-in cui viene mostrata la versione di iBoot usata, se è in produzione o release e alcune informazioni, che potrebbero essere famigliari, tra cui il Chip ID (`CPID:8015`), il ChiP Fuse Mode (`CPFM:03`), il numero di serie (`SRNM:[GHKZ2116JCLJ]`), il Board ID (`BDID:0E`) e l'[Exclusive Chip Identification](https://www.theiphonewiki.com/w/index.php?title=ECID&oldid=125862) (`ECID:000E421A01C0002E`).
+in cui viene mostrata la versione di iBoot usata, se è in produzione o release e alcune informazioni, che dovrebbero essere famigliari, tra cui il Chip ID (`CPID:8015`), il ChiP Fuse Mode (`CPFM:03`), il numero di serie (`SRNM:[GHKZ2116JCLJ]`), il Board ID (`BDID:0E`) e l'[Exclusive Chip Identification](https://www.theiphonewiki.com/w/index.php?title=ECID&oldid=125862) (`ECID:000E421A01C0002E`).
 Tuttavia ciò che più conta è il fatto che è un `Local boot`.
+
+Per riassumere il local boot è essenzialmente composto di tre passaggi fondamentali:
+- il codice della SecureROM viene mandato in esecuzione;
+- esso si occupa di leggere dal primo namespace un numero sufficiente di byte per recuperare l'IMG4 di iBoot;
+- quest'ultimo viene passato alla funzione `image_load`, che controlla l'integrità di iBoot e la sua origine usando i certificati e i digest contenuti nell'IM4M, che accompagnano l'IMG4;
+- successivamente il payload criptato di iBoot viene inviato all'AES engine dove viene decriptato usando la GID0 key e
+- finalmente può essere mandato in esecuzione. Tra gli altri suoi compiti esso si occuperà di individuare il volume di Preboot in cui è contenuto il kernel per avviarlo.
 
 #### IM4M
 
+Apro questo paragrafo con un po' di sinonimi.
+Infatti spesso nelle chat di Discord o su Reddit si fa riferimento a questo componente con diversi nomi come: manifest o ApImg4Ticket.
 
+Innanzitutto proviamo ad estrarlo direttamente dal primo namespace
+```shell
+# over SSH on jailbroken iPhone
+
+```
 
 #### Remote
 
