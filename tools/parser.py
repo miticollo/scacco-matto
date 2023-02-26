@@ -25,8 +25,6 @@ def main(argv, argc):
     print("Touch firmware:        " + filtered["Manifest"]["Multitouch"]["Info"]["Path"])
     print("SEP firmware:          " + filtered["Manifest"]["SEP"]["Info"]["Path"])
     print("Device tree:           " + filtered["Manifest"]["DeviceTree"]["Info"]["Path"])
-    print("Device tree:           " + filtered["Manifest"]["DeviceTree"]["Info"]["Path"])
-    print("Apple logo:            " + filtered["Manifest"]["AppleLogo"]["Info"]["Path"])
     print("Apple logo:            " + filtered["Manifest"]["AppleLogo"]["Info"]["Path"])
     print("Static trust cache:    " + filtered["Manifest"]["StaticTrustCache"]["Info"]["Path"])
 
