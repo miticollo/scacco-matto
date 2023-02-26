@@ -24,6 +24,11 @@ def main(argv, argc):
     # https://discord.com/channels/779134930265309195/779156258799878195/1075131502398025770
     print("Touch firmware:        " + filtered["Manifest"]["Multitouch"]["Info"]["Path"])
     print("SEP firmware:          " + filtered["Manifest"]["SEP"]["Info"]["Path"])
+    print("Device tree:           " + filtered["Manifest"]["DeviceTree"]["Info"]["Path"])
+    print("Device tree:           " + filtered["Manifest"]["DeviceTree"]["Info"]["Path"])
+    print("Apple logo:            " + filtered["Manifest"]["AppleLogo"]["Info"]["Path"])
+    print("Apple logo:            " + filtered["Manifest"]["AppleLogo"]["Info"]["Path"])
+    print("Static trust cache:    " + filtered["Manifest"]["StaticTrustCache"]["Info"]["Path"])
 
 
 if __name__ == '__main__':
