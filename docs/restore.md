@@ -101,6 +101,10 @@ Se ciò dovesse accadere basta riprovare.
    RestoreRamDisk:        098-03675-020.dmg
    Root Filesystem (OS):  098-04055-020.dmg
    Touch firmware:        Firmware/D221_Multitouch.im4p
+   SEP firmware:          Firmware/all_flash/sep-firmware.d221.RELEASE.im4p
+   Device tree:           Firmware/all_flash/DeviceTree.d221ap.im4p
+   Apple logo:            Firmware/all_flash/applelogo@3x~iphone.im4p
+   Static trust cache:    Firmware/098-04055-020.dmg.trustcache
    ```
    <span><!-- https://discord.com/channels/842189018523631658/917198974555942942/1071059805327859792 --></span>
    > **Note**</br>
@@ -473,7 +477,7 @@ Tale versione non è rilasciata agli sviluppatori da Apple, tuttavia a volte qua
 Mi sto riferendo all'aggiornamento OTA di [iOS 15.1b3](https://updates.cdn-apple.com/2021FallSeed/patches/002-10420/36B2828C-B8CA-40DE-88F2-A4031B6A9BAC/com_apple_MobileAsset_SoftwareUpdate/7fefd31a7473d632237481eecbf39920364797cd.zip), che oltre a contenere le immagine in produzione, contiene anche quelle di sviluppo.
 Per trovare quali firmware, anche OTA, potrebbero contenere tali immagini ho creato [uno script](../tools/finder/finder.sh) che usa le API di appledb.dev.
 
-Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](https://freeware.the-meiers.org/) ricordandoci di impostare il baud rate a 115200 baud (simboli al secondo).
+Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](https://freeware.the-meiers.org/) ricordandoci di impostare il baud rate a [115200](https://github.com/kpwn/termz/blob/9cd1089b125ab60b40a11b2ec8844e2a12818457/main.m#L82-L83) baud (simboli al secondo).
 
 ### La SecureROM e la ricerca di iBoot
 
@@ -555,9 +559,9 @@ Per riassumere il local boot è essenzialmente composto di tre passaggi fondamen
 #### IM4M
 
 Apro questo paragrafo con un po' di sinonimi.
-Infatti spesso nelle chat di Discord o su Reddit si fa riferimento a questo componente con diversi nomi come: manifest o ApImg4Ticket.
+Infatti spesso nelle chat di [Discord](https://discord.com/) o su [Reddit](https://www.reddit.com/r/jailbreak/) si fa riferimento a questo componente con diversi nomi: manifest o [ApImg4Ticket](https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format).
 
-Innanzitutto proviamo ad estrarlo direttamente dal primo namespace
+Innanzitutto [proviamo ad estrarlo direttamente dal primo namespace](https://github.com/MatthewPierson/deverser/blob/b74000c5104c86c84f8a8121384b08ec6909507c/deverser.sh#L45)
 ```shell
 # over SSH on jailbroken iPhone
 
