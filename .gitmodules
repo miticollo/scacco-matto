@@ -29,9 +29,12 @@
 [submodule "tools/gaster-futurerestore"]
 	path = tools/gaster-futurerestore
 	url = https://github.com/Cryptiiiic/gaster.git
+	ignore = dirty
 [submodule "tools/gaster"]
 	path = tools/gaster
 	url = https://github.com/0x7ff/gaster.git
+	ignore = dirty
 [submodule "tools/libusbmuxd"]
 	path = tools/libusbmuxd
 	url = https://github.com/libimobiledevice/libusbmuxd.git
+	ignore = dirty
