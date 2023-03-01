@@ -119,6 +119,20 @@ function compile_libimobiledevice() {
 }
 
 #######################################
+# Compiles libusbmuxd.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libusbmuxd() {
+  cd libusbmuxd
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Compiles ibootim.
 # Arguments:
 #   None
@@ -229,6 +243,7 @@ function main() {
   get_futurerestore
   compile_termz
   compile_libimobiledevice
+  compile_libusbmuxd
 
   # Ignore errors
   popd || true
