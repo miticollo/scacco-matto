@@ -15,5 +15,7 @@ Come facciamo a cambiare la posizione dell'iPhone senza necessità di jailbreak?
    ../tools/libimobiledevice/tools/ideviceimagemounter -d 16.3.1/DeveloperDiskImage.dmg 16.3.1/DeveloperDiskImage.dmg.signature
    ```
 4. Se tutto è andato a buon fine dovrebbe comparire la voce "Sviluppatore" nell'app Impostazioni
-   ![sviluppatore](./images/sviluppatore.jpeg?raw=true "The developer pane in Settings app.")
+   <p align="center">
+     <img src="./images/sviluppatore.jpeg?raw=true" height=50% width=50% alt="The developer pane in Settings app">
+   </p>
 5. 
