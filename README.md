@@ -41,7 +41,7 @@ _See_ [dedicated folder](frida/)
 
 ## Location
 
-_See_ [dedicated chapter](docs/checkm8.md)
+_See_ [dedicated chapter](docs/location.md)
 
 ## Credits
 
