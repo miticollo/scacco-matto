@@ -23,6 +23,10 @@
    Inoltre il sito, oltre a mettere a disposizione le versioni stabili di iOS, permette il download anche di quelle beta e per entrambe indica se è oppure no firmata.
 6. Infine aggiungiamo una copia del blob SHSH, se necessario, nella directory `work/restore`.
 
+## La vulnerabilità
+
+_See_ [dedicated chapter](docs/checkm8.md)
+
 ## Update + Restore
 
 _See_ [dedicated chapter](docs/restore.md)
@@ -34,6 +38,10 @@ _See_ [dedicated chapter](docs/jb.md)
 ## frida
 
 _See_ [dedicated folder](frida/)
+
+## Location
+
+_See_ [dedicated chapter](docs/checkm8.md)
 
 ## Credits
 
