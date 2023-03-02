@@ -573,5 +573,7 @@ Innanzitutto [proviamo ad estrarlo direttamente dal primo namespace](https://git
 
 ## `futurerestore`
 
+> **Warning**</br>
+> Il 24 febbraio 2023 la Apple ha chiuso le firme per iOS 15.6 RC (build 19G69) perciò non è possibile effettuare il downgrade ad iOS 15.7.1.
 
 
