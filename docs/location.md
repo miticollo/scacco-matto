@@ -18,4 +18,16 @@ Come facciamo a cambiare la posizione dell'iPhone senza necessità di jailbreak?
    <p align="center">
      <img src="./images/sviluppatore.jpeg?raw=true" height=50% width=50% alt="The developer pane in Settings app">
    </p>
-5. 
+5. Ora proviamo a cambiare la posizione per esempio usando le coordinate di New York:
+   ```shell
+   ../tools/libimobiledevice/tools/idevicesetlocation -d -- 40.7638478 -73.9729785
+   ```
+6. Apriamo l'app Mappe e controlliamo la nostra posizione
+   <p align="center">
+     <img src="./images/apple-store.jpeg?raw=true" height=50% width=50% alt="Apple Store Fifth Avenue">
+   </p>
+7. Resettiamo la posizione
+   ```shell
+   ../tools/libimobiledevice/tools/idevicesetlocation -d -- reset
+   ```
+8. 
