@@ -1,6 +1,6 @@
 # Cambio di location
 
-Come facciamo a cambiare la posizione dell'iPhone **senza necessità di jailbreak**?
+Come facciamo a cambiare la posizione dell'iPhone **senza la necessità di un jailbreak**?
 1. Posizioniamoci nella solita working directory `work`
 2. Scarichiamo l'archivio ZIP contenente la Developer Disk Image appropriata, nel mio caso per iOS 16.3.1
    <span><!-- https://t.me/libimobiledevice/8285 --></span>
@@ -43,4 +43,4 @@ Come facciamo a cambiare la posizione dell'iPhone **senza necessità di jailbrea
    ```shell
    ipsw idev img unmount -V
    ```
-   Oppure riavviando il dispositivo.
+   oppure riavviare lo stesso.
