@@ -484,7 +484,7 @@ Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](ht
 Iniziamo con il chiederci: dove si trova iBoot sull'iPhone?
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/798263003388051457 --></span>
 Beh, la risposta è che risiede su un proprio NVMe namespace, che condivide con altri componenti.
-In particolare tale namespace è `/dev/disk1`: proviamo a esaminarlo.
+In particolare tale namespace è `/dev/disk1` (o `/dev/disk2` su iOS 16): proviamo a esaminarlo.
 Come primo tentativo possiamo eseguire, **attraverso una sessione SSH su iPhone in jailbroken state**, il `cat` di questo device:
 ```shell
 # over SSH on jailbroken iPhone

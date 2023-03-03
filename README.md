@@ -43,6 +43,7 @@ _See_ [dedicated folder](frida/)
 
 - [location](docs/others/location.md)
 - [`uiopen`](docs/others/uikittools.md)
+- [uninstall an app]()
 
 ## Credits
 

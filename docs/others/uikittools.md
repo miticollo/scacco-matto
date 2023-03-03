@@ -11,3 +11,34 @@ uiopen -a Session
 # to open Session app with bundleID
 uiopen -b com.loki-project.loki-messenger
 ```
+
+## frida in jailed mode
+
+Lo spawning di un'app può essere fatto da frida anche in [jailed mode](https://frida.re/docs/ios/#without-jailbreak), ovvero senza la necessità di un dispositivo jailbroken.
+Tuttavia l'app target deve essere debuggable ovvero deve presentare tra gli [entitlement](https://developer.apple.com/documentation/bundleresources/entitlements) [`get-task-allow`](https://stackoverflow.com/a/1026472).
+Quest'ultimo permette agli altri processi di eseguire l'attach sull'app. 
+In particolare all'interno della Developer Disk Image è contenuto il debugger (`/Developer/usr/bin/debugserver`) usato anche da Xcode per effettuare il debugging remoto dell'app.
+<span><!-- https://t.me/fridadotre/85357 --></span>
+Frida sfrutta `debugserver` per poter avviare l'app e [mappare `frida-gadget.dylib` nella memoria](https://github.com/frida/frida-core/blob/master/src/fruity/injector.vala) utilizzando il [protocollo LLDB](https://github.com/frida/frida-core/blob/master/src/fruity/lldb.vala) (che non è nient'altro che il protocollo GDB con estensioni).
+
+Proviamo a lanciare l'app Session, scaricata dall'App Store, utilizzando [`idevicedebug`](https://github.com/libimobiledevice/libimobiledevice/blob/master/tools/idevicedebug.c) proprio come farebbe frida su un iOS unjailbroken
+```shell
+../tools/libimobiledevice/tools/idevicedebug -d --detach run com.loki-project.loki-messenger
+```
+ci accorgiamo subito che l'applicazione non si avvia e sul terminale è comparso un messaggio di errore: `ERROR: failed to get the task for process <port>`.
+Questo perché l'applicazione non presenta tra gli entitlement `get-task-allow` e lo possiamo verificare nel seguente modo
+```shell
+# on jailbroken iPhone
+ldid -e /private/var/containers/Bundle/Application/106B02D0-186E-47D3-8F9F-824467B5C0C7/Session.app/Session | grep 'get-task-allow'
+```
+Tuttavia se eseguiamo lo stesso test per l'applicazione Hello World installata come esempio da Xcode, otteniamo un risultato diverso dal precedente comando.
+Ovviamente l'app in questione è stata compilata per eseguire il debugging, mentre un'app proveniente dall'App Store è in produzione, quindi essa non deve essere lanciata da un debugger per tanto l'entitlement non può essere presente.
+
+Quindi come possiamo aggiungerlo? Beh, abbiamo due soluzione:
+- usando `ldid -M -S[file.xml]`, oppure
+- includendo `frida-gadget.dylib` durante il sideloadling dell'app con [Sideloadly](https://sideloadly.io/).
+
+Entrambe le soluzioni richiedono di decriptare l'app: ovvero di rimuovere il Digital Rights Management (DRM) aggiunto alle app dello Store e che la Apple ha battezzato [FairPlay](https://segmentfault.com/a/1190000041023774/en).
+Cercando online si trovano molte soluzioni a questo problema, ma tutte potrebbero portare alla stessa conseguenza: l'impossibilità di eseguire corretta l'applicazione (vedi [Telegram VS Spotify](https://drive.google.com/file/d/1iBnWAuelz0y0Il3mihyFDoyd_7D9-p7x/view)).
+Alcune app, le più famose, sono state corrette caricando un'apposita `.dylib`: un esempio è [IGSideloadFix](https://github.com/opa334/IGSideloadFix) realizzata da [opa334](https://twitter.com/opa334dev), ovviamente per Instagram.
+A ogni modo non esiste una soluzione universale e questo porta ad abbandonare ogni speranza riguardo l'uso di un device unjailbroken per AnForA.
