@@ -8,7 +8,7 @@ Qualora fosse necessario avviare un'applicazione, su un **device jailbroken**, s
 ```shell
 # to open Session app with its name
 uiopen -a Session
-# to open Session app with bundleID
+# to open Session app with its bundleID
 uiopen -b com.loki-project.loki-messenger
 ```
 
