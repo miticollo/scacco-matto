@@ -34,5 +34,5 @@ Come facciamo a cambiare la posizione dell'iPhone **senza necessità di jailbrea
    ```shell
    sudo umount -v /Developer
    ```
-   Quindi una Developer Disk Image non è nient'altro che un nuovo device che viene montato (in read-only) sulla directory `/Developer`.<br/>
+   Quindi una Developer Disk Image non è nient'altro che un nuovo dispositivo a blocchi che viene montato (in read-only) sulla directory `/Developer`.<br/>
    Qualora il dispositivo non sia jailbroken l'unico modo per smontare l'immagine è quello di riavviarlo.
