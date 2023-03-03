@@ -42,7 +42,7 @@ _See_ [dedicated folder](frida/)
 ## Others
 
 - [location](docs/others/location.md)
-- [`uiopen`](docs/others/uiopen.md)
+- [`uiopen`](docs/others/uikittools.md)
 
 ## Credits
 
