@@ -51,11 +51,12 @@ Questo comando, come suggerisce il nome, permette di creare una notifica per una
 ```shell
 uinotify -b 'And the crocodile?' -i com.loki-project.loki-messenger -s '...moo' 'The cow says...'
 ```
-![session](../images/uinotify/session.jpeg?raw=true "A notify from Session")<br/>
+![session](../images/uinotify/session.jpeg?raw=true "A notice from Session")<br/>
 Possiamo decidere di non aver nessun icona
 ```shell
 uinotify -b 'And the crocodile?' -i com.apple.donotdisturb -s '...moo' 'The cow says...'
 ```
+![session](../images/uinotify/empty.jpeg?raw=true "An empty notice")<br/>
 Oppure avere la classica icona di warning
 ```shell
 uinotify -b 'And the crocodile?' -i com.apple.cmas -s '...moo' 'The cow says...'
