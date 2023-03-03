@@ -1,6 +1,6 @@
 # Cambio di location
 
-Come facciamo a cambiare la posizione dell'iPhone senza necessità di jailbreak?
+Come facciamo a cambiare la posizione dell'iPhone **senza necessità di jailbreak**?
 1. Posizioniamoci nella solita working directory `work`
 2. Scarichiamo l'archivio ZIP contenente la Developer Disk Image appropriata, nel mio caso per iOS 16.3.1
    <span><!-- https://t.me/libimobiledevice/8285 --></span>
@@ -16,7 +16,7 @@ Come facciamo a cambiare la posizione dell'iPhone senza necessità di jailbreak?
    ```
 4. Se tutto è andato a buon fine dovrebbe comparire la voce "Sviluppatore" nell'app Impostazioni
    <p align="center">
-     <img src="./images/sviluppatore.jpeg?raw=true" height=50% width=50% alt="The developer pane in Settings app">
+     <img src="../images/sviluppatore.jpeg?raw=true" height=50% width=50% alt="The developer pane in Settings app">
    </p>
 5. Ora proviamo a cambiare la posizione per esempio usando le coordinate di New York:
    ```shell
@@ -24,10 +24,15 @@ Come facciamo a cambiare la posizione dell'iPhone senza necessità di jailbreak?
    ```
 6. Apriamo l'app Mappe e controlliamo la nostra posizione
    <p align="center">
-     <img src="./images/apple-store.jpeg?raw=true" height=50% width=50% alt="Apple Store Fifth Avenue">
+     <img src="../images/apple-store.jpeg?raw=true" height=50% width=50% alt="Apple Store Fifth Avenue">
    </p>
 7. Resettiamo la posizione
    ```shell
    ../tools/libimobiledevice/tools/idevicesetlocation -d -- reset
    ```
-8. 
+8. Per smontare la Developer Disk Image possiamo usare il seguente comando su **iOS in jailbroken state**: 
+   ```shell
+   sudo umount -v /Developer
+   ```
+   Quindi una Developer Disk Image non è nient'altro che un nuovo device che viene montato (in read-only) sulla directory `/Developer`.<br/>
+   Qualora il dispositivo non sia jailbroken l'unico modo per smontare l'immagine è quello di riavviarlo.

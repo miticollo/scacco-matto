@@ -39,9 +39,10 @@ _See_ [dedicated chapter](docs/jb.md)
 
 _See_ [dedicated folder](frida/)
 
-## Location
+## Others
 
-_See_ [dedicated chapter](docs/location.md)
+- [location](docs/others/location.md)
+- [`uiopen`](docs/others/uiopen.md)
 
 ## Credits
 
