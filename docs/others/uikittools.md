@@ -56,7 +56,7 @@ Possiamo decidere di non aver nessun icona
 ```shell
 uinotify -b 'And the crocodile?' -i com.apple.donotdisturb -s '...moo' 'The cow says...'
 ```
-![session](../images/uinotify/empty.jpeg?raw=true "An empty notice")<br/>
+![empty](../images/uinotify/empty.jpg?raw=true "An empty notice")<br/>
 Oppure avere la classica icona di warning
 ```shell
 uinotify -b 'And the crocodile?' -i com.apple.cmas -s '...moo' 'The cow says...'
