@@ -33,7 +33,6 @@
 	url = https://github.com/lorenzoferron98/PongoOS.git
 	ignore = all
 	shallow = true
-	fetchRecurseSubmodules = false
 [submodule "tools/gaster-futurerestore"]
 	path = tools/gaster-futurerestore
 	url = https://github.com/Cryptiiiic/gaster.git
