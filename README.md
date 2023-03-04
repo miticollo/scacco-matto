@@ -1,4 +1,6 @@
-# checkm8
+# Cosa ho scoperto?
+
+In questo e negli altri README di documentazione riporto tutto ciò che ho scoperto riguardo al mondo Apple (iOS e iDevice).
 
 ### Setup
 1. Iniziamo con il preparare l'ambiente di lavoro
@@ -23,7 +25,7 @@
    Inoltre il sito, oltre a mettere a disposizione le versioni stabili di iOS, permette il download anche di quelle beta e per entrambe indica se è oppure no firmata.
 6. Infine aggiungiamo una copia del blob SHSH, se necessario, nella directory `work/restore`.
 
-## La vulnerabilità
+## checkm8
 
 _See_ [dedicated chapter](docs/checkm8.md)
 
@@ -43,7 +45,7 @@ _See_ [dedicated folder](frida/)
 
 - [location](docs/others/location.md)
 - [`uikittools`](docs/others/uikittools.md)
-- [uninstall an app]()
+- [gestionne dell'IPA](docs/others/ipa.md)
 
 ## Credits
 
