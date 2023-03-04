@@ -13,6 +13,21 @@ uiopen -a Session
 uiopen -b com.loki-project.loki-messenger
 ```
 
+## Lanciare un'app con iOS stock
+
+1. Dopo aver montato la Developer Disk Image
+   ```shell
+       pymobiledevice3 mounter mount -v 16.3.1/DeveloperDiskImage.dmg 16.3.1/DeveloperDiskImage.dmg.signature
+   ```
+2. Lanciamo l'app Session
+   ```shell
+   pymobiledevice3 developer dvt launch -v com.loki-project.loki-messenger
+   ```
+3. Terminiamola con il suo PID
+   ```shell
+   
+   ```
+
 ## frida in jailed mode
 
 Lo spawning di un'app può essere fatto da frida anche in [jailed mode](https://frida.re/docs/ios/#without-jailbreak), ovvero senza la necessità di un dispositivo jailbroken.
