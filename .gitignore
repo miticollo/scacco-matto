@@ -411,7 +411,6 @@ tools/*
 resources/*
 !tools/deps.sh
 !tools/parser.py
-!resources/download.sh
 !tools/finder/
 !tools/finder/*
 !docs/logs/*
