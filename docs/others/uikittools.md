@@ -61,6 +61,7 @@ Oppure avere la classica icona di warning
 ```shell
 uinotify -b 'And the crocodile?' -i com.apple.cmas -s '...moo' 'The cow says...'
 ```
+![warning](../images/uinotify/warning.jpg?raw=true "A warning notice")
 
 # [`uialert`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uialert.m)
 
