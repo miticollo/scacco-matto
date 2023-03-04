@@ -73,5 +73,5 @@ uialert -b 'The cow says...' -p 'moo' -s 'woof' -t 'meoh' 'AnForA'
 ```shell
 uialert  --secure 'Your password' 'AnForA'
 ```
-![password](../images/uialert/password.jpg?raw=true "An alert to enter a secret like a password")
+![password](../images/uialert/password.jpg?raw=true "An alert to enter a secret like a password")<br/>
 Altre opzioni sono disponibili come ad esempio `--timeout`, che permette di chiudere l'alert dopo il numero di secondi impostato.
