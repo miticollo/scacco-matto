@@ -65,4 +65,13 @@ uinotify -b 'And the crocodile?' -i com.apple.cmas -s '...moo' 'The cow says...'
 
 # [`uialert`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uialert.m)
 
-Permette di creare un alert box. Vediamone alcuni esempi.
+Permette di creare un alert box. Vediamone due esempi.
+```shell
+uialert -b 'The cow says...' -p 'moo' -s 'woof' -t 'meoh' 'AnForA'
+```
+![buttons](../images/uialert/3-buttons.jpg?raw=true "An box with 3 buttons")
+```shell
+uialert  --secure 'Your password' 'AnForA'
+```
+![password](../images/uialert/password.jpg?raw=true "An alert to enter a secret like a password")
+Altre opzioni sono disponibili come ad esempio `--timeout`, che permette di chiudere l'alert dopo il numero di secondi impostato.
