@@ -134,6 +134,7 @@ int main (int argc, char *argv[]) {
         run(sbreload, false);
         char *const sbdidlaunch[] = {"/usr/bin/sbdidlaunch", NULL};
         run(sbdidlaunch, false);
+        _sleep(1);
         char *const uialert[] = { "/usr/bin/uialert", "-b", "\"DONE! All daemons are loaded!\"", "\"AnForA\"", NULL };
         run(uialert, true);
     }
