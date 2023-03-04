@@ -56,5 +56,5 @@ Tuttavia `pymobiledevice3` oltre a essere un CLI tool, come molti altri progetti
 > I CLI tool finora mostrati sono stati scelti, non solo per la loro completezza, ma anche per il fatto che, al momento in cui si scrive, sono mantenuti.
 > Tuttavia questo non vale in generale.<br/>
 > Spesso nel mondo del jailbreaking vi sono progetti, che vengono sviluppati solo per esperimento i cosiddetti Proof of concept (PoC) ne sono un esempio i [progetti di tihmstar](https://github.com/tihmstar?tab=repositories): uno fra tutti [`futurerestore`](https://github.com/tihmstar/futurerestore) che oggi è mantenuto da [Cryptic](https://github.com/cryptiiiic).
-> Un progetto **non mantenuto** _non significa_ che **non funzioni**, ma piuttosto che potrebbe richiedere dei riadattamenti anche importanti per funzionare con le nuove versioni di iOS.
+> Un progetto **non mantenuto** _non significa_ che **non funzioni**, ma piuttosto che potrebbe richiedere dei riadattamenti anche importanti per funzionare con le nuove versioni di iOS o AP.
 > Per tanto, qualora non si è certi, meglio chiedere all'autore e dove quest'ultimo non risponde rivolgersi alla community del jailbreak diffusa su Discord (in cui potrebbe bazzicare anche l'autore).
