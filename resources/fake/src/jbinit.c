@@ -132,11 +132,6 @@ int main (int argc, char *argv[]) {
         run(uicache, true);
         char *const sbreload[] = {"/usr/bin/sbreload", NULL};
         run(sbreload, false);
-        char *const sbdidlaunch[] = {"/usr/bin/sbdidlaunch", NULL};
-        run(sbdidlaunch, false);
-        _sleep(5);
-        char *const uialert[] = { "/usr/bin/uialert", "-b", "\"DONE! All daemons are loaded!\"", "\"AnForA\"", NULL };
-        run(uialert, true);
     }
     puts("======== Bye from jbloader! ======== \n");
     close(fd_console);
