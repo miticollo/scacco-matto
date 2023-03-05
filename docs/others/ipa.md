@@ -25,6 +25,33 @@ Quindi qualora si cerchi un JB end-user è necessario usare versioni più vecchi
 Va fatta una precisazione riguardo quanto detto finora: è vero che il JB può essere reso al pubblico in "ritardo" rispetto la versione supportata dalla Apple, ma spesso questo viene fatto perché i primi tentativi di JB sono fatti su misura.
 Ad esempio l'utente twitter jmpews ha mostrato in [un post](https://twitter.com/jmpews/status/1623605844305924097) di essere riuscito a ottenere il JB di iOS 16.3 su **iPhone 14 Pro (A16)**, senza però divulgare dettagli o codice molto probabilmente perché ciò che ha realizzato è tarato sul suo dispositivo e dovrebbe essere riadattato (correzione offset) per funzionare su altri.
 
+Ora supponiamo di voler installare un'applicazione che **richiede almeno iOS 15** su un iPhone SE (2020) con iOS 14.4.2 (jailbreakable con unc0ver + fugu14).
+Inoltre l'applicazione in questione **non è mai stata acquistata dall'utente**, quindi non comparirà tra gli "Acquisti" del proprio Apple ID all'interno dell'App Store.
+
 ## Come scaricare un IPA?
 
-Quindi iniziamo dal procurarci un IPA
+Considerò due casi separati: applicazione a pagamento e non.
+
+### Applicazione gratuita
+
+In questo esperimento considereremo l'applicazione [Microsoft Teams](https://apps.apple.com/it/app/microsoft-teams/id1113153706). 
+
+### Applicazione a pagamento
+
+In questo esperimento considereremo l'applicazione []()
+
+## Come installare un IPA? 
+
+Proviamo ad installare Microsoft Teams con 
+
+> **Note**</br>
+> AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
+> Quest ricalca fedelmente il comportamento previsto per il supporto Android.
+> A ogni modo quanto detto prima potrebbe far parte di una FAQ consultabile dall'analista.
+
+### Come disinstallare l'IPA?
+
+Ora proviamo a disinstallare la precedente applicazione:
+```shell
+
+```
