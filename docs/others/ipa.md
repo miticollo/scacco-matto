@@ -38,7 +38,7 @@ In questo esperimento considereremo l'applicazione [Microsoft Teams](https://app
 
 ### Applicazione a pagamento
 
-In questo esperimento considereremo l'applicazione []()
+In questo esperimento considereremo l'applicazione []().
 
 ## Come installare un IPA? 
 
@@ -46,7 +46,7 @@ Proviamo ad installare Microsoft Teams con
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
-> Quest ricalca fedelmente il comportamento previsto per il supporto Android.
+> Questo ricalca fedelmente il comportamento previsto dal team di Android.
 > A ogni modo quanto detto prima potrebbe far parte di una FAQ consultabile dall'analista.
 
 ### Come disinstallare l'IPA?
