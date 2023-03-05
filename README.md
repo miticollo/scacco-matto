@@ -45,7 +45,7 @@ _See_ [dedicated folder](frida/)
 
 - [location](docs/others/location.md)
 - [`uikittools`](docs/others/uikittools.md)
-- [gestione dell'IPA](docs/others/ipa.md)
+- [La gestione degli IPA](docs/others/ipa.md)
 
 ## Credits
 
