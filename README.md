@@ -1,4 +1,4 @@
-# Cosa ho scoperto?
+# Apple Internal
 
 In questo e negli altri README di documentazione riporto tutto ciò che ho scoperto riguardo al mondo Apple (iOS e iDevice).
 

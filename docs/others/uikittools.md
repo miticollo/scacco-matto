@@ -17,16 +17,17 @@ uiopen -b com.loki-project.loki-messenger
 
 1. Dopo aver montato la Developer Disk Image
    ```shell
-       pymobiledevice3 mounter mount -v 16.3.1/DeveloperDiskImage.dmg 16.3.1/DeveloperDiskImage.dmg.signature
+   pymobiledevice3 mounter mount -v 16.3.1/DeveloperDiskImage.dmg 16.3.1/DeveloperDiskImage.dmg.signature
    ```
-2. Lanciamo l'app Session
+2. Lanciamo l'app Session (specificandone il bundleID)
    ```shell
    pymobiledevice3 developer dvt launch -v com.loki-project.loki-messenger
    ```
-3. Terminiamola con il suo PID
+3. Terminiamola usando il suo nome
    ```shell
-   
+   pymobiledevice3 developer dvt pkill -v 'Session'
    ```
+   Quest'ultimo comando può essere usato anche per terminare l'applicazione anche se questa è stata avviata da frida: `frida -U -f com.loki-project.loki-messenger`.
 
 ## frida in jailed mode
 

@@ -19,7 +19,7 @@ Come facciamo a cambiare la posizione dell'iPhone **senza la necessità di un ja
      <img src="../images/sviluppatore.jpeg?raw=true" height=50% width=50% alt="The developer pane in Settings app">
    </p>
    
-   Inoltre dall'interfaccia seriale dovremmo leggere il seguente messaggio: `hfs: mounted DeveloperDiskImage on device disk4`.
+   Inoltre dall'interfaccia seriale dovremmo leggere un messaggio simile a: `hfs: mounted DeveloperDiskImage on device disk4`.
 5. Ora proviamo a cambiare la posizione per esempio usando le coordinate di New York:
    ```shell
    pymobiledevice3 developer simulate-location set -v -- 40.7638478 -73.9729785
@@ -32,7 +32,7 @@ Come facciamo a cambiare la posizione dell'iPhone **senza la necessità di un ja
    ```shell
    pymobiledevice3 developer simulate-location clear -v
    ```
-8. Per smontare la Developer Disk Image possiamo usare il comando `umount` su **iOS in jailbroken state**, ma ci serve conoscere dove è montato.
+8. Per smontare la Developer Disk Image possiamo usare il comando `umount` su **iOS in jailbroken state**, ma ci serve conoscere dove è montata.
    Di default viene montata sotto `/Developer` per esserne sicuri verifichiamo con `pymobiledevice3`:
    ```shell
    pymobiledevice3 mounter list -v
