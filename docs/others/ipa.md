@@ -71,7 +71,7 @@ Abbiamo due alternative:
   Se non avessimo usato `ipatool` **non avremmo potuto** effettuare il download di una versione più data.
   Before: try to install PowerPoint                       |  After: install Microsoft Teams
   :------------------------------------------------------:|:----------------------------------------------------:
-  ![before](../images/ipa/before.jpeg?raw=true "Before")  |  ![before](../images/ipa/after.jpeg?raw=true "After")
+  ![before](../images/ipa/before.jpg?raw=true "Before")  |  ![before](../images/ipa/after.jpg?raw=true "After")
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
