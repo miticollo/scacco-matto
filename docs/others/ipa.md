@@ -33,6 +33,27 @@ Considerò due casi separati: applicazione a pagamento e non.
 ### Applicazione gratuita
 
 In questo esperimento considereremo l'applicazione [Microsoft Teams](https://apps.apple.com/it/app/microsoft-teams/id1113153706). 
+Per scaricarla utilizzeremo il CLI tool [`ipatool`](https://github.com/majd/ipatool).
+Per prima cosa eseguiamo il login con il nostro Apple ID:
+```shell
+ipatool auth login -e '20024182@studenti.uniupo.it' --verbose
+```
+ora possiamo procedere con il download dell'app con il sotto-comando: `download`.
+Tuttavia quest'ultimo richiede il bundleID dell'app, che non viene fornito sulla pagina dell'Apple Store.
+Quindi useremo le [API di Apple](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html#//apple_ref/doc/uid/TP40017632-CH7-SW1) per recuperare quest'informazione:
+```shell
+curl -sL 'https://itunes.apple.com/lookup?id=1113153706&country=it' | jq '.results[0].bundleId'
+```
+In particolare estraiamo il campo `bundleId` del primo (e unico) risultato contenuto nella risposta JSON alla richiesta cURL.
+Per parsificare la risposta è stata utilizza la utility a linea di comando [`jq`](https://stedolan.github.io/jq/), che può essere installata con:
+```shell
+brew install jq
+```
+Ora possiamo scaricare l'applicazione:
+```shell
+ipatool download -b 'com.microsoft.skype.teams' --verbose --purchase
+```
+Importante è l'opzione `--purchase` che permette di accettare la licenza, ma non necessario specificarla per download futuri della stessa app.
 
 ### Applicazione a pagamento
 
