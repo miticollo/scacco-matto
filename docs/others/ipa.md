@@ -91,6 +91,10 @@ Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.githu
 > Questo ricalca fedelmente il comportamento previsto dal team di Android.
 > A ogni modo quanto detto prima potrebbe far parte di una FAQ consultabile dall'analista.
 
+### `installd`
+
+
+
 ### Come disinstallare l'IPA?
 
 Ora proviamo a disinstallare la precedente applicazione:
