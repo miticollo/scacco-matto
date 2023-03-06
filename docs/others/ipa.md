@@ -53,11 +53,18 @@ Ora possiamo scaricare l'applicazione:
 ```shell
 ipatool download -b 'com.microsoft.skype.teams' --verbose --purchase
 ```
-Importante è l'opzione `--purchase` che permette di accettare la licenza, ma non necessario specificarla per download futuri della stessa app.
+Importante è l'opzione `--purchase` che permette di accettare la licenza, ma non è necessario specificarla per download futuri della stessa app.
 
 ### Applicazione a pagamento
 
-In questo esperimento considereremo l'applicazione []().
+In questo esperimento considereremo l'applicazione [Threema](https://apps.apple.com/app/threema/id578665578).
+Non possiamo utilizare `ipatool` per acquistarla la prima volta.
+L'unica soluzione fattibile è utilizzare una vecchia versione di iTunes per Windows.
+In particolare ci servirà la [12.6.5.3](https://secure-appldnld.apple.com/itunes12/091-87819-20180912-69177170-B085-11E8-B6AB-C1D03409AD2A6/iTunes64Setup.exe): infatti tale versione è l'ultima che supporta l'acquisto di app direttamente dall'App Store.
+Al termine del download potremmo trovare l'IPA in `%CSIDL_DEFAULT_MYMUSIC%\iTunes\iTunes Media\Mobile Applications`.
+> **Note**</br>
+> Questa soluzione ha il difetto di far affidamento su [una vecchia versione](https://appledb.dev/firmware/iTunes/1265A4.html) di iTunes, le cui API prima o poi smetteranno di funzionare.
+> Si spera che qualora ciò dovesse accadere si possa far già affidamento su qualche progetto open source.
 
 ## Come installare un'IPA? 
 
@@ -68,10 +75,15 @@ pymobiledevice3 apps install -v ./com.microsoft.skype.teams_1113153706_v5.3.1_56
 Ma questo fallirà perché `DeviceOSVersionTooLow: The system version is lower than the minimum OS version specified`. Quindi come procedere?
 Abbiamo due alternative:
 - installare l'ultima versione supportata dalla nostra versione di iOS, visto che essa ora compare nella sezione "Acquisti".
-  Se non avessimo usato `ipatool` **non avremmo potuto** effettuare il download di una versione più data.
+  Se non avessimo usato `ipatool` **non avremmo potuto** effettuare il download di una versione più datata.
+  <span><!-- https://stackoverflow.com/a/24320279 --></span>
   Before: try to install PowerPoint                       |  After: install Microsoft Teams
   :------------------------------------------------------:|:----------------------------------------------------:
   ![before](../images/ipa/before.jpg?raw=true "Before")  |  ![before](../images/ipa/after.jpg?raw=true "After")
+- Oppure possiamo installare una versione ancora più vecchia, ma per far ciò abbiamo due soluzioni:
+  - usare un iPhone jailbroken o
+  - usare Windows.
+Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.github.io/depiction/appstoreplus.html), mentre nel secondo caso possiamo usare [`ipatool-py-scrape](https://github.com/minif/ipatool-py-scrape#download-old-version), che permette attraverso frida di instrumentare la versione di iTunes 12.6.5.3 ed effettuare il download di una specifica versione oppure di tutte.
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
@@ -82,5 +94,5 @@ Abbiamo due alternative:
 
 Ora proviamo a disinstallare la precedente applicazione:
 ```shell
-
+pymobiledevice3 apps uninstall -v 'com.microsoft.skype.teams'
 ```
