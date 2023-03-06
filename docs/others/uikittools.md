@@ -43,7 +43,7 @@ Proviamo a lanciare l'app Session, scaricata dall'App Store, utilizzando [`idevi
 ```shell
 ../tools/libimobiledevice/tools/idevicedebug -d --detach run com.loki-project.loki-messenger
 ```
-ci accorgiamo subito che l'applicazione non si avvia e sul terminale è comparso un messaggio di errore: `ERROR: failed to get the task for process <port>`.
+ci accorgiamo subito che l'applicazione non si avvia e sul terminale è comparso un messaggio di errore: `ERROR: failed to get the task for process <ID>`.
 Questo perché l'applicazione non presenta tra gli entitlement `get-task-allow` e lo possiamo verificare nel seguente modo
 ```shell
 # on jailbroken iPhone
