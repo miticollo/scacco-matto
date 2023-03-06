@@ -83,7 +83,7 @@ Abbiamo due alternative:
 - Oppure possiamo installare una versione ancora più vecchia, ma per far ciò abbiamo due soluzioni:
   - usare un iPhone jailbroken o
   - usare Windows.
-Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.github.io/depiction/appstoreplus.html), mentre nel secondo caso possiamo usare [`ipatool-py-scrape](https://github.com/minif/ipatool-py-scrape#download-old-version), che permette attraverso frida di instrumentare la versione di iTunes 12.6.5.3 ed effettuare il download di una specifica versione oppure di tutte.
+Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.github.io/depiction/appstoreplus.html), mentre nel secondo caso possiamo usare [`ipatool-py-scrape`](https://github.com/minif/ipatool-py-scrape#download-old-version), che permette attraverso frida di instrumentare la versione di iTunes 12.6.5.3 ed effettuare il download di una specifica versione oppure di tutte.
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
