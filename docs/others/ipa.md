@@ -69,7 +69,7 @@ Ma questo fallirà perché `DeviceOSVersionTooLow: The system version is lower t
 Abbiamo due alternative:
 - installare l'ultima versione supportata dalla nostra versione di iOS, visto che essa ora compare nella sezione "Acquisti".
   Se non avessimo usato `ipatool` **non avremmo potuto** effettuare il download di una versione più data.
-  Before                                                  |  After
+  Before: try to install PowerPoint                       |  After: install Microsoft Teams
   :------------------------------------------------------:|:----------------------------------------------------:
   ![before](../images/ipa/before.jpeg?raw=true "Before")  |  ![before](../images/ipa/after.jpeg?raw=true "After")
 
