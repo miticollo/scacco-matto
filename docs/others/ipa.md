@@ -39,8 +39,8 @@ Per prima cosa eseguiamo il login con il nostro Apple ID:
 ipatool auth login -e '20024182@studenti.uniupo.it' --verbose
 ```
 ora possiamo procedere con il download dell'app con il sotto-comando: `download`.
-Tuttavia quest'ultimo richiede il bundleID dell'app, che non viene fornito sulla pagina dell'Apple Store.
-Quindi useremo le [API di Apple](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html#//apple_ref/doc/uid/TP40017632-CH7-SW1) per recuperare quest'informazione:
+Tuttavia quest'ultimo richiede il bundleID dell'app, che non viene fornito sulla pagina dell'App Store.
+Quindi useremo le [API di Apple](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html#//apple_ref/doc/uid/TP40017632-CH7-SW1) per recuperare questo dato:
 ```shell
 curl -sL 'https://itunes.apple.com/lookup?id=1113153706&country=it' | jq '.results[0].bundleId'
 ```
@@ -61,7 +61,17 @@ In questo esperimento considereremo l'applicazione []().
 
 ## Come installare un'IPA? 
 
-Proviamo ad installare Microsoft Teams con 
+Proviamo ad installare Microsoft Teams con `pymobiledevice3`:
+```shell
+pymobiledevice3 apps install -v ./com.microsoft.skype.teams_1113153706_v5.3.1_561.ipa
+```
+Ma questo fallirà perché `DeviceOSVersionTooLow: The system version is lower than the minimum OS version specified`. Quindi come procedere?
+Abbiamo due alternative:
+- installare l'ultima versione supportata dalla nostra versione di iOS, visto che essa ora compare nella sezione "Acquisti".
+  Se non avessimo usato `ipatool` **non avremmo potuto** effettuare il download di una versione più data.
+  Before                                                  |  After
+  :------------------------------------------------------:|:----------------------------------------------------:
+  ![before](../images/ipa/before.jpeg?raw=true "Before")  |  ![before](../images/ipa/after.jpeg?raw=true "After")
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
