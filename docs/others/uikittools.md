@@ -29,7 +29,7 @@ uiopen -b com.loki-project.loki-messenger
    ```
    Quest'ultimo comando può essere usato anche per terminare l'applicazione anche se questa è stata avviata da frida: `frida -U -f com.loki-project.loki-messenger`.
 
-## frida in jailed mode
+### frida in jailed mode
 
 Lo spawning di un'app può essere fatto da frida anche in [jailed mode](https://frida.re/docs/ios/#without-jailbreak), ovvero senza la necessità di un dispositivo jailbroken.
 Tuttavia l'app target deve essere debuggable ovvero deve presentare tra gli [entitlement](https://developer.apple.com/documentation/bundleresources/entitlements) [`get-task-allow`](https://stackoverflow.com/a/1026472).

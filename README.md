@@ -46,6 +46,7 @@ _See_ [dedicated folder](frida/)
 - [location](docs/others/location.md)
 - [`uikittools`](docs/others/uikittools.md)
 - [La gestione degli IPA](docs/others/ipa.md)
+- [Block OTA updates](https://ios.cfw.guide/blocking-updates/)
 
 ## Credits
 
