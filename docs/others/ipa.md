@@ -61,7 +61,7 @@ In questo esperimento considereremo l'applicazione [Threema](https://apps.apple.
 Non possiamo utilizzare `ipatool` per acquistarla **la prima volta**.
 L'unica soluzione fattibile è utilizzare una vecchia versione di iTunes per Windows.
 In particolare ci servirà la [12.6.5.3](https://secure-appldnld.apple.com/itunes12/091-87819-20180912-69177170-B085-11E8-B6AB-C1D03409AD2A6/iTunes64Setup.exe): infatti tale versione è l'ultima che supporta l'acquisto di app direttamente dall'App Store.
-Al termine del download potremmo trovare l'IPA in `%CSIDL_DEFAULT_MYMUSIC%\iTunes\iTunes Media\Mobile Applications`.
+Al termine del download potremmo trovare l'IPA in `%UserProfile%\Music\iTunes\iTunes Media\Mobile Applications`.
 > **Note**</br>
 > Questa soluzione ha il difetto di far affidamento su [una vecchia versione](https://appledb.dev/firmware/iTunes/1265A4.html) di iTunes, le cui API prima o poi smetteranno di funzionare.
 > Si spera che qualora ciò dovesse accadere si possa far già affidamento su qualche progetto open source.
