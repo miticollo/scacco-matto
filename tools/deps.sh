@@ -190,7 +190,7 @@ function create_env() {
   cd ..
   python3 -m venv ./.venv/
   source ./.venv/bin/activate
-  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida==16.0.10 git+https://github.com/doronz88/pymobiledevice3.git@master
+  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida==16.0.11 git+https://github.com/doronz88/pymobiledevice3.git@master
   cd -
 }
 
