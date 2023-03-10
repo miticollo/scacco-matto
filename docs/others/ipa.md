@@ -91,7 +91,7 @@ Il motivo per cui un'app richiede una versione superiore di iOS è **di solito**
 Tuttavia è possibile che gli sviluppatori decidano di richiede una versione superiore di iOS senza impiegare nessun nuovo framework.
 Quindi in linea di principio sarebbe possibile forzare l'installazione agendo sul file `Info.plist`, ma poi ricadremmo sempre nello stesso problema: ovvero un'app proveniente dall'App Store è criptata e firmarla nuovamente (con `codesign`) porta a un'app che **non funziona**.
 
-Per verificare quanto ho detto è possibile usare una [blank app](), che ho realizzato anche per provare Swift + SwiftUI.
+Per verificare quanto ho detto è possibile usare una [blank app](https://github.com/miticollo/blank-app), che ho realizzato anche per provare Swift + SwiftUI.
 
 > **Note**</br>
 > AnForA dovrebbe includere un supporto **solo** per l'installazione dell'IPA, ma il recupero dello stesso è a carico dell'analista.
