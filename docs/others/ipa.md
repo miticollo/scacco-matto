@@ -88,6 +88,7 @@ Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.githu
 
 ### I framework
 
+<span><!-- https://discord.com/channels/349243932447604736/688122301975363591/1074726760316411904 --></span>
 Il motivo per cui un'app richiede una versione superiore di iOS è **di solito** dovuta al fatto che usa dei framework non presenti in una versione inferiore.
 Tuttavia è possibile che gli sviluppatori decidano di richiede una versione superiore di iOS senza impiegare nessun nuovo framework.
 Quindi in linea di principio sarebbe possibile forzare l'installazione agendo sul file `Info.plist`, ma poi ricademmo sempre nello stesso problema: ovvero un'app proveniente dall'App Store è criptata firmare e firmarla nuovamente (con `codesign`) porta a un'app che **non funziona**.
