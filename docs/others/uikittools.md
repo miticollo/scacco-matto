@@ -57,7 +57,7 @@ Quindi come possiamo aggiungerlo? Beh, abbiamo due soluzioni:
 - includendo `frida-gadget.dylib` durante il sideloadling dell'app con [Sideloadly](https://sideloadly.io/).
 
 Entrambe le soluzioni richiedono di decriptare l'app e firmare nuovamente (con `codesign`) il bundle con il proprio certificato da sviluppatore.
-La prima operazione richiede di rimuovere il Digital Rights Management (DRM) aggiunto alle app dello Store e che la Apple ha battezzato [FairPlay](https://segmentfault.com/a/1190000041023774/en).
+La prima operazione richiede di rimuovere il Digital Rights Management (DRM) aggiunto alle app dello Store che la Apple ha battezzato [FairPlay](https://segmentfault.com/a/1190000041023774/en).
 Cercando online si trovano molte soluzioni a questo problema, ma tutte potrebbero portare alla stessa conseguenza: l'impossibilità di eseguire correttamente l'applicazione (vedi [Telegram VS Spotify](https://drive.google.com/file/d/1iBnWAuelz0y0Il3mihyFDoyd_7D9-p7x/view)).
 Alcune app, le più famose, sono state corrette caricando un'apposita `.dylib`: un esempio è [IGSideloadFix](https://github.com/opa334/IGSideloadFix) realizzata da [opa334](https://twitter.com/opa334dev), ovviamente per Instagram.
 A ogni modo non esiste una soluzione universale e questo porta ad abbandonare ogni speranza riguardo l'uso di un device unjailbroken per AnForA.<br/>
