@@ -1,9 +1,9 @@
-## uikittools-ng
+# uikittools-ng
 
 uikittools è un pacchetto che contiene diversi CLI tool per eseguire screenshot, creare notifiche o alert e aprire applicazioni.
 Insomma permette di fare quello che si fa con [Zenity](https://en.wikipedia.org/w/index.php?title=Zenity&oldid=1140898488) negli shell e batch script.
 
-# `uiopen`
+## `uiopen`
 
 Qualora fosse necessario avviare un'applicazione, su un **device jailbroken**, senza usare frida è possibile farlo con [`uiopen`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uiopen.m)
 ```shell
@@ -13,7 +13,7 @@ uiopen -a Session
 uiopen -b com.loki-project.loki-messenger
 ```
 
-## Lanciare un'app con iOS stock
+### Lanciare un'app con iOS stock
 
 1. Dopo aver montato la Developer Disk Image
    ```shell
@@ -61,7 +61,7 @@ Cercando online si trovano molte soluzioni a questo problema, ma tutte potrebber
 Alcune app, le più famose, sono state corrette caricando un'apposita `.dylib`: un esempio è [IGSideloadFix](https://github.com/opa334/IGSideloadFix) realizzata da [opa334](https://twitter.com/opa334dev), ovviamente per Instagram.
 A ogni modo non esiste una soluzione universale e questo porta ad abbandonare ogni speranza riguardo l'uso di un device unjailbroken per AnForA.
 
-# [`uinotify`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uinotify.m)
+## [`uinotify`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uinotify.m)
 
 Questo comando, come suggerisce il nome, permette di creare una notifica per una data app
 ```shell
@@ -79,7 +79,7 @@ uinotify -b 'And the crocodile?' -i com.apple.cmas -s '...moo' 'The cow says...'
 ```
 ![warning](../images/uinotify/warning.jpg?raw=true "A warning notice")
 
-# [`uialert`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uialert.m)
+## [`uialert`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uialert.m)
 
 Permette di creare un alert box. Vediamone due esempi.
 ```shell

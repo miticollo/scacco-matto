@@ -5,23 +5,21 @@ Parto quindi dal motivo per cui questo README è necessario: come abbiamo visto 
 I jailbreak per device vulnerabili a un bootROM exploit ci consentono di operare anche con l'ultima versione **beta** di iOS (nel momento in cui si scrive la 16.4b3).
 Tuttavia i device per cui non è **pubblicamente** rilasciato un bootROM exploit possono contare solo sulle vulnerabilità, **patchabili in qualunque momento**, di iOS.
 Allo stato attuale iPhone con AP A14+ non presentano un tale exploit, mentre gli A12 e A13 presentano, come abbiamo già visto, l'UaF, che non è sufficiente senza un memory leak che permetta l'heap feng shui.
-Quindi per questi dispositivi l'unica soluzione è un JB semi-untethered come [unc0ver](https://unc0ver.dev/)+[fugu14](https://github.com/LinusHenze/Fugu14).
+Quindi per questi dispositivi l'unica soluzione è un JB semi-untethered come [unc0ver](https://unc0ver.dev/) + [fugu14](https://github.com/LinusHenze/Fugu14).
 
-Quando gli iPhone A11 non riceveranno più aggiornamenti, gli unici dispositivi impiegabili saranno quelli con AP A12+.
+Quando gli iPhone con AP A11 non riceveranno più aggiornamenti, gli unici dispositivi impiegabili saranno quelli con AP A12+.
 Questo significa che un jailbreak **end-user**, per le versioni più recenti di iOS, non sarà disponibile in breve tempo e magari non coprirà tutti gli aggiornamenti di quella major release.
 Un esempio è iOS 15, per cui esistono tre JB pubblici in Work In Progress (WIP):
 - [XinaA15](https://twitter.com/xina520) che supporta solo iOS 15-15.1.1.
-- [Fugu15 max](https://github.com/opa334/Fugu15/tree/max) che supporta iOS 15-15.4.1, ma con moltissime problematiche:
-  - solo le versioni 15.4 e 15.4.1 possono usare il [Wi-Fi](https://github.com/opa334/Fugu15#known-issuesbugs), per le altre versioni _sembra_ che il device va in kernel panic e
-  - <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1081588249472016515 --></span>
-    probabilmente la versione rootless di frida non riuscirebbe a effettuare l'hook delle funzioni C.
+- Fugu15 Max che supporta iOS 15-15.4.1, ma con [problematiche](https://github.com/opa334/Fugu15/tree/max#fugu15-max).
 - [ra1ncloud](https://github.com/iarchiveml/ra1ncloud) che supporta iOS 15-15.4.1, perché, come quello precedente, si basa su [Fugu15](https://github.com/pinauten/Fugu15) di Linus Henze.
 
 A ogni modo tutti e tre risultano poco stabili e affidabili per un **end-user**.
 Quindi qualora si cerchi un JB end-user è necessario usare versioni più vecchie di iOS come la 14.8, tenendo ben a mente che l'ultima (nel momento in cui si scrive) è la 16.3.1.
 
 Va fatta una precisazione riguardo quanto detto finora: è vero che il JB può essere reso al pubblico in "ritardo" rispetto la versione supportata dalla Apple, ma spesso questo viene fatto perché i primi tentativi di JB sono fatti su misura.
-Ad esempio l'utente twitter jmpews ha mostrato in [un post](https://twitter.com/jmpews/status/1623605844305924097) di essere riuscito a ottenere il JB di iOS 16.3 su **iPhone 14 Pro (A16)**, senza però divulgare dettagli o codice molto probabilmente perché ciò che ha realizzato è tarato sul suo dispositivo e dovrebbe essere riadattato (correzione offset) per funzionare su altri.
+Ad esempio l'utente twitter jmpews ha mostrato in [un post](https://twitter.com/jmpews/status/1623605844305924097) di essere riuscito a ottenere il JB di iOS 16.3 su **iPhone 14 Pro (A16)**, senza però divulgare dettagli o codice.
+Molto probabilmente perché ciò che ha realizzato è tarato sul suo dispositivo e dovrebbe essere riadattato (correzione offset) per funzionare su altri.
 
 Ora supponiamo di voler installare un'applicazione che **richiede almeno iOS 15** su un iPhone SE (2020) con iOS 14.4.2 (jailbreakable con unc0ver + fugu14).
 Inoltre l'applicazione in questione **non è mai stata acquistata dall'utente**, quindi non comparirà tra gli "Acquisti" del proprio Apple ID all'interno dell'App Store.
@@ -91,7 +89,7 @@ Nel primo caso ci basta installare il tweak [AppStore++](https://cokepokes.githu
 <span><!-- https://discord.com/channels/349243932447604736/688122301975363591/1074726760316411904 --></span>
 Il motivo per cui un'app richiede una versione superiore di iOS è **di solito** dovuta al fatto che usa dei framework non presenti in una versione inferiore.
 Tuttavia è possibile che gli sviluppatori decidano di richiede una versione superiore di iOS senza impiegare nessun nuovo framework.
-Quindi in linea di principio sarebbe possibile forzare l'installazione agendo sul file `Info.plist`, ma poi ricademmo sempre nello stesso problema: ovvero un'app proveniente dall'App Store è criptata firmare e firmarla nuovamente (con `codesign`) porta a un'app che **non funziona**.
+Quindi in linea di principio sarebbe possibile forzare l'installazione agendo sul file `Info.plist`, ma poi ricadremmo sempre nello stesso problema: ovvero un'app proveniente dall'App Store è criptata e firmarla nuovamente (con `codesign`) porta a un'app che **non funziona**.
 
 Per verificare quanto ho detto è possibile usare una [blank app](), che ho realizzato anche per provare Swift + SwiftUI.
 
@@ -130,12 +128,12 @@ Se invece vogliamo scaricarla con `ipatool` dovremo usare una versione meno rece
    ```shell
    ipatool download -b com.abcdigital.abc.videoplayer --country us --device-family iPhone --log-level debug --purchase
    ```
-   Al termine potremo tornare allo Store italiano e **per quest'app non sarà più necessario** cambiare Store quando vogliamo scaricarla con **questa** versione di `ipatool`.
+   Al termine potremo tornare allo Store italiano e **per quest'app non sarà più necessario** cambiare Store quando vogliamo scaricarla nuovamente con **questa** versione di `ipatool`, ma sarà comunque necessario specificare `--country us`.
 
 Infine rimane in sospesa una questione: dove procurarsi un'app (anche già scaricata) che è stata ritirata da tutti gli Store?
-Ad esempio [WPA Tester](https://www.iphoneitalia.com/309585/wpa-tester-3-0-disponibile-su-app-store) che fu ritirata probabilmente perché permetteva di calcolare attraverso l'SSID di default le password dei modem Alice.
+Ad esempio [WPA Tester](https://www.iphoneitalia.com/309585/wpa-tester-3-0-disponibile-su-app-store), che fu ritirata probabilmente perché permetteva di calcolare attraverso l'SSID di default le password dei modem Alice.
 In pratica permetteva di scroccare la rete Wi-Fi del vicino.
 Anche se il suo autore l'aveva progetta per verificare se la propria rete Wi-Fi era sicura: ovvero se avevi cambiato la password di default.
 Oggi non sarebbe più possibile utilizzarla, ma fino a iOS 11 era possibile installarla purché si avesse una copia dell'IPA.<br/>
 Quindi in questo caso come procedere? La soluzione migliore è cercare la versione dell'IPA **non criptata** e poi installarla con Sideloadly.
-Teniamo conto che un'applicazione ritirata **non significa** che essa non funzioni, ma semplicemente che ha violato i termini della Apple.
+Teniamo conto che un'applicazione ritirata **non significa** che essa non funzioni, ma semplicemente che potrebbe aver violato i termini della Apple.
