@@ -13,7 +13,7 @@ uiopen -a Session
 uiopen -b com.loki-project.loki-messenger
 ```
 
-### Lanciare un'app con iOS stock
+### Lanciare un'app con iOS stock da macOS/Linux
 
 1. Dopo aver montato la Developer Disk Image
    ```shell
