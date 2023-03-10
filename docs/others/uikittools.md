@@ -49,17 +49,19 @@ Questo perché l'applicazione non presenta tra gli entitlement `get-task-allow` 
 # on jailbroken iPhone
 ldid -e /private/var/containers/Bundle/Application/106B02D0-186E-47D3-8F9F-824467B5C0C7/Session.app/Session | grep 'get-task-allow'
 ```
-Tuttavia se eseguiamo lo stesso test per l'applicazione Hello World installata come esempio da Xcode, otteniamo un risultato diverso dal precedente comando.
+Tuttavia se eseguiamo lo stesso test per l'applicazione [blank app](https://github.com/miticollo/blank-app), otteniamo un risultato diverso dal precedente comando.
 Ovviamente l'app in questione è stata compilata per eseguirne il debugging, mentre un'app proveniente dall'App Store è in produzione, quindi essa non deve essere lanciata da un debugger per tanto l'entitlement non può essere presente.
 
-Quindi come possiamo aggiungerlo? Beh, abbiamo due soluzione:
+Quindi come possiamo aggiungerlo? Beh, abbiamo due soluzioni:
 - usando `ldid -M -S[file.xml]`, oppure
 - includendo `frida-gadget.dylib` durante il sideloadling dell'app con [Sideloadly](https://sideloadly.io/).
 
-Entrambe le soluzioni richiedono di decriptare l'app: ovvero di rimuovere il Digital Rights Management (DRM) aggiunto alle app dello Store e che la Apple ha battezzato [FairPlay](https://segmentfault.com/a/1190000041023774/en).
+Entrambe le soluzioni richiedono di decriptare l'app e firmare nuovamente (con `codesign`) il bundle con il proprio certificato da sviluppatore.
+La prima operazione richiede di rimuovere il Digital Rights Management (DRM) aggiunto alle app dello Store e che la Apple ha battezzato [FairPlay](https://segmentfault.com/a/1190000041023774/en).
 Cercando online si trovano molte soluzioni a questo problema, ma tutte potrebbero portare alla stessa conseguenza: l'impossibilità di eseguire correttamente l'applicazione (vedi [Telegram VS Spotify](https://drive.google.com/file/d/1iBnWAuelz0y0Il3mihyFDoyd_7D9-p7x/view)).
 Alcune app, le più famose, sono state corrette caricando un'apposita `.dylib`: un esempio è [IGSideloadFix](https://github.com/opa334/IGSideloadFix) realizzata da [opa334](https://twitter.com/opa334dev), ovviamente per Instagram.
-A ogni modo non esiste una soluzione universale e questo porta ad abbandonare ogni speranza riguardo l'uso di un device unjailbroken per AnForA.
+A ogni modo non esiste una soluzione universale e questo porta ad abbandonare ogni speranza riguardo l'uso di un device unjailbroken per AnForA.<br/>
+Mentre `codesign` è necessario perché il Mach-O file dell'applicazione è stato alterato da `ldid` per inserirci `get-task-allow`.
 
 ## [`uinotify`](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uinotify.m)
 
