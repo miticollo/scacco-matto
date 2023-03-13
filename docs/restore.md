@@ -1,6 +1,6 @@
 # Update + Restore
 
-In questo capitolo utilizzeremo [futurerestore](https://github.com/futurerestore/futurerestore) per eseguire il restore dell'iPhone.
+In questo README utilizzeremo [futurerestore](https://github.com/futurerestore/futurerestore) per eseguire il restore dell'iPhone.
 Questo strumento permette di passare a una versione di iOS non più firmata: ovvero per cui non è più possibile recuperare i blob SHSH, che quindi saranno forniti dall'utente.
 La versione che andremo a installare è la 15.7.1.
 
@@ -28,7 +28,7 @@ Non tratterò tutti i componenti presentati in figura, ma mi concentrerò soprat
 L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&oldid=98679), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
 Tuttavia se l'utente avesse bisogno di maggiore spazio di archiviazione, può decidere di [sostituire in autonomia la sola NAND](https://twitter.com/lipilipsi/status/1610275491537375237).
 Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), mentre oggi non è più presente questo componente.
-Pertanto iBoot si trova in `/dev/disk1`, come vedremo in seguito.
+Pertanto iBoot si trova in `/dev/disk1` (o `/dev/disk2`), come vedremo in seguito.
 
 Infine notiamo che l'AES engine è un componente separato dall'AP, questo per una questione di sicurezza che tratterò più avanti.
 
@@ -56,7 +56,7 @@ Estraiamo l'IPSW, contenuto nella nostra working directory, con il comando `unzi
 ```shell
 unzip ./iPhone10,3,iPhone10,6_15.7.1_19H117_Restore.ipsw -d ipsw/orig
 ```
-Al termine dell'estrazione, nella directory `ipsw` troviamo il file `BuildManifest.plist`, che contiene nel nodo `BuildIdentities` le configurazioni per i vari device supportati dall'IPSW.
+Al termine dell'estrazione, nella directory `ipsw/orig` troviamo il file `BuildManifest.plist`, che contiene nel nodo `BuildIdentities` le configurazioni per i vari device supportati dall'IPSW.
 Ad esempio, l'iPhone X ha due identificatori diversi [iPhone10,3](https://ipsw.me/iPhone10,3/info) e [iPhone10,6](https://ipsw.me/iPhone10,6/info), quindi abbiamo due configurazioni che raddoppiano perché dobbiamo considerare la stringa `Variant` all'interno del nodo `Info`, che assume i valori `Customer Erase Install (IPSW)` e `Customer Upgrade Install (IPSW)`. <br/>
 Non procederemo oltre con l'analisi di questo file, useremo lo script Python in `tools/parser.py` per ottenere i percorsi dei file che ci interessano.
 Lo script fa uso di una built-in library di Python chiamata [plistlib](https://docs.python.org/3/library/plistlib.html) risultando semplice, ma grezzo per questo in un progetto sarebbe meglio usare la libreria [pybmtool](https://github.com/Cryptiiiic/BMTool), che a sua volta usa la libreria nativa di Python.
@@ -122,7 +122,7 @@ Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`]
 #### IMG4 file = Payload (IM4P) + Manifest (IM4M)
 
 Per ora concentriamoci solo sui payload degli IMG4.
-Per semplicità considereremo solo l'iBSS, ma nulla vieta di usare l'iBEC o un altro payload che possiamo trovare all'interno del firmware.
+Per semplicità considereremo solo l'iBSS, ma nulla vieta di usare l'iBEC o un altro componente che possiamo trovare all'interno del firmware.
 Per prima cosa [decodifichiamolo con OpenSSL](https://twitter.com/nyan_satan/status/1404839407874682887)
 ```shell
 openssl asn1parse -in ipsw/orig/Firmware/dfu/iBSS.d22.RELEASE.im4p -i -inform DER
@@ -241,8 +241,8 @@ In ultimo vorrei tornare sul titolo con cui ho aperto questo paragrafo "IMG4 fil
 Esso ci dice che un IM4P fa parte di un file con estensione IMG4, che per ora non abbiamo incontrato, ma lo faremo più avanti.
 Successivamente sarà presentato che cos'è un manifest, ovvero un file IM4M, per l'esattezza ne tratteremo quando parleremo del local boot.
 
-Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come ho già accennato si trovato su `/dev/disk1`.
-Inoltre mostrerò anche come è fatto questo _NVMe namespace_.
+Quello che abbiamo spiegato finora è una parte del local boot, ma non abbiamo ancora detto come la SecureROM trova iBoot, che come ho già accennato si trovato su `/dev/disk1` (o `/dev/disk2`).
+Inoltre mostrerò anche come è fatto questo block device.
 
 #### GID0 key
 
@@ -483,8 +483,8 @@ Qualora non volessimo utilizzare `termz` possiamo utilizzare l'app [CoolTerm](ht
 
 Iniziamo con il chiederci: dove si trova iBoot sull'iPhone?
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/798263003388051457 --></span>
-Beh, la risposta è che risiede su un proprio NVMe namespace, che condivide con altri componenti.
-In particolare tale namespace è `/dev/disk1` (o `/dev/disk2` su iOS 16): proviamo a esaminarlo.
+Beh, la risposta è che risiede su un proprio block device, che condivide con altri componenti.
+In particolare tale device è `/dev/disk1` (o `/dev/disk2` su iOS 16): proviamo a esaminarlo.
 Come primo tentativo possiamo eseguire, **attraverso una sessione SSH su iPhone in jailbroken state**, il `cat` di questo device:
 ```shell
 # over SSH on jailbroken iPhone
@@ -496,16 +496,16 @@ Pertanto perché non provare a usare il sotto-comando `asn1parse` della utility 
 # over SSH on jailbroken iPhone
 openssl asn1parse -in /dev/disk1 -i -inform DER
 ```
-Incredibile! L'interno namespace, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
+Incredibile! L'interno device, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
 Andiamo a esaminarne qualcuna.<br/>
-Innanzitutto all'inizio di questo namespace troviamo iBoot: più precisamente troviamo LLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LLB uguali.
+Innanzitutto all'inizio di questo device troviamo iBoot: più precisamente troviamo LLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LLB uguali.
 Ad ogni modo per convincerci di questo eseguiamo
 ```shell
 openssl asn1parse -in ipsw/orig/Firmware/all_flash/LLB.d22.RELEASE.im4p -i -inform DER
 ```
 e confrontiamo gli `OCTET STRING`.
 Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, perciò dal titolo precedente sappiamo che ci deve essere un IM4M: infatti subito dopo, ovvero in coda, all'IM4P lo troviamo.
-Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel namespace, hanno **lo stesso IM4M**.
+Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel device, hanno **lo stesso IM4M**.
 
 Gli altri componenti che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device
@@ -561,11 +561,46 @@ Per riassumere il local boot è essenzialmente composto di tre passaggi fondamen
 Apro questo paragrafo con un po' di sinonimi.
 Infatti spesso nelle chat di [Discord](https://discord.com/) o su [Reddit](https://www.reddit.com/r/jailbreak/) si fa riferimento a questo componente con diversi nomi: manifest o [ApImg4Ticket](https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format).
 
-Innanzitutto [proviamo ad estrarlo direttamente dal primo namespace](https://github.com/MatthewPierson/deverser/blob/b74000c5104c86c84f8a8121384b08ec6909507c/deverser.sh#L45)
+Innanzitutto estraiamolo da una di queste due sorgenti:
+- [`/dev/rdisk1`](https://github.com/MatthewPierson/deverser/blob/b74000c5104c86c84f8a8121384b08ec6909507c/deverser.sh#L45)
+  ```shell
+  # over SSH on jailbroken iPhone
+  cat /dev/rdisk1 | dd of=/tmp/onboard.der bs=256 count=$((0x4000))
+  ```
+- [`/dev/disk1`]
+  ```shell
+  # over SSH on jailbroken iPhone
+  dd if=/dev/disk1 of=/tmp/onboard.der bs=256 count=$((0x4000))
+  ```
+Perché abbiamo due device? `/dev/rdisk1` è un device a blocchi o a caratteri?
+Quest'ultima domanda potrebbe trovare risposta nel come abbiamo scritto i due comandi: infatti nel caso di `/dev/rdisk1` usiamo `cat` per leggerlo e non l'operando `if` di `dd`.
+Ciò ci potrebbe portare a pensare che `/dev/rdisk1` sia un dispositivo a caratteri: per verificarlo usiamo `ls`
 ```shell
-# over SSH on jailbroken iPhone
+ls -alFh /dev/{r,}disk1
+```
+e scopriamo che `/dev/rdisk1` è un dispositivo a caratteri **speciali**.<br/>
+La presenza di questi due device non è una prerogativa di iOS e macOS, ma è presente anche sulle varie distro Linux.
+<span><!-- https://www.reddit.com/r/linux4noobs/comments/147sn0/comment/c7aqtxs/?utm_source=share&utm_medium=web2x&context=3 --></span>
+<span><!-- https://serverfault.com/a/214548 --></span>
+<span><!-- https://serverfault.com/a/206830 --></span>
+Qual è la loro differenza? Basta consultare: [`man -P 'less -p "^DEVICE SPECIAL FILES"' hdiutil`](https://superuser.com/a/631601):
+> Since any `/dev` entry can be treated as a raw disk image, it is worth noting which devices can be accessed when and how.  
+> `/dev/rdisk` nodes are character-special devices, but are "raw" in the BSD sense and force block-aligned I/O.  
+> They are closer to the physical disk than the buffer cache.
+> `/dev/disk` nodes, on the other hand, are buffered block-special devices and are used primarily by the kernel's filesystem code.
+
+<span><!-- https://superuser.com/a/892768 --></span>
+Ovvero `/dev/rdisk` permette un accesso diretto al device di I/O purché le richieste siano allineate al settore, mentre l'uso `/dev/disk` richiede due buffer uno per lo userspace e l'altro per il device.
+Si nota subito come nel primo caso abbiamo un'operazione bloccante, che non avviene nel secondo caso.
+
+Quanto abbiamo visto poteva essere fatto in maniera più semplice recuperando il ticket dal volume di Preboot: `/private/preboot/<ticket_hash>/System/Library/Caches/apticket.der`.
+Entrambi contengono l'ApImg4Ticket con una leggera differenza: usando `dd` abbiamo specificato di recuperare `0x4000` (16384) blocchi da 256 byte ovvero 4,194,304 byte (4,0MB), quindi più del necessario.
+Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato human-readable plain text: un `.shsh`, che non è nient'altro che un file plist
+```shell
 
 ```
+All'interno della community del JB i file con estensione `.shsh` prendono il nome di blob SHSH, in particolare quelli finora recuperati vengono chiamati **on-board** blob.
+Questo per distinguerli dai blob recuperati da `tsschecker`
 
 #### Remote
 
