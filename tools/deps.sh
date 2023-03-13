@@ -180,6 +180,20 @@ function get_futurerestore() {
 }
 
 #######################################
+# Set executable bits for img4tool.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function executable_img4tool() {
+  chmod -v +x ./img4tool
+  set +e
+  xattr -d com.apple.quarantine ./img4tool
+  set -e
+}
+
+#######################################
 # Create Python Virtual Environments.
 # Arguments:
 #   None
@@ -242,6 +256,7 @@ function main() {
   compile_termz
   compile_libimobiledevice
   compile_libusbmuxd
+  executable_img4tool
 
   # Ignore errors
   popd || true
