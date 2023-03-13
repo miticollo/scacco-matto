@@ -567,19 +567,20 @@ Innanzitutto estraiamolo da una di queste due sorgenti:
   # over SSH on jailbroken iPhone
   cat /dev/rdisk1 | dd of=/tmp/onboard.der bs=256 count=$((0x4000))
   ```
-- [`/dev/disk1`]
+- `/dev/disk1`
   ```shell
   # over SSH on jailbroken iPhone
   dd if=/dev/disk1 of=/tmp/onboard.der bs=256 count=$((0x4000))
   ```
 Perché abbiamo due device? `/dev/rdisk1` è un device a blocchi o a caratteri?
-Quest'ultima domanda potrebbe trovare risposta nel come abbiamo scritto i due comandi: infatti nel caso di `/dev/rdisk1` usiamo `cat` per leggerlo e non l'operando `if` di `dd`.
+Quest'ultima domanda potrebbe trovare risposta nel come abbiamo scritto il primo comando: infatti nel caso di `/dev/rdisk1` usiamo `cat` per leggerlo e non l'operando `if` di `dd`.
 Ciò ci potrebbe portare a pensare che `/dev/rdisk1` sia un dispositivo a caratteri: per verificarlo usiamo `ls`
 ```shell
-ls -alFh /dev/{r,}disk1
+# over SSH on jailbroken iPhone
+file /dev/{r,}disk1
 ```
 e scopriamo che `/dev/rdisk1` è un dispositivo a caratteri **speciali**.<br/>
-La presenza di questi due device non è una prerogativa di iOS e macOS, ma è presente anche sulle varie distro Linux.
+La presenza di questi due device non è una prerogativa di iOS e macOS, ma è presente anche su alcuni sistemi UNIX-like.
 <span><!-- https://www.reddit.com/r/linux4noobs/comments/147sn0/comment/c7aqtxs/?utm_source=share&utm_medium=web2x&context=3 --></span>
 <span><!-- https://serverfault.com/a/214548 --></span>
 <span><!-- https://serverfault.com/a/206830 --></span>
@@ -595,12 +596,42 @@ Si nota subito come nel primo caso abbiamo un'operazione bloccante, che non avvi
 
 Quanto abbiamo visto poteva essere fatto in maniera più semplice recuperando il ticket dal volume di Preboot: `/private/preboot/<ticket_hash>/System/Library/Caches/apticket.der`.
 Entrambi contengono l'ApImg4Ticket con una leggera differenza: usando `dd` abbiamo specificato di recuperare `0x4000` (16384) blocchi da 256 byte ovvero 4,194,304 byte (4,0MB), quindi più del necessario.
-Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato human-readable plain text: un `.shsh`, che non è nient'altro che un file plist
+Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato human-readable plain text: un `.shsh`, che non è nient'altro che un file plist.
+Per far ciò possiamo utilizzare il CLI tool [`img4tool`](https://github.com/tihmstar/img4tool#convert-shsh-to-im4m) perché questa funzionalità non è disponibile in PyIMG4
 ```shell
-
+# on macOS (our working directory)
+../tools/img4tool --convert -s onboard.shsh ./onboard.der
 ```
 All'interno della community del JB i file con estensione `.shsh` prendono il nome di blob SHSH, in particolare quelli finora recuperati vengono chiamati **on-board** blob.
-Questo per distinguerli dai blob recuperati da `tsschecker`
+Questo per distinguerli dai blob recuperati da [`blobsaver`](https://github.com/airsquared/blobsaver), che è un GUI tool basato su JavaFX.
+Il tool, presentando una veste grafica semplice, permette all'utente di recuperare i blob SHSH per i propri dispositivi senza dover ricorrere necessariamente al CLI tool [`tsschecker`](https://github.com/airsquared/tsschecker), che quindi è usato indirettamente dall'utente attraverso `blobsaver`.
+Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di comando, prima però dobbiamo ottenere alcuni dati usando `irecovery`, ma questa volta metteremo l'iPhone in [recovery mode](https://www.theiphonewiki.com/w/index.php?title=Recovery_Mode&oldid=125090) e non in DFU mode, come prima.
+<span><!-- usiamo il termine computer perché vogliamo essere il più flessibile possibile comprendendo anche Linux e Hackintosh --></span>
+1. Dopo aver collegato l'iPhone al computer eseguiamo, all'interno del virtual environment creato dallo script `../tools/deps.sh`
+   ```shell
+   pymobiledevice3 restore enter -v
+   ```
+   > **Note**</br>
+   > Quando parlerò del JB mostrerò un modo alternativo per mettere l'iPhone in recovery mode.
+2. Attendiamo che appaia sul display dell'iPhone il logo della RecoveryMode, che abbiamo incontrato prima.
+3. Eseguiamo `irecovery` e filtriamone l'output
+   ```shell
+   ../tools/libirecovery/tools/irecovery -q | grep -E 'PRODUCT|MODEL|ECID|NONC|SNON'
+   ```
+4. Eseguiamo il `tsschecker` incluso all'interno del bundle di `blobsaver`
+   ```shell
+   /Applications/blobsaver.app/Contents/MacOS/tsschecker -d iPhone10,6 -m ./ipsw/orig/BuildManifest.plist -B d221ap -s -e 0x000e421a01c0002e -g 0x1111111111111111 --sepnonce ce197fb15494960c5a2f92cc5cc1e64be4c3a527 --apnonce 2cf7d08a03388589db214c405cca576025ab8578df965886911e21ec8529b7a7 --save-path ./ --nocache --debug
+   ```
+   > **Note**</br>
+   > È stato necessario specificare il BuildManifest (opzione `-m`) perché il tool usa le API di ipsw.me per scaricarlo.
+   > Tuttavia la versione 15.7.1 non è presente sul sito, quindi il programma fallisce nel recuperlo.<br/>
+   > Inoltre l'opzione `-B` richiede di specificare l'HEX riportato da `irecovery` come `MODEL`.
+5. Torniamo in normal mode
+   ```shell
+   pymobiledevice3 restore exit
+   ```
+
+`tsschecker` per ottenere i blob SHSH deve contattare i [Tatsu Signing Server (TSS)](https://www.theiphonewiki.com/w/index.php?title=Tatsu_Signing_Server&oldid=101793), con l'opzione `--debug` stampiamo la richiesta e la conseguente risposta.
 
 #### Remote
 
@@ -612,3 +643,23 @@ Questo per distinguerli dai blob recuperati da `tsschecker`
 > Il 24 febbraio 2023 la Apple ha chiuso le firme per iOS 15.6 RC (build 19G69) perciò non è possibile effettuare il downgrade ad iOS 15.7.1.
 
 
+### Come effettuare il frezee dell'ApNonce
+
+Colleghiamo l'iPhone al computer e **rimanendo in normal mode** [richiediamo](https://github.com/libimobiledevice/libimobiledevice/blob/cc540a20e64b469f7d9d4754610c0692436880d6/tools/ideviceinfo.c#L235) al demone [lockdownd](https://iphonedev.wiki/index.php?title=Lockdownd&oldid=2982) il valore attuale dell'ApNonce
+```shell
+../tools/libimobiledevice/tools/ideviceinfo -k ApNonce | base64 -d -i - | xxd -p -c0
+```
+Questo basta per eseguire il freeze dell'ApNonce. Proviamo a verificarlo.
+1. Lasciando l'iPhone collegato al computer e mandiamo in recovery mode
+   ```shell
+   pymobiledevice3 restore enter -v
+   ```
+2. Una volta che il logo della RecoveryMode è apparso, eseguiamo
+   ```shell
+   while true; do ../tools/libirecovery/tools/irecovery -q | grep -E 'NONC|SNON' && pymobiledevice3 restore restart -v; done
+   ```
+    Noteremo che il `NONC` non cambia, ma cambia `SNON` (perché non è possibile eseguirne il freezing).
+3. Torniamo alla normal mode e richiediamo nuovamente l'ApNonce
+   ```shell
+   ../tools/libimobiledevice/tools/ideviceinfo -k ApNonce | base64 -d -i - | xxd -p -c0
+   ```
