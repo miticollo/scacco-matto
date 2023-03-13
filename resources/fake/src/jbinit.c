@@ -112,9 +112,9 @@ int main (int argc, char *argv[]) {
     if (userspace_reboot)
         puts("already mounted\n");
     else {
-        char *const mount_rootfs[] = {"/sbin/mount", "-uw", "/", NULL};
+        char *const mount_rootfs[] = {"/sbin/mount", "-u", "-w", "/", NULL};
         run(mount_rootfs, false);
-        char *const mount_preboot[] = {"/sbin/mount", "-uw", "/private/preboot", NULL};
+        char *const mount_preboot[] = {"/sbin/mount", "-u", "-w", "/private/preboot", NULL};
         run(mount_preboot, false);
     }
 
