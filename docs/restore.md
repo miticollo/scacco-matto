@@ -632,6 +632,25 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
    ```
 
 `tsschecker` per ottenere i blob SHSH deve contattare i [Tatsu Signing Server (TSS)](https://www.theiphonewiki.com/w/index.php?title=Tatsu_Signing_Server&oldid=101793), con l'opzione `--debug` stampiamo la richiesta e la conseguente risposta.
+La prima usa metodo POST, ed è effettuabile con cURL, e il suo body è codificato in XML.
+Mentre la seconda è una semplice risposta HTTP contenente, se la richiesta ha avuto successo, un XML nel valore REQUEST_STRING.
+Questo XML contiene il nodo `ApImg4Ticket`, che rappresenta il vero e proprio manifest codificato in base64, più altre informazioni di contorno usate da `futurerestore`, come il [`generator`](https://github.com/1Conan/tsschecker/blob/117199842964371c162219e51d1d70069fc3630b/tsschecker/tsschecker.c#L1297).
+La struttura della richiesta e le possibili risposte sono descritte dall'[omonimo protocollo](https://www.theiphonewiki.com/w/index.php?title=SHSH_Protocol&oldid=121894).
+
+Verifichiamo che il nodo `ApImg4Ticket` contenga realmente il manifest DER presente nel volume di Preboot:
+```shell
+# on macOS (our working directory)
+plutil -extract 'ApImg4Ticket' raw ./4013329139892270_iPhone10,6_d221ap_15.7.1-19H117_27325c8258be46e69d9ee57fa9a8fbc28b873df434e5e702a8b27999551138ae.shsh2 | base64 -d -i - -o apticket.der
+```
+> **Warning**</br>
+> Il file appena estratto e quello presente nel Preboot sono uguali (`cmp`) **se e solo se** sono stati richiesti per lo stesso ApNonce e SEPNonce.
+
+Per l'estrazione abbiamo usato un programma proprietario Apple distribuito con macOS: [`plutil`](https://www.theiphonewiki.com/w/index.php?title=Plutil&printable=yes).
+Nulla ci vieta di implementare questa semplice estrazione usando la libreria nativa Python plistlib.
+
+<h5>Cosa contiene l'IM4M?</h5>
+
+
 
 #### Remote
 
