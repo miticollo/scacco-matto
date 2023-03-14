@@ -574,7 +574,7 @@ Innanzitutto estraiamolo da una di queste due sorgenti:
   ```
 Perché abbiamo due device? `/dev/rdisk1` è un device a blocchi o a caratteri?
 Quest'ultima domanda potrebbe trovare risposta nel come abbiamo scritto il primo comando: infatti nel caso di `/dev/rdisk1` usiamo `cat` per leggerlo e non l'operando `if` di `dd`.
-Ciò ci potrebbe portare a pensare che `/dev/rdisk1` sia un dispositivo a caratteri: per verificarlo usiamo `ls`
+Ciò ci potrebbe portare a pensare che `/dev/rdisk1` sia un dispositivo a caratteri: per verificarlo usiamo `file`
 ```shell
 # over SSH on jailbroken iPhone
 file /dev/{r,}disk1
@@ -612,7 +612,7 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
    pymobiledevice3 restore enter -v
    ```
    > **Note**</br>
-   > Quando parlerò del JB mostrerò un modo alternativo per mettere l'iPhone in recovery mode.
+   > Quando parlerò del JB mostrerò un modo alternativo per mettere l'iPhone in recovery mode da un RAMdisk.
 2. Attendiamo che appaia sul display dell'iPhone il logo della RecoveryMode, che abbiamo incontrato prima.
 3. Eseguiamo `irecovery` e filtriamone l'output
    ```shell
@@ -625,7 +625,7 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
    > **Note**</br>
    > È stato necessario specificare il BuildManifest (opzione `-m`) perché il tool usa le API di ipsw.me per scaricarlo.
    > Tuttavia la versione 15.7.1 non è presente sul sito, quindi il programma fallisce nel recuperarlo.<br/>
-   > Inoltre l'opzione `-B` richiede di specificare l'HEX riportato da `irecovery` come `MODEL`.
+   > Inoltre l'opzione `-B` richiede di specificare la stringa riportata da `irecovery` come `MODEL`.
 5. Torniamo in normal mode
    ```shell
    pymobiledevice3 restore exit
@@ -684,7 +684,7 @@ Per far ciò non possiamo usare `ideviceinfo -k ApNonce` per ovvi motivi, quindi
    ```
 4. Quando l'iPhone si sarà riavviato possiamo tornare al punto 1 per verificare che l'ApNonce si sia conservato.
 
-Abbiamo visto che per se l'iPhone a nostra disposizione è jailbreakable noi possiamo usare il tool dimentio.
+Abbiamo visto che se l'iPhone a nostra disposizione è jailbreakable noi possiamo usare il tool `dimentio`.
 Quindi il freezing è ancora utile? Assolutamente sì, per tutti quei device che si trovano su usa versione di iOS **non jailbreable**.
 Diciamo che se si è molto fortunati si può eseguire il downgrade o l'upgrade a una versione di iOS non più firmata, **senza avere** a disposizione un JB.
 
@@ -698,7 +698,7 @@ Anche in questo caso possiamo chiedere a lockdownd qual è il valore della chiav
 ```shell
 ../tools/libimobiledevice/tools/ideviceinfo -k SEPNonce | base64 -d -i - | xxd -p -c0
 ```
-ottenendo lo stesso comportamento che abbiamo osservato precedentemente: ovvero genera un nuovo SEPNonce.
+ottenendo lo stesso comportamento che abbiamo osservato precedentemente: ovvero generare un nuovo SEPNonce e restituirlo.
 Avremmo potuto ottenere lo stesso risultato eseguendo:
 ```shell
 # over SSH on jailbroken iPhone
