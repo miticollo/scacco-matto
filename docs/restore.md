@@ -663,8 +663,8 @@ Esso si conserverà, anche quando l'iPhone si riavvia, purché noi evitiamo di:
 - effettuarne il restore o
 - cercare semplicemente gli aggiornamenti.
 
-- Verifichiamo che effettivamente abbiamo congelato l'ApNonce.
-- Per far ciò non possiamo usare `ideviceinfo -k ApNonce` per ovvi motivi, quindi dovremmo utilizzare `irecovery -q`.
+Verifichiamo che effettivamente abbiamo congelato l'ApNonce.
+Per far ciò non possiamo usare `ideviceinfo -k ApNonce` per ovvi motivi, quindi dovremmo utilizzare `irecovery -q`.
 1. Lasciamo l'iPhone collegato al computer e mandiamolo in recovery mode
    ```shell
    pymobiledevice3 restore enter -v
