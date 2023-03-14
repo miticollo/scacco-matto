@@ -624,7 +624,7 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
    ```
    > **Note**</br>
    > È stato necessario specificare il BuildManifest (opzione `-m`) perché il tool usa le API di ipsw.me per scaricarlo.
-   > Tuttavia la versione 15.7.1 non è presente sul sito, quindi il programma fallisce nel recuperlo.<br/>
+   > Tuttavia la versione 15.7.1 non è presente sul sito, quindi il programma fallisce nel recuperarlo.<br/>
    > Inoltre l'opzione `-B` richiede di specificare l'HEX riportato da `irecovery` come `MODEL`.
 5. Torniamo in normal mode
    ```shell
@@ -645,12 +645,26 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
 
 ### Come effettuare il frezee dell'ApNonce
 
-Colleghiamo l'iPhone al computer e **rimanendo in normal mode** [richiediamo](https://github.com/libimobiledevice/libimobiledevice/blob/cc540a20e64b469f7d9d4754610c0692436880d6/tools/ideviceinfo.c#L235) al demone [lockdownd](https://iphonedev.wiki/index.php?title=Lockdownd&oldid=2982) il valore attuale dell'ApNonce
+Qualora si pianifichi di effettuare in futuro il downgrade o l'upgrade a versioni di iOS non più firmate da Apple è importante salvare i blob SHSH.
+Per gli iPhone con AP A12+, come abbiamo visto, non conta tanto il boot nonce piuttosto l'ApNonce.
+Quindi `blobsaver` oltre a salvare il boot nonce e l'ApNonce, [forza il freezing di quest'ultimo](https://github.com/airsquared/blobsaver/blob/431f111e7e308ba4c5ddecec5b17f99e6bb5d0b9/src/main/java/airsquared/blobsaver/app/LibimobiledeviceUtil.java#L102-L129).
+Vediamo manualmente come potremmo procedere.
+
+Colleghiamo l'iPhone al computer e **rimanendo in normal mode** [richiediamo](https://github.com/libimobiledevice/libimobiledevice/blob/cc540a20e64b469f7d9d4754610c0692436880d6/tools/ideviceinfo.c#L235) al demone [lockdownd](https://iphonedev.wiki/index.php?title=Lockdownd&oldid=2982) (sull'iPhone) la chiave `ApNonce`
 ```shell
 ../tools/libimobiledevice/tools/ideviceinfo -k ApNonce | base64 -d -i - | xxd -p -c0
 ```
-Questo basta per eseguire il freeze dell'ApNonce. Proviamo a verificarlo.
-1. Lasciando l'iPhone collegato al computer e mandiamo in recovery mode
+Questo forza l'iPhone ha generare un nuovo ApNonce, che noi andiamo a leggere.
+Esso si conserverà, anche quando l'iPhone si riavvia, purché noi evitiamo di:
+- <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084988801316835499 --></span>
+  rieseguire il comando precedente,
+<span><!-- https://discord.com/channels/842189018523631658/917198974555942942/1077303242926587955 --></span>
+- aggiornare (via OTA o iTunes/Finder) il device,
+- effettuarne il restore o
+- cercare semplicemente gli aggiornamenti.
+Verifichiamo che effettivamente abbiamo congelato l'ApNonce.
+- Per far ciò non possiamo usare `ideviceinfo -k ApNonce` per ovvi motivi, quindi dovremmo utilizzare `irecovery -q`.
+1. Lasciamo l'iPhone collegato al computer e mandiamolo in recovery mode
    ```shell
    pymobiledevice3 restore enter -v
    ```
@@ -658,8 +672,45 @@ Questo basta per eseguire il freeze dell'ApNonce. Proviamo a verificarlo.
    ```shell
    while true; do ../tools/libirecovery/tools/irecovery -q | grep -E 'NONC|SNON' && pymobiledevice3 restore restart -v; done
    ```
-    Noteremo che il `NONC` non cambia, ma cambia `SNON` (perché non è possibile eseguirne il freezing).
-3. Torniamo alla normal mode e richiediamo nuovamente l'ApNonce
+   <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084930408988291194 --></span>
+   <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084930216708808795 --></span>
+   Noteremo che solo `NONC` (ApNonce) non cambia. Il `SNON` (SEPNonce) cambia perché questo è un nonce vero e proprio: infatti è generato sempre in modo casuale, come il boot nonce.
+   <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/838228003137781812 --></span>
+   In effetti l'ApNonce si basa su un seed, ma non il SEPNonce.
+3. Torniamo alla normal mode e riavviamo l'iPhone
    ```shell
-   ../tools/libimobiledevice/tools/ideviceinfo -k ApNonce | base64 -d -i - | xxd -p -c0
+   pymobiledevice3 restore restart -v
    ```
+4. Quando l'iPhone si sarà riavviato possiamo tornare al punto 1 per verificare che l'ApNonce si sia conservato.
+
+Abbiamo visto che per se l'iPhone a nostra disposizione è jailbreakable noi possiamo usare il tool dimentio.
+Quindi il freezing è ancora utile? Assolutamente sì, per tutti quei device che si trovano su usa versione di iOS **non jailbreable**.
+Diciamo che se si è molto fortunati si può eseguire il downgrade o l'upgrade a una versione di iOS non più firmata, **senza avere** a disposizione un JB.
+
+#### SEP Nonce
+
+E il freezing del SEP Nonce?
+<span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084912385799753778 --></span>
+Attualmente non si conosce una procedura per potere eseguire il freezing.
+
+Anche in questo caso possiamo chiedere a lockdownd qual è il valore della chiave `SEPNonce`
+```shell
+../tools/libimobiledevice/tools/ideviceinfo -k SEPNonce | base64 -d -i - | xxd -p -c0
+```
+ottenendo lo stesso comportamento che abbiamo osservato precedentemente: ovvero genera un nuovo SEPNonce.
+Avremmo potuto ottenere lo stesso risultato eseguendo:
+```shell
+# over SSH on jailbroken iPhone
+/usr/libexec/seputil --new-nonce && /usr/libexec/seputil --get-nonce
+```
+dove [`seputil`](https://www.theiphonewiki.com/w/index.php?title=Seputil&oldid=117985) è un comando presente sul rootFS stock di iOS e permette una comunicazione con il SEPOS.
+Ad ogni modo che si usi `ideviceinfo` o `seputil` possiamo leggere i loro output direttamente dalla console seriale utilizzando il DCSD cable:
+```text
+SEP EP 16 enabled
+SEP EP 16 disabled
+AppleSEP: New SEP Nonce (20 bytes): 0x2747a760119899bcc151bfc730ee4ef6aa88ff71
+SEP EP 16 enabled
+SEP EP 16 disabled
+AppleSEP: Current SEP Nonce (20 bytes): 0x2747a760119899bcc151bfc730ee4ef6aa88ff71
+```
+cosa che non accade per l'ApNonce.
