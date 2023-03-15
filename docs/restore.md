@@ -27,6 +27,9 @@ Lo stesso SoC è presente sull'iPhone 8 messomi a disposizione dall'università.
 Non tratterò tutti i componenti presentati in figura, ma mi concentrerò soprattutto sull'Application Processor (AP), la NAND e l'AES engine.
 L'AP è il processore del nostro iPhone, mentre l'unità di archiviazione è realizzata con [porte NAND](https://www.theiphonewiki.com/w/index.php?title=NAND&oldid=98679), la cui capacità cambia in base alle esigenze e disponibilità economiche dell'utente da 4 GiB a 1 TiB.
 Tuttavia se l'utente avesse bisogno di maggiore spazio di archiviazione, può decidere di [sostituire in autonomia la sola NAND](https://twitter.com/lipilipsi/status/1610275491537375237).
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/867632222642503700 --></span>
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/867632289428537354 --></span>
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/867635363231826001 --></span>
 Nei modelli di iPhone precedenti al 4 era presente una NOR su cui risiedeva iBoot (il bootloader), mentre oggi non è più presente questo componente.
 Pertanto iBoot si trova in `/dev/disk1` (o `/dev/disk2`), come vedremo in seguito.
 
@@ -120,6 +123,8 @@ Se ciò dovesse accadere basta riprovare.
 Dall'output del comando precedente notiamo che i file hanno estensione [`.im4p`](https://www.theiphonewiki.com/w/index.php?title=IMG4_File_Format&oldid=122062#IMG4_Payload) e [`.dmg`](https://en.wikipedia.org/w/index.php?title=Apple_Disk_Image&oldid=1098452713).
 
 #### IMG4 file = Payload (IM4P) + Manifest (IM4M)
+
+<span><!-- https://discord.com/channels/779134930265309195/779134930265309198/882700124684435516 --></span>
 
 Per ora concentriamoci solo sui payload degli IMG4.
 Per semplicità considereremo solo l'iBSS, ma nulla vieta di usare l'iBEC o un altro componente che possiamo trovare all'interno del firmware.
@@ -224,6 +229,7 @@ diff -q --from-file ipsw/decrypted/*.raw
 ```
 Sorprendente, tutti i file sono uguali!
 <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/875676924721119233 --></span>
+<span><!-- https://discord.com/channels/349243932447604736/688124600269144162/741082742862774343 --></span>
 La Apple con gli AP A10+ ha deciso di usare un single-stage iBoot, ovvero il SecureROM, iBoot, iBEC, LLB e iBSS condivido un codice sorgente comune.
 <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1078421177430720692 --></span>
 Nei modelli precedenti non si poteva fare per [limiti della SRAM](http://newosxbook.com/bonus/iboot.pdf#page=2) oppure la porzione che gli veniva riservata dalla SecureROM nella SRAM non era sufficiente, quindi era necessario che LLB caricasse iBoot nella DRAM.
@@ -288,7 +294,8 @@ Beh, in sostanza quello che abbiamo già fatto **manualmente** noi prima:
 1. prima esegue l'[exploit per checkm8](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1231-L1276);
 2. poi avviene la [fase di decrypt](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1562):
    1. crea [in memoria una rappresentazione dell'IM4P del file sorgente](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1407-L1411);
-   2. estrae [IV e key dall'IM4P e li concatena in un keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1391-L1405): `IV + key` (**l'ordine è importante!**);
+   2. <span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1038169828575432748 --></span>
+      estrae [IV e key dall'IM4P e li concatena in un keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1391-L1405): `IV + key` (**l'ordine è importante!**);
    3. usa l'[AES engine per decriptare il keybag](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1495-L1555);
    4. usa il [keybag decriptato per decriptare il payload dell'IM4P](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1444) e
    5. infine [decomprime l'archivio LZFSE](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1449).
@@ -305,6 +312,7 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
 <!-- https://discord.com/channels/842189018523631658/842194992537141298/1028164327116652647 -->
 <!-- https://discord.com/channels/842189018523631658/842194992537141298/1028165221405179945 -->
 2. Decriptiamolo con `gaster decrypt_kbag`
+   <span><!-- https://discord.com/channels/842189018523631658/842194992537141298/1038386731159920651 --></span>
    ```shell
    ../tools/gaster/gaster decrypt_kbag 62a3c90d8b8a62837d48e8e68b35138cbda4b5c481822d18af9da996da1699497c5fe7e717d6fd030003b88464846d42 | tail -1
    ```
@@ -314,6 +322,7 @@ Perciò, come decriptare l'IV e la chiave con `gaster`?
    ```
 
 Come ulteriore verifica possiamo usare [`pongoterm`](https://github.com/checkra1n/PongoOS/blob/master/scripts/pongoterm.c) per inviare comandi a [PongoOS](https://github.com/checkra1n/PongoOS/):
+<span><!-- https://discord.com/channels/728061043460538369/728061044098072596/830820411671314494 --></span>
 1. Decriptiamo l'IV sfruttando una variante dell'here doc: la [here-string](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
    ```shell
    # repeat if output is blank
@@ -365,7 +374,7 @@ Quindi, come il lettore avrà capito, il fatto che disponiamo di un bootROM expl
 Più avanti incontreremo di nuovo blackbird e spiegherò a cosa serve SEP e cosa significa un JB senza la possibilità di sfruttare un SEPROM exploit.
 
 Non rimane che accennare a un attacco per ottenere la GID0 key.
-L'attacco in questione è argomento della [tesi magistrale](https://web.archive.org/web/20210514073023/https://www.seceng.ruhr-uni-bochum.de/media/attachments/files/2021/04/Master_thesis_Oleksiy_Lisovets.pdf) di [tihmstar](https://twitter.com/tihmstar/), ma è anche stato [presentato dallo stesso al Hardwear.io Netherlands 2022](https://youtu.be/s_cnjOCegs0) ([slides](https://raw.githubusercontent.com/tihmstar/gido_public/master/Using%20a%20magic%20wand%20to%20break%20the%20iPhone's%20last%20security%20barrier.pdf)).
+L'attacco in questione è argomento della [tesi magistrale](https://web.archive.org/web/20210514073023/https://www.seceng.ruhr-uni-bochum.de/media/attachments/files/2021/04/Master_thesis_Oleksiy_Lisovets.pdf) di [tihmstar](https://twitter.com/tihmstar/), ma è anche stato [presentato dallo stesso al Hardwear.io Netherlands 2022](https://youtu.be/s_cnjOCegs0) ([slides](https://raw.githubusercontent.com/tihmstar/gido_public/master/Using%20a%20magic%20wand%20to%20break%20the%20iPhone's%20last%20security%20barrier.pdf) e [abstract](https://hardwear.io/netherlands-2022/speakers/tihmstar.php)).
 tihmstar propone un attacco fisico chiamato Electro Magnetic (EM) side-channel attack: perché AES, per le proprietà matematiche di cui gode, è crittograficamente sicuro.
 L'idea alla base è che l'AP eseguendo del codice consuma energia ed emette emissioni elettromagnetiche, entrambe queste grandezze fisiche dipendono da ciò che l'AP esegue nel momento della misura.
 Per tanto è possibile sfruttare questa correlazione per ottenere informazioni utili come la GID0 key.
@@ -497,7 +506,9 @@ Pertanto perché non provare a usare il sotto-comando `asn1parse` della utility 
 openssl asn1parse -in /dev/disk1 -i -inform DER
 ```
 Incredibile! L'interno device, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
-Andiamo a esaminarne qualcuna.<br/>
+<span><!-- https://discord.com/channels/779134930265309195/779139039365169175/1064662461673906258 --></span>
+Potremmo definirlo un IMG4 superblock.
+Andiamo a esaminare qualcuna di questi IMG4.<br/>
 Innanzitutto all'inizio di questo device troviamo iBoot: più precisamente troviamo LLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LLB uguali.
 Ad ogni modo per convincerci di questo eseguiamo
 ```shell
@@ -507,14 +518,14 @@ e confrontiamo gli `OCTET STRING`.
 Il lettore attento avrà notato che l'IM4P è contenuto all'interno di un IMG4, perciò dal titolo precedente sappiamo che ci deve essere un IM4M: infatti subito dopo, ovvero in coda, all'IM4P lo troviamo.
 Lo affronteremo meglio nel prossimo paragrafo, ma in questo voglio sottolineare il fatto che tutti gli IMG4, contenuti nel device, hanno **lo stesso IM4M**.
 
-Gli altri componenti che troviamo sono:
+Gli [altri payload (IM4P)](http://newosxbook.com/bonus/vol1AppA.html) che troviamo sono:
 - il logo (con tag `logo`) della male morsicata, che appare all'avvio del device
 - il BatteryLow1 (con tag `bat1`) che [possiamo vedere](./images/batterylow1.png) estraendo il payload da `ipsw/orig/Firmware/all_flash/batterylow1@3x~iphone.im4p` e convertendolo in PNG con il tool [`ibootim`](https://github.com/realnp/ibootim)
   ```shell
   pyimg4 im4p extract -i ipsw/orig/Firmware/all_flash/batterylow1@3x\~iphone.im4p -o ipsw/decrypted/batterylow1.raw
   ../tools/ibootim/ibootim ipsw/decrypted/batterylow1.raw ipsw/decrypted/batterylow1.png
   ```
-- il LiquidDetect (con tag `liqd`) [estratto](./images/liqd.png) da `ipsw/orig/Firmware/all_flash/liquiddetect@2436\~iphone-lightning.im4p`
+- il LiquidDetect (con tag `liqd`) [estratto](./images/liqd.png) da `ipsw/orig/Firmware/all_flash/liquiddetect@2436\~iphone-lightning.im4p` usato sui device con AP A10+ per indicare un danno da acqua
 - il [device tree](https://www.theiphonewiki.com/w/index.php?title=DeviceTree&oldid=71501) (con tag `dtre`), che rappresenta l'hardware del device
 - il GlyphPlugin (con tag `glyP`) che [possiamo vedere](./images/glyphplugin.png) estraendo, come fatto prima, il payload da `glyphplugin@2436~iphone-lightning.im4p`
 - il BatteryLow0 (con tag `bat0`) estraendolo dal file `ipsw/orig/Firmware/all_flash/batterylow0@3x~iphone.im4p`<br/>
@@ -524,7 +535,7 @@ Gli altri componenti che troviamo sono:
 - il BatteryCharging0 (con tag `chg0`) [estratto](./images/batterycharging0.png) da `ipsw/orig/Firmware/all_flash/batterycharging0@3x~iphone.im4p`
 - il BatteryCharging1 (con tag `chg1`) [estratto](./images/batterycharging1.png) da `ipsw/orig/Firmware/all_flash/batterycharging1@3x~iphone.im4p`
 - il logo della RecoveryMode (con tag `recm`) [estratto](./images/recm.png) da `ipsw/orig/Firmware/all_flash/recoverymode@2436~iphone-lightning.im4p`
-- il SEP (con tag `sepi`)
+- il SEP (con tag `sepi`), l'immagine firmware del Secure Enclave Processor (SEP)
 
 Si fa presente che alcune dei loghi che compaiono sullo schermo vengono composti come sovrapposizione ne è un esempio: BatteryLow1 + BatteryLow0.
 
@@ -562,6 +573,7 @@ Apro questo paragrafo con un po' di sinonimi.
 Spesso infatti nelle chat di [Discord](https://discord.com/) o su [Reddit](https://www.reddit.com/r/jailbreak/) si fa riferimento a questo componente con nomi diversi: manifest o [ApImg4Ticket](https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format).
 
 Innanzitutto estraiamolo da una di queste due sorgenti:
+<span><!-- https://discord.com/channels/842189018523631658/872593534472032266/946338191525437460 --></span>
 - [`/dev/rdisk1`](https://github.com/MatthewPierson/deverser/blob/b74000c5104c86c84f8a8121384b08ec6909507c/deverser.sh#L45)
   ```shell
   # over SSH on jailbroken iPhone
@@ -591,7 +603,7 @@ Qual è la loro differenza? Basta consultare: [`man -P 'less -p "^DEVICE SPECIAL
 > `/dev/disk` nodes, on the other hand, are buffered block-special devices and are used primarily by the kernel's filesystem code.
 
 <span><!-- https://superuser.com/a/892768 --></span>
-Ovvero `/dev/rdisk` permette un accesso diretto al device di I/O purché le richieste siano allineate al settore, mentre l'uso `/dev/disk` richiede due buffer uno per lo userspace e l'altro per il device.
+Ovvero `/dev/rdisk` permette un accesso diretto al device di I/O purché le richieste siano allineate al settore, mentre l'uso di `/dev/disk` richiede due buffer uno per lo userspace e l'altro per il device.
 Si nota subito come nel primo caso abbiamo un'operazione bloccante, che non avviene nel secondo caso.
 
 Quanto abbiamo visto poteva essere fatto in maniera più semplice recuperando il ticket dal volume di Preboot: `/private/preboot/<ticket_hash>/System/Library/Caches/apticket.der`.
@@ -600,7 +612,7 @@ Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato hu
 Per far ciò possiamo utilizzare il CLI tool [`img4tool`](https://github.com/tihmstar/img4tool#convert-shsh-to-im4m) perché questa funzionalità non è disponibile in PyIMG4
 ```shell
 # on macOS (our working directory)
-../tools/img4tool --convert -s onboard.shsh ./onboard.der
+../tools/img4tool --convert -s onboard.shsh2 ./onboard.der
 ```
 All'interno della community del JB i file con estensione `.shsh` prendono il nome di blob SHSH, in particolare quelli finora recuperati vengono chiamati **on-board** blob.
 Questo per distinguerli dai blob recuperati da [`blobsaver`](https://github.com/airsquared/blobsaver), che è un GUI tool basato su JavaFX.
@@ -648,6 +660,21 @@ plutil -extract 'ApImg4Ticket' raw ./4013329139892270_iPhone10,6_d221ap_15.7.1-1
 Per l'estrazione abbiamo usato un programma proprietario Apple distribuito con macOS: [`plutil`](https://www.theiphonewiki.com/w/index.php?title=Plutil&printable=yes).
 Nulla ci vieta di implementare questa semplice estrazione usando la libreria nativa Python plistlib.
 
+Rendiamo più chiaro le differenze tra l'on-board blob (`onboard.shsh2`) e quello scaricato da `tsschecker` (`4013329139892270_iPhone10,6_d221ap_15.7.1-19H117_27325c8258be46e69d9ee57fa9a8fbc28b873df434e5e702a8b27999551138ae.shsh2`).
+<span><!-- https://discord.com/channels/468422899716456498/679683965962944586/833532480032210996 --></span>
+Esaminando i due file di testo ci rendiamo conto di come il primo contenga solo due nodi rispetto al secondo: `ApImg4Ticket` e `generator`, mentre il secondo contiene altri ticket.
+In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal campo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
+> **Note**</br>
+
+
+
+
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://github.com/Mqxx/GitHub-Markdown/blob/main/blockquotes/badge/light-theme/tip.svg">
+>   <img alt="Tip" src="https://github.com/Mqxx/GitHub-Markdown/blob/main/blockquotes/badge/dark-theme/tip.svg">
+> </picture><br>
+> Quando non sai quale versione di SHA usare di solito è SHA2-384 sui nuovi modelli.
+
 <h5>Cosa contiene l'IM4M?</h5>
 
 
@@ -660,7 +687,6 @@ Nulla ci vieta di implementare questa semplice estrazione usando la libreria nat
 
 > **Warning**</br>
 > Il 24 febbraio 2023 la Apple ha chiuso le firme per iOS 15.6 RC (build 19G69) perciò non è possibile effettuare il downgrade ad iOS 15.7.1.
-
 
 ### Come effettuare il frezee dell'ApNonce
 
@@ -734,3 +760,6 @@ SEP EP 16 disabled
 AppleSEP: Current SEP Nonce (20 bytes): 0x2747a760119899bcc151bfc730ee4ef6aa88ff71
 ```
 cosa che non accade per l'ApNonce.
+
+### Primo avvio dopo restore
+

@@ -27,6 +27,7 @@ def main(argv, argc):
     print("Device tree:           " + filtered["Manifest"]["DeviceTree"]["Info"]["Path"])
     print("Apple logo:            " + filtered["Manifest"]["AppleLogo"]["Info"]["Path"])
     print("Static trust cache:    " + filtered["Manifest"]["StaticTrustCache"]["Info"]["Path"])
+    print("Hash of the root node: " + filtered["Manifest"]["SystemVolume"]["Info"]["Path"])
 
 
 if __name__ == '__main__':
