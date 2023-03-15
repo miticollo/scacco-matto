@@ -559,7 +559,7 @@ Per riassumere il local boot è essenzialmente composto di tre passaggi fondamen
 #### IM4M
 
 Apro questo paragrafo con un po' di sinonimi.
-Infatti spesso nelle chat di [Discord](https://discord.com/) o su [Reddit](https://www.reddit.com/r/jailbreak/) si fa riferimento a questo componente con diversi nomi: manifest o [ApImg4Ticket](https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format).
+Spesso infatti nelle chat di [Discord](https://discord.com/) o su [Reddit](https://www.reddit.com/r/jailbreak/) si fa riferimento a questo componente con nomi diversi: manifest o [ApImg4Ticket](https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format).
 
 Innanzitutto estraiamolo da una di queste due sorgenti:
 - [`/dev/rdisk1`](https://github.com/MatthewPierson/deverser/blob/b74000c5104c86c84f8a8121384b08ec6909507c/deverser.sh#L45)
