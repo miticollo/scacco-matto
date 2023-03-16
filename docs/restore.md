@@ -291,7 +291,7 @@ e confrontiamo il risultato con `ibss.raw`
 cmp -l ipsw/decrypted/ibss.{raw,gaster}
 ```
 Essi sono uguali! Quindi cosa [fa](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1601) `gaster decrypt`? 
-Beh, in sostanza quello che abbiamo già fatto **manualmente** noi prima:
+Beh, in sostanza quello che abbiamo già fatto **manualmente** noi in precedenza:
 1. prima esegue l'[exploit per checkm8](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1231-L1276);
 2. poi avviene la [fase di decrypt](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1562):
    1. crea [in memoria una rappresentazione dell'IM4P del file sorgente](https://github.com/0x7ff/gaster/blob/7fffffff38a1bed1cdc1c5bae0df70f14395129b/gaster.c#L1407-L1411);
@@ -506,10 +506,10 @@ Pertanto perché non provare a usare il sotto-comando `asn1parse` della utility 
 # over SSH on jailbroken iPhone
 openssl asn1parse -in /dev/disk1 -i -inform DER
 ```
-Incredibile! L'interno device, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
+Incredibile! L'intero device, che può essere scaricato [qui](https://raw.githubusercontent.com/miticollo/scacco-matto/main/docs/dumps/dev-disk1.txt) (circa 10 MB), è la concatenazione di diverse strutture ASN.1 codificate in DER.
 <span><!-- https://discord.com/channels/779134930265309195/779139039365169175/1064662461673906258 --></span>
 Potremmo definirlo un IMG4 superblock.
-Andiamo a esaminare qualcuna di questi IMG4.<br/>
+Andiamo a esaminare qualcuno di questi IMG4.<br/>
 Innanzitutto all'inizio di questo device troviamo iBoot: più precisamente troviamo LLB, ma come abbiamo visto prima i device con AP A10+ hanno iBoot e LLB uguali.
 Ad ogni modo per convincerci di questo eseguiamo
 ```shell
@@ -609,13 +609,13 @@ Si nota subito come nel primo caso abbiamo un'operazione bloccante, che non avvi
 
 Quanto abbiamo visto poteva essere fatto in maniera più semplice recuperando il ticket dal volume di Preboot: `/private/preboot/<ticket_hash>/System/Library/Caches/apticket.der`.
 Entrambi contengono l'ApImg4Ticket con una leggera differenza: usando `dd` abbiamo specificato di recuperare `0x4000` (16384) blocchi da 256 byte ovvero 4,194,304 byte (4,0MB), quindi più del necessario.
-Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato human-readable plain text: un `.shsh`, che non è nient'altro che un file plist.
+Per renderlo effettivamente utilizzabile lo dobbiamo convertire in un formato human-readable plain text: un `.shsh2`, che non è nient'altro che un file plist.
 Per far ciò possiamo utilizzare il CLI tool [`img4tool`](https://github.com/tihmstar/img4tool#convert-shsh-to-im4m) perché questa funzionalità non è disponibile in PyIMG4
 ```shell
 # on macOS (our working directory)
 ../tools/img4tool --convert -s onboard.shsh2 ./onboard.der
 ```
-All'interno della community del JB i file con estensione `.shsh` prendono il nome di blob SHSH, in particolare quelli finora recuperati vengono chiamati **on-board** blob.
+All'interno della community del JB i file con estensione `.shsh2` prendono il nome di blob SHSH, in particolare quelli finora recuperati vengono chiamati **on-board** blob.
 Questo per distinguerli dai blob recuperati da [`blobsaver`](https://github.com/airsquared/blobsaver), che è un GUI tool basato su JavaFX.
 Il tool, presentando una veste grafica semplice, permette all'utente di recuperare i blob SHSH per i propri dispositivi senza dover ricorrere necessariamente al CLI tool [`tsschecker`](https://github.com/airsquared/tsschecker), che quindi è usato indirettamente dall'utente attraverso `blobsaver`.
 Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di comando, prima però dobbiamo ottenere alcuni dati usando `irecovery`, ma questa volta metteremo l'iPhone in [recovery mode](https://www.theiphonewiki.com/w/index.php?title=Recovery_Mode&oldid=125090) e non in DFU mode, come prima.
@@ -666,9 +666,18 @@ Rendiamo più chiaro le differenze tra l'on-board blob (`onboard.shsh2`) e quell
 Esaminando i due file di testo ci rendiamo conto di come il primo contenga solo due nodi rispetto al secondo: `ApImg4Ticket` e `generator`, mentre il secondo contiene altri ticket.
 In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal campo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
 > **Note**</br>
+> Il lettore attento avrà notato che nell'output prodotto da `openssl asn1parse` è spesso presente la stringa `priv [ XXXXXXXXXX ]`, come viene calcolato l'intero rappresentato dal carattere `X`?
+> Consideriamo il caso di `BNCN` ovvero `priv [ 1112425294 ]` e vediamo come poter calcolare questo intero con una semplice funzione Python:
+> ```python
+> def check_encoding(tag: str, enc: int) -> bool: return ord(tag[0]) << 24 | ord(tag[1]) << 16 | ord(tag[2]) << 8 | ord(tag[3]) == enc
+> ```
+> che possiamo invocare come
+> ```python
+> check_encoding("BNCN", 1112425294)
+> ```
+> che ci restituirà `True`.
 
-
-
+Prima di concludere 
 
 > <picture>
 >   <source media="(prefers-color-scheme: light)" srcset="https://github.com/Mqxx/GitHub-Markdown/blob/main/blockquotes/badge/light-theme/tip.svg">
