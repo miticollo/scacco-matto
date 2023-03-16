@@ -27,19 +27,19 @@ In questo e negli altri README di documentazione riporto tutto ciò che ho scope
 
 ## checkm8
 
-_See_ [dedicated chapter](docs/checkm8.md)
+_See_ [dedicated README](docs/checkm8.md)
 
 ## Update + Restore
 
-_See_ [dedicated chapter](docs/restore.md)
+_See_ [dedicated README](docs/restore.md)
 
 ## Jailbreak
 
-_See_ [dedicated chapter](docs/jb.md)
+_See_ [dedicated README](docs/jb.md)
 
 ## frida
 
-_See_ [dedicated folder](frida/)
+_See_ [dedicated README](frida/)
 
 ## Others
 
