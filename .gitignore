@@ -417,6 +417,7 @@ resources/*
 !resources/fake
 !resources/fake/*
 resources/fake/.DS_Store
+!leaks/*
 
 ### Secrets ###
 docs/dumps/keychain_dump.txt

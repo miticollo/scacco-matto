@@ -667,7 +667,7 @@ Esaminando i due file di testo ci rendiamo conto di come il primo contenga solo 
 In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal campo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
 > **Note**</br>
 > Il lettore attento avrà notato che nell'output prodotto da `openssl asn1parse` è spesso presente la stringa `priv [ XXXXXXXXXX ]`, come viene calcolato l'intero rappresentato dal carattere `X`?
-> Consideriamo il caso di `BNCN` ovvero `priv [ 1112425294 ]` e vediamo come poter calcolare questo intero con una semplice funzione Python:
+> Consideriamo il caso di `BNCN` ovvero `priv [ 1112425294 ]` e vediamo [come poter calcolare questo intero](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=62) con una semplice funzione Python:
 > ```python
 > def check_encoding(tag: str, enc: int) -> bool: return ord(tag[0]) << 24 | ord(tag[1]) << 16 | ord(tag[2]) << 8 | ord(tag[3]) == enc
 > ```
@@ -675,10 +675,16 @@ In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/im
 > ```python
 > check_encoding("BNCN", 1112425294)
 > ```
-> che ci restituirà `True`.
+> e che ci restituirà `True`.
 
-Prima di concludere 
-
+Prima di concludere vale la pena di chiedersi come viene calcolato il `<ticket_hash>`, che viene usato come nome di una directory all'interno del volume di Preboot.
+Per scoprirlo potremmo andare a leggere, con l'ausilio del DCSD cable, il log prodotto dall'iPhone durante il restore effettuato tramite `futurerestore`.
+In particolare sia interessati a [una sola linea](https://github.com/miticollo/scacco-matto/blob/07b45be8699f6deb96a71a038666619ced3c3121/docs/logs/futurerestore.log#L3).
+Quindi il `<ticket_hash>` non è nient'altro che lo SHA2-384 dell'`apticket.der` presente nel volume di Preboot:
+```shell
+# over SSH on jailbroken iPhone
+sha384sum /private/preboot/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D73A7FFD4454C275AEAF3CBA6DA25C11DB9CE3B712DF8/System/Library/Caches/apticket.der
+```
 > <picture>
 >   <source media="(prefers-color-scheme: light)" srcset="https://github.com/Mqxx/GitHub-Markdown/blob/main/blockquotes/badge/light-theme/tip.svg">
 >   <img alt="Tip" src="https://github.com/Mqxx/GitHub-Markdown/blob/main/blockquotes/badge/dark-theme/tip.svg">
@@ -687,6 +693,12 @@ Prima di concludere
 
 <h5>Cosa contiene l'IM4M?</h5>
 
+Non ci resta scoprire come è fatto un IM4M, possiamo usare i seguenti due comandi
+```shell
+# on macOS (our working directory)
+openssl asn1parse -in ./apticket.der -i -inform DER
+pyimg4 im4m info -vvv -i ./apticket.der
+```
 
 
 #### Remote
