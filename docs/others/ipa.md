@@ -12,7 +12,6 @@ Questo significa che un jailbreak **end-user**, per le versioni più recenti di 
 Un esempio è iOS 15, per cui esistono tre JB pubblici in Work In Progress (WIP):
 - [XinaA15](https://twitter.com/xina520) che supporta solo iOS 15-15.1.1.
 - Fugu15 Max che supporta iOS 15-15.4.1, ma con [problematiche](https://github.com/opa334/Fugu15/tree/max#fugu15-max).
-- [ra1ncloud](https://github.com/iarchiveml/ra1ncloud) che supporta iOS 15-15.4.1, perché, come quello precedente, si basa su [Fugu15](https://github.com/pinauten/Fugu15) di Linus Henze.
 
 A ogni modo tutti e tre risultano poco stabili e affidabili per un **end-user**.
 Quindi qualora si cerchi un JB end-user è necessario usare versioni più vecchie di iOS come la 14.8, tenendo ben a mente che l'ultima (nel momento in cui si scrive) è la 16.3.1.

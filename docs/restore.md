@@ -693,7 +693,7 @@ sha384sum /private/preboot/A20F6AA0268E4958AE8CE401207FE4E336BD762FECA6C8998B9D7
 
 <h5>Cosa contiene l'IM4M?</h5>
 
-Non ci resta scoprire come è fatto un IM4M, possiamo usare i seguenti due comandi
+Non ci resta che scoprire come è fatto un IM4M, possiamo usare i seguenti due comandi
 ```shell
 # on macOS (our working directory)
 openssl asn1parse -in ./apticket.der -i -inform DER
