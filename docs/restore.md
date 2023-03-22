@@ -664,18 +664,7 @@ Nulla ci vieta di implementare questa semplice estrazione usando la libreria nat
 Rendiamo più chiaro le differenze tra l'on-board blob (`onboard.shsh2`) e quello scaricato da `tsschecker` (`4013329139892270_iPhone10,6_d221ap_15.7.1-19H117_27325c8258be46e69d9ee57fa9a8fbc28b873df434e5e702a8b27999551138ae.shsh2`).
 <span><!-- https://discord.com/channels/468422899716456498/679683965962944586/833532480032210996 --></span>
 Esaminando i due file di testo ci rendiamo conto di come il primo contenga solo due nodi rispetto al secondo: `ApImg4Ticket` e `generator`, mentre il secondo contiene altri ticket.
-In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal campo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
-> **Note**</br>
-> Il lettore attento avrà notato che nell'output prodotto da `openssl asn1parse` è spesso presente la stringa `priv [ XXXXXXXXXX ]`, come viene calcolato l'intero rappresentato dal carattere `X`?
-> Consideriamo il caso di `BNCN` ovvero `priv [ 1112425294 ]` e vediamo [come poter calcolare questo intero](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=62) con una semplice funzione Python:
-> ```python
-> def check_encoding(tag: str, enc: int) -> bool: return ord(tag[0]) << 24 | ord(tag[1]) << 16 | ord(tag[2]) << 8 | ord(tag[3]) == enc
-> ```
-> che possiamo invocare come
-> ```python
-> check_encoding("BNCN", 1112425294)
-> ```
-> e che ci restituirà `True`.
+In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal tag con tipo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
 
 Prima di concludere vale la pena di chiedersi come viene calcolato il `<ticket_hash>`, che viene usato come nome di una directory all'interno del volume di Preboot.
 Per scoprirlo potremmo andare a leggere, con l'ausilio del DCSD cable, il log prodotto dall'iPhone durante il restore effettuato tramite `futurerestore`.
@@ -699,6 +688,34 @@ Non ci resta che scoprire come è fatto un IM4M, possiamo usare i seguenti due c
 openssl asn1parse -in ./apticket.der -i -inform DER
 pyimg4 im4m info -vvv -i ./apticket.der
 ```
+Partiamo dall'output del primo comando.
+<span><!-- https://www.theiphonewiki.com/w/index.php?title=APTicket&oldid=117077#IM4M_APTicket.2FApImg4Ticket_format --></span>
+Esso inizia con la stringa `IM4M`, mentre i payload iniziano con `IM4P`, più precisamente il tipo della stringa è `IA5String`, basato sulla codifica [International Alphabet No. 5 (IA5)](https://en.wikipedia.org/w/index.php?title=T.50_(standard)&oldid=1118245859#Character_Set).
+La stringa è seguita da un `INTEGER`, presente **solo** per gli `IM4M`, che **probabilmente** rappresenta la versione.
+Successivamente troviamo una struttura dati identificata dal tipo `SET`.
+Ognuna di queste strutture presenta una o più classi private: ciascuna contiene una `SEQUENCE` con un _tipo_ indicato dall'`IA5String` e un _tag_ indicato dal `SET` o un altro tipo ASN.1 meno strutturato.<br/>
+Il tag radice ha tipo `MANB` (Manifest Body) e contiene tutti gli altri tag.
+Il primo che incontriamo è il tag con tipo `MANP` (Manifest Properties), che contiene [alcuni tag](https://www.blackhat.com/docs/us-16/materials/us-16-Mandt-Demystifying-The-Secure-Enclave-Processor.pdf#page=34) che descrivono il device, mentre altri sono sconosciuti.
+Il tipo di questi tag non è sempre chiaro, anche se alcuni li riconosciamo dal valore: ad esempio `CHIP` si riferisce al Chip ID o `BORD` al Borad ID.
+Altri invece sono più criptici, ma per questo ci viene in aiuto `pyimg4`, così scopriamo che `BNCH` è l'ApNonce, mentre `snon` è il SepNonce.<br/>
+Dopo il tag con tipo `MANP`, seguo 35 tag uno per ciascun IM4P contenuto nell'IPSW.
+Inoltre il tipo è indicato da una stringa di 4 caratteri: l'IMG4 tag.
+Ognuno di questi tag presenta 
+
+Quanto abbiamo detto vale anche per gli IM4R, che abbiamo incontrato prima.
+Per tanto consideriamo l'unica classe presente e chiediamoci come è stata prodotta il tag della classe in DER.
+In particolare se la consideriamo come semplice stringa, domandiamoci da dove deriva l'intero decimale di 4 byte rappresentato in big-endian `1112425294` posto tra `[]`.
+Esso è [derivato dal tipo all'interno della `SEQUENCE` della classe considerata](https://raw.githubusercontent.com/galli-leo/emmutaler/master/docs/thesis.pdf#page=62): quindi `BNCN`.
+Verifichiamolo con una semplice funzione Python:
+```python
+def check_encoding(tag: str, enc: int) -> bool: return ord(tag[0]) << 24 | ord(tag[1]) << 16 | ord(tag[2]) << 8 | ord(tag[3]) == enc
+```
+che possiamo invocare nel seguente modo
+```python
+check_encoding("BNCN", 1112425294)
+```
+e che ci restituirà evidentemente `True`.
+
 
 
 #### Remote
@@ -742,7 +759,7 @@ Per far ciò non possiamo usare `ideviceinfo -k ApNonce` per ovvi motivi, quindi
    ```
    <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084930408988291194 --></span>
    <span><!-- https://discord.com/channels/779134930265309195/779151007488933889/1084930216708808795 --></span>
-   Noteremo che solo `NONC` (ApNonce) non cambia. Il `SNON` (SEPNonce) cambia perché questo è un nonce vero e proprio: infatti è generato sempre in modo casuale, come il boot nonce.
+   Noteremo che solo `NONC` (ApNonce) non cambia. Il `SNON` cambia perché questo è un nonce vero e proprio: infatti è generato sempre in modo casuale, come il boot nonce.
    <span><!-- https://discord.com/channels/779134930265309195/779134930265309198/838228003137781812 --></span>
    In effetti l'ApNonce si basa su un seed, ma non il SEPNonce.
 3. Torniamo alla normal mode e riavviamo l'iPhone
