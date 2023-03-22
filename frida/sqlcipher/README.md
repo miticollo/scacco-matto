@@ -96,8 +96,8 @@ I reported it only for Session but changing the paths and filenames these steps 
 
 > **Note**<br/>
 > I enable passcode to protect Session app then I tried to retrieve `pkey`.
-> I discovered that Session opens DB before passcode is entered, so I successfully dumped key again.
-> Just for curiosity: Session uses iOS passcode, while Telegram implements its own passcode.<br/>
+> I discovered that Session opens DB before passcode is entered, so I successfully dumped key again.<br/>
+> Just for curiosity: Session uses iOS passcode, while Telegram implements its own passcode.
 > For this reason to use Session with passcode I used iPhone SE 2020 because, as you know, passcode requires SEP.
 > But if you boot iPhone from DFU on iOS 14+ SEP panics.
 > To solve you can use SEPROM exploit like blackbird, but this doesn't work on A11.
