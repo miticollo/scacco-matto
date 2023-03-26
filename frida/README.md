@@ -4,7 +4,7 @@ Here you can find an index of my experiments and tests with frida on iOS.
 
 ## SQLCipher
 
-_See_ [dedicated chapter](sqlcipher/)
+_See_ [dedicated README](sqlcipher/)
 
 ## xpc-tracer
 
