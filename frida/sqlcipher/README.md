@@ -36,25 +36,24 @@ Here the analyzed apps.
 
 ### Wickr Me
 
-This app doesn't require a key to decrypt DB.
-In fact the DB is in plaintext but some data are encrypted (e.g. the messages).
-In the table `ZWICKR_MESSAGE` we can find `ZBODY` column that contains the ciphered message body.
-[The structure of this encrypted data](https://oops.math.spbu.ru/SE/diploma/2021/pi/Cherniavskii-report.pdf#page=14) is:
-- the first byte: `0x00`;
-- from byte 2 to 13: GCM nonce (or IV);
-- from byte 14 to 29: GCM tag;
-- from byte 30 to EOF: ciphertext.
+This app doesn't require a key to decrypt the database. 
+In fact, the database is in plaintext, but some data are encrypted (e.g., the messages). 
+In the table `ZWICKR_MESSAGE`, we can find the `ZBODY` column that contains the ciphered message body. 
+The structure of this encrypted data can be found in [this report](https://oops.math.spbu.ru/SE/diploma/2021/pi/Cherniavskii-report.pdf#page=14), which is as follows:
+- The first byte: `0x00`
+- From byte 2 to 13: GCM nonce (or IV)
+- From byte 14 to 29: GCM tag
+- From byte 30 to EOF: ciphertext
 
-To decrypt this structure we must use a 32-byte content data key (CDK) and AES256-GCM.
-To be more precise CDK is retrieved decrypting `ZPT` column in `ZSECEX_ACCOUNT`.
-It contains key derivation function (KDF) algorithm ID (`0x01`, [Scrypt by Tarsnap](https://github.com/Tarsnap/scrypt)) and the KDF salt.
-They are necessary to use [`scrypt_kdf`](https://github.com/Tarsnap/scrypt#using-scrypt-as-a-kdf) function.
-Furthermore `ZPT` column contains a GCM IV and tag, they are used to decrypt with AES256-GCM the ciphertext (always in `ZPT`).
-The key of this step is the output of `scrypt_kdf`.
-After this decryption we have a key to decrypt the content of other columns (like `ZBODY`).
+To decrypt this structure, we must use a 32-byte content data key (CDK) and AES256-GCM. 
+To be more precise, CDK is retrieved by decrypting the `ZPT` column in `ZSECEX_ACCOUNT`, which contains the key derivation function (KDF) algorithm ID (`0x01`) ([Scrypt by Tarsnap](https://github.com/Tarsnap/scrypt)) and the KDF salt. 
+They are necessary to use the [`scrypt_kdf`](https://github.com/Tarsnap/scrypt#using-scrypt-as-a-kdf) function. 
+Furthermore, the `ZPT` column contains a GCM IV and tag, which are used to decrypt the ciphertext (always in `ZPT`) with AES256-GCM. 
+The key of this step is the output of `scrypt_kdf`. 
+After this decryption, we have a key to decrypt the content of other columns (like `ZBODY`).
 
-Since Wickr Me is a closed source app I used [this article](https://www.sciencedirect.com/science/article/pii/S2666281721000366) (that [you know](https://people.unipmn.it/sguazt/publication/anglano-2021-useraction/Anglano-2021-UserAction.pdf#page=13)) to study it.
-**But unfortunately I couldn't decrypt messages**.
+Since Wickr Me is a closed-source app, I used [this article](https://www.sciencedirect.com/science/article/pii/S2666281721000366) (which [you know](https://people.unipmn.it/sguazt/publication/anglano-2021-useraction/Anglano-2021-UserAction.pdf#page=13)) to study it. 
+**Unfortunately, I couldn't decrypt messages.**
 
 ## `sqlite3_open_v2`
 ```c
@@ -95,12 +94,12 @@ I reported it only for Session but changing the paths and filenames these steps 
 5. Finally, we can read the messages looking in the `interactions` table.
 
 > **Note**<br/>
-> I enable passcode to protect Session app then I tried to retrieve `pkey`.
-> I discovered that Session opens DB before passcode is entered, so I successfully dumped key again.<br/>
-> Just for curiosity: Session uses iOS passcode, while Telegram implements its own passcode.
-> For this reason to use Session with passcode I used iPhone SE 2020 because, as you know, passcode requires SEP.
-> But if you boot iPhone from DFU on iOS 14+ SEP panics.
-> To solve you can use SEPROM exploit like blackbird, but this doesn't work on A11.
+> I enabled a passcode to protect my Session app, and then I tried to retrieve `pkey`. 
+> However, I discovered that Session opens the database before the passcode is entered, so I was able to successfully dump the key again. 
+> Just out of curiosity, I found out that Session uses the iOS passcode, while Telegram implements its own passcode. 
+> To use Session with a passcode, I had to use an iPhone SE 2020 because, as you know, the passcode requires SEP. 
+> However, if you boot the iPhone from DFU on iOS 14+, SEP panics. 
+> To solve this issue, you can use the SEPROM exploit, such as blackbird, but unfortunately, it doesn't work on A11.
 
 ### Alternative approach: `keychain_dumper`
 
