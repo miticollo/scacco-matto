@@ -10,12 +10,14 @@ _See_ [dedicated chapter](sqlcipher/)
 
 This project has an [independent repo](https://github.com/miticollo/xpc-tracer).
 
-## new contact created inside a third-party app
-
-> :warning: I tested it only on Telegram, but it's probably that it works also on other apps.
+## new contact created
 
 ```javascript
-Interceptor.attach(ObjC.classes.CNDataMapperContactStore['- executeSaveRequest:response:error:'].implementation, {
+const processInformationAgent = ObjC.classes.NSProcessInfo.processInfo() // this is a shared object between processes
+const majorVersion = parseInt(processInformationAgent.operatingSystemVersion()[0])
+let executeSaveRequest: string = majorVersion >= 13 ? '- executeSaveRequest:response:authorizationContext:error:' : '- executeSaveRequest:response:error:';
+
+Interceptor.attach(ObjC.classes.CNDataMapperContactStore[executeSaveRequest].implementation, {
     onEnter: function (args) {
         let addressBookPeople = new ObjC.Object(args[2]).$ivars["_addedContactsByIdentifier"]; // __NSDictionaryM
         let key = addressBookPeople.keyEnumerator().nextObject();
