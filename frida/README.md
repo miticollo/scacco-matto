@@ -30,3 +30,47 @@ Interceptor.attach(ObjC.classes.CNDataMapperContactStore[executeSaveRequest].imp
     }
 });
 ```
+
+## How Many Parameters Does an Undocumented Function or Method Have?
+
+Suppose that you need to use `TCCAccessReset` function from `TCC` module, but you’re not sure about how many parameters it has or what types they are.
+What can you do?
+
+Let’s explore one potential solution to this problem.
+
+1. Install [DyldExtractor](https://github.com/arandomdev/DyldExtractor) and [ktool](https://github.com/cxnder/ktool)
+   ```shell
+   python3 -m pip -vvv install dyldextractor k2l
+   ```
+2. Install [`ipsw`](https://github.com/blacktop/ipsw).
+3. Extract [dyld_shared_cache](https://iphonedev.wiki/index.php?title=Dyld_shared_cache&oldid=6000)
+   ```shell
+    ipsw extract 'https://updates.cdn-apple.com/2023WinterFCS/fullrestores/032-49365/9B845C17-F18A-4B74-B25C-7E4C774723D7/iPhone10,3,iPhone10,6_16.3.1_20D67_Restore.ipsw' -d -V -r
+   ```
+   > **Note**<br/>
+   > For this tutorial I'll use iOS 16.3.1 for iPhone X (aka iPhone10,6).
+   > But it's important to use the same iOS version that it is installed on your target iDevice.
+4. Listing Framework names containing "TCC"
+   ```shell
+   dyldex -v 3 -l -f TCC ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   ```
+   > **Note**<br/>
+   > In this case I had a split cache, so I used the path for the main cache (the one without a file type).
+5. Extracting the framework
+   ```shell
+   dyldex -v 3 -e 'TCC.framework/TCC' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   ```
+6. Extracting its dependencies
+   ```shell
+   dyldex -v 3 -e 'lib/libSystem.B.dylib' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   dyldex -v 3 -e 'CoreFoundation.framework/CoreFoundation' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   dyldex -v 3 -e 'lib/libbsm.0.dylib' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   dyldex -v 3 -e 'libobjc.A.dylib' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
+   ```
+7. (Optional) Print exports and search `TCCAccessReset`
+   ```shell
+   ktool -v -5 symbols --exports ./binaries/TCC.framework/TCC
+   ```
+8. Download [Ghidra](https://ghidra-sre.org/).
+9. Create a new project.
+10. Drag and drop the `TCC` Mach-O file and its dependencies.
