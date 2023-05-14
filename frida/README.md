@@ -50,6 +50,12 @@ Let’s explore one potential solution to this problem.
    > **Note**<br/>
    > For this tutorial I'll use iOS 16.3.1 for iPhone X (aka iPhone10,6).
    > But it's important to use the same iOS version that it is installed on your target iDevice.
+
+   > **Note**<br/>
+   > If it fails you can download the IPSW **manually** and then
+   > ```shell
+   > ipsw extract ./iPhone_5.5_P3_15.7.5_19H332_Restore.ipsw -d -V
+   > ```
 4. Listing Framework names containing "TCC"
    ```shell
    dyldex -v 3 -l -f TCC ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
