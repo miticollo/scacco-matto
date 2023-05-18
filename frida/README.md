@@ -66,7 +66,7 @@ Let’s explore one potential solution to this problem.
    ```shell
    dyldex -v 3 -e 'TCC.framework/TCC' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
    ```
-6. Extracting its dependencies
+6. Extracting, if necessary, the required libraries
    ```shell
    dyldex -v 3 -e 'lib/libSystem.B.dylib' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
    dyldex -v 3 -e 'CoreFoundation.framework/CoreFoundation' ./20D67__iPhone10,3_6/dyld_shared_cache_arm64
