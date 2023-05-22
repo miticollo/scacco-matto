@@ -9,7 +9,8 @@ Come facciamo a cambiare la posizione dell'iPhone **senza la necessità di un ja
    unzip 16.3.1.zip
    ```
    <span><!-- https://t.me/libimobiledevice/8297 --></span>
-   Qualora si stia usando una versione beta o RC di iOS è possibile scaricare la Developer Disk Image che supporta la versione di iOS "più vicina".
+   Qualora si stia usando una versione beta o RC di iOS è possibile scaricare la Developer Disk Image che supporta la versione di iOS "più vicina".<br/>
+   In alternativa possiamo trovare diverse Developer Disk Image in `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport`, qualora si volesse aggiungerne altre è possibile recuperarle anche da [qui](https://github.com/haikieu/xcode-developer-disk-image-all-platforms/tree/master/DiskImages/iPhoneOS.platform/DeviceSupport).
 3. Supponendo di essere all'interno del virtual environment creato dallo script `../tools/deps.sh`, montiamo la Developer Disk Image
    ```shell
    pymobiledevice3 mounter mount -v 16.3.1/DeveloperDiskImage.dmg 16.3.1/DeveloperDiskImage.dmg.signature
