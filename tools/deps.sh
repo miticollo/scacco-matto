@@ -170,7 +170,7 @@ function get_iboot64patcher() {
 #   0 without errors, non-zero otherwise.
 #######################################
 function get_futurerestore() {
-  curl -LO https://nightly.link/miticollo/futurerestore/workflows/ci/main/futurerestore-macOS-DEBUG.zip
+  curl -LO https://nightly.link/miticollo/futurerestore/actions/runs/4580365432/futurerestore-macOS-DEBUG.zip
   unzip -p futurerestore-macOS-DEBUG.zip | tar -xv
   rm -v futurerestore*.zip
   chmod -v +x ./futurerestore
@@ -204,7 +204,7 @@ function create_env() {
   cd ..
   python3 -m venv ./.venv/
   source ./.venv/bin/activate
-  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida==16.0.11 git+https://github.com/doronz88/pymobiledevice3.git@master
+  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida git+https://github.com/doronz88/pymobiledevice3.git@master
   cd -
 }
 
