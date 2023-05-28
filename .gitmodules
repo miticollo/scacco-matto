@@ -48,3 +48,6 @@
 	url = https://github.com/libimobiledevice/libusbmuxd.git
 	ignore = all
 	shallow = true
+[submodule "tools/libplist"]
+	path = tools/libplist
+	url = https://github.com/libimobiledevice/libplist.git
