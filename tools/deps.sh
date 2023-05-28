@@ -102,6 +102,20 @@ function compile_pongoterm() {
 }
 
 #######################################
+# Compiles libplist.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libplist() {
+  cd libplist
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Compiles libimobiledevice.
 # Arguments:
 #   None
@@ -254,6 +268,7 @@ function main() {
   get_iboot64patcher
   get_futurerestore
   compile_termz
+  compile_libplist
   compile_libimobiledevice
   compile_libusbmuxd
   executable_img4tool
