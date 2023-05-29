@@ -124,7 +124,7 @@ function compile_libplist() {
 #######################################
 function compile_libimobiledevice-glue() {
   cd libimobiledevice-glue
-  ./autogen.sh --disable-silent-rules
+  libplist_LIBS="-L$(eval "${WORKING_DIR}")/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I$(eval "${WORKING_DIR}")/libplist/include/plist" ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
 }
@@ -157,7 +157,7 @@ function compile_libimobiledevice() {
 function compile_libusbmuxd() {
   cd libusbmuxd
   # based on ../libplist/src/libplist-2.0.pc
-  libplist_LIBS="-L../libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I../libplist/include/plist" ./autogen.sh --disable-silent-rules
+  ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
 }
@@ -273,8 +273,12 @@ function main() {
 
   pushd "${WORKING_DIR}" || { err "WORKING_DIR not found. Exited."; exit 1; }
 
-  create_env
+  compile_libplist
+  compile_libimobiledevice-glue
   compile_irecovery
+  compile_libusbmuxd
+  compile_libimobiledevice
+  create_env
   compile_gaster
   compile_gaster_fr
   compile_t8015_bootkit
@@ -284,10 +288,6 @@ function main() {
   get_iboot64patcher
   get_futurerestore
   compile_termz
-  compile_libplist
-  compile_libimobiledevice-glue
-  compile_libusbmuxd
-  compile_libimobiledevice
   executable_img4tool
 
   # Ignore errors
