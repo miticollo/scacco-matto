@@ -9,6 +9,49 @@ function err() {
 }
 
 #######################################
+# Create Python Virtual Environments.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function create_env() {
+  cd ..
+  python3 -m venv ./.venv/
+  source ./.venv/bin/activate
+  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida git+https://github.com/doronz88/pymobiledevice3.git@master
+  cd -
+}
+
+#######################################
+# Compiles libplist.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libplist() {
+  cd libplist
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
+# Compiles libimobiledevice-glue.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libimobiledevice-glue() {
+  cd libimobiledevice-glue
+  libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Compiles irecovery.
 # Arguments:
 #   None
@@ -17,6 +60,42 @@ function err() {
 #######################################
 function compile_irecovery() {
   cd libirecovery
+  limd_glue_LIBS="-L${WORKING_DIR}/libimobiledevice-glue/src/.libs -limobiledevice-glue-1.0" limd_glue_CFLAGS="-I${WORKING_DIR}/libimobiledevice-glue/include" ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
+# Compiles libusbmuxd.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libusbmuxd() {
+  cd libusbmuxd
+  libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" \
+  limd_glue_LIBS="-L${WORKING_DIR}/libimobiledevice-glue/src/.libs -limobiledevice-glue-1.0" limd_glue_CFLAGS="-I${WORKING_DIR}/libimobiledevice-glue/include" \
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
+# Compiles libimobiledevice.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libimobiledevice() {
+  cd libimobiledevice
+  # https://docs.brew.sh/How-to-Build-Software-Outside-Homebrew-with-Homebrew-keg-only-Dependencies#pkg-config-detection
+  PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
+  export PKG_CONFIG_PATH
+  libusbmuxd_LIBS="-L${WORKING_DIR}/libusbmuxd/src/.libs -lusbmuxd-2.0" libusbmuxd_CFLAGS="-I${WORKING_DIR}/libusbmuxd/include" \
+  libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" \
+  limd_glue_LIBS="-L${WORKING_DIR}/libimobiledevice-glue/src/.libs -limobiledevice-glue-1.0" limd_glue_CFLAGS="-I${WORKING_DIR}/libimobiledevice-glue/include" \
   ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
@@ -102,67 +181,6 @@ function compile_pongoterm() {
 }
 
 #######################################
-# Compiles libplist.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function compile_libplist() {
-  cd libplist
-  ./autogen.sh --disable-silent-rules
-  make -j"$(sysctl -n hw.ncpu)"
-  cd -
-}
-
-#######################################
-# Compiles libimobiledevice-glue.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function compile_libimobiledevice-glue() {
-  cd libimobiledevice-glue
-  libplist_LIBS="-L$(eval "${WORKING_DIR}")/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I$(eval "${WORKING_DIR}")/libplist/include/plist" ./autogen.sh --disable-silent-rules
-  make -j"$(sysctl -n hw.ncpu)"
-  cd -
-}
-
-#######################################
-# Compiles libimobiledevice.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function compile_libimobiledevice() {
-  cd libimobiledevice
-
-  # https://docs.brew.sh/How-to-Build-Software-Outside-Homebrew-with-Homebrew-keg-only-Dependencies#pkg-config-detection
-  PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
-  export PKG_CONFIG_PATH
-  ./autogen.sh --disable-silent-rules
-  make -j"$(sysctl -n hw.ncpu)"
-  cd -
-}
-
-#######################################
-# Compiles libusbmuxd.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function compile_libusbmuxd() {
-  cd libusbmuxd
-  # based on ../libplist/src/libplist-2.0.pc
-  ./autogen.sh --disable-silent-rules
-  make -j"$(sysctl -n hw.ncpu)"
-  cd -
-}
-
-#######################################
 # Compiles ibootim.
 # Arguments:
 #   None
@@ -224,21 +242,6 @@ function executable_img4tool() {
 }
 
 #######################################
-# Create Python Virtual Environments.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function create_env() {
-  cd ..
-  python3 -m venv ./.venv/
-  source ./.venv/bin/activate
-  python -m pip install --upgrade pip git+https://github.com/m1stadev/PyIMG4.git@master frida-tools frida git+https://github.com/doronz88/pymobiledevice3.git@master
-  cd -
-}
-
-#######################################
 # Entry point.
 # Globals:
 #   WORKING_DIR
@@ -273,12 +276,12 @@ function main() {
 
   pushd "${WORKING_DIR}" || { err "WORKING_DIR not found. Exited."; exit 1; }
 
+  create_env
   compile_libplist
   compile_libimobiledevice-glue
   compile_irecovery
   compile_libusbmuxd
   compile_libimobiledevice
-  create_env
   compile_gaster
   compile_gaster_fr
   compile_t8015_bootkit
