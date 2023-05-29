@@ -122,7 +122,7 @@ function compile_libplist() {
 # Outputs:
 #   0 without errors, non-zero otherwise.
 #######################################
-function libimobiledevice-glue() {
+function compile_libimobiledevice-glue() {
   cd libimobiledevice-glue
   ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
