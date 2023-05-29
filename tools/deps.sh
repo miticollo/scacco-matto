@@ -94,7 +94,7 @@ function compile_libimobiledevice() {
   PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
   export PKG_CONFIG_PATH
   libusbmuxd_LIBS="-L${WORKING_DIR}/libusbmuxd/src/.libs -lusbmuxd-2.0" libusbmuxd_CFLAGS="-I${WORKING_DIR}/libusbmuxd/include" \
-  libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" \
+  libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0 -L${WORKING_DIR}/libimobiledevice-glue/src/.libs -limobiledevice-glue-1.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include -I${WORKING_DIR}/libimobiledevice-glue/include" \
   limd_glue_LIBS="-L${WORKING_DIR}/libimobiledevice-glue/src/.libs -limobiledevice-glue-1.0" limd_glue_CFLAGS="-I${WORKING_DIR}/libimobiledevice-glue/include" \
   ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
