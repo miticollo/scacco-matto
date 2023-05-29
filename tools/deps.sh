@@ -116,6 +116,20 @@ function compile_libplist() {
 }
 
 #######################################
+# Compiles libimobiledevice-glue.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function libimobiledevice-glue() {
+  cd libimobiledevice-glue
+  ./autogen.sh --disable-silent-rules
+  make -j"$(sysctl -n hw.ncpu)"
+  cd -
+}
+
+#######################################
 # Compiles libimobiledevice.
 # Arguments:
 #   None
@@ -124,6 +138,7 @@ function compile_libplist() {
 #######################################
 function compile_libimobiledevice() {
   cd libimobiledevice
+
   # https://docs.brew.sh/How-to-Build-Software-Outside-Homebrew-with-Homebrew-keg-only-Dependencies#pkg-config-detection
   PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
   export PKG_CONFIG_PATH
@@ -141,7 +156,8 @@ function compile_libimobiledevice() {
 #######################################
 function compile_libusbmuxd() {
   cd libusbmuxd
-  ./autogen.sh --disable-silent-rules
+  # based on ../libplist/src/libplist-2.0.pc
+  libplist_LIBS="-L../libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I../libplist/include/plist" ./autogen.sh --disable-silent-rules
   make -j"$(sysctl -n hw.ncpu)"
   cd -
 }
@@ -269,8 +285,9 @@ function main() {
   get_futurerestore
   compile_termz
   compile_libplist
-  compile_libimobiledevice
+  compile_libimobiledevice-glue
   compile_libusbmuxd
+  compile_libimobiledevice
   executable_img4tool
 
   # Ignore errors
