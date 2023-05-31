@@ -54,3 +54,6 @@
 [submodule "tools/libimobiledevice-glue"]
 	path = tools/libimobiledevice-glue
 	url = https://github.com/libimobiledevice/libimobiledevice-glue.git
+[submodule "tools/img4tool"]
+	path = tools/img4tool
+	url = https://github.com/tihmstar/img4tool.git
