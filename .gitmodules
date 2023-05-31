@@ -57,3 +57,6 @@
 [submodule "tools/img4tool"]
 	path = tools/img4tool
 	url = https://github.com/tihmstar/img4tool.git
+[submodule "tools/libgeneral"]
+	path = tools/libgeneral
+	url = https://github.com/tihmstar/libgeneral.git
