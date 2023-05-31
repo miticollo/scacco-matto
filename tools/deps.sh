@@ -130,7 +130,7 @@ function compile_img4tool() {
     autoupdate -v
     libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" \
     libgeneral_LIBS="-L${WORKING_DIR}/libgeneral/.libs -lgeneral" libgeneral_CFLAGS="-I${WORKING_DIR}/libgeneral/include" \
-    ./autogen.sh --disable-silent-rules --with-plist=yes --with-openssl=yes
+    ./autogen.sh --disable-silent-rules
     make -j"$(sysctl -n hw.ncpu)"
     cd -
 }
