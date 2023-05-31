@@ -102,6 +102,40 @@ function compile_libimobiledevice() {
 }
 
 #######################################
+# Compiles libgeneral.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_libgeneral() {
+    cd libgeneral
+    autoupdate -v
+    ./autogen.sh --disable-silent-rules
+    make -j"$(sysctl -n hw.ncpu)"
+    cd -
+}
+
+#######################################
+# Compiles img4tool.
+# Arguments:
+#   None
+# Outputs:
+#   0 without errors, non-zero otherwise.
+#######################################
+function compile_img4tool() {
+    cd img4tool
+    PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl/lib/pkgconfig"
+    export PKG_CONFIG_PATH
+    autoupdate -v
+    libplist_LIBS="-L${WORKING_DIR}/libplist/src/.libs -lplist-2.0" libplist_CFLAGS="-I${WORKING_DIR}/libplist/include" \
+    libgeneral_LIBS="-L${WORKING_DIR}/libgeneral/.libs -lgeneral" libgeneral_CFLAGS="-I${WORKING_DIR}/libgeneral/include" \
+    ./autogen.sh --disable-silent-rules --with-plist=yes --with-openssl=yes
+    make -j"$(sysctl -n hw.ncpu)"
+    cd -
+}
+
+#######################################
 # Compiles gaster.
 # Arguments:
 #   None
@@ -228,20 +262,6 @@ function get_futurerestore() {
 }
 
 #######################################
-# Set executable bits for img4tool.
-# Arguments:
-#   None
-# Outputs:
-#   0 without errors, non-zero otherwise.
-#######################################
-function executable_img4tool() {
-  chmod -v +x ./img4tool
-  set +e
-  xattr -d com.apple.quarantine ./img4tool
-  set -e
-}
-
-#######################################
 # Entry point.
 # Globals:
 #   WORKING_DIR
@@ -282,6 +302,8 @@ function main() {
   compile_irecovery
   compile_libusbmuxd
   compile_libimobiledevice
+  compile_libgeneral
+  compile_img4tool
   compile_gaster
   compile_gaster_fr
   compile_t8015_bootkit
