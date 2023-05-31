@@ -296,6 +296,7 @@ function main() {
 
   pushd "${WORKING_DIR}" || { err "WORKING_DIR not found. Exited."; exit 1; }
 
+  # utilities with their libraries
   create_env
   compile_libplist
   compile_libimobiledevice-glue
@@ -304,16 +305,17 @@ function main() {
   compile_libimobiledevice
   compile_libgeneral
   compile_img4tool
+  compile_termz
   compile_gaster
-  compile_gaster_fr
-  compile_t8015_bootkit
   compile_ibootim
-  compile_kpf
   compile_pongoterm
   get_iboot64patcher
   get_futurerestore
-  compile_termz
-  executable_img4tool
+  compile_gaster_fr
+
+  # only for my JB
+  compile_t8015_bootkit
+  compile_kpf
 
   # Ignore errors
   popd || true
