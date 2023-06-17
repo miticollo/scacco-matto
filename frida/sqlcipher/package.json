@@ -1,7 +1,7 @@
 {
-  "name": "frida-agent-example",
+  "name": "sqlicipher-example-agent",
   "version": "1.0.0",
-  "description": "Example Frida agent written in TypeScript",
+  "description": "Frida agent written in TypeScript",
   "private": true,
   "main": "agent/index.ts",
   "scripts": {
@@ -10,8 +10,8 @@
     "watch": "frida-compile agent/index.ts -o _agent.js -w"
   },
   "devDependencies": {
-    "@types/frida-gum": "^18.1.0",
-    "@types/node": "^18.0.6",
-    "frida-compile": "^15.0.8"
+    "@types/frida-gum": "^18.3.1",
+    "@types/node": "^18.14.0",
+    "frida-compile": "^16.1.8"
   }
 }
