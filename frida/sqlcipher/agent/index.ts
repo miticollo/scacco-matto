@@ -116,10 +116,7 @@ Object.keys(keyFunctions).forEach(function (name: string): void {
                     const zDbName: string = args[index++].readUtf8String()!;
                     log(`  Name of the database                             = "${zDbName}"`);
                 }
-                let pKey: string = args[index++].readUtf8String()!;
-                if (pKey != null)
-                    log(`  The Raw Key Data (Without PBKDF2 key derivation) = 0x${pKey.slice(2, -1)}`);
-                else log("  The Raw Key Data (Without PBKDF2 key derivation) = NULL");
+                log(`  The Raw Key Data (Without PBKDF2 key derivation) = ${args[index++].readUtf8String()!}`); // this is the textual password
                 let nKey: number = args[index].toInt32();
                 log(`  The length of the key in bytes                   = ${nKey}`);
                 // Why 99 bytes?
