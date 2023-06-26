@@ -150,10 +150,10 @@ Generic Field: (null)
 #### Notes
 
 During investigations, I discovered that into Keychain are stored some items about removed apps.
-<span><!-- https://gist.github.com/0xmachos/5bcf2ad0085e09f3b553a88bb0e0574d --></span>
 This is normal because an app can save or delete item into Keychain using the appropriate API (e.g., `SecItemAdd` and `SecItemDelete`).
 <span><!-- https://gist.github.com/dhoerl/1170641#file-keychainitemwrapper-m-L118-L119 --></span>
 Anyway only that app can manage the items inside Keychain for security reasons.
+The column `cdat` and `mdat`are encoded with [Apple Cocoa Core Data timestamp](https://www.epochconverter.com/coredata).
 
 #### Wickr Me
 
