@@ -688,6 +688,16 @@ Rendiamo più chiaro le differenze tra l'on-board blob (`onboard.shsh2`) e quell
 <span><!-- https://discord.com/channels/468422899716456498/679683965962944586/833532480032210996 --></span>
 Esaminando i due file di testo ci rendiamo conto di come il primo contenga solo due nodi rispetto al secondo: `ApImg4Ticket` e `generator`, mentre il secondo contiene altri ticket.
 In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L392) dal tag con tipo `BNCN` contenuto nell'IM4R e ne esegue il [reverse dei byte](https://github.com/tihmstar/img4tool/blob/aca6cf005c94caf135023263cbb5c61a0081804f/img4tool/main.cpp#L404).
+> <picture>
+>   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/example.svg">
+>   <img alt="Esempio" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/example.svg">
+> </picture><br>
+>
+> Mi è capitato di dover recuperare l'on-board blob di un iPhone 8 con iOS 13.7, tuttavia pur tentando con [`deverser`](https://github.com/MatthewPierson/deverser) non riuscivo, così l'ho fatto manualmente.
+> 1. Recupero manuale del ticket dal FS: `/System/Library/Caches/apticket.der` (il preboot ce lo abbiamo solo da iOS 14).
+> 2. Inserire la sua codifica in base64 all’interno di un file XML: `img4tool --convert -s 'out.shsh' apticket.der`.
+> 3. Aggiungere il valore del generator in fondo al file recuperandolo dall’IM4R parificando con `openssl` la struttura ASN.1 codificata in DER del primo namespace.
+>    Ricordandoti il reverse dei byte.
 
 Prima di concludere vale la pena di chiedersi come viene calcolato il `<ticket_hash>`, che viene usato come nome di una directory all'interno del volume di Preboot.
 Per scoprirlo potremmo andare a leggere, con l'ausilio del DCSD cable, il log prodotto dall'iPhone durante il restore effettuato tramite `futurerestore`.
