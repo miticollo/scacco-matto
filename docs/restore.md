@@ -696,7 +696,7 @@ In particolare `img4tool` [estrae il `generator`](https://github.com/tihmstar/im
 > Mi è capitato di dover recuperare l'on-board blob di un iPhone 8 con iOS 13.7, tuttavia pur tentando con [`deverser`](https://github.com/MatthewPierson/deverser) non riuscivo, così l'ho fatto manualmente.
 > 1. Recupero manuale del ticket dal FS: `/System/Library/Caches/apticket.der` (il preboot ce lo abbiamo solo da iOS 14).
 > 2. Inserire la sua codifica in base64 all’interno di un file XML: `img4tool --convert -s 'out.shsh' apticket.der`.
-> 3. Aggiungere il valore del generator in fondo al file recuperandolo dall’IM4R parificando con `openssl` la struttura ASN.1 codificata in DER del primo namespace.
+> 3. Aggiungere il valore del generator in fondo al file recuperandolo dall’IM4R parsificando con `openssl` la struttura ASN.1 codificata in DER del primo namespace.
 >    Ricordandoti il reverse dei byte.
 
 Prima di concludere vale la pena di chiedersi come viene calcolato il `<ticket_hash>`, che viene usato come nome di una directory all'interno del volume di Preboot.
