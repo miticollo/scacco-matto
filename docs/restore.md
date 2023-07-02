@@ -395,6 +395,11 @@ Quest'ultima verrà ripresa quando parlerò del ripristino degli iPhone A12+: pe
 Nel paragrafo precedente ho lasciato un rimando alla wiki per un approfondimento su questo argomento, ma ci tengo fare alcune precisazioni.
 Non tutti, ma la maggior parte di cavi di debug, sono illegali.
 Possono essere acquistati all'interno del mercato nero e non come nuovi, ma usati.
+> **Note**</br>
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088798039390560256 --></span>
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088557392041623582 --></span>
+> Questi cavi sono molto più costosi perché non sono solo HW, come i DCSD cable, ma hanno anche un FW: infatti in una "vita precedente" erano in qualche stabilimento Apple.
+
 Nel momento in cui si scrive gli unici cavi ritenuti legali sono 2:
 <span><!-- https://discord.com/channels/349243932447604736/688124600269144162/792865141275492364 --></span>
 - il [Bonobo](https://docs.bonoboswd.com/index.html), che è molto [costoso ed esaurito](https://shop.lambdaconcept.com/home/37-bonobo-debug-cable.html) dal 2021, e
@@ -448,6 +453,20 @@ Più precisamente quello mostrato in Figura.
 > Prestare attenzione a come si connette il cavo: infatti il connettore maschio Lightning in questo caso **non è reversibile**.
 > Quindi controllare la scritta in Figura.
 > ![ibootchain](./images/dcsd.jpeg?raw=true "The traditional boot chain of *OS")
+
+> **Warning**<br/>
+> È importante prestare attenzione ai cavi che si acquistano per evitare prodotti scadenti come quelli mostrati in Figura.
+> <p align="center">
+>  <img src="https://ae01.alicdn.com/kf/S9504b7ef94e1401fa2e1d9eb10213737C.jpg_640x640.jpg" alt="Magico DCSD Cable">
+> </p>
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088281134808440903 --></span>
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088277265902731404 --></span>
+> Essi vengono definiti "magico" oltre a essere ricondizionati presentano alcuni difetti come la facilità con cui si rompono i connettori.
+
+> **Warning**<br/>
+> <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088531933035757639 --></span>
+> Dalle mie indagini sembrerebbe che i cavi DCSD sono considerati illegali, perché si basano su una proprietà intellettuale Apple: ovvero quelli originali.
+> In sostanza sono imitazioni a un costo accessibile di proprietà Apple.
 
 Non indugiamo oltre e facciamo subito una prova.
 Nella solita finestra di terminale aperta sulla directory `work`, lanciamo [`termz`](https://github.com/kpwn/termz), che non è nient'altro che una console seriale
@@ -631,6 +650,10 @@ Proviamo a recuperare i blob SHSH per iOS 15.7.1 usando lo strumento da riga di 
    ```shell
    ../tools/libirecovery/tools/irecovery -q | grep -E 'PRODUCT|MODEL|ECID|NONC|SNON'
    ```
+   > **Note**</br>
+   > Si noti che il tool ``irecovery` può essere usato anche quando il device è in DFU mode.
+   > <span><!-- https://discord.com/channels/779134930265309195/791490631804518451/1088910834123685949 --></span>
+   > Quindi il SEP è attivo anche in DFU.
 4. Eseguiamo il `tsschecker` incluso all'interno del bundle di `blobsaver`
    ```shell
    /Applications/blobsaver.app/Contents/MacOS/tsschecker -d iPhone10,6 -m ./ipsw/orig/BuildManifest.plist -B d221ap -s -e 0x000e421a01c0002e -g 0x1111111111111111 --sepnonce ce197fb15494960c5a2f92cc5cc1e64be4c3a527 --apnonce 2cf7d08a03388589db214c405cca576025ab8578df965886911e21ec8529b7a7 --save-path ./ --nocache --debug
