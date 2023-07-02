@@ -174,6 +174,25 @@ Keychain Data (Hex): 0x00682cc29edc897e6fe49073f1790878ce1dea50b01a5e547c68a3173
 </pre>
 But I don't know what is its purpose.
 
+## Hooking on Swift
+
+How to hook [`usePassphrase`](https://github.com/groue/GRDB.swift/blob/ba68e3b02d9ed953a0c9ff43183f856f20c9b7ce/GRDB/Core/Database.swift#L1587-L1603) from `GRDB.framework`?
+
+1. Attach frida to Session or Signal
+2. Find the path of the framework into target app
+   ```javascript
+   Process.enumerateModules().find(x => x.name.toUpperCase() === "GRDB").path
+   ```
+3. Enumerate all exports inside the framework
+   ```javascript
+   Module.enumerateExports(Process.enumerateModules().find(x => x.name.toUpperCase() === "GRDB").path);
+   ```
+4. Now we can search the functions
+   ```javascript
+   Module.enumerateExports(Process.enumerateModules().find(x => x.name.toUpperCase() === "GRDB").path).filter(x => x.name.includes("assphrase") && x.name.includes("use"));
+   ```
+5.
+
 ## Credits
 
 - AnForA Android team: for useful code to dump PRAGMAs.
