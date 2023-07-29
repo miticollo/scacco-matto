@@ -16,8 +16,8 @@ const openFunctions: { [key: string]: NativePointer } = {
 const keyFunctions: { [key: string]: NativePointer } = {
     "sqlite3_key_v2": Module.getExportByName(null, "sqlite3_key_v2"),
     "sqlite3_key": Module.getExportByName(null, "sqlite3_key"),
-    "sqlite3_rekey_v2": Module.getExportByName(null, "sqlite3_key_v2"),
-    "sqlite3_rekey": Module.getExportByName(null, "sqlite3_key"),
+    "sqlite3_rekey_v2": Module.getExportByName(null, "sqlite3_rekey_v2"),
+    "sqlite3_rekey": Module.getExportByName(null, "sqlite3_rekey"),
 };
 
 const closeFunctions: { [key: string]: NativePointer } = {
