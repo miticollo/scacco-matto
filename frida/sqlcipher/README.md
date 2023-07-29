@@ -191,7 +191,7 @@ How to hook [`usePassphrase`](https://github.com/groue/GRDB.swift/blob/ba68e3b02
    ```javascript
    Module.enumerateExports(Process.enumerateModules().find(x => x.name.toUpperCase() === "GRDB").path).filter(x => x.name.includes("assphrase") && x.name.includes("use"));
    ```
-5.
+5. At the moment, [`frida-swift-bridge`](https://github.com/frida/frida-swift-bridge/) works partially. Therefore, you will need to handle all the work, and this requires a good understanding of the Swift Memory Layout.
 
 ## Credits
 
